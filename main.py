@@ -26,7 +26,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-11-v7 (two-step news writer, copy check, retry, 8 themes)"
+VERSION = "2026-10-11-v8 (quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -222,33 +222,54 @@ Notes:
 """
 
 
+def _gemini_models():
+    """Main model first, then a fallback model (it has its own separate free quota)."""
+    fb = os.getenv("GEMINI_FALLBACK_MODEL") or (GEMINI_MODEL + "-lite" if "lite" not in GEMINI_MODEL else "")
+    return [GEMINI_MODEL] + ([fb] if fb and fb != GEMINI_MODEL else [])
+
+
 def call_gemini(prompt):
     """Free tier: key from https://aistudio.google.com/apikey
-    Retries when Google is busy (429 / 500 / 502 / 503 / 504)."""
-    waits = [15, 30, 60, 90]  # seconds to wait before retry 2, 3, 4, 5
+    - busy (500/502/503/504) or per-minute limit (429): waits and retries
+    - daily quota used up: stops retrying that model at once (retrying only wastes quota)
+    - if the main model keeps failing, tries the fallback model once or twice."""
     last = ""
-    for attempt in range(len(waits) + 1):
-        try:
-            r = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
-                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
-                json={
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
-                },
-                timeout=90,
-            )
-        except requests.RequestException as ex:  # network hiccup
-            last = f"network error: {ex}"
-        else:
-            if r.ok:
-                return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-            last = f"Gemini API error {r.status_code}: {r.text[:300]}"
-            if r.status_code not in (429, 500, 502, 503, 504):
-                raise RuntimeError(last)  # real error (bad key, wrong model...): do not retry
-        if attempt < len(waits):
-            print(f"Gemini busy, retry {attempt + 1}/{len(waits)} in {waits[attempt]}s ({last[:80]})", file=sys.stderr)
-            time.sleep(waits[attempt])
+    for mi, model in enumerate(_gemini_models()):
+        main_error = last  # real error from the main model (kept if the guessed fallback does not exist)
+        waits = [15, 30, 60] if mi == 0 else [10]
+        for attempt in range(len(waits) + 1):
+            try:
+                r = requests.post(
+                    f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                    headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+                    json={
+                        "contents": [{"parts": [{"text": prompt}]}],
+                        "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
+                    },
+                    timeout=90,
+                )
+            except requests.RequestException as ex:  # network hiccup
+                last, wait = f"network error: {ex}", None
+            else:
+                if r.ok:
+                    if mi:
+                        print(f"(answered by fallback model {model})", file=sys.stderr)
+                    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                last = f"Gemini API error {r.status_code} [{model}]: {r.text[:300]}"
+                if r.status_code == 404 and mi:
+                    last = main_error  # guessed fallback model does not exist: ignore it, keep the real error
+                    break
+                if r.status_code not in (429, 500, 502, 503, 504):
+                    raise RuntimeError(last)  # real error (bad key, wrong model...): do not retry
+                if r.status_code == 429 and re.search(r"PerDay|per day|daily", r.text, re.I):
+                    last += "  -> DAILY FREE QUOTA USED UP (resets about midday IST); try again later"
+                    break  # no point retrying this model today
+                m = re.search(r'retry in ([\d.]+)s|"retryDelay":\s*"(\d+)', r.text)
+                wait = min(max(float(m.group(1) or m.group(2)), 5), 90) if m else None
+            if attempt < len(waits):
+                w = wait if wait else waits[attempt]
+                print(f"Gemini busy/limited ({model}), retry {attempt + 1}/{len(waits)} in {int(w)}s", file=sys.stderr)
+                time.sleep(w)
     raise RuntimeError(last)
 
 
@@ -286,6 +307,13 @@ def longest_shared_run(a, b):
 COPY_LIMITS = (("headline", 5), ("subheadline", 6), ("caption", 7))
 
 
+def _strip_quotes(s):
+    """Remove short quoted passages so a short quote ("...", up to 12 words) never counts as copying."""
+    def repl(m):
+        return " " if len(m.group(1).split()) <= 12 else m.group(0)
+    return re.sub(r'["“]([^"”]{1,160})["”]', repl, s)
+
+
 def too_close(post, items):
     """Returns (field, phrase) if the post copies wording from its source, else None."""
     src = next((i for i in items if i["link"] == post.get("source_link")), None)
@@ -293,7 +321,7 @@ def too_close(post, items):
         return None  # idea posts have no single source
     source_text = f"{src['title']} {src['summary']}"
     for field, limit in COPY_LIMITS:
-        n, phrase = longest_shared_run(str(post.get(field, "")), source_text)
+        n, phrase = longest_shared_run(_strip_quotes(str(post.get(field, ""))), source_text)
         if n >= limit:
             return field, phrase
     return None
@@ -328,12 +356,13 @@ def generate_news_post(items, recent=None):
                         "source_link (an exact URL from the list) and facts.")
             print(f"bad story pick, retrying ({ex})", file=sys.stderr)
             continue
-        pick = (cand, src, facts)
         source_text = f"{src['title']} {src['summary']}"
-        copied = [f for f in facts if longest_shared_run(f, source_text)[0] >= 7]
-        if not copied:
+        clean = [f for f in facts if longest_shared_run(_strip_quotes(f), source_text)[0] < 7]
+        if len(clean) >= 2:  # drop copied notes instead of spending another AI call
+            pick = (cand, src, clean)
             break
-        print(f"notes copy the source, retrying: '{copied[0][:60]}'", file=sys.stderr)
+        pick = (cand, src, facts)  # fallback if the retries fail too
+        print("notes copy the source, retrying", file=sys.stderr)
         feedback = ("\n\nYour notes copied long phrases from the source. Rewrite every note as a short "
                     "fragment with different words.")
     if pick is None:

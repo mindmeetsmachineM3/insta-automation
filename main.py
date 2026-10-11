@@ -26,6 +26,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
+VERSION = "2026-10-11-v7 (two-step news writer, copy check, retry, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -162,6 +163,65 @@ Items:
 """
 
 
+def build_pick_prompt(items, recent=None):
+    """Step 1 (news): choose a story and turn it into short neutral notes."""
+    news_block = "\n".join(
+        f"{idx+1}. [{i['source']}] {i['title']} - {i['summary']} ({i['link']})"
+        for idx, i in enumerate(items)
+    )
+    recent_block = ""
+    if recent:
+        recent_block = (
+            "\nTopics already posted recently. Do NOT pick the same story, statement or event again, "
+            "even from a different source. If every item repeats one of these, pick the least similar:\n"
+            + "\n".join(f"- {h}" for h in recent)
+            + "\n"
+        )
+    return f"""You are a news editor. From the items below, pick the SINGLE most interesting AI/technology story.
+{recent_block}
+Return ONLY valid JSON with these keys:
+- "source_name": the publication name (e.g. "The Verge")
+- "source_link": the exact URL of the chosen item from the list
+- "facts": 3 to 5 short notes (max 12 words each) of what the story says
+
+Rules for "facts":
+- Telegraphic fragments in your own words. NEVER copy a sentence or a long phrase from the source.
+- Only what the source says: who, what, numbers, dates. No opinions, no guesses, no background of your own.
+- Keep the exact scope. Do not make a narrow fact sound general.
+- A direct quote is allowed only if short (under 10 words) and inside quotation marks.
+
+Items:
+{news_block}
+"""
+
+
+def build_news_write_prompt(facts, source_name):
+    """Step 2 (news): write the post from the notes only (the AI never sees the source sentences)."""
+    fact_lines = "\n".join(f"- {f}" for f in facts)
+    return f"""Write an Instagram post about the news story described by these notes (from {source_name}).
+Use ONLY the facts in the notes. Do not invent numbers, quotes, names, motives or claims.
+
+Language of the post: {LANGUAGE}.
+Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
+
+Rules:
+- Start the caption with why this matters to the reader (a consequence or a question). Do not open with "X said ...".
+- Then explain the facts in your own sentences. Use at most one short quote (under 12 words).
+- The headline and subheadline must not claim more than the notes say. Keep the exact scope (who, what, how much).
+- Do not add conclusions, predictions or opinions. Do not attribute a view to a group when the notes name one person.
+- Every hashtag must relate directly to this topic. No generic or location hashtags.
+
+Return ONLY valid JSON with these keys:
+- "headline": max 60 characters, big text for the image
+- "subheadline": max 110 characters, supporting line for the image
+- "caption": 60-120 words, short paragraphs, 1-2 emojis
+- "hashtags": list of 6-9 relevant hashtags (each starting with #)
+
+Notes:
+{fact_lines}
+"""
+
+
 def call_gemini(prompt):
     """Free tier: key from https://aistudio.google.com/apikey
     Retries when Google is busy (429 / 500 / 502 / 503 / 504)."""
@@ -239,7 +299,79 @@ def too_close(post, items):
     return None
 
 
+def _ask(prompt):
+    raw = call_claude(prompt) if LLM_PROVIDER == "claude" else call_gemini(prompt)
+    return json.loads(re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.M).strip())
+
+
+def _clean_source(name):
+    """'AI | The Verge' -> 'The Verge';  'Ars Technica - Technology Lab' -> 'Ars Technica'"""
+    name = (name or "").split(" | ")[-1]
+    name = re.split(r"\s+[-–—]\s+", name)[0].strip()
+    return name
+
+
+def generate_news_post(items, recent=None):
+    """Two steps so the writer never sees the source sentences:
+    1) pick a story and turn it into short notes, 2) write the post from the notes only."""
+    # ---- step 1: pick + notes
+    feedback, pick = "", None
+    for attempt in range(3):
+        try:
+            cand = _ask(build_pick_prompt(items, recent) + feedback)
+            facts = [str(f).strip() for f in cand["facts"] if str(f).strip()]
+            src = next((i for i in items if i["link"] == cand["source_link"]), None)
+            if not facts or not src:
+                raise ValueError("no facts or unknown source_link")
+        except (ValueError, TypeError, KeyError) as ex:
+            feedback = ("\n\nYour previous reply was invalid. Return ONLY the JSON object with source_name, "
+                        "source_link (an exact URL from the list) and facts.")
+            print(f"bad story pick, retrying ({ex})", file=sys.stderr)
+            continue
+        pick = (cand, src, facts)
+        source_text = f"{src['title']} {src['summary']}"
+        copied = [f for f in facts if longest_shared_run(f, source_text)[0] >= 7]
+        if not copied:
+            break
+        print(f"notes copy the source, retrying: '{copied[0][:60]}'", file=sys.stderr)
+        feedback = ("\n\nYour notes copied long phrases from the source. Rewrite every note as a short "
+                    "fragment with different words.")
+    if pick is None:
+        raise RuntimeError("AI did not pick a valid story after 3 tries")
+    cand, src, facts = pick
+    source_name = _clean_source(cand.get("source_name") or src["source"])
+
+    # ---- step 2: write from notes only
+    write_prompt = build_news_write_prompt(facts, source_name)
+    feedback, data = "", None
+    for attempt in range(3):
+        try:
+            data = _ask(write_prompt + feedback)
+            for k in ("headline", "subheadline", "caption", "hashtags"):
+                if k not in data:
+                    raise ValueError(f"output missing {k}")
+        except (ValueError, TypeError) as ex:
+            feedback = "\n\nYour previous reply was not valid JSON with all required keys. Return ONLY the JSON object."
+            print(f"bad AI output, retrying ({ex})", file=sys.stderr)
+            data = None
+            continue
+        data["source_name"], data["source_link"] = source_name, src["link"]
+        issue = too_close(data, items)
+        if not issue:
+            return data
+        field, phrase = issue
+        print(f"too close to source in {field}: '{phrase}' (try {attempt + 1}/3)", file=sys.stderr)
+        feedback = (f"\n\nYour previous draft reused wording from the source in the {field}: \"{phrase}\". "
+                    "Rewrite the whole post with different sentence structure and vocabulary.")
+    if data is None:
+        raise RuntimeError("AI did not return valid post JSON after 3 tries")
+    print("WARNING: post wording still close to the source after 3 tries", file=sys.stderr)
+    return data
+
+
 def generate_post(slot, items, recent=None):
+    if slot == "news":
+        return generate_news_post(items, recent)
     base_prompt = build_prompt(slot, items, recent)
     feedback, data = "", None
     for attempt in range(3):
@@ -930,6 +1062,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--refresh-token", action="store_true")
     args = ap.parse_args()
+    print(f"main.py version {VERSION}", file=sys.stderr)
 
     if args.refresh_token:
         refresh_token()

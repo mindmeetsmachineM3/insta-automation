@@ -1,0 +1,6 @@
+feedparser>=6.0.11
+requests>=2.32.0
+python-dotenv>=1.0.1
+Pillow>=10.4.0
+# Only if you switch LLM_PROVIDER=claude (paid):
+# anthropic>=0.40.0

@@ -202,14 +202,73 @@ def call_claude(prompt):
     return msg.content[0].text
 
 
+def _words(s):
+    return re.findall(r"[a-z0-9']+", s.lower().replace("’", "'"))
+
+
+def longest_shared_run(a, b):
+    """Longest run of consecutive words that appears in both texts -> (count, phrase)."""
+    A, B = _words(a), _words(b)
+    best, end = 0, 0
+    prev = [0] * (len(B) + 1)
+    for i in range(1, len(A) + 1):
+        cur = [0] * (len(B) + 1)
+        for j in range(1, len(B) + 1):
+            if A[i - 1] == B[j - 1]:
+                cur[j] = prev[j - 1] + 1
+                if cur[j] > best:
+                    best, end = cur[j], i
+        prev = cur
+    return best, " ".join(A[end - best:end])
+
+
+# max words allowed to be copied in a row from the source (names and short quotes pass)
+COPY_LIMITS = (("headline", 5), ("subheadline", 6), ("caption", 7))
+
+
+def too_close(post, items):
+    """Returns (field, phrase) if the post copies wording from its source, else None."""
+    src = next((i for i in items if i["link"] == post.get("source_link")), None)
+    if not src:
+        return None  # idea posts have no single source
+    source_text = f"{src['title']} {src['summary']}"
+    for field, limit in COPY_LIMITS:
+        n, phrase = longest_shared_run(str(post.get(field, "")), source_text)
+        if n >= limit:
+            return field, phrase
+    return None
+
+
 def generate_post(slot, items, recent=None):
-    prompt = build_prompt(slot, items, recent)
-    text = (call_claude(prompt) if LLM_PROVIDER == "claude" else call_gemini(prompt)).strip()
-    text = re.sub(r"^```(?:json)?|```$", "", text, flags=re.M).strip()
-    data = json.loads(text)
-    for k in ("headline", "subheadline", "caption", "hashtags"):
-        if k not in data:
-            raise ValueError(f"Claude output missing {k}")
+    base_prompt = build_prompt(slot, items, recent)
+    feedback, data = "", None
+    for attempt in range(3):
+        raw = call_claude(base_prompt + feedback) if LLM_PROVIDER == "claude" else call_gemini(base_prompt + feedback)
+        text = re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.M).strip()
+        try:
+            data = json.loads(text)
+            for k in ("headline", "subheadline", "caption", "hashtags"):
+                if k not in data:
+                    raise ValueError(f"output missing {k}")
+        except (ValueError, TypeError) as ex:
+            feedback = "\n\nYour previous reply was not valid JSON with all required keys. Return ONLY the JSON object."
+            print(f"bad AI output, retrying ({ex})", file=sys.stderr)
+            data = None
+            continue
+        issue = too_close(data, items)
+        if not issue:
+            return data
+        field, phrase = issue
+        print(f"too close to source in {field}: '{phrase}' (try {attempt + 1}/3)", file=sys.stderr)
+        feedback = (
+            f"\n\nYour previous draft copied wording from the source in the {field}: \"{phrase}\". "
+            "Rewrite the whole post from scratch with a different sentence structure and different "
+            "vocabulary. Start the caption with why this matters to the reader (a consequence or a "
+            "question), not with who said what. Keep every fact accurate. Do not reuse that phrase."
+        )
+    if data is None:
+        raise RuntimeError("AI did not return valid post JSON after 3 tries")
+    print("WARNING: post wording still close to the source after 3 tries", file=sys.stderr)
     return data
 
 

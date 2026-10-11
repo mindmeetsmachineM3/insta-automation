@@ -109,7 +109,7 @@ def build_prompt(slot, items):
         task = (
             "Pick the SINGLE most interesting AI/technology news item from the list below "
             "and write an Instagram post about it. Use ONLY facts present in the list. "
-            "Do not invent numbers, quotes or claims. Write everything in your own words: never copy sentences or headlines from the list, and use at most one short quote (under 12 words)."
+            "Do not invent numbers, quotes or claims. Write everything in your own words: never copy sentences or headlines from the list, and use at most one short quote (under 12 words). The headline and subheadline must not claim more than the source says: keep the exact scope (who, what, how much) and never turn a narrow fact into a general one."
         )
     else:
         task = (

@@ -163,19 +163,33 @@ Items:
 
 
 def call_gemini(prompt):
-    """Free tier: key from https://aistudio.google.com/apikey"""
-    r = requests.post(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
-        headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
-        json={
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
-        },
-        timeout=90,
-    )
-    if not r.ok:
-        raise RuntimeError(f"Gemini API error {r.status_code}: {r.text[:300]}")
-    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+    """Free tier: key from https://aistudio.google.com/apikey
+    Retries when Google is busy (429 / 500 / 502 / 503 / 504)."""
+    waits = [15, 30, 60, 90]  # seconds to wait before retry 2, 3, 4, 5
+    last = ""
+    for attempt in range(len(waits) + 1):
+        try:
+            r = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+                json={
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
+                },
+                timeout=90,
+            )
+        except requests.RequestException as ex:  # network hiccup
+            last = f"network error: {ex}"
+        else:
+            if r.ok:
+                return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+            last = f"Gemini API error {r.status_code}: {r.text[:300]}"
+            if r.status_code not in (429, 500, 502, 503, 504):
+                raise RuntimeError(last)  # real error (bad key, wrong model...): do not retry
+        if attempt < len(waits):
+            print(f"Gemini busy, retry {attempt + 1}/{len(waits)} in {waits[attempt]}s ({last[:80]})", file=sys.stderr)
+            time.sleep(waits[attempt])
+    raise RuntimeError(last)
 
 
 def call_claude(prompt):

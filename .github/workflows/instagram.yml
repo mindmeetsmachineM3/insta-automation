@@ -1,0 +1,115 @@
+name: Instagram daily posts
+
+# Times are UTC. IST = UTC + 5:30
+on:
+  schedule:
+    - cron: "30 3 * * *"    # 09:00 IST  -> AI news post
+    - cron: "30 12 * * *"   # 18:00 IST  -> tech idea post
+    - cron: "30 21 * * 6"   # Sun 03:00 IST -> refresh Instagram token
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "What to run"
+        type: choice
+        options: [news, idea, refresh-token]
+        default: news
+      dry_run:
+        description: "Dry run (do NOT post to Instagram)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-poster
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      LLM_PROVIDER: gemini
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_HANDLE: ${{ vars.IG_HANDLE }}
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+      POST_LANGUAGE: ${{ vars.POST_LANGUAGE || 'English' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Devanagari font (Marathi only)
+        if: ${{ vars.POST_LANGUAGE == 'Marathi' }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core
+          F=$(fc-list | grep -i "NotoSansDevanagari-Bold" | head -1 | cut -d: -f1)
+          echo "FONT_PATH=$F" >> "$GITHUB_ENV"
+
+      - name: Decide what to run
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ACTION="${{ inputs.action }}"
+            DRY="${{ inputs.dry_run }}"
+          else
+            DRY=false
+            case "${{ github.event.schedule }}" in
+              "30 3 * * *")  ACTION=news ;;
+              "30 12 * * *") ACTION=idea ;;
+              *)             ACTION=refresh-token ;;
+            esac
+          fi
+          echo "action=$ACTION" >> "$GITHUB_OUTPUT"
+          echo "dry=$DRY" >> "$GITHUB_OUTPUT"
+
+      - name: Create post
+        if: steps.pick.outputs.action != 'refresh-token'
+        run: |
+          if [ "${{ steps.pick.outputs.dry }}" = "true" ]; then
+            python main.py --slot "${{ steps.pick.outputs.action }}" --dry-run
+          else
+            python main.py --slot "${{ steps.pick.outputs.action }}"
+          fi
+
+      - name: Refresh Instagram token
+        if: steps.pick.outputs.action == 'refresh-token'
+        env:
+          NEW_TOKEN_FILE: new_token.txt
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          python main.py --refresh-token
+          gh secret set IG_ACCESS_TOKEN --repo "${{ github.repository }}" < new_token.txt
+          rm -f new_token.txt token.json
+          echo "Token refreshed and saved to repo secret."
+
+      - name: Upload dry-run preview
+        if: ${{ steps.pick.outputs.dry == 'true' && steps.pick.outputs.action != 'refresh-token' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview
+          path: output/
+
+      - name: Save state (posted list + log)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posted.json log.csv 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update state [skip ci]"
+            git pull --rebase -q || true
+            git push
+          fi

@@ -1,3 +1,4 @@
 time,slot,status,detail
 2026-10-12T03:54:04.060414,news,OK,18102746867640173
 2026-10-12T06:54:29.623230,extra,FAIL,Gemini API error 429 [gemini-3.8-flash]: {   "error": {     "code": 429;     "message": "You exceeded your current quota; please check your plan and billing details. For more information on this error; head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage; head to
+2026-10-12T13:17:05.858114,idea,FAIL,network error: HTTPSConnectionPool(host='generativelanguage.googleapis.com'; port=443): Read timed out. (read timeout=90)

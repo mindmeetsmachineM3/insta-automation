@@ -6,12 +6,19 @@ on:
     - cron: "30 3 * * *"    # 09:00 IST  -> AI news post
     - cron: "30 12 * * *"   # 18:00 IST  -> tech idea post
     - cron: "30 21 * * 6"   # Sun 03:00 IST -> refresh Instagram token
+    # extra random-topic posts: 6 chances a day, the script posts at only 2 of them (random times)
+    - cron: "47 4 * * *"    # 10:17 IST
+    - cron: "23 6 * * *"    # 11:53 IST
+    - cron: "11 8 * * *"    # 13:41 IST
+    - cron: "37 10 * * *"   # 16:07 IST
+    - cron: "29 13 * * *"   # 18:59 IST
+    - cron: "41 15 * * *"   # 21:11 IST
   workflow_dispatch:
     inputs:
       action:
         description: "What to run"
         type: choice
-        options: [news, idea, refresh-token]
+        options: [news, idea, extra, refresh-token]
         default: news
       dry_run:
         description: "Dry run (do NOT post to Instagram)"
@@ -38,6 +45,7 @@ jobs:
       IG_HANDLE: ${{ vars.IG_HANDLE }}
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
       CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+      EXTRA_PER_DAY: ${{ vars.EXTRA_PER_DAY || '2' }}
       POST_LANGUAGE: ${{ vars.POST_LANGUAGE || 'English' }}
     steps:
       - uses: actions/checkout@v4
@@ -64,16 +72,20 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             ACTION="${{ inputs.action }}"
             DRY="${{ inputs.dry_run }}"
+            GATE=""
           else
+            GATE=""
             DRY=false
             case "${{ github.event.schedule }}" in
               "30 3 * * *")  ACTION=news ;;
               "30 12 * * *") ACTION=idea ;;
-              *)             ACTION=refresh-token ;;
+              "30 21 * * 6") ACTION=refresh-token ;;
+              *)             ACTION=extra; GATE="--gate" ;;
             esac
           fi
           echo "action=$ACTION" >> "$GITHUB_OUTPUT"
           echo "dry=$DRY" >> "$GITHUB_OUTPUT"
+          echo "gate=$GATE" >> "$GITHUB_OUTPUT"
 
       - name: Create post
         if: steps.pick.outputs.action != 'refresh-token'
@@ -81,7 +93,7 @@ jobs:
           if [ "${{ steps.pick.outputs.dry }}" = "true" ]; then
             python main.py --slot "${{ steps.pick.outputs.action }}" --dry-run
           else
-            python main.py --slot "${{ steps.pick.outputs.action }}"
+            python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }}
           fi
 
       - name: Refresh Instagram token

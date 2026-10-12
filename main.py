@@ -18,7 +18,7 @@ import re
 import sys
 import textwrap
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import feedparser
@@ -26,7 +26,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-12-v9 (no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-12-v10 (extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -44,6 +44,33 @@ FEEDS = [
     "https://openai.com/news/rss.xml",
     "https://feeds.arstechnica.com/arstechnica/technology-lab",
 ]
+
+# Extra posts: random topic (robotics, electronics, sci-fi tech ...) at random times
+EXTRA_FEEDS = [
+    "https://hackaday.com/blog/feed/",
+    "https://interestingengineering.com/feed",
+    "https://spectrum.ieee.org/feeds/feed.rss",
+    "https://newatlas.com/index.rss",
+    "https://techcrunch.com/category/robotics/feed/",
+    "https://www.sciencedaily.com/rss/matter_energy/robotics.xml",
+]
+# label -> (what the post is about, keywords used to find matching news)
+TOPICS = {
+    "ROBOTICS": ("robotics: robots, actuators, humanoids, drones, robot learning",
+                 ["robot", "humanoid", "drone", "actuator", "exoskeleton", "autonomous"]),
+    "ELECTRONICS": ("electronics: chips, sensors, circuits, microcontrollers, batteries, displays",
+                    ["chip", "semiconductor", "sensor", "circuit", "battery", "transistor", "display", "arduino", "raspberry", "fpga", "pcb"]),
+    "MECHATRONICS": ("mechatronics: where mechanics, electronics and control software meet (motors, servos, CNC, 3D printers, smart machines)",
+                     ["motor", "servo", "cnc", "3d print", "3d-print", "machine", "mechanical", "automation", "gripper", "actuator"]),
+    "SCI-FI TECH": ("real technology that science fiction imagined (e.g. flying cars, invisibility, brain interfaces, space elevators, holograms): the idea versus where the real science stands today",
+                    ["hologram", "brain", "neural", "quantum", "fusion", "space", "invisib", "teleport", "cyborg", "bionic", "laser"]),
+    "NEW INNOVATION": ("a recent or emerging innovation in engineering or science (materials, energy, health tech, wearables, transport)",
+                       ["new", "breakthrough", "researchers", "invent", "prototype", "develop", "innovation"]),
+    "FUTURE TECH": ("future technology: where a real technology could be in 10-20 years, grounded in current research",
+                    ["future", "quantum", "fusion", "graphene", "solid-state", "energy", "space", "ai"]),
+}
+# UTC times of the extra-post triggers in the workflow (must match the cron lines)
+EXTRA_TRIGGERS_UTC = [(4, 47), (6, 23), (8, 11), (10, 37), (13, 29), (15, 41)]
 
 # LLM_PROVIDER: "gemini" (free tier, default) or "claude" (paid API)
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
@@ -75,9 +102,9 @@ def log(slot, status, detail=""):
 
 
 # ---------------------------------------------------------------- news
-def fetch_items(limit_per_feed=6):
+def fetch_items(feeds=None, limit_per_feed=6):
     items = []
-    for url in FEEDS:
+    for url in (feeds or FEEDS):
         try:
             resp = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0 (compatible; NewsBot/1.0)"})
             resp.raise_for_status()
@@ -177,7 +204,7 @@ def build_pick_prompt(items, recent=None):
             + "\n".join(f"- {h}" for h in recent)
             + "\n"
         )
-    return f"""You are a news editor. From the items below, pick the SINGLE most interesting AI/technology story.
+    return f"""You are a news editor. From the items below, pick the SINGLE most interesting technology or engineering story.
 {recent_block}
 Return ONLY valid JSON with these keys:
 - "source_name": the publication name (e.g. "The Verge")
@@ -220,6 +247,34 @@ Return ONLY valid JSON with these keys:
 
 Notes:
 {fact_lines}
+"""
+
+
+def build_concept_prompt(topic_text, recent=None):
+    recent_block = ""
+    if recent:
+        recent_block = (
+            "\nTopics already posted recently. Do NOT repeat any of these or anything very similar:\n"
+            + "\n".join(f"- {h}" for h in recent) + "\n"
+        )
+    return f"""Write an Instagram post that teaches ONE fascinating, specific thing about: {topic_text}.
+Pick a real, well-established technology, component, principle or milestone. Explain how it works or why it matters.
+Be concrete (one specific thing, not a broad overview).
+
+Language of the post: {LANGUAGE}.
+Audience: Indian tech-curious Instagram users, many are students and makers. Tone: clear, energetic, no hype or clickbait.
+
+Rules:
+- Only well-established facts. Do NOT invent statistics, dates, prices, company claims or study results. If unsure of a number, leave it out.
+- Do not present speculation as fact. If you discuss the future, say it is a possibility.
+- Never say the same fact or idea twice in the caption. Every line adds something new.
+- Every hashtag must relate directly to this post's topic.
+{recent_block}
+Return ONLY valid JSON with these keys:
+- "headline": max 60 characters, big text for the image
+- "subheadline": max 110 characters, supporting line for the image
+- "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT points, then one closing takeaway line. 1-2 emojis
+- "hashtags": list of 6-9 relevant hashtags (each starting with #)
 """
 
 
@@ -432,6 +487,47 @@ def generate_post(slot, items, recent=None):
         raise RuntimeError("AI did not return valid post JSON after 3 tries")
     print("WARNING: post wording still close to the source after 3 tries", file=sys.stderr)
     return data
+
+
+def generate_concept_post(topic_text, recent=None):
+    prompt = build_concept_prompt(topic_text, recent)
+    feedback = ""
+    for attempt in range(3):
+        try:
+            data = _ask(prompt + feedback)
+            for k in ("headline", "subheadline", "caption", "hashtags"):
+                if k not in data:
+                    raise ValueError(f"output missing {k}")
+            data["source_name"], data["source_link"] = "", ""
+            return data
+        except (ValueError, TypeError) as ex:
+            feedback = "\n\nYour previous reply was not valid JSON with all required keys. Return ONLY the JSON object."
+            print(f"bad AI output, retrying ({ex})", file=sys.stderr)
+    raise RuntimeError("AI did not return valid post JSON after 3 tries")
+
+
+def extra_gate():
+    """Scheduled 'extra' runs: post only some of the triggers so times look random.
+    Returns True if this run should post."""
+    per_day = int(os.getenv("EXTRA_PER_DAY") or 2)
+    ist = timedelta(hours=5, minutes=30)
+    today = (datetime.now() + ist).date()
+    done = 0
+    try:
+        for line in LOG_FILE.read_text(encoding="utf-8").splitlines()[1:]:
+            parts = line.split(",", 3)
+            if len(parts) >= 3 and parts[1] == "extra" and parts[2] == "OK":
+                if (datetime.fromisoformat(parts[0]) + ist).date() == today:
+                    done += 1
+    except Exception:
+        pass
+    need = per_day - done
+    now_min = datetime.now().hour * 60 + datetime.now().minute
+    remaining = max(1, sum(1 for h, m in EXTRA_TRIGGERS_UTC if h * 60 + m >= now_min - 50))
+    p = 1.0 if need >= remaining else max(0.0, need / remaining)
+    go = need > 0 and random.random() < p
+    print(f"extra gate: done today={done}, target={per_day}, triggers left={remaining}, p={p:.2f} -> {'POST' if go else 'skip'}", file=sys.stderr)
+    return go
 
 
 # ---------------------------------------------------------------- image
@@ -981,7 +1077,7 @@ def make_image(slot, post, path, theme=None):
     img.alpha_composite(_hud(W, H, A))
 
     # ---- label pill
-    label = "AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY"
+    label = post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY")
     lf = load_font(42)
     tw = meas.textbbox((0, 0), label, font=lf)[2]
     d = ImageDraw.Draw(img, "RGBA")
@@ -1087,7 +1183,8 @@ def publish(image_url, caption):
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--slot", choices=["news", "idea"])
+    ap.add_argument("--slot", choices=["news", "idea", "extra"])
+    ap.add_argument("--gate", action="store_true", help="extra slot: post only at random (scheduled runs)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--refresh-token", action="store_true")
     args = ap.parse_args()
@@ -1100,16 +1197,34 @@ def main():
         ap.error("--slot is required")
 
     slot = args.slot
+    if slot == "extra" and args.gate and not extra_gate():
+        return
     try:
         state = load_state()
-        items = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
-        if not items:
-            raise RuntimeError("no fresh items found in feeds")
-
-        post = generate_post(slot, items, state["headlines"][-25:])
+        recent = state["headlines"][-25:]
+        items = []
+        if slot == "extra":
+            label = random.choice(list(TOPICS))
+            topic_text, kws = TOPICS[label]
+            print("EXTRA topic:", label, file=sys.stderr)
+            pool = []
+            if random.random() < 0.6:  # 60% real recent news, 40% explainer
+                pool = pick_items(fetch_items(EXTRA_FEEDS, 8), state["links"], 60)
+                pool = [i for i in pool if any(k in (i["title"] + " " + i["summary"]).lower() for k in kws)][:8]
+            if len(pool) >= 2:
+                items = pool
+                post = generate_news_post(items, recent)
+            else:
+                post = generate_concept_post(topic_text, recent)
+            post["label"] = label
+        else:
+            items = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
+            if not items:
+                raise RuntimeError("no fresh items found in feeds")
+            post = generate_post(slot, items, recent)
 
         caption = post["caption"].strip()
-        if post.get("source_name") and slot == "news":
+        if post.get("source_name"):
             caption += f"\n\nSource: {post['source_name']}"
         caption += "\n\n" + " ".join(post["hashtags"])
         caption = caption[:2200]
@@ -1132,7 +1247,7 @@ def main():
 
         if post.get("source_link"):
             state["links"].append(post["source_link"])
-        else:
+        elif items:
             state["links"].extend(i["link"] for i in items[:1])
         state["headlines"].append(f"{post['headline']} - {post['subheadline']}")
         state["themes"].append(theme)

@@ -26,7 +26,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-11-v8 (quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-12-v9 (no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -153,7 +153,7 @@ Rules:
 Return ONLY valid JSON with these keys:
 - "headline": max 60 characters, big text for the image
 - "subheadline": max 110 characters, supporting line for the image
-- "caption": 60-120 words, with a hook in the first line, short paragraphs, 1-2 emojis
+- "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT points, then one closing takeaway line. 1-2 emojis. Never repeat a sentence or idea.
 - "hashtags": list of 6-9 relevant hashtags (each starting with #)
 - "source_name": name of the source (news slot) or "" (idea slot)
 - "source_link": the exact URL from the list (news slot) or "" (idea slot)
@@ -210,11 +210,12 @@ Rules:
 - The headline and subheadline must not claim more than the notes say. Keep the exact scope (who, what, how much).
 - Do not add conclusions, predictions or opinions. Do not attribute a view to a group when the notes name one person.
 - Every hashtag must relate directly to this topic. No generic or location hashtags.
+- Never say the same fact or idea twice in the caption. Do not repeat a sentence, and do not end by restating the opening. Every line must add something new; the closing line is a short takeaway, not a summary.
 
 Return ONLY valid JSON with these keys:
 - "headline": max 60 characters, big text for the image
 - "subheadline": max 110 characters, supporting line for the image
-- "caption": 60-120 words, short paragraphs, 1-2 emojis
+- "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT facts, then one closing takeaway line. 1-2 emojis
 - "hashtags": list of 6-9 relevant hashtags (each starting with #)
 
 Notes:
@@ -1006,7 +1007,6 @@ def make_image(slot, post, path, theme=None):
 
     # ---- footer
     d.text((margin, H - 140), os.getenv("IG_HANDLE", ""), font=load_font(40), fill=(255, 255, 255, 255))
-    d.text((margin, H - 88), "AI-assisted content", font=load_font(28), fill=(175, 190, 235, 255))
 
     img.convert("RGB").save(path, "JPEG", quality=93, subsampling=0)
 
@@ -1111,7 +1111,7 @@ def main():
         caption = post["caption"].strip()
         if post.get("source_name") and slot == "news":
             caption += f"\n\nSource: {post['source_name']}"
-        caption += "\n\n(AI-assisted post)\n\n" + " ".join(post["hashtags"])
+        caption += "\n\n" + " ".join(post["hashtags"])
         caption = caption[:2200]
 
         stamp = datetime.now().strftime("%Y%m%d_%H%M")

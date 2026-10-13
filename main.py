@@ -10,6 +10,7 @@ Usage:
 UiPath Orchestrator triggers this script twice a day.
 """
 import argparse
+import subprocess
 import json
 import math
 import os
@@ -26,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-12-v10 (extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-12-v12 (auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -278,10 +279,34 @@ Return ONLY valid JSON with these keys:
 """
 
 
+_FALLBACK_CACHE = []
+
+
+def _discover_fallback():
+    """Ask Google which models this key can use and pick another flash model (own separate quota)."""
+    if _FALLBACK_CACHE:
+        return _FALLBACK_CACHE[0]
+    pick = ""
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+                         headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]}, timeout=20)
+        names = [m["name"].split("/")[-1] for m in r.json().get("models", [])
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+        names = [n for n in names if "flash" in n and n != GEMINI_MODEL
+                 and not re.search(r"image|tts|live|audio|embed|thinking|preview|exp", n)]
+        names.sort(key=lambda n: ("lite" not in n, n))
+        pick = names[0] if names else ""
+        print(f"fallback model: {pick or 'none found'}", file=sys.stderr)
+    except Exception as ex:
+        print(f"could not list models: {ex}", file=sys.stderr)
+    _FALLBACK_CACHE.append(pick)
+    return pick
+
+
 def _gemini_models():
     """Main model first, then a fallback model (it has its own separate free quota)."""
-    fb = os.getenv("GEMINI_FALLBACK_MODEL") or (GEMINI_MODEL + "-lite" if "lite" not in GEMINI_MODEL else "")
-    return [GEMINI_MODEL] + ([fb] if fb and fb != GEMINI_MODEL else [])
+    fb = os.getenv("GEMINI_FALLBACK_MODEL")
+    return [GEMINI_MODEL] + ([fb] if fb else ["__auto__"])
 
 
 def call_gemini(prompt):
@@ -291,8 +316,12 @@ def call_gemini(prompt):
     - if the main model keeps failing, tries the fallback model once or twice."""
     last = ""
     for mi, model in enumerate(_gemini_models()):
+        if model == "__auto__":
+            model = _discover_fallback()
+            if not model:
+                break
         main_error = last  # real error from the main model (kept if the guessed fallback does not exist)
-        waits = [15, 30, 60] if mi == 0 else [10]
+        waits = [20, 45, 90, 120] if mi == 0 else [20, 40]
         for attempt in range(len(waits) + 1):
             try:
                 r = requests.post(
@@ -302,7 +331,7 @@ def call_gemini(prompt):
                         "contents": [{"parts": [{"text": prompt}]}],
                         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
                     },
-                    timeout=90,
+                    timeout=60,
                 )
             except requests.RequestException as ex:  # network hiccup
                 last, wait = f"network error: {ex}", None
@@ -1108,6 +1137,38 @@ def make_image(slot, post, path, theme=None):
 
 
 # ---------------------------------------------------------------- hosting
+def make_reel(img_path, out_path, seconds=8):
+    """Image -> 1080x1920 MP4: blurred background, card slowly zooming in, silent audio track."""
+    fg = "scale=w='trunc(1080*(1+0.05*t/%d)/2)*2':h=-2:eval=frame" % seconds
+    fc = (
+        "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,"
+        "boxblur=40:6,eq=brightness=-0.18[bg];"
+        f"[0:v]{fg}[fg];"
+        "[bg][fg]overlay=(W-w)/2:(H-h)/2,fade=t=in:st=0:d=0.5,format=yuv420p[v]"
+    )
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "30", "-i", str(img_path),
+           "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-filter_complex", fc,
+           "-map", "[v]", "-map", "1:a", "-t", str(seconds), "-r", "30",
+           "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-movflags", "+faststart",
+           "-c:a", "aac", "-b:a", "96k", "-shortest", str(out_path)]
+    subprocess.run(cmd, check=True)
+
+
+def upload_video(path):
+    cloud = os.environ["CLOUDINARY_CLOUD_NAME"]
+    preset = os.environ["CLOUDINARY_UPLOAD_PRESET"]
+    with open(path, "rb") as f:
+        r = requests.post(
+            f"https://api.cloudinary.com/v1_1/{cloud}/video/upload",
+            data={"upload_preset": preset},
+            files={"file": f},
+            timeout=180,
+        )
+    if not r.ok:
+        raise RuntimeError(f"video upload failed: {r.text[:300]}")
+    return r.json()["secure_url"]
+
+
 def upload_image(path):
     """Instagram needs a public image URL. Cloudinary free tier is used."""
     cloud = os.environ["CLOUDINARY_CLOUD_NAME"]
@@ -1146,19 +1207,23 @@ def refresh_token():
     print("Token refreshed, expires in days:", j.get("expires_in", 0) // 86400)
 
 
-def publish(image_url, caption):
+def publish(media_url, caption, reel=False):
     token = get_token()
     ig_id = os.environ["IG_USER_ID"]
+    if reel:
+        payload = {"media_type": "REELS", "video_url": media_url, "share_to_feed": "true"}
+    else:
+        payload = {"image_url": media_url}
     r = requests.post(
         f"{GRAPH}/{ig_id}/media",
-        data={"image_url": image_url, "caption": caption, "access_token": token},
+        data={**payload, "caption": caption, "access_token": token},
         timeout=60,
     )
     if not r.ok:
         raise RuntimeError(f"create container failed: {r.text}")
     creation_id = r.json()["id"]
 
-    for _ in range(20):  # wait until container is ready
+    for _ in range(60 if reel else 20):  # wait until container is ready (videos take longer)
         s = requests.get(
             f"{GRAPH}/{creation_id}",
             params={"fields": "status_code", "access_token": token},
@@ -1168,7 +1233,7 @@ def publish(image_url, caption):
             break
         if s.get("status_code") == "ERROR":
             raise RuntimeError(f"container error: {s}")
-        time.sleep(3)
+        time.sleep(5 if reel else 3)
 
     r = requests.post(
         f"{GRAPH}/{ig_id}/media_publish",
@@ -1186,6 +1251,7 @@ def main():
     ap.add_argument("--slot", choices=["news", "idea", "extra"])
     ap.add_argument("--gate", action="store_true", help="extra slot: post only at random (scheduled runs)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--reel", action="store_true", help="post as a Reel (video) instead of an image")
     ap.add_argument("--refresh-token", action="store_true")
     args = ap.parse_args()
     print(f"main.py version {VERSION}", file=sys.stderr)
@@ -1235,15 +1301,24 @@ def main():
         make_image(slot, post, img_path, theme)
         (OUT_DIR / f"{stamp}_{slot}.txt").write_text(caption, encoding="utf-8")
 
+        mode = (os.getenv("REELS") or "off").lower()
+        as_reel = args.reel or mode == "all" or (mode == "extra" and slot == "extra")
+        vid_path = None
+        if as_reel:
+            vid_path = OUT_DIR / f"{stamp}_{slot}.mp4"
+            make_reel(img_path, vid_path)
+
         if args.dry_run:
-            print("DRY RUN ok ->", img_path)
+            print("DRY RUN ok ->", vid_path or img_path)
             print("THEME:", theme)
             print("HEADLINE:", post["headline"], "|", post["subheadline"])
             print(caption)
             return
 
-        url = upload_image(img_path)
-        media_id = publish(url, caption)
+        if as_reel:
+            media_id = publish(upload_video(vid_path), caption, reel=True)
+        else:
+            media_id = publish(upload_image(img_path), caption)
 
         if post.get("source_link"):
             state["links"].append(post["source_link"])

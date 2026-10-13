@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-13-v14 (Groq free backup, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-13-v15 (Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -156,7 +156,9 @@ def build_prompt(slot, items, recent=None):
         task = (
             "Using the trends in the list below as inspiration, write an Instagram post "
             "presenting ONE innovative, practical technology idea (a product, tool or use "
-            "case someone could build or try). Make it clearly an idea, not a news claim."
+            "case someone could build or try). Make it clearly an idea, not a news claim. "
+            "Write it as a concept ('Imagine...', 'What if...', 'This could...'), never as if the product already exists "
+            "and never with 'our app/our bot/we built'. Do not name real companies as partners or users of the idea."
         )
     recent_block = ""
     if recent:
@@ -319,6 +321,8 @@ def call_gemini(prompt):
     dead, errors = set(), {}
     # (which model, seconds to wait before this try); "fb" = every fallback model once
     plan = [("main", 0), ("main", 20), ("fb", 0), ("main", 45), ("fb", 30), ("main", 90), ("fb", 60), ("main", 120)]
+    if os.getenv("GROQ_API_KEY"):  # a free backup exists: do not spend minutes waiting on a busy Gemini
+        plan = [("main", 0), ("fb", 0), ("main", 20), ("fb", 20)]
     last = ""
     for who, wait in plan:
         if who == "main":

@@ -63,6 +63,10 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Install ffmpeg (Reels only)
+        if: ${{ (vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel }}
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 

@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-12-v12 (auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-13-v14 (Groq free backup, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -279,50 +279,59 @@ Return ONLY valid JSON with these keys:
 """
 
 
-_FALLBACK_CACHE = []
+_FALLBACKS = None
 
 
-def _discover_fallback():
-    """Ask Google which models this key can use and pick another flash model (own separate quota)."""
-    if _FALLBACK_CACHE:
-        return _FALLBACK_CACHE[0]
-    pick = ""
+def _discover_fallbacks():
+    """Ask Google which flash models this key lists (newest first). Each has its own capacity/quota."""
+    global _FALLBACKS
+    if _FALLBACKS is not None:
+        return _FALLBACKS
+    _FALLBACKS = []
+    forced = os.getenv("GEMINI_FALLBACK_MODEL")
+    if forced:
+        _FALLBACKS = [forced]
+        return _FALLBACKS
     try:
         r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
                          headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]}, timeout=20)
         names = [m["name"].split("/")[-1] for m in r.json().get("models", [])
                  if "generateContent" in m.get("supportedGenerationMethods", [])]
         names = [n for n in names if "flash" in n and n != GEMINI_MODEL
-                 and not re.search(r"image|tts|live|audio|embed|thinking|preview|exp", n)]
-        names.sort(key=lambda n: ("lite" not in n, n))
-        pick = names[0] if names else ""
-        print(f"fallback model: {pick or 'none found'}", file=sys.stderr)
+                 and not re.search(r"image|tts|live|audio|embed|thinking|exp|robotics|computer", n)]
+
+        def key(n):
+            v = re.search(r"gemini-(\d+(?:\.\d+)?)", n)
+            return (-(float(v.group(1)) if v else 0), "lite" not in n, n)
+        names.sort(key=key)
+        _FALLBACKS = names[:4]
     except Exception as ex:
         print(f"could not list models: {ex}", file=sys.stderr)
-    _FALLBACK_CACHE.append(pick)
-    return pick
-
-
-def _gemini_models():
-    """Main model first, then a fallback model (it has its own separate free quota)."""
-    fb = os.getenv("GEMINI_FALLBACK_MODEL")
-    return [GEMINI_MODEL] + ([fb] if fb else ["__auto__"])
+    print(f"fallback models to try: {_FALLBACKS or 'none found'}", file=sys.stderr)
+    return _FALLBACKS
 
 
 def call_gemini(prompt):
     """Free tier: key from https://aistudio.google.com/apikey
-    - busy (500/502/503/504) or per-minute limit (429): waits and retries
-    - daily quota used up: stops retrying that model at once (retrying only wastes quota)
-    - if the main model keeps failing, tries the fallback model once or twice."""
+    Plan: main model, then (when it is busy) other flash models, then main again with longer waits.
+    - busy (500/502/503/504) or per-minute limit (429): moves on / waits and retries
+    - model not available to this key (404) or its daily quota used up: dropped for this run."""
+    dead, errors = set(), {}
+    # (which model, seconds to wait before this try); "fb" = every fallback model once
+    plan = [("main", 0), ("main", 20), ("fb", 0), ("main", 45), ("fb", 30), ("main", 90), ("fb", 60), ("main", 120)]
     last = ""
-    for mi, model in enumerate(_gemini_models()):
-        if model == "__auto__":
-            model = _discover_fallback()
-            if not model:
-                break
-        main_error = last  # real error from the main model (kept if the guessed fallback does not exist)
-        waits = [20, 45, 90, 120] if mi == 0 else [20, 40]
-        for attempt in range(len(waits) + 1):
+    for who, wait in plan:
+        if who == "main":
+            models = [GEMINI_MODEL]
+        else:
+            models = [m for m in _discover_fallbacks()]
+        models = [m for m in models if m not in dead]
+        if not models:
+            continue
+        if wait:
+            print(f"Gemini busy/limited, waiting {wait}s", file=sys.stderr)
+            time.sleep(wait)
+        for model in models:
             try:
                 r = requests.post(
                     f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
@@ -334,28 +343,77 @@ def call_gemini(prompt):
                     timeout=60,
                 )
             except requests.RequestException as ex:  # network hiccup
-                last, wait = f"network error: {ex}", None
-            else:
-                if r.ok:
-                    if mi:
-                        print(f"(answered by fallback model {model})", file=sys.stderr)
-                    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-                last = f"Gemini API error {r.status_code} [{model}]: {r.text[:300]}"
-                if r.status_code == 404 and mi:
-                    last = main_error  # guessed fallback model does not exist: ignore it, keep the real error
-                    break
-                if r.status_code not in (429, 500, 502, 503, 504):
-                    raise RuntimeError(last)  # real error (bad key, wrong model...): do not retry
-                if r.status_code == 429 and re.search(r"PerDay|per day|daily", r.text, re.I):
-                    last += "  -> DAILY FREE QUOTA USED UP (resets about midday IST); try again later"
-                    break  # no point retrying this model today
-                m = re.search(r'retry in ([\d.]+)s|"retryDelay":\s*"(\d+)', r.text)
-                wait = min(max(float(m.group(1) or m.group(2)), 5), 90) if m else None
-            if attempt < len(waits):
-                w = wait if wait else waits[attempt]
-                print(f"Gemini busy/limited ({model}), retry {attempt + 1}/{len(waits)} in {int(w)}s", file=sys.stderr)
-                time.sleep(w)
-    raise RuntimeError(last)
+                errors[model] = last = f"network error [{model}]: {ex}"
+                print(f"Gemini {model}: network error", file=sys.stderr)
+                continue
+            if r.ok:
+                if model != GEMINI_MODEL:
+                    print(f"(answered by fallback model {model})", file=sys.stderr)
+                return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+            errors[model] = last = f"Gemini API error {r.status_code} [{model}]: {r.text[:300]}"
+            print(f"Gemini {model}: {r.status_code}", file=sys.stderr)
+            if r.status_code in (400, 401, 403) and model == GEMINI_MODEL:
+                raise RuntimeError(last)  # bad key / bad request on the main model: retrying will not help
+            if r.status_code in (400, 401, 403, 404):
+                dead.add(model)  # this fallback is not usable with this key
+            elif r.status_code == 429 and re.search(r"PerDay|per day|daily", r.text, re.I):
+                errors[model] = last = last + "  -> DAILY FREE QUOTA USED UP (resets about midday IST)"
+                dead.add(model)
+            elif r.status_code not in (429, 500, 502, 503, 504):
+                raise RuntimeError(last)
+            m = re.search(r'retry in ([\d.]+)s|"retryDelay":\s*"(\d+)', r.text)
+            if m and who == "main":  # Google told us how long to wait
+                time.sleep(min(max(float(m.group(1) or m.group(2)), 5), 60))
+    gemini_err = errors.get(GEMINI_MODEL) or last or "Gemini unavailable"
+    if os.getenv("GROQ_API_KEY"):
+        print("Gemini unavailable -> trying Groq (free backup)", file=sys.stderr)
+        try:
+            return call_groq(prompt)
+        except Exception as ex:
+            raise RuntimeError(f"{gemini_err} | Groq backup also failed: {ex}")
+    raise RuntimeError(gemini_err)
+
+
+def call_groq(prompt):
+    """Free backup AI. Key from https://console.groq.com/keys (GROQ_API_KEY)."""
+    headers = {"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"}
+    base = "https://api.groq.com/openai/v1"
+    model = os.getenv("GROQ_MODEL") or "llama-3.3-70b-versatile"
+    tried_list = False
+    for attempt in range(4):
+        try:
+            r = requests.post(f"{base}/chat/completions", headers=headers, timeout=60, json={
+                "model": model, "temperature": 0.8,
+                "response_format": {"type": "json_object"},
+                "messages": [{"role": "system", "content": "Reply with one valid JSON object only."},
+                             {"role": "user", "content": prompt}]})
+        except requests.RequestException as ex:
+            print(f"Groq network error: {ex}", file=sys.stderr)
+            time.sleep(10)
+            continue
+        if r.ok:
+            print(f"(answered by Groq {model})", file=sys.stderr)
+            return r.json()["choices"][0]["message"]["content"]
+        print(f"Groq {model}: {r.status_code} {r.text[:150]}", file=sys.stderr)
+        if r.status_code in (400, 404) and not tried_list:  # model renamed/removed: pick another big model
+            tried_list = True
+            try:
+                ids = [m["id"] for m in requests.get(f"{base}/models", headers=headers, timeout=20).json()["data"]]
+                ids = [i for i in ids if re.search(r"llama|gpt-oss|qwen", i) and not re.search(r"guard|whisper|tts|vision|prompt", i)]
+                ids.sort(key=lambda i: (not re.search(r"70b|120b|large|versatile", i), i))
+                if ids:
+                    model = ids[0]
+                    continue
+            except Exception as ex:
+                print(f"Groq model list failed: {ex}", file=sys.stderr)
+        if r.status_code == 429:
+            time.sleep(20)
+            continue
+        if r.status_code >= 500:
+            time.sleep(10)
+            continue
+        break
+    raise RuntimeError(f"Groq failed (last model {model})")
 
 
 def call_claude(prompt):
@@ -533,6 +591,20 @@ def generate_concept_post(topic_text, recent=None):
             feedback = "\n\nYour previous reply was not valid JSON with all required keys. Return ONLY the JSON object."
             print(f"bad AI output, retrying ({ex})", file=sys.stderr)
     raise RuntimeError("AI did not return valid post JSON after 3 tries")
+
+
+def format_caption(text):
+    """If the AI wrote one dense paragraph, split it: hook / body lines / closing takeaway."""
+    text = text.strip()
+    if "\n" in text:
+        return text
+    sents = re.split(r"(?<=[.!?])\s+(?=[A-Z\W])", text)
+    if len(sents) < 4:
+        return text
+    body = sents[1:-1]
+    mid = (len(body) + 1) // 2
+    parts = [sents[0], " ".join(body[:mid]), " ".join(body[mid:]) if body[mid:] else "", sents[-1]]
+    return "\n\n".join(p for p in parts if p)
 
 
 def extra_gate():
@@ -1289,7 +1361,7 @@ def main():
                 raise RuntimeError("no fresh items found in feeds")
             post = generate_post(slot, items, recent)
 
-        caption = post["caption"].strip()
+        caption = format_caption(post["caption"])
         if post.get("source_name"):
             caption += f"\n\nSource: {post['source_name']}"
         caption += "\n\n" + " ".join(post["hashtags"])

@@ -1382,7 +1382,11 @@ def main():
         vid_path = None
         if as_reel:
             vid_path = OUT_DIR / f"{stamp}_{slot}.mp4"
-            make_reel(img_path, vid_path)
+            try:
+                make_reel(img_path, vid_path)
+            except Exception as ex:  # no ffmpeg etc.: post the normal image instead of failing
+                print(f"WARNING: could not make the Reel ({ex}); posting the image instead", file=sys.stderr)
+                as_reel, vid_path = False, None
 
         if args.dry_run:
             print("DRY RUN ok ->", vid_path or img_path)

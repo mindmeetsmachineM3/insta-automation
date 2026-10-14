@@ -1443,6 +1443,44 @@ def publish(media_url, caption, reel=False):
     return r.json()["id"]
 
 
+# ---------------------------------------------------------------- duplicate guard
+_STOP = set("this that with from have been will your they their about which would could there what when where while into "
+            "than then them more most also just like only over each such very much many some other these those because "
+            "being does doing make makes made using used uses based after before between under again further both same "
+            "ever new can how why its are was were has had not but for and the you our out all any may one two".split())
+
+
+def _tokens(text):
+    w = re.findall(r"[a-z0-9]+", text.lower().replace("-", " "))
+    return {x for x in w if x not in _STOP and (len(x) >= 4 or any(c.isdigit() for c in x))}
+
+
+def find_duplicate(post, past_texts):
+    """Same story posted before (even from another source)? Returns (score, shared words) or None."""
+    mine = _tokens(f"{post['headline']} {post['subheadline']} {post['caption']}")
+    for old in past_texts:
+        theirs = _tokens(old)
+        shared = mine & theirs
+        if not shared or min(len(mine), len(theirs)) < 6:
+            continue
+        score = len(shared) / min(len(mine), len(theirs))
+        numbers = [x for x in shared if any(c.isdigit() for c in x)]
+        if (score >= 0.25 and len(shared) >= 4) or (len(numbers) >= 2 and len(shared) >= 3):
+            return score, ", ".join(sorted(shared)[:8])
+    return None
+
+
+def ig_recent_captions(limit=25):
+    """Last captions really published on the account (best effort; empty list on any problem)."""
+    try:
+        r = requests.get(f"{GRAPH}/{os.environ['IG_USER_ID']}/media",
+                         params={"fields": "caption", "limit": limit, "access_token": get_token()}, timeout=30)
+        return [m.get("caption", "") for m in r.json().get("data", []) if m.get("caption")]
+    except Exception as ex:
+        print(f"could not read recent Instagram posts: {ex}", file=sys.stderr)
+        return []
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -1470,27 +1508,49 @@ def main():
         return
     try:
         state = load_state()
-        recent = state["headlines"][-25:]
-        items = []
+        ig_texts = ig_recent_captions()  # what is really on Instagram (does not depend on the Git state)
+        recent = state["headlines"][-25:] + [t.split("\n")[0][:140] for t in ig_texts[:10]]
+        items, label, pool_all = [], None, []
         if slot == "extra":
             label = random.choice(list(TOPICS))
             topic_text, kws = TOPICS[label]
             print("EXTRA topic:", label, file=sys.stderr)
-            pool = []
             if random.random() < 0.6:  # 60% real recent news, 40% explainer
-                pool = pick_items(fetch_items(EXTRA_FEEDS, 8), state["links"], 60)
-                pool = [i for i in pool if any(k in (i["title"] + " " + i["summary"]).lower() for k in kws)][:8]
-            if len(pool) >= 2:
-                items = pool
+                pool_all = pick_items(fetch_items(EXTRA_FEEDS, 8), state["links"], 60)
+                pool_all = [i for i in pool_all if any(k in (i["title"] + " " + i["summary"]).lower() for k in kws)][:8]
+        else:
+            pool_all = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
+            if not pool_all:
+                raise RuntimeError("no fresh items found in feeds")
+
+        post = None
+        for attempt in range(3):
+            if slot == "extra" and len(pool_all) < 2:
+                items = []
+                post = generate_concept_post(topic_text, recent)
+            elif slot == "extra":
+                items = pool_all
                 post = generate_news_post(items, recent)
             else:
-                post = generate_concept_post(topic_text, recent)
-            post["label"] = label
-        else:
-            items = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
-            if not items:
-                raise RuntimeError("no fresh items found in feeds")
-            post = generate_post(slot, items, recent)
+                items = pool_all
+                post = generate_post(slot, items, recent)
+            if label:
+                post["label"] = label
+            dup = find_duplicate(post, state["headlines"] + ig_texts)
+            if not dup:
+                break
+            print(f"DUPLICATE topic (overlap {dup[0]:.2f}: {dup[1]}); trying another ({attempt + 1}/3)", file=sys.stderr)
+            if post.get("source_link"):
+                state["links"].append(post["source_link"])  # never pick this story again
+                pool_all = [i for i in pool_all if i["link"] != post["source_link"]]
+            recent = recent + [f"{post['headline']} - {post['subheadline']}"]
+            post = None
+            if slot != "extra" and not pool_all:
+                break
+        if post is None:
+            print("SKIP: every candidate story was already posted.", file=sys.stderr)
+            log(slot, "SKIP", "all candidates duplicate")
+            return
 
         caption = format_caption(post["caption"])
         if post.get("source_name"):

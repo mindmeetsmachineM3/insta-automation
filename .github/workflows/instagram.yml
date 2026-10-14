@@ -18,7 +18,7 @@ on:
       action:
         description: "What to run"
         type: choice
-        options: [news, idea, extra, refresh-token]
+        options: [news, idea, extra, refresh-token, diagnose]
         default: news
       as_reel:
         description: "Post as a Reel (video) instead of an image"
@@ -101,19 +101,26 @@ jobs:
           echo "gate=$GATE" >> "$GITHUB_OUTPUT"
 
       - name: Create post
-        if: steps.pick.outputs.action != 'refresh-token'
+        if: ${{ steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' }}
         run: |
           # Google's free AI is sometimes overloaded: try up to 3 times, 8 minutes apart
           for TRY in 1 2 3; do
             if [ "${{ steps.pick.outputs.dry }}" = "true" ]; then
               python main.py --slot "${{ steps.pick.outputs.action }}" --dry-run && exit 0
+              RC=$?
             else
               python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }} && exit 0
+              RC=$?
             fi
+            [ "$RC" = "3" ] && exit 3   # Instagram rejected it: do not retry
             echo "attempt $TRY failed"
             [ "$TRY" = "3" ] || sleep 480
           done
           exit 1
+
+      - name: Diagnose Instagram
+        if: steps.pick.outputs.action == 'diagnose'
+        run: python main.py --diagnose
 
       - name: Refresh Instagram token
         if: steps.pick.outputs.action == 'refresh-token'
@@ -127,7 +134,7 @@ jobs:
           echo "Token refreshed and saved to repo secret."
 
       - name: Upload dry-run preview
-        if: ${{ steps.pick.outputs.dry == 'true' && steps.pick.outputs.action != 'refresh-token' }}
+        if: ${{ steps.pick.outputs.dry == 'true' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' }}
         uses: actions/upload-artifact@v4
         with:
           name: preview

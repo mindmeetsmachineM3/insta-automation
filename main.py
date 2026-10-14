@@ -116,6 +116,8 @@ def fetch_items(feeds=None, limit_per_feed=6):
                         "title": e.get("title", "").strip(),
                         "summary": re.sub("<[^>]+>", "", e.get("summary", ""))[:600],
                         "link": e.get("link", ""),
+                        "ts": (time.mktime(e.published_parsed) if e.get("published_parsed") else
+                               time.mktime(e.updated_parsed) if e.get("updated_parsed") else None),
                         "source": feed.feed.get("title", url),
                     }
                 )
@@ -135,8 +137,11 @@ def load_state():
     return data
 
 
-def pick_items(items, posted, n):
-    fresh = [i for i in items if i["link"] and i["link"] not in posted]
+def pick_items(items, posted, n, max_age_days=21):
+    posted_norm = {p.split("?")[0].rstrip("/") for p in posted}
+    now = time.time()
+    fresh = [i for i in items if i["link"] and i["link"].split("?")[0].rstrip("/") not in posted_norm
+             and not (i.get("ts") and now - i["ts"] > max_age_days * 86400)]  # skip old articles
     return fresh[:n]
 
 

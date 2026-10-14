@@ -1,18 +1,21 @@
 {
   "links": [
     "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
-    "https://newatlas.com/robotics/ucla-scientists-android-phone-walking-robot-companion/"
+    "https://newatlas.com/robotics/ucla-scientists-android-phone-walking-robot-companion/",
+    "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
     "The Floating Pin Trap in Microcontrollers - An ungrounded digital input acts like an antenna, picking up stray electromagnetic noise around you.",
     "Why Sodium-Ion Cells Can Drop to Absolute 0V - Unlike lithium, sodium-ion cells can safely drop to zero charge by swapping copper foils for aluminum.",
-    "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone."
+    "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone.",
+    "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?"
   ],
   "themes": [
     "matrix",
     "sunset",
     "synthwave",
-    "hologram"
+    "hologram",
+    "matrix"
   ]
 }

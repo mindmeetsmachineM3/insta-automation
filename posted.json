@@ -3,7 +3,8 @@
     "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
     "https://newatlas.com/robotics/ucla-scientists-android-phone-walking-robot-companion/",
     "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
-    "https://www.sciencedaily.com/releases/2026/08/260827010504.htm"
+    "https://www.sciencedaily.com/releases/2026/08/260827010504.htm",
+    "https://techcrunch.com/2026/10/14/scimplify-raises-25m-to-challenge-chinas-grip-on-critical-materials-with-ai/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -11,7 +12,8 @@
     "Why Sodium-Ion Cells Can Drop to Absolute 0V - Unlike lithium, sodium-ion cells can safely drop to zero charge by swapping copper foils for aluminum.",
     "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone.",
     "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?",
-    "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy."
+    "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
+    "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud."
   ],
   "themes": [
     "matrix",
@@ -19,6 +21,7 @@
     "synthwave",
     "hologram",
     "matrix",
-    "aurora"
+    "aurora",
+    "cyber_city"
   ]
 }

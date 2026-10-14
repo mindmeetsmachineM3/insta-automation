@@ -75,5 +75,6 @@ Never commit tokens or API keys; they live only in GitHub Secrets.
 - Instagram's API can apply temporary blocks to accounts that publish heavily, so daily volume is kept modest.
 
 ## Screenshots
-
-_Add 2-3 Instagram post screenshots and a screenshot of the Actions run history here._
+<img width="963" height="635" alt="image" src="https://github.com/user-attachments/assets/ecde5db9-9df5-47fb-9a6b-8a2be6470a02" />
+<img width="908" height="623" alt="image" src="https://github.com/user-attachments/assets/53a50278-3281-48c6-9ef6-99d4258d6f6f" />
+<img width="908" height="628" alt="image" src="https://github.com/user-attachments/assets/adb7a45c-d31c-4fed-8911-1c1928007fdf" />

@@ -36,7 +36,7 @@ flowchart LR
 - **Two-step LLM writing:** the model first reduces the article to short notes, then writes the post from those notes only. It never sees the source sentences, which reduces copying.
 - **Originality guard:** longest-shared-word-run check against the source text; the post is rewritten if it is too close. Sources are credited in the caption.
 - **Accuracy rules in prompts:** no invented numbers or quotes, keep the exact scope of the source, no opinions or predictions.
-- **Duplicate prevention:** posted links and topic headlines are stored in `posted.json` and passed back into the prompt.
+- **Duplicate prevention:** posted links and headlines are stored in `posted.json` and passed back into the prompt; before publishing, the new post is also compared with the captions actually live on the account (word-overlap check), so the same story is not posted twice even if the Git state is lost. Articles older than three weeks are ignored.
 - **Reliability on free tiers:** retry with backoff on 429/503, automatic switch between several Gemini models, failover to Groq, workflow-level retries, and no retry when Instagram rejects a post.
 - **Programmatic design:** 8 sci-fi / anime-style themes drawn with Pillow (synthwave, cyber city, hologram, aurora, circuit board, matrix, manga burst, sunset); the theme rotates so consecutive posts look different.
 - **Random posting times:** several cron triggers per day, and a gate in the script that picks which ones actually post, capped per day.
@@ -73,7 +73,7 @@ Never commit tokens or API keys; they live only in GitHub Secrets.
 - Facts are not independently verified; a periodic manual spot-check is recommended.
 - Free-tier AI APIs can be slow or rate limited; the pipeline handles this but a post can still fail and will be retried at the next run.
 - Instagram's API can apply temporary blocks to accounts that publish heavily, so daily volume is kept modest.
-
+- 
 ## Screenshots
 <img width="963" height="635" alt="image" src="https://github.com/user-attachments/assets/ecde5db9-9df5-47fb-9a6b-8a2be6470a02" />
 <img width="908" height="623" alt="image" src="https://github.com/user-attachments/assets/53a50278-3281-48c6-9ef6-99d4258d6f6f" />

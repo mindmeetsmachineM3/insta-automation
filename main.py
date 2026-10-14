@@ -1212,6 +1212,115 @@ def make_image(slot, post, path, theme=None):
     img.convert("RGB").save(path, "JPEG", quality=93, subsampling=0)
 
 
+# ---------------------------------------------------------------- reel with voice
+VOICES = {  # edge-tts voices (free). Override with the VOICE variable.
+    "english": ("en-IN-NeerjaNeural", "en", "co.in"),
+    "hinglish": ("hi-IN-SwaraNeural", "hi", "co.in"),
+    "hindi": ("hi-IN-SwaraNeural", "hi", "co.in"),
+    "marathi": ("mr-IN-AarohiNeural", "mr", "co.in"),
+}
+
+
+def _speech_text(post):
+    t = post.get("headline", "").strip().rstrip(".") + ". " + post.get("caption", "")
+    t = re.sub(r"https?://\S+|#\w+", " ", t)
+    t = re.sub(r"[^\w\s.,!?'\u0900-\u097F-]", " ", t)  # drop emojis and symbols
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def make_voice(text, out_path):
+    """Free text-to-speech: edge-tts first, gTTS as backup. Returns True if a voice file was made."""
+    voice, gl, tld = VOICES.get(LANGUAGE.lower(), VOICES["english"])
+    voice = os.getenv("VOICE") or voice
+    try:
+        import asyncio
+        import edge_tts
+        asyncio.run(asyncio.wait_for(edge_tts.Communicate(text, voice, rate="-3%").save(str(out_path)), 90))
+        if Path(out_path).stat().st_size > 2000:
+            return True
+    except Exception as ex:
+        print(f"edge-tts failed: {ex}", file=sys.stderr)
+    try:
+        from gtts import gTTS
+        gTTS(text, lang=gl, tld=tld).save(str(out_path))
+        return Path(out_path).stat().st_size > 2000
+    except Exception as ex:
+        print(f"gTTS failed: {ex}", file=sys.stderr)
+    return False
+
+
+def _duration(path):
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                       capture_output=True, text=True, check=True)
+    return float(r.stdout.strip())
+
+
+def _subtitle_png(text, path):
+    f = load_font(58)
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    lines = wrap_to_width(meas, text, f, 940)[:3]
+    h = 76 * len(lines) + 40
+    im = Image.new("RGBA", (1000, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, 999, h - 1], 36, fill=(0, 0, 0, 150))
+    for i, ln in enumerate(lines):
+        w = meas.textbbox((0, 0), ln, font=f)[2]
+        d.text(((1000 - w) // 2, 20 + i * 76), ln, font=f, fill=(255, 255, 255, 255),
+               stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    im.save(path)
+
+
+def make_reel_voice(img_path, out_path, post):
+    """Image card + spoken voiceover + word-timed subtitles + soft generated background music."""
+    text = _speech_text(post)
+    voice = Path(out_path).with_suffix(".voice.mp3")
+    if not make_voice(text, voice):
+        raise RuntimeError("no text-to-speech available")
+    lead, tail = 0.8, 1.6
+    vdur = _duration(voice)
+    total = min(lead + vdur + tail, 85)
+
+    # subtitle chunks (~6 words), timed by their share of the speech length
+    words = text.split()
+    chunks = [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
+    weights = [max(1, len(c)) for c in chunks]
+    tw, t, subs = sum(weights), lead, []
+    for c, wgt in zip(chunks, weights):
+        dur = vdur * wgt / tw
+        p = Path(out_path).with_suffix(f".sub{len(subs)}.png")
+        _subtitle_png(c, p)
+        subs.append((p, t, t + dur))
+        t += dur
+
+    fg = "scale=w='trunc(1080*(1+0.05*t/%d)/2)*2':h=-2:eval=frame" % int(total)
+    fc = [
+        "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=40:6,eq=brightness=-0.18[bg]",
+        f"[0:v]{fg}[fg]",
+        "[bg][fg]overlay=(W-w)/2:(H-h)/2-80,fade=t=in:st=0:d=0.5[v0]",
+    ]
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "30", "-i", str(img_path),
+           "-i", str(voice),
+           "-f", "lavfi", "-i", f"aevalsrc='0.5*sin(2*PI*110*t)+0.35*sin(2*PI*164.8*t)+0.3*sin(2*PI*220*t)+0.2*sin(2*PI*277.2*t)':s=44100:d={total:.2f}"]
+    last = "v0"
+    for i, (p, a, b) in enumerate(subs):
+        cmd += ["-i", str(p)]
+        fc.append(f"[{last}][{3 + i}:v]overlay=(W-w)/2:1640:enable='between(t,{a:.2f},{b:.2f})'[s{i}]")
+        last = f"s{i}"
+    fc.append(f"[{last}]format=yuv420p[v]")
+    fc.append(f"[1:a]adelay={int(lead * 1000)}|{int(lead * 1000)},volume=1.6[va]")
+    fc.append(f"[2:a]lowpass=f=700,tremolo=f=0.25:d=0.4,volume=0.10,afade=t=in:d=2,afade=t=out:st={total - 2:.2f}:d=2[ma]")
+    fc.append("[va][ma]amix=inputs=2:duration=longest:dropout_transition=0,volume=2[a]")
+    cmd += ["-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}", "-r", "30",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-movflags", "+faststart",
+            "-c:a", "aac", "-b:a", "128k", str(out_path)]
+    try:
+        subprocess.run(cmd, check=True)
+    finally:
+        for p, _, _ in subs:
+            p.unlink(missing_ok=True)
+        voice.unlink(missing_ok=True)
+
+
 # ---------------------------------------------------------------- hosting
 def make_reel(img_path, out_path, seconds=8):
     """Image -> 1080x1920 MP4: blurred background, card slowly zooming in, silent audio track."""
@@ -1264,6 +1373,19 @@ def upload_image(path):
 def get_token():
     data = load_json(TOKEN_FILE, {})
     return data.get("access_token") or os.environ["IG_ACCESS_TOKEN"]
+
+
+def diagnose():
+    """Safe checks (never prints the token): is the token valid, and how much of the publish quota is used?"""
+    token, ig_id = get_token(), os.environ["IG_USER_ID"]
+    for label, path, fields in [
+        ("account", "me", "user_id,username,account_type,media_count"),
+        ("publish quota", f"{ig_id}/content_publishing_limit", "quota_usage,config"),
+        ("recent media", f"{ig_id}/media", "id,timestamp,media_type"),
+    ]:
+        r = requests.get(f"{GRAPH}/{path}", params={"fields": fields, "limit": 5, "access_token": token}, timeout=30)
+        print(f"--- {label}: HTTP {r.status_code}")
+        print(r.text[:700])
 
 
 def refresh_token():
@@ -1329,9 +1451,13 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--reel", action="store_true", help="post as a Reel (video) instead of an image")
     ap.add_argument("--refresh-token", action="store_true")
+    ap.add_argument("--diagnose", action="store_true", help="check the Instagram token and publish quota")
     args = ap.parse_args()
     print(f"main.py version {VERSION}", file=sys.stderr)
 
+    if args.diagnose:
+        diagnose()
+        return
     if args.refresh_token:
         refresh_token()
         return
@@ -1339,6 +1465,7 @@ def main():
         ap.error("--slot is required")
 
     slot = args.slot
+    stage = "ai"
     if slot == "extra" and args.gate and not extra_gate():
         return
     try:
@@ -1383,7 +1510,11 @@ def main():
         if as_reel:
             vid_path = OUT_DIR / f"{stamp}_{slot}.mp4"
             try:
-                make_reel(img_path, vid_path)
+                try:
+                    make_reel_voice(img_path, vid_path, post)
+                except Exception as vex:  # no voice available: silent Reel
+                    print(f"WARNING: voiceover failed ({vex}); making a silent Reel", file=sys.stderr)
+                    make_reel(img_path, vid_path)
             except Exception as ex:  # no ffmpeg etc.: post the normal image instead of failing
                 print(f"WARNING: could not make the Reel ({ex}); posting the image instead", file=sys.stderr)
                 as_reel, vid_path = False, None
@@ -1395,6 +1526,7 @@ def main():
             print(caption)
             return
 
+        stage = "instagram"  # from here a failure is an Instagram/hosting problem, not an AI problem
         if as_reel:
             media_id = publish(upload_video(vid_path), caption, reel=True)
         else:
@@ -1416,6 +1548,9 @@ def main():
     except Exception as ex:
         log(slot, "FAIL", ex)
         print("ERROR:", ex, file=sys.stderr)
+        if stage == "instagram":
+            print("Instagram/hosting rejected the post: not retrying (retrying cannot fix this).", file=sys.stderr)
+            sys.exit(3)
         sys.exit(1)  # non-zero exit lets UiPath send the alert email
 
 

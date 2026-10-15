@@ -15,7 +15,8 @@
     "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?",
     "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
     "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud.",
-    "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages."
+    "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages.",
+    "Real Sci-Fi: Acoustic Tractor Beams - How ultrasonic sound waves can trap and hover physical objects mid-air without physical contact."
   ],
   "themes": [
     "matrix",
@@ -25,6 +26,7 @@
     "matrix",
     "aurora",
     "cyber_city",
-    "sunset"
+    "sunset",
+    "circuit"
   ]
 }

@@ -6,7 +6,8 @@
     "https://www.sciencedaily.com/releases/2026/08/260827010504.htm",
     "https://techcrunch.com/2026/10/14/scimplify-raises-25m-to-challenge-chinas-grip-on-critical-materials-with-ai/",
     "https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/",
-    "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/"
+    "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/",
+    "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -18,7 +19,8 @@
     "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud.",
     "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages.",
     "Real Sci-Fi: Acoustic Tractor Beams - How ultrasonic sound waves can trap and hover physical objects mid-air without physical contact.",
-    "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems."
+    "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems.",
+    "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers."
   ],
   "themes": [
     "matrix",
@@ -30,6 +32,7 @@
     "cyber_city",
     "sunset",
     "circuit",
-    "matrix"
+    "matrix",
+    "synthwave"
   ]
 }

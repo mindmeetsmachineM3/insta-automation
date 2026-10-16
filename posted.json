@@ -8,7 +8,8 @@
     "https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/",
     "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/",
     "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
-    "https://www.theverge.com/ai-artificial-intelligence/1012510/openai-chatgpt-google-chrome-tabs"
+    "https://www.theverge.com/ai-artificial-intelligence/1012510/openai-chatgpt-google-chrome-tabs",
+    "https://interestingengineering.com/military/hanwha-50kw-laser-vehicle-drone-defense"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -22,7 +23,8 @@
     "Real Sci-Fi: Acoustic Tractor Beams - How ultrasonic sound waves can trap and hover physical objects mid-air without physical contact.",
     "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems.",
     "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers.",
-    "What if Chrome tabs powered your AI chat? - Imagine an extension that lets artificial intelligence read your active browser windows directly."
+    "What if Chrome tabs powered your AI chat? - Imagine an extension that lets artificial intelligence read your active browser windows directly.",
+    "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials."
   ],
   "themes": [
     "matrix",
@@ -36,6 +38,7 @@
     "circuit",
     "matrix",
     "synthwave",
-    "manga"
+    "manga",
+    "hologram"
   ]
 }

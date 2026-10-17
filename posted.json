@@ -26,7 +26,8 @@
     "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers.",
     "What if Chrome tabs powered your AI chat? - Imagine an extension that lets artificial intelligence read your active browser windows directly.",
     "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials.",
-    "Nvidia Releases RTX Spark N1X Processor - New Arm chip for laptops and small desktops is designed to compete with Apple, Intel, AMD, and Qualcomm."
+    "Nvidia Releases RTX Spark N1X Processor - New Arm chip for laptops and small desktops is designed to compete with Apple, Intel, AMD, and Qualcomm.",
+    "The Clever Math Behind CoreXY 3D Printers - Two stationary motors combine belt forces to move the toolhead, slashing moving mass."
   ],
   "themes": [
     "matrix",
@@ -42,6 +43,7 @@
     "synthwave",
     "manga",
     "hologram",
-    "matrix"
+    "matrix",
+    "circuit"
   ]
 }

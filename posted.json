@@ -9,7 +9,8 @@
     "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/",
     "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
     "https://www.theverge.com/ai-artificial-intelligence/1012510/openai-chatgpt-google-chrome-tabs",
-    "https://interestingengineering.com/military/hanwha-50kw-laser-vehicle-drone-defense"
+    "https://interestingengineering.com/military/hanwha-50kw-laser-vehicle-drone-defense",
+    "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -24,7 +25,8 @@
     "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems.",
     "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers.",
     "What if Chrome tabs powered your AI chat? - Imagine an extension that lets artificial intelligence read your active browser windows directly.",
-    "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials."
+    "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials.",
+    "Nvidia Releases RTX Spark N1X Processor - New Arm chip for laptops and small desktops is designed to compete with Apple, Intel, AMD, and Qualcomm."
   ],
   "themes": [
     "matrix",
@@ -39,6 +41,7 @@
     "matrix",
     "synthwave",
     "manga",
-    "hologram"
+    "hologram",
+    "matrix"
   ]
 }

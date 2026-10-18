@@ -31,7 +31,8 @@
     "Nvidia Releases RTX Spark N1X Processor - New Arm chip for laptops and small desktops is designed to compete with Apple, Intel, AMD, and Qualcomm.",
     "The Clever Math Behind CoreXY 3D Printers - Two stationary motors combine belt forces to move the toolhead, slashing moving mass.",
     "What if an AI Audited Autonomous Agent Permissions? - Imagine a scanner that catches exposed API keys and loose cloud permissions before autonomous agents act.",
-    "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing."
+    "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing.",
+    "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it."
   ],
   "themes": [
     "matrix",
@@ -50,6 +51,7 @@
     "matrix",
     "circuit",
     "aurora",
-    "manga"
+    "manga",
+    "matrix"
   ]
 }

@@ -11,7 +11,8 @@
     "https://www.theverge.com/ai-artificial-intelligence/1012510/openai-chatgpt-google-chrome-tabs",
     "https://interestingengineering.com/military/hanwha-50kw-laser-vehicle-drone-defense",
     "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions",
-    "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/"
+    "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
+    "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -29,7 +30,8 @@
     "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials.",
     "Nvidia Releases RTX Spark N1X Processor - New Arm chip for laptops and small desktops is designed to compete with Apple, Intel, AMD, and Qualcomm.",
     "The Clever Math Behind CoreXY 3D Printers - Two stationary motors combine belt forces to move the toolhead, slashing moving mass.",
-    "What if an AI Audited Autonomous Agent Permissions? - Imagine a scanner that catches exposed API keys and loose cloud permissions before autonomous agents act."
+    "What if an AI Audited Autonomous Agent Permissions? - Imagine a scanner that catches exposed API keys and loose cloud permissions before autonomous agents act.",
+    "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing."
   ],
   "themes": [
     "matrix",
@@ -47,6 +49,7 @@
     "hologram",
     "matrix",
     "circuit",
-    "aurora"
+    "aurora",
+    "manga"
   ]
 }

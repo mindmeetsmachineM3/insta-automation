@@ -12,7 +12,8 @@
     "https://interestingengineering.com/military/hanwha-50kw-laser-vehicle-drone-defense",
     "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions",
     "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
-    "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/"
+    "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/",
+    "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -32,7 +33,8 @@
     "The Clever Math Behind CoreXY 3D Printers - Two stationary motors combine belt forces to move the toolhead, slashing moving mass.",
     "What if an AI Audited Autonomous Agent Permissions? - Imagine a scanner that catches exposed API keys and loose cloud permissions before autonomous agents act.",
     "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing.",
-    "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it."
+    "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it.",
+    "What if Sites Could Dynamically License Content to AI? - Imagine a protocol where web servers negotiate training permissions directly with visiting scrapers."
   ],
   "themes": [
     "matrix",
@@ -52,6 +54,7 @@
     "circuit",
     "aurora",
     "manga",
-    "matrix"
+    "matrix",
+    "cyber_city"
   ]
 }

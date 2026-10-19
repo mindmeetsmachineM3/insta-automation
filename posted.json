@@ -14,7 +14,8 @@
     "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
     "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/",
     "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
-    "https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot"
+    "https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot",
+    "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -36,10 +37,10 @@
     "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing.",
     "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it.",
     "What if Sites Could Dynamically License Content to AI? - Imagine a protocol where web servers negotiate training permissions directly with visiting scrapers.",
-    "Woman Blocks Uber Delivery Robot in Job Protest - Marvin told local station ABC13 that she stopped the vehicle to protest robots taking human jobs."
+    "Woman Blocks Uber Delivery Robot in Job Protest - Marvin told local station ABC13 that she stopped the vehicle to protest robots taking human jobs.",
+    "What if Story Characters Could Improvise on Script? - Imagine a tool that lets narrative AI invent unique responses while strictly respecting a game's plot."
   ],
   "themes": [
-    "matrix",
     "sunset",
     "synthwave",
     "hologram",
@@ -58,6 +59,7 @@
     "manga",
     "matrix",
     "cyber_city",
-    "aurora"
+    "aurora",
+    "synthwave"
   ]
 }

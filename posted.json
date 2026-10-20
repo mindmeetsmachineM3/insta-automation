@@ -16,7 +16,8 @@
     "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
     "https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot",
     "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
-    "https://interestingengineering.com/ai-robotics/robotic-arm-artificial-skin-emarm"
+    "https://interestingengineering.com/ai-robotics/robotic-arm-artificial-skin-emarm",
+    "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -40,10 +41,10 @@
     "What if Sites Could Dynamically License Content to AI? - Imagine a protocol where web servers negotiate training permissions directly with visiting scrapers.",
     "Woman Blocks Uber Delivery Robot in Job Protest - Marvin told local station ABC13 that she stopped the vehicle to protest robots taking human jobs.",
     "What if Story Characters Could Improvise on Script? - Imagine a tool that lets narrative AI invent unique responses while strictly respecting a game's plot.",
-    "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact."
+    "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact.",
+    "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware."
   ],
   "themes": [
-    "synthwave",
     "hologram",
     "matrix",
     "aurora",
@@ -62,6 +63,7 @@
     "cyber_city",
     "aurora",
     "synthwave",
-    "circuit"
+    "circuit",
+    "cyber_city"
   ]
 }

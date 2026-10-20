@@ -44,10 +44,10 @@
     "What if Story Characters Could Improvise on Script? - Imagine a tool that lets narrative AI invent unique responses while strictly respecting a game's plot.",
     "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact.",
     "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware.",
-    "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip."
+    "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
+    "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything."
   ],
   "themes": [
-    "matrix",
     "aurora",
     "cyber_city",
     "sunset",
@@ -66,6 +66,7 @@
     "synthwave",
     "circuit",
     "cyber_city",
-    "aurora"
+    "aurora",
+    "matrix"
   ]
 }

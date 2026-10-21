@@ -18,7 +18,8 @@
     "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
     "https://interestingengineering.com/ai-robotics/robotic-arm-artificial-skin-emarm",
     "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
-    "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/"
+    "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/",
+    "https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -45,10 +46,10 @@
     "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact.",
     "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware.",
     "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
-    "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything."
+    "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything.",
+    "OpenAI Acquires Orchestra Bio to Enter Biotechnology - The deal brings tech and talent to build the Rosalind AI model and Rosalind Workbench."
   ],
   "themes": [
-    "aurora",
     "cyber_city",
     "sunset",
     "circuit",
@@ -67,6 +68,7 @@
     "circuit",
     "cyber_city",
     "aurora",
-    "matrix"
+    "matrix",
+    "synthwave"
   ]
 }

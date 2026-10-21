@@ -44,6 +44,7 @@ jobs:
       LLM_PROVIDER: gemini
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
@@ -106,7 +107,7 @@ jobs:
           # Google's free AI is sometimes overloaded: try up to 3 times, 8 minutes apart
           for TRY in 1 2 3; do
             if [ "${{ steps.pick.outputs.dry }}" = "true" ]; then
-              python main.py --slot "${{ steps.pick.outputs.action }}" --dry-run && exit 0
+              python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }} --dry-run && exit 0
               RC=$?
             else
               python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }} && exit 0

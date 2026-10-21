@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v24 (AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v25 (CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -79,6 +79,31 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 LANGUAGE = os.getenv("POST_LANGUAGE", "English")  # English / Marathi / Hinglish
 GRAPH = "https://graph.instagram.com/v21.0"
+
+# Growth: call-to-action line + fixed topic hashtags (added to every caption)
+CTA = os.getenv("CTA") or "Follow @mindmeetsmachine6 for daily tech 🚀"
+TOPIC_TAGS = {
+    "AI NEWS": ["#AI", "#ArtificialIntelligence", "#TechNews"],
+    "TECH IDEA OF THE DAY": ["#TechIdeas", "#Innovation", "#FutureTech"],
+    "ROBOTICS": ["#Robotics", "#Robots", "#Automation"],
+    "ELECTRONICS": ["#Electronics", "#Chips", "#Embedded"],
+    "MECHATRONICS": ["#Mechatronics", "#Engineering", "#Automation"],
+    "SCI-FI TECH": ["#SciFi", "#FutureTech", "#Science"],
+    "NEW INNOVATION": ["#Innovation", "#Engineering", "#NewTech"],
+    "FUTURE TECH": ["#FutureTech", "#Innovation", "#Technology"],
+}
+
+
+def build_hashtags(post, label, limit=14):
+    """AI hashtags + fixed topic hashtags + brand tag, de-duplicated."""
+    base = TOPIC_TAGS.get(label, ["#Tech", "#Innovation"])
+    seen, out = set(), []
+    for h in list(post.get("hashtags", [])) + base + ["#MindMeetsMachine"]:
+        h = "#" + re.sub(r"[^\w]", "", str(h).lstrip("#"))
+        if len(h) > 1 and h.lower() not in seen:
+            seen.add(h.lower())
+            out.append(h)
+    return out[:limit]
 
 
 # ---------------------------------------------------------------- helpers
@@ -1218,11 +1243,11 @@ def make_image(slot, post, path, theme=None):
 
 
 # ---------------------------------------------------------------- reel with voice
-VOICES = {  # edge-tts voices (free). Override with the VOICE variable.
-    "english": ("en-IN-NeerjaNeural", "en", "co.in"),
-    "hinglish": ("hi-IN-SwaraNeural", "hi", "co.in"),
-    "hindi": ("hi-IN-SwaraNeural", "hi", "co.in"),
-    "marathi": ("mr-IN-AarohiNeural", "mr", "co.in"),
+VOICES = {  # (edge-tts voices, gTTS lang, gTTS tld). Override with the VOICE variable.
+    "english": (["en-US-AndrewMultilingualNeural"], "en", "co.in"),
+    "hinglish": (["hi-IN-SwaraNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
+    "hindi": (["hi-IN-SwaraNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
+    "marathi": (["mr-IN-AarohiNeural", "mr-IN-ManoharNeural"], "mr", "co.in"),
 }
 
 
@@ -1234,17 +1259,24 @@ def _speech_text(post):
 
 
 def make_voice(text, out_path):
-    """Free text-to-speech: edge-tts first, gTTS as backup. Returns True if a voice file was made."""
-    voice, gl, tld = VOICES.get(LANGUAGE.lower(), VOICES["english"])
-    voice = os.getenv("VOICE") or voice
+    """Free TTS: edge-tts (tries the voices in order), gTTS as backup. Returns True if a voice file was made."""
+    voices, gl, tld = VOICES.get(LANGUAGE.lower(), VOICES["english"])
+    forced = os.getenv("VOICE")
+    order = [forced] if forced else voices
     try:
         import asyncio
         import edge_tts
-        asyncio.run(asyncio.wait_for(edge_tts.Communicate(text, voice, rate="-3%").save(str(out_path)), 90))
-        if Path(out_path).stat().st_size > 2000:
-            return True
+        for voice in order:
+            try:
+                asyncio.run(asyncio.wait_for(
+                    edge_tts.Communicate(text, voice, rate="+0%").save(str(out_path)), 90))
+                if Path(out_path).stat().st_size > 2000:
+                    print(f"(voice: {voice})", file=sys.stderr)
+                    return True
+            except Exception as ex:
+                print(f"edge-tts {voice} failed: {ex}", file=sys.stderr)
     except Exception as ex:
-        print(f"edge-tts failed: {ex}", file=sys.stderr)
+        print(f"edge-tts unavailable: {ex}", file=sys.stderr)
     try:
         from gtts import gTTS
         gTTS(text, lang=gl, tld=tld).save(str(out_path))
@@ -2064,16 +2096,17 @@ def main():
             log(slot, "SKIP", "all candidates duplicate")
             return
 
+        label_txt = post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY")
         caption = format_caption(post["caption"])
         if post.get("source_name"):
             caption += f"\n\nSource: {post['source_name']}"
-        caption += "\n\n" + " ".join(post["hashtags"])
+        caption += f"\n\n{CTA}"
+        caption += "\n\n" + " ".join(build_hashtags(post, label_txt))
         caption = caption[:2200]
 
         stamp = datetime.now().strftime("%Y%m%d_%H%M")
         img_path = OUT_DIR / f"{stamp}_{slot}.jpg"
         theme = pick_theme(state["themes"])
-        label_txt = post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY")
         art_path = OUT_DIR / f"{stamp}_{slot}_art.jpg"
         has_art = generate_art(post, label_txt, art_path, state.get("arts", []))
         if has_art and LAST_ART.get("subject"):

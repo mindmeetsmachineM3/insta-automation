@@ -1401,8 +1401,8 @@ def _art_pollinations(prompt, dest):
 
 
 def _art_huggingface(prompt, dest):
-    """Optional: free Hugging Face token (HF_TOKEN) -> FLUX.1-schnell, very realistic."""
-    tok = os.getenv("HF_TOKEN", "").strip()
+    """Optional: free Hugging Face token (HF_TOKEN1) -> FLUX.1-schnell, very realistic."""
+    tok = os.getenv("HF_TOKEN1", "").strip()
     if not tok:
         return False
     for model in ("black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0"):

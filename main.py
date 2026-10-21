@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v25 (CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v26 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -81,7 +81,7 @@ LANGUAGE = os.getenv("POST_LANGUAGE", "English")  # English / Marathi / Hinglish
 GRAPH = "https://graph.instagram.com/v21.0"
 
 # Growth: call-to-action line + fixed topic hashtags (added to every caption)
-CTA = os.getenv("CTA") or "Follow @mindmeetsmachine6 for daily tech 🚀"
+CTA = os.getenv("CTA") or "Save this + Follow @mindmeetsmachine6 for daily tech 🚀"
 TOPIC_TAGS = {
     "AI NEWS": ["#AI", "#ArtificialIntelligence", "#TechNews"],
     "TECH IDEA OF THE DAY": ["#TechIdeas", "#Innovation", "#FutureTech"],
@@ -94,16 +94,46 @@ TOPIC_TAGS = {
 }
 
 
+# Hook rule added to every writer prompt (curiosity first line, but never more than the facts allow)
+HOOK_RULE = (
+    "- The FIRST line of the caption is a scroll-stopping hook (max 14 words). Use a curiosity, surprise, value or question "
+    "style such as 'Imagine...', 'What if...', 'Nobody talks about...', '3 things you didn't know about...' or "
+    "'Can X really do Y?'. The hook must stay true to the facts: no exaggeration, no clickbait claims.\n"
+    "- The LAST line of the caption invites a reaction in one short sentence (a question to comment on, "
+    "or 'Save this for later'). Do not add a follow request: it is added separately."
+)
+
+# Hashtag tiers: broad (huge reach), mid (focused), niche (small, easier to rank). A few of each are mixed per post.
+BROAD_TAGS = ["#Technology", "#AI", "#Innovation", "#Science", "#Engineering", "#Tech"]
+MID_TAGS = ["#ArtificialIntelligence", "#Robotics", "#FutureTech", "#TechNews", "#Electronics", "#MachineLearning",
+            "#DeepTech", "#TechTrends"]
+NICHE_TAGS = {
+    "AI NEWS": ["#AIToolsDaily", "#AINewsToday", "#GenerativeAI", "#AIExplained"],
+    "TECH IDEA OF THE DAY": ["#TechIdeas", "#BuildSomething", "#StartupIdeas", "#MakerMindset"],
+    "ROBOTICS": ["#HumanoidRobot", "#RobotDemo", "#RoboticsEngineering", "#RobotsOfInstagram"],
+    "ELECTRONICS": ["#Arduino", "#RaspberryPi", "#ESP32", "#DIYElectronics", "#EmbeddedSystems"],
+    "MECHATRONICS": ["#Mechatronics", "#CNC", "#3DPrinting", "#SmartMachines", "#IndustrialAutomation"],
+    "SCI-FI TECH": ["#SciFiTech", "#BrainComputerInterface", "#QuantumComputing", "#SpaceTech"],
+    "NEW INNOVATION": ["#NewInnovation", "#TechExplained", "#EngineeringStudents", "#ScienceFacts"],
+    "FUTURE TECH": ["#FutureTechnology", "#TechExplained", "#FusionEnergy", "#NextGenTech"],
+}
+BRAND_TAG = "#MindMeetsMachine"
+
+
 def build_hashtags(post, label, limit=14):
-    """AI hashtags + fixed topic hashtags + brand tag, de-duplicated."""
+    """AI hashtags (most relevant, max 6) + topic tags + a random mix of broad/mid/niche tags + brand tag.
+    De-duplicated, brand tag always last, at most `limit` tags (Instagram allows 30)."""
     base = TOPIC_TAGS.get(label, ["#Tech", "#Innovation"])
+    niche = NICHE_TAGS.get(label, ["#TechExplained"])
+    mix = (random.sample(BROAD_TAGS, 2) + random.sample(MID_TAGS, 2)
+           + random.sample(niche, min(3, len(niche))))
     seen, out = set(), []
-    for h in list(post.get("hashtags", [])) + base + ["#MindMeetsMachine"]:
+    for h in list(post.get("hashtags", []))[:6] + base + mix:
         h = "#" + re.sub(r"[^\w]", "", str(h).lstrip("#"))
-        if len(h) > 1 and h.lower() not in seen:
+        if len(h) > 1 and h.lower() not in seen and h.lower() != BRAND_TAG.lower():
             seen.add(h.lower())
             out.append(h)
-    return out[:limit]
+    return out[:limit - 1] + [BRAND_TAG]
 
 
 # ---------------------------------------------------------------- helpers
@@ -205,6 +235,7 @@ Language of the post: {LANGUAGE}.
 Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
+{HOOK_RULE}
 - Write everything in your own words. Never copy sentences or headlines from the list. Use at most one short quote (under 12 words).
 - The headline and subheadline must not claim more than the source says. Keep the exact scope (who, what, how much). Never turn a narrow fact into a general one.
 - Do not add conclusions, motives, predictions or opinions that are not in the source. Do not attribute a view to a group (e.g. "leadership", "experts") when the source names one person.
@@ -265,6 +296,7 @@ Language of the post: {LANGUAGE}.
 Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
+{HOOK_RULE}
 - Start the caption with why this matters to the reader (a consequence or a question). Do not open with "X said ...".
 - Then explain the facts in your own sentences. Use at most one short quote (under 12 words).
 - The headline and subheadline must not claim more than the notes say. Keep the exact scope (who, what, how much).
@@ -298,6 +330,7 @@ Language of the post: {LANGUAGE}.
 Audience: Indian tech-curious Instagram users, many are students and makers. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
+{HOOK_RULE}
 - Only well-established facts. Do NOT invent statistics, dates, prices, company claims or study results. If unsure of a number, leave it out.
 - Do not present speculation as fact. If you discuss the future, say it is a possibility.
 - Never say the same fact or idea twice in the caption. Every line adds something new.

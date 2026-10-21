@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v21 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v23 (AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1326,6 +1326,196 @@ def make_reel_voice(img_path, out_path, post):
         voice.unlink(missing_ok=True)
 
 
+# ---------------------------------------------------------------- AI art (cinematic background)
+# Same look as big space/science pages: a dramatic AI-generated picture, big headline at the bottom.
+# Free generators are tried in order; if none works the post falls back to stock video / the Pillow themes.
+ART_STYLE = ("photorealistic cinematic still, ultra realistic, highly detailed textures, volumetric lighting, "
+             "dramatic contrast, shot on 35mm anamorphic lens, 8k, vertical composition, "
+             "no text, no letters, no logos, no watermark")
+ART_LOOKS = [  # one is picked at random per post so the pictures do not all look alike
+    "deep space backdrop, blue and violet nebula glow", "golden hour rim light, orange and teal colour grade",
+    "dark industrial environment, cold blue neon accents", "bright lens flare, white and cyan highlights",
+    "misty atmosphere, red and magenta light", "night scene, glowing particles in the air",
+    "dramatic low angle, hard shadows", "wide establishing shot, enormous scale, tiny details",
+    "extreme close-up macro, shallow depth of field", "top-down view, symmetrical composition",
+]
+LAST_ART = {}
+ART_FALLBACK_SUBJECT = {
+    "ROBOTICS": "a sleek advanced humanoid robot in a dark futuristic laboratory, glowing blue eyes",
+    "ELECTRONICS": "a glowing microchip city, macro view of a circuit board with neon light trails",
+    "MECHATRONICS": "a giant robotic arm assembling machinery in a dark factory, sparks and neon light",
+    "SCI-FI TECH": "a futuristic spacecraft flying near a black hole, accretion disk glowing orange",
+    "NEW INNOVATION": "a glowing futuristic prototype machine on a dark stage, light beams",
+    "FUTURE TECH": "a futuristic megacity at night with flying vehicles and neon holograms",
+    "AI NEWS": "a glowing artificial brain made of light and circuits floating in dark space",
+    "TECH IDEA OF THE DAY": "a futuristic invention glowing in a dark workshop, holographic blueprints",
+}
+
+
+def build_art_prompt(post, label, recent=None):
+    """Ask the LLM for one vivid image prompt (no real people, brands or text); fall back to a template."""
+    subject = ART_FALLBACK_SUBJECT.get(label, "a futuristic technology scene, neon glow, dark background")
+    try:
+        q = ("Write ONE image-generation prompt (max 45 words) for a dramatic, cinematic, photorealistic digital "
+             "artwork that visually represents this social media post. Show a striking scene or object (spacecraft, robot, "
+             "planet, machine, circuit, black hole, futuristic city...). No real people, no celebrities, no brand names, "
+             "no logos, no text or letters in the image.\n"
+             f"Headline: {post.get('headline', '')}\nContext: {post.get('caption', '')[:300]}\n"
+             + ("Do NOT repeat the subject or composition of these recent pictures: " + " | ".join(recent[-8:]) + "\n" if recent else "")
+             + "Be specific and original: a different subject, camera angle and mood every time.\n"
+             'Return JSON only: {"prompt": "..."}')
+        p = _ask(q).get("prompt", "").strip()
+        if 15 < len(p) < 500:
+            subject = p
+    except Exception as ex:
+        print(f"art prompt: using template ({str(ex)[:80]})", file=sys.stderr)
+    LAST_ART["subject"] = subject
+    return f"{subject}, {random.choice(ART_LOOKS)}, {ART_STYLE}"
+
+
+def _valid_image(path):
+    try:
+        with Image.open(path) as im:
+            im.load()
+            return im.size[0] >= 512 and Path(path).stat().st_size > 30000
+    except Exception:
+        return False
+
+
+def _art_pollinations(prompt, dest):
+    from urllib.parse import quote
+    for model in ("flux", "turbo"):
+        url = (f"https://image.pollinations.ai/prompt/{quote(prompt)}?width=1080&height=1920&model={model}"
+               f"&nologo=true&enhance=false&seed={random.randrange(10**6)}")
+        try:
+            r = requests.get(url, timeout=150)
+            if r.status_code == 200 and r.headers.get("content-type", "").startswith("image"):
+                Path(dest).write_bytes(r.content)
+                if _valid_image(dest):
+                    return True
+            else:
+                print(f"pollinations {model}: HTTP {r.status_code}", file=sys.stderr)
+        except Exception as ex:
+            print(f"pollinations {model}: {str(ex)[:100]}", file=sys.stderr)
+    return False
+
+
+def _art_huggingface(prompt, dest):
+    """Optional: free Hugging Face token (HF_TOKEN) -> FLUX.1-schnell, very realistic."""
+    tok = os.getenv("HF_TOKEN", "").strip()
+    if not tok:
+        return False
+    for model in ("black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0"):
+        try:
+            r = requests.post(f"https://router.huggingface.co/hf-inference/models/{model}",
+                              headers={"Authorization": f"Bearer {tok}"}, timeout=150,
+                              json={"inputs": prompt, "parameters": {"width": 768, "height": 1344}})
+            if r.status_code == 200 and r.headers.get("content-type", "").startswith("image"):
+                Path(dest).write_bytes(r.content)
+                if _valid_image(dest):
+                    return True
+            else:
+                print(f"huggingface {model}: HTTP {r.status_code} {r.text[:80]}", file=sys.stderr)
+        except Exception as ex:
+            print(f"huggingface {model}: {str(ex)[:100]}", file=sys.stderr)
+    return False
+
+
+def _art_gemini(prompt, dest):
+    """Gemini image models (works only if the key's plan allows image output)."""
+    import base64
+    key = os.getenv("GEMINI_API_KEY", "")
+    if not key:
+        return False
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models", params={"key": key, "pageSize": 200}, timeout=30)
+        names = [m["name"].split("/")[-1] for m in r.json().get("models", [])
+                 if "image" in m["name"] and "generateContent" in m.get("supportedGenerationMethods", [])
+                 and "imagen" not in m["name"]]
+    except Exception as ex:
+        print(f"gemini image list: {ex}", file=sys.stderr)
+        return False
+    for name in names[:3]:
+        try:
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{name}:generateContent",
+                              params={"key": key}, timeout=120,
+                              json={"contents": [{"parts": [{"text": prompt + ". Vertical 9:16 image."}]}],
+                                    "generationConfig": {"responseModalities": ["IMAGE", "TEXT"]}})
+            if r.status_code != 200:
+                print(f"gemini image {name}: HTTP {r.status_code}", file=sys.stderr)
+                continue
+            for part in r.json()["candidates"][0]["content"]["parts"]:
+                data = (part.get("inlineData") or part.get("inline_data") or {}).get("data")
+                if data:
+                    Path(dest).write_bytes(base64.b64decode(data))
+                    if _valid_image(dest):
+                        return True
+        except Exception as ex:
+            print(f"gemini image {name}: {str(ex)[:100]}", file=sys.stderr)
+    return False
+
+
+def generate_art(post, label, dest, recent=None):
+    """Returns True when a portrait AI picture was saved to dest (resized to 1080x1920)."""
+    if (os.getenv("ART") or "on").lower() == "off":
+        return False
+    prompt = build_art_prompt(post, label, recent)
+    print("ART prompt:", prompt[:160])
+    for fn in (_art_huggingface, _art_pollinations, _art_gemini):
+        try:
+            if fn(prompt, dest):
+                im = Image.open(dest).convert("RGB")
+                w, h = im.size
+                scale = max(1080 / w, 1920 / h)
+                im = im.resize((int(w * scale + 1), int(h * scale + 1)), Image.LANCZOS)
+                l, t = (im.size[0] - 1080) // 2, (im.size[1] - 1920) // 2
+                im.crop((l, t, l + 1080, t + 1920)).save(dest, "JPEG", quality=94)
+                return True
+        except Exception as ex:
+            print(f"{fn.__name__}: {ex}", file=sys.stderr)
+    return False
+
+
+ACCENTS = [(0, 229, 255), (255, 196, 0), (255, 95, 70), (130, 255, 170), (200, 120, 255)]
+
+
+def make_art_image(post, art_path, path, label):
+    """Feed post (1080x1350): the AI picture full-bleed, big headline at the bottom, label badge, handle."""
+    W, H = 1080, 1350
+    art = Image.open(art_path).convert("RGB")
+    top = (art.size[1] - H) // 2 - 80
+    img = art.crop((0, max(0, top), W, max(0, top) + H)).convert("RGBA")
+    accent = random.choice(ACCENTS)
+    shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shade)
+    for y in range(H):
+        a = int(235 * min(1, max(0, (y - 520) / 700)) ** 1.4) if y > 520 else 0
+        sd.line([(0, y), (W, y)], fill=(0, 0, 0, a))
+    img.alpha_composite(shade)
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    f, lines, size = _fit(meas, post["headline"], 940, 4, 84, 52)
+    lh = int(size * 1.16)
+    words = post["headline"].split()
+    cut = len(words) - max(2, int(len(words) * 0.4)) if len(words) > 3 else len(words)
+    d = ImageDraw.Draw(img, "RGBA")
+    y = H - 110 - lh * len(lines)
+    idx = 0
+    for i, ln in enumerate(lines):
+        x = 70
+        for w in ln.split():
+            col = (255, 255, 255, 255) if idx < cut else accent + (255,)
+            d.text((x, y + i * lh), w, font=f, fill=col, stroke_width=5, stroke_fill=(0, 0, 0, 255))
+            x += meas.textbbox((0, 0), w + " ", font=f)[2]
+            idx += 1
+    lf = load_font(36)
+    tw = meas.textbbox((0, 0), label, font=lf)[2]
+    d.rounded_rectangle([60, 56, 60 + tw + 52, 124], 34, fill=(0, 0, 0, 150), outline=accent + (255,), width=3)
+    d.text((86, 66), label, font=lf, fill=(255, 255, 255, 255))
+    d.text((70, H - 78), os.getenv("IG_HANDLE", ""), font=load_font(34), fill=(255, 255, 255, 220),
+           stroke_width=2, stroke_fill=(0, 0, 0, 200))
+    img.convert("RGB").save(path, "JPEG", quality=93, subsampling=0)
+
+
 # ---------------------------------------------------------------- cinematic reel (real motion)
 # Look: full-screen moving background, big bold headline in the lower third (last words in the accent
 # colour), small label badge, word-timed subtitles, voice-over and soft music.
@@ -1528,7 +1718,7 @@ def _short_speech(post, max_words=70):
     return cut[:end + 1] if end > 120 else cut
 
 
-def make_reel_cinematic(post, out_path, theme, state=None, label=None):
+def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=None):
     """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
     work = Path(out_path).with_suffix("")
     text = _short_speech(post)
@@ -1547,11 +1737,22 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None):
         temps.append(p)
         return p
 
-    clip, clip_id = _stock_video(label, tmp(".clip.mp4"), used)
+    clip, clip_id = (None, None) if art_path else _stock_video(label, tmp(".clip.mp4"), used)
     rng = random.Random(random.getrandbits(64))
     bg = THEMES.get(theme, theme_synthwave)(1080, 1350, rng)
     accent = bg["A"]
-    if clip:
+    if art_path:   # AI picture: slow push-in + drift, drifting particles, light pulse, film grain
+        card = tmp(".art.png")
+        Image.open(art_path).convert("RGB").resize((1296, 2304), Image.LANCZOS).save(card)
+        parts = tmp(".parts.png")
+        _particle_layer(parts, random.getrandbits(32))
+        inputs = ["-loop", "1", "-framerate", "30", "-i", str(card)]
+        bg_chain = (f"[0:v]scale=w='trunc(1080*(1+0.17*t/{total:.1f})/2)*2':h=-2:eval=frame,"
+                    "crop=1080:1920:x='(in_w-1080)/2+28*sin(t*0.55)':y='(in_h-1920)/2+18*sin(t*0.4)',fps=30[b0];"
+                    "[b0][PARTS:v]overlay=x=0:y='-mod(t*55,1920)'[b1];"
+                    "[b1]eq=brightness='0.035*sin(t*1.5)':contrast=1.06:saturation=1.12:eval=frame[bgv]")
+        extra_in, n_extra = ["-loop", "1", "-framerate", "30", "-i", str(parts)], 1
+    elif clip:
         inputs = ["-stream_loop", "-1", "-i", str(clip)]
         bg_chain = ("[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,"
                     "eq=brightness=-0.10:saturation=1.15[bgv]")
@@ -1870,7 +2071,17 @@ def main():
         stamp = datetime.now().strftime("%Y%m%d_%H%M")
         img_path = OUT_DIR / f"{stamp}_{slot}.jpg"
         theme = pick_theme(state["themes"])
-        make_image(slot, post, img_path, theme)
+        label_txt = post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY")
+        art_path = OUT_DIR / f"{stamp}_{slot}_art.jpg"
+        has_art = generate_art(post, label_txt, art_path, state.get("arts", []))
+        if has_art and LAST_ART.get("subject"):
+            state.setdefault("arts", []).append(LAST_ART["subject"][:140])
+            state["arts"] = state["arts"][-20:]
+        if has_art:
+            make_art_image(post, art_path, img_path, label_txt)
+        else:
+            print("ART: no AI picture available, using the themed card", file=sys.stderr)
+            make_image(slot, post, img_path, theme)
         (OUT_DIR / f"{stamp}_{slot}.txt").write_text(caption, encoding="utf-8")
 
         mode = (os.getenv("REELS") or "off").lower()
@@ -1880,8 +2091,8 @@ def main():
             vid_path = OUT_DIR / f"{stamp}_{slot}.mp4"
             try:
                 try:
-                    vid_id = make_reel_cinematic(post, vid_path, theme, state,
-                                                 post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY"))
+                    vid_id = make_reel_cinematic(post, vid_path, theme, state, label_txt,
+                                                 art_path if has_art else None)
                     if CREDITS.get("video") and len(caption) + len(CREDITS["video"]) < 2150:
                         caption = caption.replace("\n\n#", f"\n{CREDITS['video']}\n\n#", 1)
                         (OUT_DIR / f"{stamp}_{slot}.txt").write_text(caption, encoding="utf-8")

@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v20 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v21 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1391,9 +1391,10 @@ def _from_pixabay(queries, dest, used):
         hits = [h for h in r.json().get("hits", []) if f"pb{h['id']}" not in used and h.get("duration", 0) >= 6]
         random.shuffle(hits)
         for h in hits:
-            for size in ("large", "medium"):
+            for size in ("medium", "small"):  # "large" is 4K: too heavy
                 v = (h.get("videos") or {}).get(size) or {}
                 if v.get("url") and 0 < v.get("size", 0) < 45_000_000 and _download(v["url"], dest):
+                    CREDITS["video"] = f"Video: {h.get('user', 'Pixabay creator')} on Pixabay"
                     return Path(dest), f"pb{h['id']}"
     return None, None
 

@@ -20,7 +20,8 @@
     "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
     "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/",
     "https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/",
-    "https://newatlas.com/military/quantum-systems-electric-drone-unofficial-speed-record/"
+    "https://newatlas.com/military/quantum-systems-electric-drone-unofficial-speed-record/",
+    "https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -49,10 +50,10 @@
     "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
     "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything.",
     "OpenAI Acquires Orchestra Bio to Enter Biotechnology - The deal brings tech and talent to build the Rosalind AI model and Rosalind Workbench.",
-    "Apex Recordhunter Drone Hits 482.8 MPH - Quantum Systems built the experimental aircraft, with the milestone announced on social media."
+    "Apex Recordhunter Drone Hits 482.8 MPH - Quantum Systems built the experimental aircraft, with the milestone announced on social media.",
+    "What if AI safety bills required judicial sign-off? - Imagine a policy where federal agencies need a judge's permission before blocking a model's release."
   ],
   "themes": [
-    "sunset",
     "circuit",
     "matrix",
     "synthwave",
@@ -71,6 +72,10 @@
     "aurora",
     "matrix",
     "synthwave",
-    "circuit"
+    "circuit",
+    "cyber_city"
+  ],
+  "arts": [
+    "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr"
   ]
 }

@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-13-v15 (Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v18 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1326,6 +1326,250 @@ def make_reel_voice(img_path, out_path, post):
         voice.unlink(missing_ok=True)
 
 
+# ---------------------------------------------------------------- cinematic reel (real motion)
+# Look: full-screen moving background, big bold headline in the lower third (last words in the accent
+# colour), small label badge, word-timed subtitles, voice-over and soft music.
+# Background = free Pexels stock video when PEXELS_API_KEY is set (licence: free to use, no credit needed),
+# otherwise the animated sci-fi theme (drifting camera, moving particles, film grain, light pulse).
+VIDEO_QUERIES = {
+    "ROBOTICS": ["humanoid robot", "robot arm", "robotics technology", "futuristic robot"],
+    "ELECTRONICS": ["circuit board", "microchip", "electronics technology", "printed circuit board macro"],
+    "MECHATRONICS": ["robotic arm factory", "automation machine", "gears machinery", "3d printer"],
+    "SCI-FI TECH": ["galaxy", "nebula", "futuristic city night", "hologram", "space"],
+    "NEW INNOVATION": ["futuristic technology", "laboratory science", "hologram interface", "innovation technology"],
+    "FUTURE TECH": ["futuristic city", "technology abstract", "digital particles", "neon lights"],
+    "AI NEWS": ["artificial intelligence", "neural network", "data center", "digital code"],
+    "TECH IDEA OF THE DAY": ["futuristic technology", "innovation", "hologram", "digital interface"],
+}
+
+
+def _stock_video(label, dest, used):
+    """Download one portrait stock clip from Pexels. Returns (path, id) or (None, None)."""
+    key = os.getenv("PEXELS_API_KEY", "").strip()
+    if not key:
+        return None, None
+    queries = VIDEO_QUERIES.get(label) or ["futuristic technology", "technology abstract"]
+    random.shuffle(queries)
+    for q in queries[:3]:
+        try:
+            r = requests.get("https://api.pexels.com/videos/search", headers={"Authorization": key},
+                             params={"query": q, "orientation": "portrait", "size": "medium", "per_page": 20},
+                             timeout=30)
+            r.raise_for_status()
+            vids = [v for v in r.json().get("videos", []) if str(v["id"]) not in used and v.get("duration", 0) >= 6]
+            random.shuffle(vids)
+            for v in vids:
+                files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4"
+                         and 700 <= (f.get("width") or 0) <= 1500]
+                if not files:
+                    continue
+                files.sort(key=lambda f: abs((f.get("width") or 0) - 1080))
+                with requests.get(files[0]["link"], stream=True, timeout=90) as dl:
+                    dl.raise_for_status()
+                    with open(dest, "wb") as fh:
+                        for part in dl.iter_content(1 << 20):
+                            fh.write(part)
+                if Path(dest).stat().st_size > 50000:
+                    return Path(dest), str(v["id"])
+        except Exception as ex:
+            print(f"Pexels ({q}): {ex}", file=sys.stderr)
+    return None, None
+
+
+def _particle_layer(path, seed):
+    """1080x3840 transparent strip of drifting particles; the top and bottom halves are identical so it loops."""
+    rng = random.Random(seed)
+    half = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+    d = ImageDraw.Draw(half)
+    for _ in range(170):
+        x, y = rng.randrange(1080), rng.randrange(1920)
+        r = rng.choice([1, 1, 2, 2, 3, 4])
+        a = rng.randrange(70, 230)
+        d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255, a))
+    half = half.filter(ImageFilter.GaussianBlur(0.8))
+    full = Image.new("RGBA", (1080, 3840), (0, 0, 0, 0))
+    full.paste(half, (0, 0))
+    full.paste(half, (0, 1920))
+    full.save(path)
+
+
+def _shade_png(path):
+    """Dark gradient over the lower part of the frame so the headline is always readable."""
+    im = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for y in range(1920):
+        a = 0
+        if y > 760:
+            a = int(225 * min(1, (y - 760) / 760) ** 1.5)
+        if y < 380:
+            a = max(a, int(110 * (1 - y / 380)))
+        d.line([(0, y), (1080, y)], fill=(0, 0, 0, a))
+    im.save(path)
+
+
+def _headline_png(text, accent, path, bottom=1330):
+    """Bold headline, left aligned; the last ~40% of the words use the accent colour. Returns the block's top y."""
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    f, lines, size = _fit(meas, text, 880, 5, 88, 54)
+    lh = int(size * 1.16)
+    words = text.split()
+    cut = len(words) - max(2, int(len(words) * 0.4)) if len(words) > 3 else len(words)
+    h = lh * len(lines) + 30
+    im = Image.new("RGBA", (1080, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    idx = 0
+    for i, ln in enumerate(lines):
+        x = 70
+        for w in ln.split():
+            col = (255, 255, 255, 255) if idx < cut else tuple(accent) + (255,)
+            d.text((x, 10 + i * lh), w, font=f, fill=col, stroke_width=5, stroke_fill=(0, 0, 0, 255))
+            x += meas.textbbox((0, 0), w + " ", font=f)[2]
+            idx += 1
+    im.save(path)
+    return bottom - h, h
+
+
+def _badge_png(label, handle, accent, path):
+    f, f2 = load_font(42), load_font(36)
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    tw = meas.textbbox((0, 0), label, font=f)[2]
+    im = Image.new("RGBA", (1080, 150), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([70, 6, 70 + tw + 56, 76], 35, fill=(0, 0, 0, 150), outline=tuple(accent) + (255,), width=3)
+    d.text((98, 14), label, font=f, fill=(255, 255, 255, 255))
+    if handle:
+        d.text((74, 92), handle, font=f2, fill=(255, 255, 255, 215), stroke_width=2, stroke_fill=(0, 0, 0, 200))
+    im.save(path)
+
+
+def _reel_sub_png(text, path):
+    f = load_font(50)
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    lines = wrap_to_width(meas, text, f, 840)[:2]
+    h = 64 * len(lines) + 30
+    im = Image.new("RGBA", (1000, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, 999, h - 1], 30, fill=(0, 0, 0, 120))
+    for i, ln in enumerate(lines):
+        w = meas.textbbox((0, 0), ln, font=f)[2]
+        d.text(((1000 - w) // 2, 14 + i * 64), ln, font=f, fill=(255, 255, 255, 255),
+               stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    im.save(path)
+
+
+def _short_speech(post, max_words=70):
+    """Headline + caption, cut at a sentence end so the Reel stays short (better retention)."""
+    t = _speech_text(post)
+    w = t.split()
+    if len(w) <= max_words:
+        return t
+    cut = " ".join(w[:max_words])
+    end = max(cut.rfind(". "), cut.rfind("? "), cut.rfind("! "))
+    return cut[:end + 1] if end > 120 else cut
+
+
+def make_reel_cinematic(post, out_path, theme, state=None, label=None):
+    """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
+    work = Path(out_path).with_suffix("")
+    text = _short_speech(post)
+    voice = Path(str(work) + ".voice.mp3")
+    have_voice = make_voice(text, voice)
+    lead, tail = 0.8, 1.6
+    vdur = _duration(voice) if have_voice else 0
+    total = min(lead + (vdur if have_voice else 12) + tail, 60)
+    label = label or post.get("label") or "TECH"
+    used = (state or {}).get("videos", [])
+
+    temps = []
+
+    def tmp(name):
+        p = Path(str(work) + name)
+        temps.append(p)
+        return p
+
+    clip, clip_id = _stock_video(label, tmp(".clip.mp4"), used)
+    rng = random.Random(random.getrandbits(64))
+    bg = THEMES.get(theme, theme_synthwave)(1080, 1350, rng)
+    accent = bg["A"]
+    if clip:
+        inputs = ["-stream_loop", "-1", "-i", str(clip)]
+        bg_chain = ("[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,"
+                    "eq=brightness=-0.10:saturation=1.15[bgv]")
+        extra_in, n_extra = [], 0
+    else:
+        card = tmp(".bg.png")
+        bg["img"].convert("RGB").resize((1536, 1920), Image.LANCZOS).save(card)
+        parts = tmp(".parts.png")
+        _particle_layer(parts, random.getrandbits(32))
+        inputs = ["-loop", "1", "-framerate", "30", "-i", str(card)]
+        bg_chain = ("[0:v]crop=1080:1920:x='(in_w-1080)/2*(1+sin(t*0.45))':y=0,fps=30[b0];"
+                    f"[b0][PARTS:v]overlay=x=0:y='-mod(t*70,1920)'[b1];"
+                    "[b1]eq=brightness='0.04*sin(t*1.7)':eval=frame[bgv]")
+        extra_in, n_extra = ["-loop", "1", "-framerate", "30", "-i", str(parts)], 1
+
+    shade, head, badge = tmp(".shade.png"), tmp(".head.png"), tmp(".badge.png")
+    _shade_png(shade)
+    htop, _ = _headline_png(post["headline"], accent, head)
+    _badge_png(label, os.getenv("IG_HANDLE", ""), accent, badge)
+
+    cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs                      # 0 background
+    n = 1
+    if n_extra:
+        cmd += extra_in                                                         # 1 particles
+        n += 1
+    ivoice = n
+    if have_voice:
+        cmd += ["-i", str(voice)]
+        n += 1
+    imusic = n
+    cmd += ["-f", "lavfi", "-i", f"aevalsrc='0.5*sin(2*PI*110*t)+0.35*sin(2*PI*164.8*t)+0.3*sin(2*PI*220*t)+0.2*sin(2*PI*277.2*t)':s=44100:d={total:.2f}"]
+    n += 1
+    for p in (shade, head, badge):
+        cmd += ["-loop", "1", "-framerate", "30", "-t", f"{total:.2f}", "-i", str(p)]
+    ishade, ihead, ibadge = n, n + 1, n + 2
+    n += 3
+
+    fc = [bg_chain.replace("PARTS", "1") if n_extra else bg_chain,
+          "[bgv]noise=alls=7:allf=t,vignette=PI/5[bgn]",
+          f"[bgn][{ishade}:v]overlay=0:0[l1]",
+          f"[{ihead}:v]format=rgba,fade=t=in:st=0.35:d=0.7:alpha=1[hd]",
+          f"[l1][hd]overlay=x=0:y='{htop}+50*(1-min(max(t-0.35,0)/0.7,1))'[l2]",
+          f"[{ibadge}:v]format=rgba,fade=t=in:st=0.1:d=0.5:alpha=1[bd]",
+          "[l2][bd]overlay=x=0:y=270[l3]"]
+    last = "l3"
+    if have_voice:   # word-timed subtitles under the headline
+        words = text.split()
+        chunks = [" ".join(words[i:i + 5]) for i in range(0, len(words), 5)]
+        weights = [max(1, len(c)) for c in chunks]
+        tw, t = sum(weights), lead
+        for k, (c, wg) in enumerate(zip(chunks, weights)):
+            dur = vdur * wg / tw
+            p = tmp(f".sub{k}.png")
+            _reel_sub_png(c, p)
+            cmd += ["-i", str(p)]
+            fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:1385:enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
+            last = f"s{k}"
+            n += 1
+            t += dur
+    fc.append(f"[{last}]fade=t=in:st=0:d=0.4,fade=t=out:st={total - 0.6:.2f}:d=0.6,format=yuv420p[v]")
+    music = f"[{imusic}:a]lowpass=f=700,tremolo=f=0.25:d=0.4,volume={0.10 if have_voice else 0.35},afade=t=in:d=2,afade=t=out:st={total - 2:.2f}:d=2"
+    if have_voice:
+        fc.append(f"[{ivoice}:a]adelay={int(lead * 1000)}|{int(lead * 1000)},volume=1.6[va]")
+        fc.append(music + "[ma]")
+        fc.append("[va][ma]amix=inputs=2:duration=longest:dropout_transition=0,volume=2[a]")
+    else:
+        fc.append(music + "[a]")
+    cmd += ["-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}", "-r", "30",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-movflags", "+faststart",
+            "-c:a", "aac", "-b:a", "128k", str(out_path)]
+    try:
+        subprocess.run(cmd, check=True)
+    finally:
+        for p in temps + [voice]:
+            Path(p).unlink(missing_ok=True)
+    return clip_id or ""
+
+
 # ---------------------------------------------------------------- hosting
 def make_reel(img_path, out_path, seconds=8):
     """Image -> 1080x1920 MP4: blurred background, card slowly zooming in, silent audio track."""
@@ -1576,10 +1820,18 @@ def main():
             vid_path = OUT_DIR / f"{stamp}_{slot}.mp4"
             try:
                 try:
-                    make_reel_voice(img_path, vid_path, post)
-                except Exception as vex:  # no voice available: silent Reel
-                    print(f"WARNING: voiceover failed ({vex}); making a silent Reel", file=sys.stderr)
-                    make_reel(img_path, vid_path)
+                    vid_id = make_reel_cinematic(post, vid_path, theme, state,
+                                                 post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY"))
+                    if vid_id:
+                        state.setdefault("videos", []).append(vid_id)
+                        state["videos"] = state["videos"][-60:]
+                except Exception as vex:  # motion reel failed: simple image-based Reel
+                    print(f"WARNING: cinematic reel failed ({vex}); using the simple Reel", file=sys.stderr)
+                    try:
+                        make_reel_voice(img_path, vid_path, post)
+                    except Exception as vex2:
+                        print(f"WARNING: voiceover failed ({vex2}); making a silent Reel", file=sys.stderr)
+                        make_reel(img_path, vid_path)
             except Exception as ex:  # no ffmpeg etc.: post the normal image instead of failing
                 print(f"WARNING: could not make the Reel ({ex}); posting the image instead", file=sys.stderr)
                 as_reel, vid_path = False, None

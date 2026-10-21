@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v18 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v20 (cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1343,36 +1343,95 @@ VIDEO_QUERIES = {
 }
 
 
-def _stock_video(label, dest, used):
-    """Download one portrait stock clip from Pexels. Returns (path, id) or (None, None)."""
+CREDITS = {}  # credit line for the background clip (Pexels asks for one)
+
+
+def _download(url, dest):
+    with requests.get(url, stream=True, timeout=120) as dl:
+        dl.raise_for_status()
+        with open(dest, "wb") as fh:
+            for part in dl.iter_content(1 << 20):
+                fh.write(part)
+    return Path(dest).stat().st_size > 50000
+
+
+def _from_pexels(queries, dest, used):
     key = os.getenv("PEXELS_API_KEY", "").strip()
     if not key:
         return None, None
-    queries = VIDEO_QUERIES.get(label) or ["futuristic technology", "technology abstract"]
-    random.shuffle(queries)
-    for q in queries[:3]:
-        try:
+    for q in queries:
+        params = {"query": q, "orientation": "portrait", "size": "medium", "per_page": 20}
+        r = requests.get("https://api.pexels.com/v1/videos/search", headers={"Authorization": key},
+                         params=params, timeout=30)
+        if r.status_code == 404:  # older path, in case the new one is not available
             r = requests.get("https://api.pexels.com/videos/search", headers={"Authorization": key},
-                             params={"query": q, "orientation": "portrait", "size": "medium", "per_page": 20},
-                             timeout=30)
-            r.raise_for_status()
-            vids = [v for v in r.json().get("videos", []) if str(v["id"]) not in used and v.get("duration", 0) >= 6]
-            random.shuffle(vids)
-            for v in vids:
-                files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4"
-                         and 700 <= (f.get("width") or 0) <= 1500]
-                if not files:
-                    continue
+                             params=params, timeout=30)
+        r.raise_for_status()
+        vids = [v for v in r.json().get("videos", []) if f"px{v['id']}" not in used and v.get("duration", 0) >= 6]
+        random.shuffle(vids)
+        for v in vids:
+            files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4"
+                     and 700 <= (f.get("width") or 0) <= 1500]
+            if files:
                 files.sort(key=lambda f: abs((f.get("width") or 0) - 1080))
-                with requests.get(files[0]["link"], stream=True, timeout=90) as dl:
-                    dl.raise_for_status()
-                    with open(dest, "wb") as fh:
-                        for part in dl.iter_content(1 << 20):
-                            fh.write(part)
-                if Path(dest).stat().st_size > 50000:
-                    return Path(dest), str(v["id"])
+                if _download(files[0]["link"], dest):
+                    CREDITS["video"] = f"Video: {(v.get('user') or {}).get('name', 'Pexels creator')} on Pexels"
+                    return Path(dest), f"px{v['id']}"
+    return None, None
+
+
+def _from_pixabay(queries, dest, used):
+    key = os.getenv("PIXABAY_API_KEY", "").strip()
+    if not key:
+        return None, None
+    for q in queries:
+        r = requests.get("https://pixabay.com/api/videos/", params={"key": key, "q": q, "per_page": 30,
+                         "safesearch": "true"}, timeout=30)
+        r.raise_for_status()
+        hits = [h for h in r.json().get("hits", []) if f"pb{h['id']}" not in used and h.get("duration", 0) >= 6]
+        random.shuffle(hits)
+        for h in hits:
+            for size in ("large", "medium"):
+                v = (h.get("videos") or {}).get(size) or {}
+                if v.get("url") and 0 < v.get("size", 0) < 45_000_000 and _download(v["url"], dest):
+                    return Path(dest), f"pb{h['id']}"
+    return None, None
+
+
+def _from_nasa(queries, dest, used):
+    """NASA Image and Video Library: public domain, no key needed. Space-related labels only."""
+    for q in queries:
+        r = requests.get("https://images-api.nasa.gov/search", params={"q": q, "media_type": "video"}, timeout=30)
+        r.raise_for_status()
+        items = r.json().get("collection", {}).get("items", [])
+        random.shuffle(items)
+        for it in items[:12]:
+            nid = (it.get("data") or [{}])[0].get("nasa_id", "")
+            if not nid or f"na{nid}" in used:
+                continue
+            files = requests.get(it["href"], timeout=30).json()
+            mp4 = [u for u in files if u.lower().endswith(".mp4")]
+            pick = next((u for u in mp4 if "~medium" in u), None) or next((u for u in mp4 if "~small" in u), None)
+            if pick and _download(pick.replace("http://", "https://"), dest):
+                return Path(dest), f"na{nid}"
+    return None, None
+
+
+def _stock_video(label, dest, used):
+    """Free stock/archive clip for the background. Returns (path, id) or (None, None)."""
+    queries = list(VIDEO_QUERIES.get(label) or ["futuristic technology", "technology abstract"])
+    random.shuffle(queries)
+    queries = queries[:3]
+    providers = [_from_pexels, _from_pixabay]
+    if label in ("SCI-FI TECH", "FUTURE TECH"):
+        providers.append(_from_nasa)
+    for fn in providers:
+        try:
+            path, vid = fn(queries, dest, used)
+            if path:
+                return path, vid
         except Exception as ex:
-            print(f"Pexels ({q}): {ex}", file=sys.stderr)
+            print(f"{fn.__name__}: {ex}", file=sys.stderr)
     return None, None
 
 
@@ -1822,6 +1881,9 @@ def main():
                 try:
                     vid_id = make_reel_cinematic(post, vid_path, theme, state,
                                                  post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY"))
+                    if CREDITS.get("video") and len(caption) + len(CREDITS["video"]) < 2150:
+                        caption = caption.replace("\n\n#", f"\n{CREDITS['video']}\n\n#", 1)
+                        (OUT_DIR / f"{stamp}_{slot}.txt").write_text(caption, encoding="utf-8")
                     if vid_id:
                         state.setdefault("videos", []).append(vid_id)
                         state["videos"] = state["videos"][-60:]

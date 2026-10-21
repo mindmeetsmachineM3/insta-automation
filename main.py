@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v23 (AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-21-v24 (AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1465,6 +1465,8 @@ def generate_art(post, label, dest, recent=None):
         try:
             if fn(prompt, dest):
                 im = Image.open(dest).convert("RGB")
+                if fn is _art_pollinations:   # the free service stamps a small logo in the bottom corner: cut it off
+                    im = im.crop((0, 0, im.size[0], int(im.size[1] * 0.93)))
                 w, h = im.size
                 scale = max(1080 / w, 1920 / h)
                 im = im.resize((int(w * scale + 1), int(h * scale + 1)), Image.LANCZOS)

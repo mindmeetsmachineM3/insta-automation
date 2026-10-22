@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-22-v28 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-23-v29 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -71,7 +71,7 @@ TOPICS = {
                     ["future", "quantum", "fusion", "graphene", "solid-state", "energy", "space", "ai"]),
 }
 # UTC times of the extra-post triggers in the workflow (must match the cron lines)
-EXTRA_TRIGGERS_UTC = [(4, 47), (6, 23), (8, 11), (10, 37), (13, 29), (15, 41)]
+EXTRA_TRIGGERS_UTC = [(2, 53), (4, 47), (5, 41), (6, 23), (7, 9), (8, 11), (9, 37), (10, 37), (11, 29), (13, 29), (14, 17), (15, 41)]
 
 # LLM_PROVIDER: "gemini" (free tier, default) or "claude" (paid API)
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
@@ -690,6 +690,16 @@ def extra_gate():
     except Exception:
         pass
     need = per_day - done
+    # keep at least EXTRA_MIN_GAP minutes between two extra posts (looks natural, avoids bursts)
+    gap = int(os.getenv("EXTRA_MIN_GAP") or 60)
+    try:
+        last = max(datetime.fromisoformat(l.split(",", 1)[0]) for l in LOG_FILE.read_text(encoding="utf-8").splitlines()[1:]
+                   if l.split(",", 3)[1:3] == ["extra", "OK"])
+        if (datetime.now() - last).total_seconds() < gap * 60:
+            print(f"extra gate: last extra post was {int((datetime.now() - last).total_seconds() // 60)} min ago -> skip", file=sys.stderr)
+            return False
+    except Exception:
+        pass
     now_min = datetime.now().hour * 60 + datetime.now().minute
     remaining = max(1, sum(1 for h, m in EXTRA_TRIGGERS_UTC if h * 60 + m >= now_min - 50))
     p = 1.0 if need >= remaining else max(0.0, need / remaining)

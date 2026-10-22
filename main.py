@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-21-v26 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-22-v28 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1285,7 +1285,8 @@ VOICES = {  # (edge-tts voices, gTTS lang, gTTS tld). Override with the VOICE va
 
 
 def _speech_text(post):
-    t = post.get("headline", "").strip().rstrip(".") + ". " + post.get("caption", "")
+    head = post.get("headline", "").strip().rstrip(".")
+    t = (head + ". " if head else "") + post.get("caption", "")
     t = re.sub(r"https?://\S+|#\w+", " ", t)
     t = re.sub(r"[^\w\s.,!?'\u0900-\u097F-]", " ", t)  # drop emojis and symbols
     return re.sub(r"\s+", " ", t).strip()
@@ -1467,7 +1468,7 @@ def _art_pollinations(prompt, dest):
 
 def _art_huggingface(prompt, dest):
     """Optional: free Hugging Face token (HF_TOKEN1) -> FLUX.1-schnell, very realistic."""
-    tok = os.getenv("HF_TOKEN1", "").strip()
+    tok = (os.getenv("HF_TOKEN1") or os.getenv("HF_TOKEN") or "").strip()
     if not tok:
         return False
     for model in ("black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0"):
@@ -1788,7 +1789,7 @@ def _short_speech(post, max_words=70):
 def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=None):
     """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
     work = Path(out_path).with_suffix("")
-    text = _short_speech(post)
+    text = _short_speech({**post, "headline": ""})   # the headline is already on screen: start with the hook
     voice = Path(str(work) + ".voice.mp3")
     have_voice = make_voice(text, voice)
     lead, tail = 0.8, 1.6
@@ -2067,9 +2068,13 @@ def main():
     ap.add_argument("--reel", action="store_true", help="post as a Reel (video) instead of an image")
     ap.add_argument("--refresh-token", action="store_true")
     ap.add_argument("--diagnose", action="store_true", help="check the Instagram token and publish quota")
+    ap.add_argument("--gate-check", action="store_true", help="print go=true/false for an extra slot (used by the workflow)")
     args = ap.parse_args()
     print(f"main.py version {VERSION}", file=sys.stderr)
 
+    if args.gate_check:   # the workflow asks first, so skipped runs do not install ffmpeg etc.
+        print(f"go={'true' if extra_gate() else 'false'}")
+        return
     if args.diagnose:
         diagnose()
         return

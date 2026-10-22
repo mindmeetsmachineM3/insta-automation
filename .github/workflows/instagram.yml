@@ -67,10 +67,6 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install ffmpeg (Reels only)
-        if: ${{ (vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel }}
-        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
-
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -104,16 +100,31 @@ jobs:
           echo "dry=$DRY" >> "$GITHUB_OUTPUT"
           echo "gate=$GATE" >> "$GITHUB_OUTPUT"
 
+      - name: Extra-post gate (skipped runs stop here, fast)
+        id: gate
+        run: |
+          if [ "${{ steps.pick.outputs.gate }}" = "--gate" ]; then
+            python main.py --gate-check | tee -a "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install ffmpeg (Reels only)
+        if: ${{ steps.gate.outputs.go != 'false' && ((vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel) }}
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg)
+
       - name: Create post
-        if: ${{ steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' }}
+        if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' }}
         run: |
           # Google's free AI is sometimes overloaded: try up to 3 times, 8 minutes apart
+          GATEARG="${{ steps.pick.outputs.gate }}"
+          [ "$GATEARG" = "--gate" ] && GATEARG=""   # already decided by the gate step
           for TRY in 1 2 3; do
             if [ "${{ steps.pick.outputs.dry }}" = "true" ]; then
-              python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }} --dry-run && exit 0
+              python main.py --slot "${{ steps.pick.outputs.action }}" $GATEARG --dry-run && exit 0
               RC=$?
             else
-              python main.py --slot "${{ steps.pick.outputs.action }}" ${{ steps.pick.outputs.gate }} && exit 0
+              python main.py --slot "${{ steps.pick.outputs.action }}" $GATEARG && exit 0
               RC=$?
             fi
             [ "$RC" = "3" ] && exit 3   # Instagram rejected it: do not retry

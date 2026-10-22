@@ -25,7 +25,8 @@
     "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
     "https://interestingengineering.com/transportation/air-purifying-vehicle-airfive-brake-dust-capture",
     "https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/",
-    "https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup"
+    "https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup",
+    "https://interestingengineering.com/military/us-funds-cargo-aircraft-30-less-fuel"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -59,10 +60,10 @@
     "Recursive releases free coding model - Startup Recursive launches Flint, a free coding model that runs on laptops and was built mostly by AI.",
     "Air-Purifying Vehicle Grille System - Captures brake dust directly at the source and removes 95% of PM2.5 particles.",
     "What If AI Handled Your Post-Purchase Admin? - Imagine a tool that tracks return windows, warranty deadlines, and receipts automatically.",
-    "Cleaning Wikipedia's AI Edits - How volunteers formed WikiProject AI Cleanup to remove policy-breaking synthetic text."
+    "Cleaning Wikipedia's AI Edits - How volunteers formed WikiProject AI Cleanup to remove policy-breaking synthetic text.",
+    "US Air Force Awards $3.5M to Natilus for KONA Aircraft - Funding supports the KONA blended-wing cargo aircraft design, which consumes 30 percent less fuel."
   ],
   "themes": [
-    "hologram",
     "matrix",
     "circuit",
     "aurora",
@@ -81,12 +82,14 @@
     "sunset",
     "synthwave",
     "circuit",
-    "cyber_city"
+    "cyber_city",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
     "A macro cinematic shot of a glowing metallic microchip inside a sleek laptop, emitting holographic lines of glowing blue code that curve upw",
     "A dramatic low-angle shot of a futuristic vehicle's glowing honeycomb front grille actively vacuuming dense dark particulate smog from a wet",
-    "A cinematic wide shot of an ancient, towering stone monument covered in glowing, glitching digital vines of red and gold binary code, under "
+    "A cinematic wide shot of an ancient, towering stone monument covered in glowing, glitching digital vines of red and gold binary code, under ",
+    "Cinematic wide shot of an immense, futuristic blended-wing cargo aircraft soaring high above a glowing cloud layer at sunset. Sleek metallic"
   ]
 }

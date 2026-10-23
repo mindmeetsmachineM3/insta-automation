@@ -161,7 +161,7 @@ jobs:
           echo "Token refreshed and saved to repo secret."
 
       - name: Upload dry-run preview
-        if: ${{ steps.pick.outputs.dry == 'true' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose && steps.pick.outputs.action != 'insights' }}
+        if: ${{ steps.pick.outputs.dry == 'true' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' && steps.pick.outputs.action != 'insights' }}
         uses: actions/upload-artifact@v4
         with:
           name: preview

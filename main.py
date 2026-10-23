@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-23-v31 (voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-23-v35 (question + comment CTA, Hindi Reels share, voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -77,7 +77,15 @@ EXTRA_TRIGGERS_UTC = [(2, 53), (4, 47), (5, 41), (6, 23), (7, 9), (8, 11), (9, 3
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
-LANGUAGE = os.getenv("POST_LANGUAGE", "English")  # English / Marathi / Hinglish
+LANGUAGE = os.getenv("POST_LANGUAGE", "English")  # English / Marathi / Hinglish / Hindi
+HINDI_SHARE = float(os.getenv("HINDI_SHARE") or 0)  # share of Reels made in Hindi (0 = none, 0.15 = about 1 in 7)
+
+
+def lang_line():
+    if LANGUAGE.lower() == "hindi":
+        return ("Hindi: natural, spoken, conversational Hindi in Devanagari script, as a friendly Indian tech creator would say it. "
+                "Keep technical words such as AI, robot, chip, battery in English. Short sentences ending with '।' or '?'")
+    return LANGUAGE
 GRAPH = "https://graph.instagram.com/v21.0"
 
 # Growth: call-to-action line + fixed topic hashtags (added to every caption)
@@ -99,8 +107,8 @@ HOOK_RULE = (
     "- The FIRST line of the caption is a scroll-stopping hook (max 14 words). Use a curiosity, surprise, value or question "
     "style such as 'Imagine...', 'What if...', 'Nobody talks about...', '3 things you didn't know about...' or "
     "'Can X really do Y?'. The hook must stay true to the facts: no exaggeration, no clickbait claims.\n"
-    "- The LAST line of the caption invites a reaction in one short sentence (a question to comment on, "
-    "or 'Save this for later'). Do not add a follow request: it is added separately."
+    "- The LAST line of the caption is ONE short, specific question about this topic that viewers can answer in the comments "
+    "(for example 'Do you think X will replace Y?'). Do not write 'comment below' or a follow request: those are added separately."
 )
 
 # Hashtag tiers: broad (huge reach), mid (focused), niche (small, easier to rank). A few of each are mixed per post.
@@ -231,7 +239,7 @@ def build_prompt(slot, items, recent=None):
         )
     return f"""{task}
 
-Language of the post: {LANGUAGE}.
+Language of the post: {lang_line()}.
 Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
@@ -292,7 +300,7 @@ def build_news_write_prompt(facts, source_name):
     return f"""Write an Instagram post about the news story described by these notes (from {source_name}).
 Use ONLY the facts in the notes. Do not invent numbers, quotes, names, motives or claims.
 
-Language of the post: {LANGUAGE}.
+Language of the post: {lang_line()}.
 Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
@@ -326,7 +334,7 @@ def build_concept_prompt(topic_text, recent=None):
 Pick a real, well-established technology, component, principle or milestone. Explain how it works or why it matters.
 Be concrete (one specific thing, not a broad overview).
 
-Language of the post: {LANGUAGE}.
+Language of the post: {lang_line()}.
 Audience: Indian tech-curious Instagram users, many are students and makers. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
@@ -660,6 +668,48 @@ def generate_concept_post(topic_text, recent=None):
     raise RuntimeError("AI did not return valid post JSON after 3 tries")
 
 
+COMMENT_PHRASES = [
+    "What do you think? Comment down below.",
+    "What's your opinion? Comment down below.",
+    "Tell us your opinion in the comments.",
+    "What's your take? Comment down below.",
+    "Do you agree? Comment down below.",
+]
+COMMENT_PHRASES_HI = [
+    "आपकी क्या राय है? नीचे कमेंट करें।",
+    "आप क्या सोचते हैं? नीचे कमेंट में बताइए।",
+    "आप सहमत हैं? कमेंट करके बताइए।",
+]
+
+
+def follow_phrase():
+    return "ऐसे और वीडियो के लिए फॉलो करें।" if LANGUAGE.lower() == "hindi" else "Follow for more."
+
+
+def comment_phrase(post=None):
+    """One closing line per post, chosen at random. It is stored in the post, so the Reel voice and
+    the caption always say the same thing."""
+    if post is not None and post.get("cta_comment"):
+        return post["cta_comment"]
+    pool = COMMENT_PHRASES_HI if LANGUAGE.lower() == "hindi" else COMMENT_PHRASES
+    phrase = random.choice(pool)
+    if post is not None:
+        post["cta_comment"] = phrase
+    return phrase
+
+
+def split_ask(caption):
+    """(body, question): the last sentence of the caption if it is a question, else a generic question."""
+    sents = re.split(r"(?<=[.!?।])\s+", caption.strip())
+    if len(sents) > 1 and "?" in sents[-1]:
+        last = sents[-1].strip()
+        q = re.sub(r"^[^\w\u0900-\u097F]+", "", last)          # emojis that belong to the previous line
+        lead = last[:len(last) - len(q)].strip()
+        return (" ".join(sents[:-1]) + (" " + lead if lead else "")).strip(), q
+    generic = "आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else "What do you think?"
+    return caption.strip(), generic
+
+
 def format_caption(text):
     """If the AI wrote one dense paragraph, split it: hook / body lines / closing takeaway."""
     text = text.strip()
@@ -711,6 +761,7 @@ def extra_gate():
 # ---------------------------------------------------------------- image
 def load_font(size, bold=True):
     candidates = [
+        os.getenv("FONT_PATH_DEV", "") if LANGUAGE.lower() in ("hindi", "marathi") else "",  # Devanagari-capable font
         os.getenv("FONT_PATH", ""),  # set to NotoSansDevanagari-Bold.ttf for Marathi
         "C:/Windows/Fonts/segoeuib.ttf",
         "C:/Windows/Fonts/arialbd.ttf",
@@ -1289,7 +1340,7 @@ def make_image(slot, post, path, theme=None):
 VOICES = {  # (edge-tts voices, gTTS lang, gTTS tld). Override with the VOICE variable.
     "english": (["en-US-AndrewMultilingualNeural"], "en", "co.in"),
     "hinglish": (["hi-IN-SwaraNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
-    "hindi": (["hi-IN-SwaraNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
+    "hindi": (["hi-IN-MadhurNeural", "hi-IN-SwaraNeural"], "hi", "co.in"),
     "marathi": (["mr-IN-AarohiNeural", "mr-IN-ManoharNeural"], "mr", "co.in"),
 }
 
@@ -1313,8 +1364,11 @@ def make_voice(text, out_path):
     voices, gl, tld = VOICES.get(LANGUAGE.lower(), VOICES["english"])
     forced = os.getenv("VOICE")
     order = [forced] if forced else list(voices)
-    if not forced and (os.getenv("VOICE_MIX") or "off").lower() == "on" and LANGUAGE.lower() == "english":
+    mix = (os.getenv("VOICE_MIX") or "off").lower() == "on"
+    if not forced and mix and LANGUAGE.lower() == "english":
         order = [random.choice(VOICE_POOL)] + order
+    elif not forced and mix and LANGUAGE.lower() == "hindi":
+        random.shuffle(order)   # Madhur (male) or Swara (female)
     try:
         import asyncio
         import edge_tts
@@ -1599,7 +1653,7 @@ def make_art_image(post, art_path, path, label):
     tw = meas.textbbox((0, 0), label, font=lf)[2]
     d.rounded_rectangle([60, 56, 60 + tw + 52, 124], 34, fill=(0, 0, 0, 150), outline=accent + (255,), width=3)
     d.text((86, 66), label, font=lf, fill=(255, 255, 255, 255))
-    d.text((70, H - 78), os.getenv("IG_HANDLE", ""), font=load_font(34), fill=(255, 255, 255, 220),
+    d.text((70, H - 78), (os.getenv("IG_HANDLE", "") + "  •  Follow for more") if os.getenv("IG_HANDLE") else "", font=load_font(34), fill=(255, 255, 255, 220),
            stroke_width=2, stroke_fill=(0, 0, 0, 200))
     img.convert("RGB").save(path, "JPEG", quality=93, subsampling=0)
 
@@ -1795,14 +1849,14 @@ def _reel_sub_png(text, path):
     im.save(path)
 
 
-def _reel_word_png(text, accent, path):
+def _reel_word_png(text, accent, path, force_accent=False):
     """Big centred caption for 2-3 words (no box, thick outline); chunks with numbers use the accent colour."""
     meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     f, lines, size = _fit(meas, text, 940, 2, 92, 58)
     lh = int(size * 1.15)
     im = Image.new("RGBA", (1000, lh * len(lines) + 24), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    col = tuple(accent) + (255,) if re.search(r"\d", text) else (255, 255, 255, 255)
+    col = tuple(accent) + (255,) if (force_accent or re.search(r"\d", text)) else (255, 255, 255, 255)
     for i, ln in enumerate(lines):
         w = meas.textbbox((0, 0), ln, font=f)[2]
         d.text(((1000 - w) // 2, 8 + i * lh), ln, font=f, fill=col, stroke_width=7, stroke_fill=(0, 0, 0, 255))
@@ -1816,14 +1870,17 @@ def _short_speech(post, max_words=70):
     if len(w) <= max_words:
         return t
     cut = " ".join(w[:max_words])
-    end = max(cut.rfind(". "), cut.rfind("? "), cut.rfind("! "))
+    end = max(cut.rfind(". "), cut.rfind("? "), cut.rfind("! "), cut.rfind("। "))
     return cut[:end + 1] if end > 120 else cut
 
 
 def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=None):
     """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
     work = Path(out_path).with_suffix("")
-    text = _short_speech({**post, "headline": ""}, max_words=42)   # headline is already on screen: hook first, short (retention)
+    body_text = _short_speech({**post, "headline": "", "caption": post.get("body") or post["caption"]}, max_words=40)
+    ask_text = _speech_text({"headline": "", "caption": post.get("ask", "")}) if post.get("ask") else ""
+    text = " ".join(p for p in (body_text, ask_text, comment_phrase(post), follow_phrase()) if p)   # hook first, then the question people answer
+    ask_start = len(body_text.split())
     voice = Path(str(work) + ".voice.mp3")
     have_voice = make_voice(text, voice)
     lead, tail = 0.2, 1.0
@@ -1873,7 +1930,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     shade, head, badge = tmp(".shade.png"), tmp(".head.png"), tmp(".badge.png")
     _shade_png(shade)
     htop, _ = _headline_png(post["headline"], accent, head)
-    _badge_png(label, os.getenv("IG_HANDLE", ""), accent, badge)
+    _badge_png(label, (os.getenv("IG_HANDLE", "") + "  •  Follow for more").strip(" •") if os.getenv("IG_HANDLE") else "", accent, badge)
 
     cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs                      # 0 background
     n = 1
@@ -1902,10 +1959,12 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     last = "l3"
     if have_voice:   # word-timed subtitles under the headline
         words = text.split()
-        chunks, cur = [], []
-        for wd in words:          # 3 words per caption, but never run across the end of a sentence/clause
+        chunks, cur, starts = [], [], []
+        for wi, wd in enumerate(words):   # 3 words per caption, but never run across the end of a sentence/clause
+            if not cur:
+                starts.append(wi)
             cur.append(wd)
-            if len(cur) == 3 or wd[-1] in ".?!,;:":
+            if len(cur) == 3 or wd[-1] in ".?!,;:।":
                 chunks.append(" ".join(cur))
                 cur = []
         if cur:
@@ -1915,7 +1974,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
         for k, (c, wg) in enumerate(zip(chunks, weights)):
             dur = vdur * wg / tw
             p = tmp(f".sub{k}.png")
-            _reel_word_png(c, accent, p)
+            _reel_word_png(c, accent, p, force_accent=starts[k] >= ask_start)
             cmd += ["-i", str(p)]
             fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:'700-h/2':enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
             last = f"s{k}"
@@ -2148,6 +2207,7 @@ def insights():
 
 # ---------------------------------------------------------------- main
 def main():
+    global LANGUAGE
     ap = argparse.ArgumentParser()
     ap.add_argument("--slot", choices=["news", "idea", "extra"])
     ap.add_argument("--gate", action="store_true", help="extra slot: post only at random (scheduled runs)")
@@ -2177,6 +2237,11 @@ def main():
 
     slot = args.slot
     stage = "ai"
+    reel_mode = (os.getenv("REELS") or "off").lower()
+    if (args.reel or reel_mode == "all" or (reel_mode == "extra" and slot == "extra")) \
+            and LANGUAGE.lower() == "english" and random.random() < HINDI_SHARE:
+        LANGUAGE = "Hindi"   # this Reel is made in Hindi (text, voice and subtitles)
+        print("LANGUAGE for this Reel: Hindi", file=sys.stderr)
     if slot == "extra" and args.gate and not extra_gate():
         return
     try:
@@ -2226,7 +2291,8 @@ def main():
             return
 
         label_txt = post.get("label") or ("AI NEWS" if slot == "news" else "TECH IDEA OF THE DAY")
-        caption = format_caption(post["caption"])
+        post["body"], post["ask"] = split_ask(post["caption"])
+        caption = format_caption(post["body"]) + f"\n\n{post['ask']} {comment_phrase(post)} 👇"
         if post.get("source_name"):
             caption += f"\n\nSource: {post['source_name']}"
         caption += f"\n\n{CTA}"
@@ -2298,7 +2364,7 @@ def main():
         state["headlines"] = state["headlines"][-40:]
         if as_reel:
             state.setdefault("reels", []).append({"id": str(media_id), "voice": LAST_VOICE.get("name", ""),
-                                                  "label": label_txt, "time": datetime.now().isoformat()[:16]})
+                                                  "label": label_txt, "lang": LANGUAGE, "time": datetime.now().isoformat()[:16]})
             state["reels"] = state["reels"][-80:]
         save_json(POSTED_FILE, state)
         log(slot, "OK", media_id)

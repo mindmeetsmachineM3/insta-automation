@@ -29,7 +29,8 @@
     "https://interestingengineering.com/military/us-funds-cargo-aircraft-30-less-fuel",
     "https://newatlas.com/motorcycles/dainese-smart-go-motorcycling-airbag/",
     "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
-    "https://interestingengineering.com/innovation/gm-ev-battery-simulations"
+    "https://interestingengineering.com/innovation/gm-ev-battery-simulations",
+    "https://spectrum.ieee.org/agility-robotics-digit-5-redesign"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -68,10 +69,10 @@
     "Battery-free airbag vest - Dainese created an ultra-lightweight motorcycle airbag vest that draws power from your phone.",
     "MIT Left 13 AI Agents on a Virtual Island - The agents invented games, mourned a lost ring, and eventually improved at their jobs.",
     "Real 3D Holograms Are Here - Researchers use laser optical traps to draw glowing 3D images directly in mid-air.",
-    "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time."
+    "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time.",
+    "Meet Digit 5 - Agility Robotics unveils a new humanoid machine built for heavy warehouse tasks."
   ],
   "themes": [
-    "matrix",
     "cyber_city",
     "aurora",
     "synthwave",
@@ -90,7 +91,8 @@
     "hologram",
     "synthwave",
     "aurora",
-    "sunset"
+    "sunset",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -102,7 +104,8 @@
   ],
   "videos": [
     "pb4760",
-    "pb134308"
+    "pb134308",
+    "pb19600"
   ],
   "reels": [
     {
@@ -122,6 +125,13 @@
       "voice": "en-US-AndrewMultilingualNeural",
       "label": "MECHATRONICS",
       "time": "2026-10-23T08:44"
+    },
+    {
+      "id": "18635782024014550",
+      "voice": "en-GB-RyanNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-23T12:08"
     }
   ]
 }

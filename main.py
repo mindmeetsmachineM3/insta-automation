@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-23-v29 (hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-23-v31 (voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1302,11 +1302,19 @@ def _speech_text(post):
     return re.sub(r"\s+", " ", t).strip()
 
 
+LAST_VOICE = {}
+# VOICE_MIX=on: every Reel uses a random voice from this pool; the voice is saved with the Reel so the
+# "insights" action can compare average watch time per voice (an A/B test of accents).
+VOICE_POOL = ["en-US-AndrewMultilingualNeural", "en-IN-PrabhatNeural", "en-GB-RyanNeural", "en-US-AvaMultilingualNeural"]
+
+
 def make_voice(text, out_path):
     """Free TTS: edge-tts (tries the voices in order), gTTS as backup. Returns True if a voice file was made."""
     voices, gl, tld = VOICES.get(LANGUAGE.lower(), VOICES["english"])
     forced = os.getenv("VOICE")
-    order = [forced] if forced else voices
+    order = [forced] if forced else list(voices)
+    if not forced and (os.getenv("VOICE_MIX") or "off").lower() == "on" and LANGUAGE.lower() == "english":
+        order = [random.choice(VOICE_POOL)] + order
     try:
         import asyncio
         import edge_tts
@@ -1316,6 +1324,7 @@ def make_voice(text, out_path):
                     edge_tts.Communicate(text, voice, rate="+0%").save(str(out_path)), 90))
                 if Path(out_path).stat().st_size > 2000:
                     print(f"(voice: {voice})", file=sys.stderr)
+                    LAST_VOICE["name"] = voice
                     return True
             except Exception as ex:
                 print(f"edge-tts {voice} failed: {ex}", file=sys.stderr)
@@ -1324,6 +1333,7 @@ def make_voice(text, out_path):
     try:
         from gtts import gTTS
         gTTS(text, lang=gl, tld=tld).save(str(out_path))
+        LAST_VOICE["name"] = "gTTS"
         return Path(out_path).stat().st_size > 2000
     except Exception as ex:
         print(f"gTTS failed: {ex}", file=sys.stderr)
@@ -1785,6 +1795,20 @@ def _reel_sub_png(text, path):
     im.save(path)
 
 
+def _reel_word_png(text, accent, path):
+    """Big centred caption for 2-3 words (no box, thick outline); chunks with numbers use the accent colour."""
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    f, lines, size = _fit(meas, text, 940, 2, 92, 58)
+    lh = int(size * 1.15)
+    im = Image.new("RGBA", (1000, lh * len(lines) + 24), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    col = tuple(accent) + (255,) if re.search(r"\d", text) else (255, 255, 255, 255)
+    for i, ln in enumerate(lines):
+        w = meas.textbbox((0, 0), ln, font=f)[2]
+        d.text(((1000 - w) // 2, 8 + i * lh), ln, font=f, fill=col, stroke_width=7, stroke_fill=(0, 0, 0, 255))
+    im.save(path)
+
+
 def _short_speech(post, max_words=70):
     """Headline + caption, cut at a sentence end so the Reel stays short (better retention)."""
     t = _speech_text(post)
@@ -1799,12 +1823,12 @@ def _short_speech(post, max_words=70):
 def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=None):
     """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
     work = Path(out_path).with_suffix("")
-    text = _short_speech({**post, "headline": ""})   # the headline is already on screen: start with the hook
+    text = _short_speech({**post, "headline": ""}, max_words=42)   # headline is already on screen: hook first, short (retention)
     voice = Path(str(work) + ".voice.mp3")
     have_voice = make_voice(text, voice)
-    lead, tail = 0.8, 1.6
+    lead, tail = 0.2, 1.0
     vdur = _duration(voice) if have_voice else 0
-    total = min(lead + (vdur if have_voice else 12) + tail, 60)
+    total = min(lead + (vdur if have_voice else 12) + tail, 45)
     label = label or post.get("label") or "TECH"
     used = (state or {}).get("videos", [])
 
@@ -1825,7 +1849,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
         parts = tmp(".parts.png")
         _particle_layer(parts, random.getrandbits(32))
         inputs = ["-loop", "1", "-framerate", "30", "-i", str(card)]
-        bg_chain = (f"[0:v]scale=w='trunc(1080*(1+0.17*t/{total:.1f})/2)*2':h=-2:eval=frame,"
+        bg_chain = (f"[0:v]scale=w='trunc(1080*(1+0.17*t/{total:.1f}+0.10*max(0,1-t/0.8))/2)*2':h=-2:eval=frame,"
                     "crop=1080:1920:x='(in_w-1080)/2+28*sin(t*0.55)':y='(in_h-1920)/2+18*sin(t*0.4)',fps=30[b0];"
                     "[b0][PARTS:v]overlay=x=0:y='-mod(t*55,1920)'[b1];"
                     "[b1]eq=brightness='0.035*sin(t*1.5)':contrast=1.06:saturation=1.12:eval=frame[bgv]")
@@ -1871,26 +1895,33 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     fc = [bg_chain.replace("PARTS", "1") if n_extra else bg_chain,
           "[bgv]noise=alls=7:allf=t,vignette=PI/5[bgn]",
           f"[bgn][{ishade}:v]overlay=0:0[l1]",
-          f"[{ihead}:v]format=rgba,fade=t=in:st=0.35:d=0.7:alpha=1[hd]",
-          f"[l1][hd]overlay=x=0:y='{htop}+50*(1-min(max(t-0.35,0)/0.7,1))'[l2]",
-          f"[{ibadge}:v]format=rgba,fade=t=in:st=0.1:d=0.5:alpha=1[bd]",
+          f"[{ihead}:v]format=rgba,fade=t=in:st=0:d=0.12:alpha=1[hd]",
+          f"[l1][hd]overlay=x=0:y='{htop}+40*(1-min(t/0.35,1))'[l2]",
+          f"[{ibadge}:v]format=rgba[bd]",
           "[l2][bd]overlay=x=0:y=270[l3]"]
     last = "l3"
     if have_voice:   # word-timed subtitles under the headline
         words = text.split()
-        chunks = [" ".join(words[i:i + 5]) for i in range(0, len(words), 5)]
+        chunks, cur = [], []
+        for wd in words:          # 3 words per caption, but never run across the end of a sentence/clause
+            cur.append(wd)
+            if len(cur) == 3 or wd[-1] in ".?!,;:":
+                chunks.append(" ".join(cur))
+                cur = []
+        if cur:
+            chunks.append(" ".join(cur))
         weights = [max(1, len(c)) for c in chunks]
         tw, t = sum(weights), lead
         for k, (c, wg) in enumerate(zip(chunks, weights)):
             dur = vdur * wg / tw
             p = tmp(f".sub{k}.png")
-            _reel_sub_png(c, p)
+            _reel_word_png(c, accent, p)
             cmd += ["-i", str(p)]
-            fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:1385:enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
+            fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:'700-h/2':enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
             last = f"s{k}"
             n += 1
             t += dur
-    fc.append(f"[{last}]fade=t=in:st=0:d=0.4,fade=t=out:st={total - 0.6:.2f}:d=0.6,format=yuv420p[v]")
+    fc.append(f"[{last}]fade=t=out:st={total - 0.5:.2f}:d=0.5,format=yuv420p[v]")
     music = f"[{imusic}:a]lowpass=f=700,tremolo=f=0.25:d=0.4,volume={0.10 if have_voice else 0.35},afade=t=in:d=2,afade=t=out:st={total - 2:.2f}:d=2"
     if have_voice:
         fc.append(f"[{ivoice}:a]adelay={int(lead * 1000)}|{int(lead * 1000)},volume=1.6[va]")
@@ -1997,7 +2028,7 @@ def publish(media_url, caption, reel=False):
     token = get_token()
     ig_id = os.environ["IG_USER_ID"]
     if reel:
-        payload = {"media_type": "REELS", "video_url": media_url, "share_to_feed": "true"}
+        payload = {"media_type": "REELS", "video_url": media_url, "share_to_feed": "true", "thumb_offset": "1500"}
     else:
         payload = {"image_url": media_url}
     r = requests.post(
@@ -2069,6 +2100,52 @@ def ig_recent_captions(limit=25):
         return []
 
 
+def insights():
+    """Table of every tracked Reel (views, watch time, likes ...) plus an average per voice."""
+    token, ig = get_token(), os.environ["IG_USER_ID"]
+    me = requests.get(f"{GRAPH}/{ig}", params={"fields": "followers_count,media_count", "access_token": token}, timeout=30).json()
+    print(f"followers: {me.get('followers_count')}   posts: {me.get('media_count')}")
+    tracked = {r["id"]: r for r in load_state().get("reels", [])}
+    try:   # Reels that were posted before tracking started
+        recent = requests.get(f"{GRAPH}/{ig}/media", params={"fields": "id,media_product_type,timestamp", "limit": 40,
+                              "access_token": token}, timeout=30).json().get("data", [])
+        for m in recent:
+            if m.get("media_product_type") == "REELS" and m["id"] not in tracked:
+                tracked[m["id"]] = {"id": m["id"], "voice": "(untracked)", "label": "?", "time": m.get("timestamp", "")[:16]}
+    except Exception as ex:
+        print("could not list media:", ex)
+    metrics = ["views", "reach", "likes", "comments", "shares", "saved", "ig_reels_avg_watch_time"]
+    rows = []
+    for rid, info in sorted(tracked.items(), key=lambda kv: kv[1].get("time", ""))[-40:]:
+        vals = {}
+        for mt in metrics:
+            try:
+                j = requests.get(f"{GRAPH}/{rid}/insights", params={"metric": mt, "access_token": token}, timeout=30).json()
+                vals[mt] = j["data"][0]["values"][0]["value"]
+            except Exception:
+                vals[mt] = None
+        vals["watch_s"] = round(vals["ig_reels_avg_watch_time"] / 1000, 1) if vals.get("ig_reels_avg_watch_time") is not None else None
+        rows.append((info, vals))
+    print(f"{'time':16} {'topic':15} {'voice':32} {'views':>6} {'reach':>6} {'watch_s':>7} {'likes':>5} {'saves':>5} {'shares':>6}")
+    for info, v in rows:
+        print(f"{info.get('time',''):16} {info.get('label',''):15} {info.get('voice',''):32} {str(v['views']):>6} {str(v['reach']):>6} "
+              f"{str(v['watch_s']):>7} {str(v['likes']):>5} {str(v['saved']):>5} {str(v['shares']):>6}")
+    by = {}
+    for info, v in rows:
+        if v["watch_s"] is not None:
+            by.setdefault(info.get("voice") or "?", []).append((v["watch_s"], v["views"] or 0))
+    print("\nAverage per voice (needs ~8+ Reels each to mean anything):")
+    for name, lst in by.items():
+        print(f"  {name:32} Reels={len(lst):2}  avg watch={sum(a for a, _ in lst) / len(lst):.1f}s  avg views={sum(b for _, b in lst) / len(lst):.0f}")
+    print("\nCountries (Instagram only gives this after 100 followers):")
+    try:
+        j = requests.get(f"{GRAPH}/{ig}/insights", params={"metric": "follower_demographics", "period": "lifetime",
+                         "metric_type": "total_value", "breakdown": "country", "access_token": token}, timeout=30).json()
+        print(json.dumps(j.get("data", j), indent=1)[:1500] if "data" in j else f"  not available yet: {j.get('error', {}).get('message', j)}")
+    except Exception as ex:
+        print("  not available:", ex)
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -2078,12 +2155,16 @@ def main():
     ap.add_argument("--reel", action="store_true", help="post as a Reel (video) instead of an image")
     ap.add_argument("--refresh-token", action="store_true")
     ap.add_argument("--diagnose", action="store_true", help="check the Instagram token and publish quota")
+    ap.add_argument("--insights", action="store_true", help="print performance of the tracked Reels")
     ap.add_argument("--gate-check", action="store_true", help="print go=true/false for an extra slot (used by the workflow)")
     args = ap.parse_args()
     print(f"main.py version {VERSION}", file=sys.stderr)
 
     if args.gate_check:   # the workflow asks first, so skipped runs do not install ffmpeg etc.
         print(f"go={'true' if extra_gate() else 'false'}")
+        return
+    if args.insights:
+        insights()
         return
     if args.diagnose:
         diagnose()
@@ -2215,6 +2296,10 @@ def main():
         state["themes"] = state["themes"][-20:]
         state["links"] = state["links"][-300:]
         state["headlines"] = state["headlines"][-40:]
+        if as_reel:
+            state.setdefault("reels", []).append({"id": str(media_id), "voice": LAST_VOICE.get("name", ""),
+                                                  "label": label_txt, "time": datetime.now().isoformat()[:16]})
+            state["reels"] = state["reels"][-80:]
         save_json(POSTED_FILE, state)
         log(slot, "OK", media_id)
         print("POSTED", slot, media_id)

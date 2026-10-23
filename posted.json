@@ -28,7 +28,8 @@
     "https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup",
     "https://interestingengineering.com/military/us-funds-cargo-aircraft-30-less-fuel",
     "https://newatlas.com/motorcycles/dainese-smart-go-motorcycling-airbag/",
-    "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/"
+    "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+    "https://interestingengineering.com/innovation/gm-ev-battery-simulations"
   ],
   "headlines": [
     "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
@@ -66,10 +67,10 @@
     "US Air Force Awards $3.5M to Natilus for KONA Aircraft - Funding supports the KONA blended-wing cargo aircraft design, which consumes 30 percent less fuel.",
     "Battery-free airbag vest - Dainese created an ultra-lightweight motorcycle airbag vest that draws power from your phone.",
     "MIT Left 13 AI Agents on a Virtual Island - The agents invented games, mourned a lost ring, and eventually improved at their jobs.",
-    "Real 3D Holograms Are Here - Researchers use laser optical traps to draw glowing 3D images directly in mid-air."
+    "Real 3D Holograms Are Here - Researchers use laser optical traps to draw glowing 3D images directly in mid-air.",
+    "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time."
   ],
   "themes": [
-    "manga",
     "matrix",
     "cyber_city",
     "aurora",
@@ -88,14 +89,16 @@
     "matrix",
     "hologram",
     "synthwave",
-    "aurora"
+    "aurora",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
     "A macro cinematic shot of a glowing metallic microchip inside a sleek laptop, emitting holographic lines of glowing blue code that curve upw",
     "A dramatic low-angle shot of a futuristic vehicle's glowing honeycomb front grille actively vacuuming dense dark particulate smog from a wet",
     "A cinematic wide shot of an ancient, towering stone monument covered in glowing, glitching digital vines of red and gold binary code, under ",
-    "Cinematic wide shot of an immense, futuristic blended-wing cargo aircraft soaring high above a glowing cloud layer at sunset. Sleek metallic"
+    "Cinematic wide shot of an immense, futuristic blended-wing cargo aircraft soaring high above a glowing cloud layer at sunset. Sleek metallic",
+    "A cinematic close-up of a massive, intricate holographic matrix of electric vehicle battery cells floating in a dark, high-tech laboratory. "
   ],
   "videos": [
     "pb4760",
@@ -113,6 +116,12 @@
       "voice": "en-GB-RyanNeural",
       "label": "SCI-FI TECH",
       "time": "2026-10-23T06:11"
+    },
+    {
+      "id": "18138549583638052",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "label": "MECHATRONICS",
+      "time": "2026-10-23T08:44"
     }
   ]
 }

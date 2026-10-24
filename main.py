@@ -776,13 +776,48 @@ def extra_gate():
 
 
 # ---------------------------------------------------------------- image
-def load_font(size, bold=True):
+# Font pairings: (headline font file, body font file, headline size scale). Files live in ./fonts (the workflow downloads them).
+FONT_PAIRS = {
+    "poppins":  ("Poppins-ExtraBold.ttf", "Poppins-Bold.ttf", 1.0),                      # bold & clean
+    "anton":    ("Anton-Regular.ttf", "OpenSans[wdth,wght].ttf", 1.28),                   # strong, attention-grabbing
+    "spartan":  ("LeagueSpartan[wght].ttf", "Poppins-Bold.ttf", 1.08),                    # bold & clean
+    "playfair": ("PlayfairDisplay[wght].ttf", "Montserrat[wght].ttf", 1.0),               # timeless & premium
+}
+FONT_PAIR = (os.getenv("FONT_PAIR") or "anton").strip().lower()
+
+
+def _open_font(path, size, weight="Bold"):
+    f = ImageFont.truetype(str(path), size)
+    if "[" in Path(path).name:                       # variable font: pick the heavy weight
+        for nm in (weight, "Bold", "ExtraBold", "Black"):
+            try:
+                f.set_variation_by_name(nm)
+                break
+            except Exception:
+                continue
+    return f
+
+
+def load_font(size, bold=True, role="body"):
+    """role='head' for headlines / big caption words, 'body' for badges, handle and small text."""
+    deva = LANGUAGE.lower() in ("hindi", "marathi")
     here = Path(__file__).parent / "fonts"
+    pair = FONT_PAIRS.get(FONT_PAIR, FONT_PAIRS["poppins"])
+    files = []
+    if bold and not deva:
+        files = [pair[0], pair[1]] if role == "head" else [pair[1], pair[0]]
+        files += ["Poppins-ExtraBold.ttf", "Poppins-Bold.ttf"]
+    for fn in files:
+        p = here / fn
+        if p.exists():
+            try:
+                sc = pair[2] if (role == "head" and fn == pair[0]) else 1.0
+                return _open_font(p, int(size * sc), "ExtraBold" if role == "head" else "Bold")
+            except Exception:
+                continue
     candidates = [
-        str(here / "Poppins-ExtraBold.ttf") if (bold and LANGUAGE.lower() not in ("hindi", "marathi")) else "",  # popular rounded display font
-        str(here / "Poppins-Bold.ttf") if (bold and LANGUAGE.lower() not in ("hindi", "marathi")) else "",
-        "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf" if (bold and LANGUAGE.lower() not in ("hindi", "marathi")) else "",
-        os.getenv("FONT_PATH_DEV", "") if LANGUAGE.lower() in ("hindi", "marathi") else "",  # Devanagari-capable font
+        "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf" if (bold and not deva) else "",
+        os.getenv("FONT_PATH_DEV", "") if deva else "",  # Devanagari-capable font
         os.getenv("FONT_PATH", ""),  # set to NotoSansDevanagari-Bold.ttf for Marathi
         "C:/Windows/Fonts/segoeuib.ttf",
         "C:/Windows/Fonts/arialbd.ttf",
@@ -1272,10 +1307,10 @@ def _fit(meas, text, max_w, max_lines, start, min_size):
     """Shrink the font until the text fits in max_lines."""
     size = start
     while True:
-        f = load_font(size)
+        f = load_font(size, role="head")
         lines = wrap_to_width(meas, text, f, max_w)
         if len(lines) <= max_lines or size <= min_size:
-            return f, lines, size
+            return f, lines, int(getattr(f, "size", size))
         size -= 4
 
 

@@ -37,7 +37,6 @@
     "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/"
   ],
   "headlines": [
-    "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
     "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud.",
     "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages.",
     "Real Sci-Fi: Acoustic Tractor Beams - How ultrasonic sound waves can trap and hover physical objects mid-air without physical contact.",
@@ -76,10 +75,10 @@
     "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
     "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
     "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
-    "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing."
+    "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing.",
+    "How Bending Steel Gives Robots Zero-Backlash Precision - Harmonic drive gearing intentionally deforms metal to achieve extreme control in compact joints."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "cyber_city",
     "sunset",
@@ -98,7 +97,8 @@
     "hologram",
     "cyber_city",
     "manga",
-    "matrix"
+    "matrix",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -172,6 +172,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-10-24T12:04"
+    },
+    {
+      "id": "18137449948629340",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-10-24T14:04"
     }
   ]
 }

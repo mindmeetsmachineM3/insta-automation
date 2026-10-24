@@ -698,9 +698,26 @@ def comment_phrase(post=None):
     return phrase
 
 
+_ABBR = re.compile(r"(?:^|[\s(])(?:[A-Za-z]{1,2}|[A-Za-z]\.[A-Za-z]|vs|Mr|Mrs|Ms|Dr|St|Inc|Ltd|Co|No|Jr|Sr|approx|etc)\.$", re.I)
+
+
+def split_sentences(text):
+    """Split into sentences, but not after abbreviations / names such as 'ID.', 'U.S.', 'vs.'."""
+    out, cur = [], ""
+    for part in re.split(r"(?<=[.!?।])\s+", text.strip()):
+        cur = (cur + " " + part).strip() if cur else part
+        if _ABBR.search(cur) and part.rstrip().endswith("."):
+            continue
+        out.append(cur)
+        cur = ""
+    if cur:
+        out.append(cur)
+    return out
+
+
 def split_ask(caption):
     """(body, question): the last sentence of the caption if it is a question, else a generic question."""
-    sents = re.split(r"(?<=[.!?।])\s+", caption.strip())
+    sents = split_sentences(caption)
     if len(sents) > 1 and "?" in sents[-1]:
         last = sents[-1].strip()
         q = re.sub(r"^[^\w\u0900-\u097F]+", "", last)          # emojis that belong to the previous line
@@ -715,7 +732,7 @@ def format_caption(text):
     text = text.strip()
     if "\n" in text:
         return text
-    sents = re.split(r"(?<=[.!?])\s+(?=[A-Z\W])", text)
+    sents = split_sentences(text)
     if len(sents) < 4:
         return text
     body = sents[1:-1]
@@ -759,9 +776,48 @@ def extra_gate():
 
 
 # ---------------------------------------------------------------- image
-def load_font(size, bold=True):
+# Font pairings: (headline font file, body font file, headline size scale). Files live in ./fonts (the workflow downloads them).
+FONT_PAIRS = {
+    "poppins":  ("Poppins-ExtraBold.ttf", "Poppins-Bold.ttf", 1.0),                      # bold & clean
+    "anton":    ("Anton-Regular.ttf", "OpenSans[wdth,wght].ttf", 1.28),                   # strong, attention-grabbing
+    "spartan":  ("LeagueSpartan[wght].ttf", "Poppins-Bold.ttf", 1.08),                    # bold & clean
+    "playfair": ("PlayfairDisplay[wght].ttf", "Montserrat[wght].ttf", 1.0),               # timeless & premium
+}
+FONT_PAIR = (os.getenv("FONT_PAIR") or "anton").strip().lower()
+
+
+def _open_font(path, size, weight="Bold"):
+    f = ImageFont.truetype(str(path), size)
+    if "[" in Path(path).name:                       # variable font: pick the heavy weight
+        for nm in (weight, "Bold", "ExtraBold", "Black"):
+            try:
+                f.set_variation_by_name(nm)
+                break
+            except Exception:
+                continue
+    return f
+
+
+def load_font(size, bold=True, role="body"):
+    """role='head' for headlines / big caption words, 'body' for badges, handle and small text."""
+    deva = LANGUAGE.lower() in ("hindi", "marathi")
+    here = Path(__file__).parent / "fonts"
+    pair = FONT_PAIRS.get(FONT_PAIR, FONT_PAIRS["poppins"])
+    files = []
+    if bold and not deva:
+        files = [pair[0], pair[1]] if role == "head" else [pair[1], pair[0]]
+        files += ["Poppins-ExtraBold.ttf", "Poppins-Bold.ttf"]
+    for fn in files:
+        p = here / fn
+        if p.exists():
+            try:
+                sc = pair[2] if (role == "head" and fn == pair[0]) else 1.0
+                return _open_font(p, int(size * sc), "ExtraBold" if role == "head" else "Bold")
+            except Exception:
+                continue
     candidates = [
-        os.getenv("FONT_PATH_DEV", "") if LANGUAGE.lower() in ("hindi", "marathi") else "",  # Devanagari-capable font
+        "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf" if (bold and not deva) else "",
+        os.getenv("FONT_PATH_DEV", "") if deva else "",  # Devanagari-capable font
         os.getenv("FONT_PATH", ""),  # set to NotoSansDevanagari-Bold.ttf for Marathi
         "C:/Windows/Fonts/segoeuib.ttf",
         "C:/Windows/Fonts/arialbd.ttf",
@@ -1251,10 +1307,10 @@ def _fit(meas, text, max_w, max_lines, start, min_size):
     """Shrink the font until the text fits in max_lines."""
     size = start
     while True:
-        f = load_font(size)
+        f = load_font(size, role="head")
         lines = wrap_to_width(meas, text, f, max_w)
         if len(lines) <= max_lines or size <= min_size:
-            return f, lines, size
+            return f, lines, int(getattr(f, "size", size))
         size -= 4
 
 
@@ -1469,15 +1525,17 @@ def make_reel_voice(img_path, out_path, post):
 # ---------------------------------------------------------------- AI art (cinematic background)
 # Same look as big space/science pages: a dramatic AI-generated picture, big headline at the bottom.
 # Free generators are tried in order; if none works the post falls back to stock video / the Pillow themes.
-ART_STYLE = ("photorealistic cinematic still, ultra realistic, highly detailed textures, volumetric lighting, "
-             "dramatic contrast, shot on 35mm anamorphic lens, 8k, vertical composition, "
+ART_STYLE = ("photorealistic cinematic still, ultra realistic, highly detailed textures, soft natural light, "
+             "bright vibrant colours, high-key lighting, clean modern look, light airy background, shot on 35mm anamorphic lens, 8k, vertical composition, "
+             "main subject large, sharp and well lit, clearly visible, placed in the upper half of the frame, "
+             "balanced exposure, not underexposed, "
              "no text, no letters, no logos, no watermark")
 ART_LOOKS = [  # one is picked at random per post so the pictures do not all look alike
-    "deep space backdrop, blue and violet nebula glow", "golden hour rim light, orange and teal colour grade",
-    "dark industrial environment, cold blue neon accents", "bright lens flare, white and cyan highlights",
-    "misty atmosphere, red and magenta light", "night scene, glowing particles in the air",
-    "dramatic low angle, hard shadows", "wide establishing shot, enormous scale, tiny details",
-    "extreme close-up macro, shallow depth of field", "top-down view, symmetrical composition",
+    "bright sunny sky, soft white clouds, teal and orange colour grade", "golden hour glow, warm light, vivid colours",
+    "clean white studio backdrop, soft shadows, glossy reflections", "bright lens flare, white and cyan highlights",
+    "pastel gradient sky, pink and blue light", "daylight, crisp and colourful, glowing particles in the air",
+    "bright blue sky, dramatic low angle", "wide establishing shot in daylight, enormous scale, tiny details",
+    "extreme close-up macro, shallow depth of field, bright rim light", "top-down view, symmetrical composition, light background",
 ]
 LAST_ART = {}
 ART_FALLBACK_SUBJECT = {
@@ -1499,7 +1557,8 @@ def build_art_prompt(post, label, recent=None):
         q = ("Write ONE image-generation prompt (max 45 words) for a dramatic, cinematic, photorealistic digital "
              "artwork that visually represents this social media post. Show a striking scene or object (spacecraft, robot, "
              "planet, machine, circuit, black hole, futuristic city...). No real people, no celebrities, no brand names, "
-             "no logos, no text or letters in the image.\n"
+             "no logos, no text or letters in the image. The main subject must be large, brightly lit and clearly visible "
+             "(never a dark silhouette), placed in the upper half of the picture.\n"
              f"Headline: {post.get('headline', '')}\nContext: {post.get('caption', '')[:300]}\n"
              + ("Do NOT repeat the subject or composition of these recent pictures: " + " | ".join(recent[-8:]) + "\n" if recent else "")
              + "Be specific and original: a different subject, camera angle and mood every time.\n"
@@ -1631,7 +1690,7 @@ def make_art_image(post, art_path, path, label):
     shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shade)
     for y in range(H):
-        a = int(235 * min(1, max(0, (y - 520) / 700)) ** 1.4) if y > 520 else 0
+        a = int(165 * min(1, max(0, (y - 600) / 650)) ** 1.5) if y > 600 else 0
         sd.line([(0, y), (W, y)], fill=(0, 0, 0, a))
     img.alpha_composite(shade)
     meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
@@ -1791,10 +1850,10 @@ def _shade_png(path):
     d = ImageDraw.Draw(im)
     for y in range(1920):
         a = 0
-        if y > 760:
-            a = int(225 * min(1, (y - 760) / 760) ** 1.5)
+        if y > 900:
+            a = int(150 * min(1, (y - 900) / 700) ** 1.5)
         if y < 380:
-            a = max(a, int(110 * (1 - y / 380)))
+            a = max(a, int(70 * (1 - y / 380)))
         d.line([(0, y), (1080, y)], fill=(0, 0, 0, a))
     im.save(path)
 
@@ -1877,14 +1936,14 @@ def _short_speech(post, max_words=70):
 def make_reel_script(post):
     """Open-loop voice-over: tease -> build-up -> payoff LAST. People leave once they get the answer, so the
     answer comes at the very end and the Reel stops right after it. Uses only the facts of the post."""
-    q = f"""You write a 30-second Instagram Reel voice-over from the post below.
+    q = f"""You write a 20-second Instagram Reel voice-over from the post below.
 Language: {lang_line()}.
 
 Structure (open loop, the answer comes LAST):
 - "tease": ONE short line (max 12 words) that makes people need the answer. It must NOT reveal the key fact or result.
-- "build": 2 or 3 short lines (max 16 words each) with context, stakes or numbers that add tension but still hold the key fact back.
-- "payoff": ONE line (max 22 words) that finally gives the key fact. The Reel ends right after it.
-- "teaser_headline": max 10 words for the screen: a question or curiosity statement, with NO answer in it.
+- "build": 2 or 3 short lines (max 14 words each) with context, stakes or numbers that add tension but still hold the key fact back.
+- "payoff": ONE line (max 18 words) that finally gives the key fact. The Reel ends right after it.
+- "teaser_headline": max 7 words for the screen: a question or curiosity statement, with NO answer in it.
 
 Rules: use ONLY facts that are in the post. No invented numbers, names, quotes or claims, and keep the exact scope of the facts.
 Plain spoken words, no emojis, no hashtags. Never say 'comment', 'follow' or 'link'.
@@ -2031,7 +2090,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     n += 4 if teaser else 3
 
     fc = [bg_chain.replace("PARTS", "1") if n_extra else bg_chain,
-          "[bgv]noise=alls=7:allf=t,vignette=PI/5[bgn]",
+          "[bgv]eq=brightness=0.06:contrast=1.05:saturation=1.2,noise=alls=5:allf=t,vignette=PI/3[bgn]",
           f"[bgn][{ishade}:v]overlay=0:0[l1]"]
     if teaser:   # teaser headline first, the real headline (the answer) replaces it when the payoff is spoken
         fc += [f"[{ihead}:v]format=rgba,fade=t=in:st={t_reveal:.2f}:d=0.25:alpha=1[hd]",
@@ -2063,7 +2122,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
             p = tmp(f".sub{k}.png")
             _reel_word_png(c, accent, p, force_accent=starts[k] >= ask_start)
             cmd += ["-i", str(p)]
-            fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:'700-h/2':enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
+            fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:'1480-h/2':enable='between(t,{t:.2f},{t + dur:.2f})'[s{k}]")
             last = f"s{k}"
             n += 1
             t += dur

@@ -36,7 +36,6 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet"
   ],
   "headlines": [
-    "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone.",
     "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?",
     "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
     "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud.",
@@ -75,10 +74,10 @@
     "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away.",
     "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems.",
     "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
-    "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency."
+    "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
+    "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion."
   ],
   "themes": [
-    "aurora",
     "matrix",
     "synthwave",
     "circuit",
@@ -97,7 +96,8 @@
     "synthwave",
     "circuit",
     "hologram",
-    "cyber_city"
+    "cyber_city",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -115,7 +115,8 @@
   "videos": [
     "pb4760",
     "pb134308",
-    "pb19600"
+    "pb19600",
+    "pb47220"
   ],
   "reels": [
     {
@@ -163,6 +164,13 @@
       "label": "SCI-FI TECH",
       "lang": "English",
       "time": "2026-10-24T10:12"
+    },
+    {
+      "id": "18117947681105054",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-24T12:04"
     }
   ]
 }

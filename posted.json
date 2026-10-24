@@ -32,10 +32,10 @@
     "https://interestingengineering.com/innovation/gm-ev-battery-simulations",
     "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
     "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
-    "https://interestingengineering.com/military/us-abrams-tanks-perch-drone-launcher"
+    "https://interestingengineering.com/military/us-abrams-tanks-perch-drone-launcher",
+    "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet"
   ],
   "headlines": [
-    "Satya Nadella Calls for AI 'Emergency Brake' - Microsoft's CEO urges industry to reassess the trust architecture of artificial intelligence.",
     "The Floating Pin Trap in Microcontrollers - An ungrounded digital input acts like an antenna, picking up stray electromagnetic noise around you.",
     "Why Sodium-Ion Cells Can Drop to Absolute 0V - Unlike lithium, sodium-ion cells can safely drop to zero charge by swapping copper foils for aluminum.",
     "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone.",
@@ -74,10 +74,10 @@
     "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time.",
     "Meet Digit 5 - Agility Robotics unveils a new humanoid machine built for heavy warehouse tasks.",
     "What if AI could log in for you safely? - Imagine granting login access to automated assistants while your actual master passwords remain completely hidden.",
-    "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away."
+    "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away.",
+    "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "cyber_city",
     "aurora",
@@ -96,7 +96,8 @@
     "sunset",
     "hologram",
     "cyber_city",
-    "synthwave"
+    "synthwave",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -106,7 +107,8 @@
     "Cinematic wide shot of an immense, futuristic blended-wing cargo aircraft soaring high above a glowing cloud layer at sunset. Sleek metallic",
     "A cinematic close-up of a massive, intricate holographic matrix of electric vehicle battery cells floating in a dark, high-tech laboratory. ",
     "A dramatic eye-level shot of a sleek, translucent obsidian automaton inserting a radiant energy key into a massive, glowing mechanical vault",
-    "Cinematic high-angle shot of a heavily armored futuristic combat tank traversing a dusty alien canyon, its turret opening to release a swarm"
+    "Cinematic high-angle shot of a heavily armored futuristic combat tank traversing a dusty alien canyon, its turret opening to release a swarm",
+    "Dramatic bird's-eye view of a colossal spherical supercomputer core isolated inside a fortified subterranean bunker. Massive severed fiber-o"
   ],
   "videos": [
     "pb4760",

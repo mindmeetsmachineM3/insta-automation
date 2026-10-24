@@ -10,6 +10,7 @@ Usage:
 UiPath Orchestrator triggers this script twice a day.
 """
 import argparse
+import shutil
 import subprocess
 import json
 import math
@@ -1451,9 +1452,15 @@ def make_voice(text, out_path):
 
 
 def _duration(path):
-    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
-                       capture_output=True, text=True, check=True)
-    return float(r.stdout.strip())
+    if shutil.which("ffprobe"):
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                           capture_output=True, text=True, check=True)
+        return float(r.stdout.strip())
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path)], capture_output=True, text=True)   # parses "Duration: hh:mm:ss.xx"
+    m = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", r.stderr)
+    if not m:
+        raise RuntimeError("cannot read duration")
+    return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3))
 
 
 def _subtitle_png(text, path):
@@ -1582,12 +1589,20 @@ def _valid_image(path):
 
 
 def _art_pollinations(prompt, dest):
+    """Pollinations: the new gen.pollinations.ai endpoint needs a free key (POLLINATIONS_API_KEY); the old keyless one is the fallback."""
     from urllib.parse import quote
+    key = (os.getenv("POLLINATIONS_API_KEY") or os.getenv("POLLINATIONS_KEY") or "").strip()
+    tries = []
+    if key:
+        for model in ("black-forest-labs/flux.1-schnell", "tongyi-mai/z-image-turbo"):
+            tries.append((f"https://gen.pollinations.ai/image/{quote(prompt)}?model={quote(model, safe='')}"
+                          f"&width=1080&height=1920&seed={random.randrange(10**6)}", {"Authorization": f"Bearer {key}"}, model))
     for model in ("flux", "turbo"):
-        url = (f"https://image.pollinations.ai/prompt/{quote(prompt)}?width=1080&height=1920&model={model}"
-               f"&nologo=true&enhance=false&seed={random.randrange(10**6)}")
+        tries.append((f"https://image.pollinations.ai/prompt/{quote(prompt)}?width=1080&height=1920&model={model}"
+                      f"&nologo=true&enhance=false&seed={random.randrange(10**6)}", {}, model))
+    for url, hdr, model in tries:
         try:
-            r = requests.get(url, timeout=150)
+            r = requests.get(url, headers=hdr, timeout=150)
             if r.status_code == 200 and r.headers.get("content-type", "").startswith("image"):
                 Path(dest).write_bytes(r.content)
                 if _valid_image(dest):
@@ -1600,24 +1615,69 @@ def _art_pollinations(prompt, dest):
 
 
 def _art_huggingface(prompt, dest):
-    """Optional: free Hugging Face token (HF_TOKEN1) -> FLUX.1-schnell, very realistic."""
+    """Optional: free Hugging Face token (HF_TOKEN1) -> Inference Providers (the old hf-inference FLUX route is retired)."""
     tok = (os.getenv("HF_TOKEN1") or os.getenv("HF_TOKEN") or "").strip()
     if not tok:
         return False
-    for model in ("black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0"):
+    try:
+        from huggingface_hub import InferenceClient
+    except Exception:
+        print("huggingface: pip package huggingface_hub missing", file=sys.stderr)
+        return False
+    for model in ("black-forest-labs/FLUX.1-Krea-dev", "black-forest-labs/FLUX.1-dev", "Qwen/Qwen-Image",
+                  "black-forest-labs/FLUX.1-schnell"):
         try:
-            r = requests.post(f"https://router.huggingface.co/hf-inference/models/{model}",
-                              headers={"Authorization": f"Bearer {tok}"}, timeout=150,
-                              json={"inputs": prompt, "parameters": {"width": 768, "height": 1344}})
-            if r.status_code == 200 and r.headers.get("content-type", "").startswith("image"):
-                Path(dest).write_bytes(r.content)
-                if _valid_image(dest):
-                    return True
-            else:
-                print(f"huggingface {model}: HTTP {r.status_code} {r.text[:80]}", file=sys.stderr)
+            img = InferenceClient(provider="auto", api_key=tok, timeout=150).text_to_image(
+                prompt, model=model, width=768, height=1344)
+            img.convert("RGB").save(dest, "JPEG", quality=95)
+            if _valid_image(dest):
+                return True
         except Exception as ex:
-            print(f"huggingface {model}: {str(ex)[:100]}", file=sys.stderr)
+            print(f"huggingface {model}: {str(ex)[:110]}", file=sys.stderr)
     return False
+
+
+def _art_cloudflare(prompt, dest):
+    """Free Cloudflare Workers AI (FLUX.1-schnell, ~10k free neurons a day). Needs CF_ACCOUNT_ID + CF_API_TOKEN."""
+    import base64
+    acct, tok = (os.getenv("CF_ACCOUNT_ID") or "").strip(), (os.getenv("CF_API_TOKEN") or "").strip()
+    if not acct or not tok:
+        return False
+    try:
+        r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
+                          headers={"Authorization": f"Bearer {tok}"}, json={"prompt": prompt[:1900], "steps": 6}, timeout=120)
+        if r.status_code != 200:
+            print(f"cloudflare flux: HTTP {r.status_code} {r.text[:120]}", file=sys.stderr)
+            return False
+        b64 = (r.json().get("result") or {}).get("image")
+        if not b64:
+            return False
+        Path(dest).write_bytes(base64.b64decode(b64))
+        return Path(dest).stat().st_size > 20000
+    except Exception as ex:
+        print(f"cloudflare flux: {str(ex)[:110]}", file=sys.stderr)
+        return False
+
+
+def _portrait_fill(im):
+    """Square / landscape picture -> 1080x1920: the picture on a blurred, enlarged copy of itself (looks designed, not stretched)."""
+    from PIL import ImageFilter
+    w, h = im.size
+    sc = max(1080 / w, 1920 / h)
+    bg = im.resize((int(w * sc + 1), int(h * sc + 1)), Image.LANCZOS)
+    l, t = (bg.size[0] - 1080) // 2, (bg.size[1] - 1920) // 2
+    bg = bg.crop((l, t, l + 1080, t + 1920)).filter(ImageFilter.GaussianBlur(38))
+    bg = Image.blend(bg, Image.new("RGB", bg.size, (0, 0, 0)), 0.18)
+    fw = 1080
+    fg = im.resize((fw, int(h * fw / w)), Image.LANCZOS)
+    mask = Image.new("L", fg.size, 255)
+    md = ImageDraw.Draw(mask)
+    for i in range(110):
+        a = int(255 * i / 110)
+        md.line([(0, i), (fw, i)], fill=a)
+        md.line([(0, fg.size[1] - 1 - i), (fw, fg.size[1] - 1 - i)], fill=a)
+    bg.paste(fg, (0, 250), mask)
+    return bg
 
 
 def _art_gemini(prompt, dest):
@@ -1654,19 +1714,57 @@ def _art_gemini(prompt, dest):
     return False
 
 
+def _art_stock_photo(label, dest):
+    """Last resort for the feed image: a bright Pixabay photo about the topic (portrait), cropped to 1080x1920."""
+    key = os.getenv("PIXABAY_API_KEY", "").strip()
+    if not key:
+        print("stock photo: PIXABAY_API_KEY secret is empty - add it in GitHub Secrets", file=sys.stderr)
+        return False
+    queries = list(VIDEO_QUERIES.get(label) or ["futuristic technology", "technology abstract"])
+    random.shuffle(queries)
+    for q in queries[:3]:
+        try:
+            r = requests.get("https://pixabay.com/api/", params={"key": key, "q": q, "image_type": "photo",
+                             "orientation": "vertical", "min_height": 1200, "per_page": 40, "safesearch": "true"}, timeout=30)
+            r.raise_for_status()
+            hits = r.json().get("hits", [])
+            random.shuffle(hits)
+            for h in hits[:6]:
+                url = h.get("largeImageURL") or h.get("webformatURL")
+                if url and _download(url, dest):
+                    im = Image.open(dest).convert("RGB")
+                    w, hh = im.size
+                    sc = max(1080 / w, 1920 / hh)
+                    im = im.resize((int(w * sc + 1), int(hh * sc + 1)), Image.LANCZOS)
+                    l, t = (im.size[0] - 1080) // 2, (im.size[1] - 1920) // 2
+                    im.crop((l, t, l + 1080, t + 1920)).save(dest, "JPEG", quality=94)
+                    return True
+        except Exception as ex:
+            print(f"stock photo: {str(ex)[:100]}", file=sys.stderr)
+    return False
+
+
+# LOOK=theme (default): every post and Reel uses the animated sci-fi theme card (no AI pictures, no stock footage).
+# LOOK=mix: the old behaviour (AI art, then stock video/photo, then the theme card).
+LOOK = (os.getenv("LOOK") or "theme").strip().lower()
+
+
 def generate_art(post, label, dest, recent=None):
     """Returns True when a portrait AI picture was saved to dest (resized to 1080x1920)."""
-    if (os.getenv("ART") or "on").lower() == "off":
+    if LOOK == "theme" or (os.getenv("ART") or "on").lower() == "off":
         return False
     prompt = build_art_prompt(post, label, recent)
     print("ART prompt:", prompt[:160])
-    for fn in (_art_huggingface, _art_pollinations, _art_gemini):
+    for fn in (_art_cloudflare, _art_huggingface, _art_pollinations, _art_gemini):
         try:
             if fn(prompt, dest):
                 im = Image.open(dest).convert("RGB")
                 if fn is _art_pollinations:   # the free service stamps a small logo in the bottom corner: cut it off
                     im = im.crop((0, 0, im.size[0], int(im.size[1] * 0.93)))
                 w, h = im.size
+                if w / h > 0.7:                # square / landscape result: build a proper portrait frame
+                    im = _portrait_fill(im)
+                    w, h = im.size
                 scale = max(1080 / w, 1920 / h)
                 im = im.resize((int(w * scale + 1), int(h * scale + 1)), Image.LANCZOS)
                 l, t = (im.size[0] - 1080) // 2, (im.size[1] - 1920) // 2
@@ -2028,7 +2126,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
         temps.append(p)
         return p
 
-    clip, clip_id = (None, None) if art_path else _stock_video(label, tmp(".clip.mp4"), used)
+    clip, clip_id = (None, None) if (art_path or LOOK == "theme") else _stock_video(label, tmp(".clip.mp4"), used)
     rng = random.Random(random.getrandbits(64))
     bg = THEMES.get(theme, theme_synthwave)(1080, 1350, rng)
     accent = bg["A"]
@@ -2460,6 +2558,9 @@ def main():
             state["arts"] = state["arts"][-20:]
         if has_art:
             make_art_image(post, art_path, img_path, label_txt)
+        elif LOOK != "theme" and _art_stock_photo(label_txt, art_path):
+            print("ART: no AI picture, using a bright stock photo for the feed image", file=sys.stderr)
+            make_art_image(post, art_path, img_path, label_txt)   # (Reels still use stock video / motion card below)
         else:
             print("ART: no AI picture available, using the themed card", file=sys.stderr)
             make_image(slot, post, img_path, theme)

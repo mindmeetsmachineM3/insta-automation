@@ -66,6 +66,7 @@ jobs:
       VOICE_MIX: ${{ vars.VOICE_MIX || 'off' }}
       HINDI_SHARE: ${{ vars.HINDI_SHARE || '0' }}
       POST_LANGUAGE: ${{ vars.POST_LANGUAGE || 'English' }}
+      FONT_PAIR: ${{ vars.FONT_PAIR || 'anton' }}
       REEL_STYLE: ${{ vars.REEL_STYLE || 'openloop' }}
       REEL_OUTRO: ${{ vars.REEL_OUTRO || 'screen' }}
     steps:
@@ -120,6 +121,23 @@ jobs:
           F=$(fc-list | grep -i "NotoSansDevanagari-Bold" | head -1 | cut -d: -f1)
           echo "FONT_PATH_DEV=$F" >> "$GITHUB_ENV"
           if [ "${{ vars.POST_LANGUAGE }}" = "Marathi" ]; then echo "FONT_PATH=$F" >> "$GITHUB_ENV"; fi
+
+      - name: Download fonts (headline + body pairing)
+        if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'insights' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' }}
+        run: |
+          mkdir -p fonts
+          B=https://github.com/google/fonts/raw/main/ofl
+          get() { [ -s "fonts/$2" ] || curl -fsSL --retry 3 -o "fonts/$2" "$B/$1" || rm -f "fonts/$2"; }
+          get "poppins/Poppins-ExtraBold.ttf" "Poppins-ExtraBold.ttf"
+          get "poppins/Poppins-Bold.ttf" "Poppins-Bold.ttf"
+          case "${FONT_PAIR:-anton}" in
+            anton)    get "anton/Anton-Regular.ttf" "Anton-Regular.ttf"
+                      get "opensans/OpenSans%5Bwdth,wght%5D.ttf" "OpenSans[wdth,wght].ttf" ;;
+            spartan)  get "leaguespartan/LeagueSpartan%5Bwght%5D.ttf" "LeagueSpartan[wght].ttf" ;;
+            playfair) get "playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf" "PlayfairDisplay[wght].ttf"
+                      get "montserrat/Montserrat%5Bwght%5D.ttf" "Montserrat[wght].ttf" ;;
+          esac
+          ls -la fonts || true
 
       - name: Install ffmpeg (Reels only)
         if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'insights' && ((vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel) }}

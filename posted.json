@@ -36,7 +36,6 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet"
   ],
   "headlines": [
-    "Why Sodium-Ion Cells Can Drop to Absolute 0V - Unlike lithium, sodium-ion cells can safely drop to zero charge by swapping copper foils for aluminum.",
     "Transforming Old Phones into Robots - UCLA researchers built PhoneBot, a walking robot powered by a smartphone.",
     "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?",
     "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
@@ -75,10 +74,10 @@
     "What if AI could log in for you safely? - Imagine granting login access to automated assistants while your actual master passwords remain completely hidden.",
     "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away.",
     "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems.",
-    "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels."
+    "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
+    "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency."
   ],
   "themes": [
-    "cyber_city",
     "aurora",
     "matrix",
     "synthwave",
@@ -97,7 +96,8 @@
     "cyber_city",
     "synthwave",
     "circuit",
-    "hologram"
+    "hologram",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -109,7 +109,8 @@
     "A dramatic eye-level shot of a sleek, translucent obsidian automaton inserting a radiant energy key into a massive, glowing mechanical vault",
     "Cinematic high-angle shot of a heavily armored futuristic combat tank traversing a dusty alien canyon, its turret opening to release a swarm",
     "Dramatic bird's-eye view of a colossal spherical supercomputer core isolated inside a fortified subterranean bunker. Massive severed fiber-o",
-    "A dramatic side-profile shot of futuristic solar panels in a sun-drenched desert. Transparent, glowing violet perovskite crystals are layere"
+    "A dramatic side-profile shot of futuristic solar panels in a sun-drenched desert. Transparent, glowing violet perovskite crystals are layere",
+    "Cinematic extreme macro shot looking into the nozzle of an orbital ion thruster. Concentric magnetic coils surround an intense ring of brill"
   ],
   "videos": [
     "pb4760",
@@ -155,6 +156,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-10-24T07:03"
+    },
+    {
+      "id": "18230374519332431",
+      "voice": "en-IN-PrabhatNeural",
+      "label": "SCI-FI TECH",
+      "lang": "English",
+      "time": "2026-10-24T10:12"
     }
   ]
 }

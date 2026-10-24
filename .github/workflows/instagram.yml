@@ -64,7 +64,10 @@ jobs:
       EXTRA_PER_DAY: ${{ vars.EXTRA_PER_DAY || '2' }}
       EXTRA_MIN_GAP: ${{ vars.EXTRA_MIN_GAP || '60' }}
       VOICE_MIX: ${{ vars.VOICE_MIX || 'off' }}
+      HINDI_SHARE: ${{ vars.HINDI_SHARE || '0' }}
       POST_LANGUAGE: ${{ vars.POST_LANGUAGE || 'English' }}
+      REEL_STYLE: ${{ vars.REEL_STYLE || 'openloop' }}
+      REEL_OUTRO: ${{ vars.REEL_OUTRO || 'screen' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,14 +80,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Install Devanagari font (Marathi only)
-        if: ${{ vars.POST_LANGUAGE == 'Marathi' }}
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq fonts-noto-core
-          F=$(fc-list | grep -i "NotoSansDevanagari-Bold" | head -1 | cut -d: -f1)
-          echo "FONT_PATH=$F" >> "$GITHUB_ENV"
 
       - name: Decide what to run
         id: pick
@@ -116,6 +111,15 @@ jobs:
           else
             echo "go=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Install Devanagari font (Hindi / Marathi)
+        if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'insights' && (vars.POST_LANGUAGE == 'Marathi' || vars.POST_LANGUAGE == 'Hindi' || (vars.HINDI_SHARE != '' && vars.HINDI_SHARE != '0')) }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends fonts-noto-core libfribidi0 libraqm0
+          F=$(fc-list | grep -i "NotoSansDevanagari-Bold" | head -1 | cut -d: -f1)
+          echo "FONT_PATH_DEV=$F" >> "$GITHUB_ENV"
+          if [ "${{ vars.POST_LANGUAGE }}" = "Marathi" ]; then echo "FONT_PATH=$F" >> "$GITHUB_ENV"; fi
 
       - name: Install ffmpeg (Reels only)
         if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'insights' && ((vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel) }}

@@ -27,7 +27,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-23-v35 (question + comment CTA, Hindi Reels share, voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-10-24-v36 (open-loop Reels: payoff last, question + comment CTA, Hindi Reels share, voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -1874,18 +1874,91 @@ def _short_speech(post, max_words=70):
     return cut[:end + 1] if end > 120 else cut
 
 
+def make_reel_script(post):
+    """Open-loop voice-over: tease -> build-up -> payoff LAST. People leave once they get the answer, so the
+    answer comes at the very end and the Reel stops right after it. Uses only the facts of the post."""
+    q = f"""You write a 30-second Instagram Reel voice-over from the post below.
+Language: {lang_line()}.
+
+Structure (open loop, the answer comes LAST):
+- "tease": ONE short line (max 12 words) that makes people need the answer. It must NOT reveal the key fact or result.
+- "build": 2 or 3 short lines (max 16 words each) with context, stakes or numbers that add tension but still hold the key fact back.
+- "payoff": ONE line (max 22 words) that finally gives the key fact. The Reel ends right after it.
+- "teaser_headline": max 10 words for the screen: a question or curiosity statement, with NO answer in it.
+
+Rules: use ONLY facts that are in the post. No invented numbers, names, quotes or claims, and keep the exact scope of the facts.
+Plain spoken words, no emojis, no hashtags. Never say 'comment', 'follow' or 'link'.
+
+Key fact (the answer, to be held back until the payoff): {post['headline']}
+Post:
+{post.get('body') or post['caption']}
+
+Return ONLY JSON: {{"tease": "...", "build": ["...", "..."], "payoff": "...", "teaser_headline": "..."}}"""
+    d = _ask(q)
+    tease, payoff = str(d.get("tease", "")).strip(), str(d.get("payoff", "")).strip()
+    build = [str(b).strip() for b in d.get("build", []) if str(b).strip()][:3]
+    words = len(" ".join([tease] + build + [payoff]).split())
+    if not tease or not payoff or not build or not 22 <= words <= 85:
+        raise ValueError(f"script not usable ({words} words)")
+    return {"tease": tease, "build": build, "payoff": payoff, "teaser_headline": str(d.get("teaser_headline", "")).strip()[:70]}
+
+
+def _outro_png(ask, phrase, follow, accent, path):
+    """Closing card shown on screen (silent) after the payoff: question, comment prompt, follow prompt."""
+    meas = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    f, lines, size = _fit(meas, ask, 900, 3, 68, 46)
+    lh = int(size * 1.18)
+    f2, f3 = load_font(56), load_font(52)
+    plines = wrap_to_width(meas, phrase, f2, 920)[:2]
+    h = lh * len(lines) + 24 + 66 * len(plines) + 70 + 20
+    im = Image.new("RGBA", (1000, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    y = 0
+    for ln in lines:
+        w = meas.textbbox((0, 0), ln, font=f)[2]
+        d.text(((1000 - w) // 2, y), ln, font=f, fill=(255, 255, 255, 255), stroke_width=6, stroke_fill=(0, 0, 0, 255))
+        y += lh
+    y += 24
+    for ln in plines:
+        w = meas.textbbox((0, 0), ln, font=f2)[2]
+        d.text(((1000 - w) // 2, y), ln, font=f2, fill=tuple(accent) + (255,), stroke_width=5, stroke_fill=(0, 0, 0, 255))
+        y += 66
+    w = meas.textbbox((0, 0), follow, font=f3)[2]
+    d.text(((1000 - w) // 2, y + 4), follow, font=f3, fill=(255, 255, 255, 235), stroke_width=5, stroke_fill=(0, 0, 0, 255))
+    im.save(path)
+
+
 def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=None):
     """Motion-graphics Reel (1080x1920). Returns the stock-video id used, or '' for the animated theme."""
     work = Path(out_path).with_suffix("")
-    body_text = _short_speech({**post, "headline": "", "caption": post.get("body") or post["caption"]}, max_words=40)
     ask_text = _speech_text({"headline": "", "caption": post.get("ask", "")}) if post.get("ask") else ""
-    text = " ".join(p for p in (body_text, ask_text, comment_phrase(post), follow_phrase()) if p)   # hook first, then the question people answer
-    ask_start = len(body_text.split())
+    outro = (os.getenv("REEL_OUTRO") or "screen").lower()    # screen: closing card, no voice | voice: spoken question + comment + follow
+    script = None
+    if (os.getenv("REEL_STYLE") or "openloop").lower() == "openloop":
+        try:
+            script = make_reel_script(post)
+        except Exception as ex:
+            print(f"open-loop script failed ({str(ex)[:100]}); using the plain script", file=sys.stderr)
+    if script:
+        pre = " ".join([script["tease"]] + script["build"])
+        text = pre + " " + script["payoff"]
+        ask_start = len(pre.split())          # the payoff is shown in the accent colour
+        if outro == "voice":
+            text += " " + " ".join(p for p in (ask_text, comment_phrase(post), follow_phrase()) if p)
+    else:
+        pre = ""
+        body_text = _short_speech({**post, "headline": "", "caption": post.get("body") or post["caption"]}, max_words=40)
+        text = " ".join(p for p in (body_text, ask_text, comment_phrase(post), follow_phrase()) if p)
+        ask_start = len(body_text.split())
+        outro = "voice"
     voice = Path(str(work) + ".voice.mp3")
     have_voice = make_voice(text, voice)
-    lead, tail = 0.2, 1.0
+    lead, tail = 0.2, (2.8 if outro == "screen" else 1.0)
     vdur = _duration(voice) if have_voice else 0
     total = min(lead + (vdur if have_voice else 12) + tail, 45)
+    t_voice_end = lead + vdur
+    teaser = script.get("teaser_headline") if (script and have_voice) else ""
+    t_reveal = lead + vdur * len(pre) / max(1, len(text)) if teaser else 0.0   # when the real headline replaces the teaser
     label = label or post.get("label") or "TECH"
     used = (state or {}).get("videos", [])
 
@@ -1930,6 +2003,13 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     shade, head, badge = tmp(".shade.png"), tmp(".head.png"), tmp(".badge.png")
     _shade_png(shade)
     htop, _ = _headline_png(post["headline"], accent, head)
+    thead = tmp(".thead.png")
+    if teaser:
+        _headline_png(teaser, accent, thead)
+    outro_png = tmp(".outro.png")
+    if script and outro == "screen" and have_voice:
+        _outro_png(post.get("ask") or ("आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else "What do you think?"),
+                   comment_phrase(post), follow_phrase(), accent, outro_png)
     _badge_png(label, (os.getenv("IG_HANDLE", "") + "  •  Follow for more").strip(" •") if os.getenv("IG_HANDLE") else "", accent, badge)
 
     cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs                      # 0 background
@@ -1944,18 +2024,25 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
     imusic = n
     cmd += ["-f", "lavfi", "-i", f"aevalsrc='0.5*sin(2*PI*110*t)+0.35*sin(2*PI*164.8*t)+0.3*sin(2*PI*220*t)+0.2*sin(2*PI*277.2*t)':s=44100:d={total:.2f}"]
     n += 1
-    for p in (shade, head, badge):
+    for p in (shade, head, badge) + ((thead,) if teaser else ()):
         cmd += ["-loop", "1", "-framerate", "30", "-t", f"{total:.2f}", "-i", str(p)]
     ishade, ihead, ibadge = n, n + 1, n + 2
-    n += 3
+    ithead = n + 3
+    n += 4 if teaser else 3
 
     fc = [bg_chain.replace("PARTS", "1") if n_extra else bg_chain,
           "[bgv]noise=alls=7:allf=t,vignette=PI/5[bgn]",
-          f"[bgn][{ishade}:v]overlay=0:0[l1]",
-          f"[{ihead}:v]format=rgba,fade=t=in:st=0:d=0.12:alpha=1[hd]",
-          f"[l1][hd]overlay=x=0:y='{htop}+40*(1-min(t/0.35,1))'[l2]",
-          f"[{ibadge}:v]format=rgba[bd]",
-          "[l2][bd]overlay=x=0:y=270[l3]"]
+          f"[bgn][{ishade}:v]overlay=0:0[l1]"]
+    if teaser:   # teaser headline first, the real headline (the answer) replaces it when the payoff is spoken
+        fc += [f"[{ihead}:v]format=rgba,fade=t=in:st={t_reveal:.2f}:d=0.25:alpha=1[hd]",
+               f"[{ithead}:v]format=rgba,fade=t=in:st=0:d=0.12:alpha=1[th]",
+               f"[l1][th]overlay=x=0:y='{htop}':enable='lt(t,{t_reveal:.2f})'[l1b]",
+               f"[l1b][hd]overlay=x=0:y='{htop}+40*(1-min(max(t-{t_reveal:.2f},0)/0.35,1))':enable='gte(t,{t_reveal:.2f})'[l2]"]
+    else:
+        fc += [f"[{ihead}:v]format=rgba,fade=t=in:st=0:d=0.12:alpha=1[hd]",
+               f"[l1][hd]overlay=x=0:y='{htop}+40*(1-min(t/0.35,1))'[l2]"]
+    fc += [f"[{ibadge}:v]format=rgba[bd]",
+           "[l2][bd]overlay=x=0:y=270[l3]"]
     last = "l3"
     if have_voice:   # word-timed subtitles under the headline
         words = text.split()
@@ -1980,6 +2067,11 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
             last = f"s{k}"
             n += 1
             t += dur
+    if script and outro == "screen" and have_voice:   # silent closing card after the payoff
+        cmd += ["-i", str(outro_png)]
+        fc.append(f"[{last}][{n}:v]overlay=(W-w)/2:'700-h/2':enable='gte(t,{t_voice_end:.2f})'[oc]")
+        last = "oc"
+        n += 1
     fc.append(f"[{last}]fade=t=out:st={total - 0.5:.2f}:d=0.5,format=yuv420p[v]")
     music = f"[{imusic}:a]lowpass=f=700,tremolo=f=0.25:d=0.4,volume={0.10 if have_voice else 0.35},afade=t=in:d=2,afade=t=out:st={total - 2:.2f}:d=2"
     if have_voice:

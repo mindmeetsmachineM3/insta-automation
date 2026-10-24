@@ -54,6 +54,9 @@ jobs:
       PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       HF_TOKEN1: ${{ secrets.HF_TOKEN1 }}
+      CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
       GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
@@ -66,6 +69,9 @@ jobs:
       VOICE_MIX: ${{ vars.VOICE_MIX || 'off' }}
       HINDI_SHARE: ${{ vars.HINDI_SHARE || '0' }}
       POST_LANGUAGE: ${{ vars.POST_LANGUAGE || 'English' }}
+      VOICE: ${{ vars.VOICE || 'en-US-AvaMultilingualNeural' }}
+      THEME: ${{ vars.THEME }}
+      LOOK: ${{ vars.LOOK || 'theme' }}
       FONT_PAIR: ${{ vars.FONT_PAIR || 'anton' }}
       REEL_STYLE: ${{ vars.REEL_STYLE || 'openloop' }}
       REEL_OUTRO: ${{ vars.REEL_OUTRO || 'screen' }}
@@ -141,7 +147,15 @@ jobs:
 
       - name: Install ffmpeg (Reels only)
         if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'insights' && ((vars.REELS != '' && vars.REELS != 'off') || inputs.as_reel) }}
-        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg)
+        run: |
+          # fast: static ffmpeg that ships inside the pip package imageio-ffmpeg (apt took ~7 minutes)
+          F=$(python -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null || true)
+          if [ -n "$F" ] && [ -x "$F" ]; then
+            sudo ln -sf "$F" /usr/local/bin/ffmpeg
+          else
+            which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg)
+          fi
+          ffmpeg -hide_banner -version | head -1
 
       - name: Create post
         if: ${{ steps.gate.outputs.go != 'false' && steps.pick.outputs.action != 'refresh-token' && steps.pick.outputs.action != 'diagnose' && steps.pick.outputs.action != 'insights' }}

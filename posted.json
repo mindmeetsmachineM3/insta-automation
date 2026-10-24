@@ -33,10 +33,10 @@
     "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
     "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
     "https://interestingengineering.com/military/us-abrams-tanks-perch-drone-launcher",
-    "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet"
+    "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
+    "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/"
   ],
   "headlines": [
-    "AI for Wildlife Safety - What if edge devices used species-specific sounds to keep animals away from tracks and roads?",
     "AI Optimizes 3D Printing - Artificial intelligence tests over 100 million settings to find efficient configurations for a NASA alloy.",
     "Personal Home AI Hubs - Imagine everyday household assistants running partly locally and partly in the cloud.",
     "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages.",
@@ -75,10 +75,10 @@
     "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems.",
     "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
     "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
-    "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion."
+    "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
+    "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing."
   ],
   "themes": [
-    "matrix",
     "synthwave",
     "circuit",
     "cyber_city",
@@ -97,7 +97,8 @@
     "circuit",
     "hologram",
     "cyber_city",
-    "manga"
+    "manga",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

@@ -36,10 +36,10 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
     "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
     "https://techcrunch.com/2026/10/22/former-openai-science-lead-launches-warp-science-to-automate-wet-labs-with-robots/",
-    "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/"
+    "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
+    "https://newatlas.com/robotics/feather-star-underwater-robot/"
   ],
   "headlines": [
-    "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems.",
     "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers.",
     "What if Chrome tabs powered your AI chat? - Imagine an extension that lets artificial intelligence read your active browser windows directly.",
     "South Korea tests 30 kW laser weapon - Hanwha Systems successfully destroys three target drones during trials.",
@@ -78,10 +78,10 @@
     "How Bending Steel Gives Robots Zero-Backlash Precision - Harmonic drive gearing intentionally deforms metal to achieve extreme control in compact joints.",
     "How Real Invisibility Cloaks Actually Work - Sci-fi uses magic, but physicists use metamaterials that bend light waves around objects.",
     "Can sensor gloves teach robots wet lab work? - An ex-OpenAI science lead launches a venture to mechanize chemistry facilities.",
-    "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units."
+    "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units.",
+    "New Underwater Biomimetic Robot Created - NC State University designs a robot that moves like aquatic animals to blend into marine environments."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "cyber_city",
     "matrix",
@@ -100,7 +100,8 @@
     "circuit",
     "sunset",
     "manga",
-    "hologram"
+    "hologram",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -195,6 +196,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-10-25T03:24"
+    },
+    {
+      "id": "18432665803145322",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ROBOTICS",
+      "lang": "English",
+      "time": "2026-10-25T08:42"
     }
   ]
 }

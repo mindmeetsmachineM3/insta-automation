@@ -34,10 +34,10 @@
     "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
     "https://interestingengineering.com/military/us-abrams-tanks-perch-drone-launcher",
     "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
-    "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/"
+    "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
+    "https://techcrunch.com/2026/10/22/former-openai-science-lead-launches-warp-science-to-automate-wet-labs-with-robots/"
   ],
   "headlines": [
-    "Using AI to Engineer Hardware Chips - Ricursive Intelligence aims to speed up and automate chip design to tackle compute shortages.",
     "Real Sci-Fi: Acoustic Tractor Beams - How ultrasonic sound waves can trap and hover physical objects mid-air without physical contact.",
     "What If an App Could Deconstruct AI in Music? - Imagine an audio analyzer that checks streamed songs and maps out human vocals versus synthetic stems.",
     "Meta and Apple Launch AI - The new Muse Spark Open model runs locally on Apple silicon for Mac computers.",
@@ -76,10 +76,10 @@
     "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
     "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing.",
     "How Bending Steel Gives Robots Zero-Backlash Precision - Harmonic drive gearing intentionally deforms metal to achieve extreme control in compact joints.",
-    "How Real Invisibility Cloaks Actually Work - Sci-fi uses magic, but physicists use metamaterials that bend light waves around objects."
+    "How Real Invisibility Cloaks Actually Work - Sci-fi uses magic, but physicists use metamaterials that bend light waves around objects.",
+    "Can sensor gloves teach robots wet lab work? - An ex-OpenAI science lead launches a venture to mechanize chemistry facilities."
   ],
   "themes": [
-    "cyber_city",
     "sunset",
     "synthwave",
     "circuit",
@@ -98,7 +98,8 @@
     "manga",
     "matrix",
     "circuit",
-    "sunset"
+    "sunset",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -186,6 +187,13 @@
       "label": "SCI-FI TECH",
       "lang": "English",
       "time": "2026-10-24T16:14"
+    },
+    {
+      "id": "18439680850180704",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-25T03:24"
     }
   ]
 }

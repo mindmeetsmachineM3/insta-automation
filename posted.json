@@ -42,10 +42,10 @@
     "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
     "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it/",
     "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
-    "https://interestingengineering.com/ai-robotics/anymal-robot-solves-giant-rubiks-cube-with-feet"
+    "https://interestingengineering.com/ai-robotics/anymal-robot-solves-giant-rubiks-cube-with-feet",
+    "https://interestingengineering.com/energy/lithium-battery-that-retains-90-capacity"
   ],
   "headlines": [
-    "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it.",
     "What if Sites Could Dynamically License Content to AI? - Imagine a protocol where web servers negotiate training permissions directly with visiting scrapers.",
     "Woman Blocks Uber Delivery Robot in Job Protest - Marvin told local station ABC13 that she stopped the vehicle to protest robots taking human jobs.",
     "What if Story Characters Could Improvise on Script? - Imagine a tool that lets narrative AI invent unique responses while strictly respecting a game's plot.",
@@ -84,10 +84,10 @@
     "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
     "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends.",
     "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
-    "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years."
+    "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
+    "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity."
   ],
   "themes": [
-    "hologram",
     "cyber_city",
     "synthwave",
     "circuit",
@@ -106,7 +106,8 @@
     "manga",
     "cyber_city",
     "hologram",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -243,6 +244,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-10-26T11:21"
+    },
+    {
+      "id": "18114936530595465",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-26T14:04"
     }
   ]
 }

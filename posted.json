@@ -40,10 +40,10 @@
     "https://newatlas.com/robotics/feather-star-underwater-robot/",
     "https://hackaday.com/2026/10/24/pushing-bluetooth-out-to-12-kilometers/",
     "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
-    "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it/"
+    "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it/",
+    "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai"
   ],
   "headlines": [
-    "The Clever Math Behind CoreXY 3D Printers - Two stationary motors combine belt forces to move the toolhead, slashing moving mass.",
     "What if an AI Audited Autonomous Agent Permissions? - Imagine a scanner that catches exposed API keys and loose cloud permissions before autonomous agents act.",
     "Ex-Nvidia Robotics Lead Moves to Venture Capital - Amulya Vishwanath joins VC investing after seven years directing Nvidia robotics product marketing.",
     "Why Every Relay Needs a Flyback Diode - Cutting power to an inductor triggers a destructive voltage spike. Here is how one diode stops it.",
@@ -82,10 +82,10 @@
     "Bluetooth Range Extended To 12 Kilometers - Standard implementation practices cause Bluetooth's usual range limits, a recent project demonstrates.",
     "What If AI Tools Showed Their Own Hidden Biases? - Imagine an interface comparing multiple AI models side-by-side to spot algorithmic slant in real time.",
     "Phase-Change Memory Is Replacing Flash - How microscopic materials change state to store data faster than traditional silicon.",
-    "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software."
+    "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
+    "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends."
   ],
   "themes": [
-    "synthwave",
     "aurora",
     "sunset",
     "hologram",
@@ -104,7 +104,8 @@
     "matrix",
     "sunset",
     "circuit",
-    "manga"
+    "manga",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

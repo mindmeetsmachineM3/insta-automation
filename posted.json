@@ -44,10 +44,10 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
     "https://interestingengineering.com/ai-robotics/anymal-robot-solves-giant-rubiks-cube-with-feet",
     "https://interestingengineering.com/energy/lithium-battery-that-retains-90-capacity",
-    "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/"
+    "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
+    "https://newatlas.com/medical/photo-predict-cancer-treatment-faceage-facesurvival/"
   ],
   "headlines": [
-    "Woman Blocks Uber Delivery Robot in Job Protest - Marvin told local station ABC13 that she stopped the vehicle to protest robots taking human jobs.",
     "What if Story Characters Could Improvise on Script? - Imagine a tool that lets narrative AI invent unique responses while strictly respecting a game's plot.",
     "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact.",
     "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware.",
@@ -86,10 +86,10 @@
     "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
     "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
     "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity.",
-    "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending."
+    "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
+    "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "hologram",
     "cyber_city",
@@ -108,7 +108,8 @@
     "hologram",
     "sunset",
     "matrix",
-    "circuit"
+    "circuit",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -252,6 +253,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-10-26T14:04"
+    },
+    {
+      "id": "18145850386502755",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-10-26T16:20"
     }
   ]
 }

@@ -50,7 +50,6 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk"
   ],
   "headlines": [
-    "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware.",
     "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
     "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything.",
     "OpenAI Acquires Orchestra Bio to Enter Biotechnology - The deal brings tech and talent to build the Rosalind AI model and Rosalind Workbench.",
@@ -89,10 +88,10 @@
     "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
     "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image.",
     "Meet Echo: Realbotix's New Humanoid AI Companion - Features lifelike silicone skin and 39 degrees of freedom for realistic movement.",
-    "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas."
+    "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas.",
+    "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air."
   ],
   "themes": [
-    "cyber_city",
     "manga",
     "matrix",
     "circuit",
@@ -111,7 +110,8 @@
     "circuit",
     "hologram",
     "manga",
-    "matrix"
+    "matrix",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -269,6 +269,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-10-27T03:29"
+    },
+    {
+      "id": "18451076332123998",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "SCI-FI TECH",
+      "lang": "English",
+      "time": "2026-10-27T07:55"
     }
   ]
 }

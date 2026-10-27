@@ -47,10 +47,10 @@
     "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
     "https://newatlas.com/medical/photo-predict-cancer-treatment-faceage-facesurvival/",
     "https://interestingengineering.com/ai-robotics/companion-robots-silicone-skin-100-languages",
-    "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk"
+    "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk",
+    "https://newatlas.com/robotics/eluminator-electronic-skin-displays-touch-as-light/"
   ],
   "headlines": [
-    "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
     "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything.",
     "OpenAI Acquires Orchestra Bio to Enter Biotechnology - The deal brings tech and talent to build the Rosalind AI model and Rosalind Workbench.",
     "Apex Recordhunter Drone Hits 482.8 MPH - Quantum Systems built the experimental aircraft, with the milestone announced on social media.",
@@ -89,10 +89,10 @@
     "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image.",
     "Meet Echo: Realbotix's New Humanoid AI Companion - Features lifelike silicone skin and 39 degrees of freedom for realistic movement.",
     "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas.",
-    "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air."
+    "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air.",
+    "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure."
   ],
   "themes": [
-    "manga",
     "matrix",
     "circuit",
     "sunset",
@@ -111,7 +111,8 @@
     "hologram",
     "manga",
     "matrix",
-    "synthwave"
+    "synthwave",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -276,6 +277,13 @@
       "label": "SCI-FI TECH",
       "lang": "English",
       "time": "2026-10-27T07:55"
+    },
+    {
+      "id": "18095754752679063",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ROBOTICS",
+      "lang": "English",
+      "time": "2026-10-27T10:18"
     }
   ]
 }

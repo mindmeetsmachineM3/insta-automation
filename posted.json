@@ -49,10 +49,10 @@
     "https://interestingengineering.com/ai-robotics/companion-robots-silicone-skin-100-languages",
     "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk",
     "https://newatlas.com/robotics/eluminator-electronic-skin-displays-touch-as-light/",
-    "https://interestingengineering.com/transportation/hybrid-electric-aircraft-manhattan-aviation-first"
+    "https://interestingengineering.com/transportation/hybrid-electric-aircraft-manhattan-aviation-first",
+    "https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/"
   ],
   "headlines": [
-    "OpenAI Acquires Orchestra Bio to Enter Biotechnology - The deal brings tech and talent to build the Rosalind AI model and Rosalind Workbench.",
     "Apex Recordhunter Drone Hits 482.8 MPH - Quantum Systems built the experimental aircraft, with the milestone announced on social media.",
     "What if AI safety bills required judicial sign-off? - Imagine a policy where federal agencies need a judge's permission before blocking a model's release.",
     "Recursive releases free coding model - Startup Recursive launches Flint, a free coding model that runs on laptops and was built mostly by AI.",
@@ -91,10 +91,10 @@
     "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas.",
     "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air.",
     "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure.",
-    "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff."
+    "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
+    "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers."
   ],
   "themes": [
-    "circuit",
     "sunset",
     "manga",
     "hologram",
@@ -113,7 +113,8 @@
     "matrix",
     "synthwave",
     "cyber_city",
-    "circuit"
+    "circuit",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

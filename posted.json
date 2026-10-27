@@ -53,7 +53,6 @@
     "https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/"
   ],
   "headlines": [
-    "Apex Recordhunter Drone Hits 482.8 MPH - Quantum Systems built the experimental aircraft, with the milestone announced on social media.",
     "What if AI safety bills required judicial sign-off? - Imagine a policy where federal agencies need a judge's permission before blocking a model's release.",
     "Recursive releases free coding model - Startup Recursive launches Flint, a free coding model that runs on laptops and was built mostly by AI.",
     "Air-Purifying Vehicle Grille System - Captures brake dust directly at the source and removes 95% of PM2.5 particles.",
@@ -92,10 +91,10 @@
     "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air.",
     "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure.",
     "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
-    "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers."
+    "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers.",
+    "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure."
   ],
   "themes": [
-    "sunset",
     "manga",
     "hologram",
     "aurora",
@@ -114,7 +113,8 @@
     "synthwave",
     "cyber_city",
     "circuit",
-    "aurora"
+    "aurora",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -293,6 +293,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-10-27T12:15"
+    },
+    {
+      "id": "17977039650149395",
+      "voice": "gTTS",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-27T15:04"
     }
   ]
 }

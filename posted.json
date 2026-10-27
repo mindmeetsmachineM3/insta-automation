@@ -46,10 +46,10 @@
     "https://interestingengineering.com/energy/lithium-battery-that-retains-90-capacity",
     "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
     "https://newatlas.com/medical/photo-predict-cancer-treatment-faceage-facesurvival/",
-    "https://interestingengineering.com/ai-robotics/companion-robots-silicone-skin-100-languages"
+    "https://interestingengineering.com/ai-robotics/companion-robots-silicone-skin-100-languages",
+    "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk"
   ],
   "headlines": [
-    "Artificial Skin Gives Robotic Arms Touch Perception - HKUST researchers created technology that detects and responds to physical contact.",
     "Amazon Launches TorchNeuron AI Tool - New developer tool targets Nvidia's PyTorch dominance to promote alternative hardware.",
     "What if AI checked local shop shelves for you? - Imagine an assistant that calls nearby neighborhood stores to confirm stock before you make the trip.",
     "How Series Elastic Actuators Protect Robots - Adding a compliant spring between the motor and output changes everything.",
@@ -88,10 +88,10 @@
     "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity.",
     "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
     "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image.",
-    "Meet Echo: Realbotix's New Humanoid AI Companion - Features lifelike silicone skin and 39 degrees of freedom for realistic movement."
+    "Meet Echo: Realbotix's New Humanoid AI Companion - Features lifelike silicone skin and 39 degrees of freedom for realistic movement.",
+    "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas."
   ],
   "themes": [
-    "hologram",
     "cyber_city",
     "manga",
     "matrix",
@@ -110,7 +110,8 @@
     "matrix",
     "circuit",
     "hologram",
-    "manga"
+    "manga",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

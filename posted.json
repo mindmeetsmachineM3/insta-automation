@@ -54,7 +54,6 @@
     "https://techcrunch.com/2026/10/27/the-data-center-boom-has-an-upside-innovation-for-the-us-grid/"
   ],
   "headlines": [
-    "Recursive releases free coding model - Startup Recursive launches Flint, a free coding model that runs on laptops and was built mostly by AI.",
     "Air-Purifying Vehicle Grille System - Captures brake dust directly at the source and removes 95% of PM2.5 particles.",
     "What If AI Handled Your Post-Purchase Admin? - Imagine a tool that tracks return windows, warranty deadlines, and receipts automatically.",
     "Cleaning Wikipedia's AI Edits - How volunteers formed WikiProject AI Cleanup to remove policy-breaking synthetic text.",
@@ -93,10 +92,10 @@
     "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
     "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers.",
     "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure.",
-    "AI Boom Strains Existing Power Grid - Grid modernization opportunities emerge as industry insiders report positive tech growth."
+    "AI Boom Strains Existing Power Grid - Grid modernization opportunities emerge as industry insiders report positive tech growth.",
+    "How One Tiny Diode Protects Microchips From Voltage Spikes - Inductive kickback from switching off motors can fry circuits. Here is how flyback diodes save them."
   ],
   "themes": [
-    "hologram",
     "aurora",
     "matrix",
     "sunset",
@@ -115,7 +114,8 @@
     "circuit",
     "aurora",
     "matrix",
-    "hologram"
+    "hologram",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -301,6 +301,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-10-27T15:04"
+    },
+    {
+      "id": "18634863124001471",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-28T06:21"
     }
   ]
 }

@@ -50,10 +50,10 @@
     "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk",
     "https://newatlas.com/robotics/eluminator-electronic-skin-displays-touch-as-light/",
     "https://interestingengineering.com/transportation/hybrid-electric-aircraft-manhattan-aviation-first",
-    "https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/"
+    "https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/",
+    "https://techcrunch.com/2026/10/27/the-data-center-boom-has-an-upside-innovation-for-the-us-grid/"
   ],
   "headlines": [
-    "What if AI safety bills required judicial sign-off? - Imagine a policy where federal agencies need a judge's permission before blocking a model's release.",
     "Recursive releases free coding model - Startup Recursive launches Flint, a free coding model that runs on laptops and was built mostly by AI.",
     "Air-Purifying Vehicle Grille System - Captures brake dust directly at the source and removes 95% of PM2.5 particles.",
     "What If AI Handled Your Post-Purchase Admin? - Imagine a tool that tracks return windows, warranty deadlines, and receipts automatically.",
@@ -92,10 +92,10 @@
     "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure.",
     "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
     "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers.",
-    "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure."
+    "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure.",
+    "AI Boom Strains Existing Power Grid - Grid modernization opportunities emerge as industry insiders report positive tech growth."
   ],
   "themes": [
-    "manga",
     "hologram",
     "aurora",
     "matrix",
@@ -114,7 +114,8 @@
     "cyber_city",
     "circuit",
     "aurora",
-    "matrix"
+    "matrix",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

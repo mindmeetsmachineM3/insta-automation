@@ -55,7 +55,6 @@
     "https://hackaday.com/2026/10/27/simd-accelerated-machine-vision-on-an-esp32-s3/"
   ],
   "headlines": [
-    "What If AI Handled Your Post-Purchase Admin? - Imagine a tool that tracks return windows, warranty deadlines, and receipts automatically.",
     "Cleaning Wikipedia's AI Edits - How volunteers formed WikiProject AI Cleanup to remove policy-breaking synthetic text.",
     "US Air Force Awards $3.5M to Natilus for KONA Aircraft - Funding supports the KONA blended-wing cargo aircraft design, which consumes 30 percent less fuel.",
     "Battery-free airbag vest - Dainese created an ultra-lightweight motorcycle airbag vest that draws power from your phone.",
@@ -94,10 +93,10 @@
     "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure.",
     "AI Boom Strains Existing Power Grid - Grid modernization opportunities emerge as industry insiders report positive tech growth.",
     "How One Tiny Diode Protects Microchips From Voltage Spikes - Inductive kickback from switching off motors can fry circuits. Here is how flyback diodes save them.",
-    "FAST Algorithm on ESP32-S3 - Developer shraiwi achieved SIMD-accelerated machine vision using assembly code."
+    "FAST Algorithm on ESP32-S3 - Developer shraiwi achieved SIMD-accelerated machine vision using assembly code.",
+    "Why do microcontrollers have brownout detectors? - The hidden circuit protecting your code from voltage drops."
   ],
   "themes": [
-    "matrix",
     "sunset",
     "circuit",
     "manga",
@@ -116,7 +115,8 @@
     "matrix",
     "hologram",
     "sunset",
-    "circuit"
+    "circuit",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -316,6 +316,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-10-28T08:08"
+    },
+    {
+      "id": "17910681264484067",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-28T11:27"
     }
   ]
 }

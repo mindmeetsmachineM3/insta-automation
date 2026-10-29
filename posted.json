@@ -56,10 +56,10 @@
     "https://interestingengineering.com/innovation/heating-method-recovers-antimony",
     "https://www.theverge.com/gadgets/1021405/akai-open-source-mpc-sample-key",
     "https://interestingengineering.com/space/self-assembling-spacecraft-orbital-test",
-    "https://interestingengineering.com/innovation/mit-prosthetic-limb-control"
+    "https://interestingengineering.com/innovation/mit-prosthetic-limb-control",
+    "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/"
   ],
   "headlines": [
-    "Real 3D Holograms Are Here - Researchers use laser optical traps to draw glowing 3D images directly in mid-air.",
     "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time.",
     "Meet Digit 5 - Agility Robotics unveils a new humanoid machine built for heavy warehouse tasks.",
     "What if AI could log in for you safely? - Imagine granting login access to automated assistants while your actual master passwords remain completely hidden.",
@@ -98,10 +98,10 @@
     "Fast-Heating E-Waste Recycling - Rice University researchers extract scarce metals directly from plastic electronic waste.",
     "Akai Announces MPC Sample Key With Open-Source Firmware - The new hardware offers early access for hackers building custom firmware modifications.",
     "Shape-shifting space tiles launch - New modular spacecraft will test autonomous assembly and physical changes in orbit.",
-    "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control."
+    "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control.",
+    "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code."
   ],
   "themes": [
-    "hologram",
     "sunset",
     "matrix",
     "circuit",
@@ -120,7 +120,8 @@
     "aurora",
     "cyber_city",
     "manga",
-    "matrix"
+    "matrix",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

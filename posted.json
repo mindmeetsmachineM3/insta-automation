@@ -57,10 +57,10 @@
     "https://www.theverge.com/gadgets/1021405/akai-open-source-mpc-sample-key",
     "https://interestingengineering.com/space/self-assembling-spacecraft-orbital-test",
     "https://interestingengineering.com/innovation/mit-prosthetic-limb-control",
-    "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/"
+    "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/",
+    "https://hackaday.com/2026/10/28/battery-prototype-uses-superextensive-quantum-effects-to-charge-faster/"
   ],
   "headlines": [
-    "GM Tested 300,000+ EV Battery Designs Digitally - Computerized simulations drastically cut down electric vehicle battery development time.",
     "Meet Digit 5 - Agility Robotics unveils a new humanoid machine built for heavy warehouse tasks.",
     "What if AI could log in for you safely? - Imagine granting login access to automated assistants while your actual master passwords remain completely hidden.",
     "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away.",
@@ -99,10 +99,10 @@
     "Akai Announces MPC Sample Key With Open-Source Firmware - The new hardware offers early access for hackers building custom firmware modifications.",
     "Shape-shifting space tiles launch - New modular spacecraft will test autonomous assembly and physical changes in orbit.",
     "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control.",
-    "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code."
+    "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code.",
+    "Quantum battery prototype demonstrated - Researchers show how superextensive quantum effects can charge a battery cell faster."
   ],
   "themes": [
-    "sunset",
     "matrix",
     "circuit",
     "hologram",
@@ -121,7 +121,8 @@
     "cyber_city",
     "manga",
     "matrix",
-    "hologram"
+    "hologram",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -349,6 +350,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-10-29T10:30"
+    },
+    {
+      "id": "17921960634452162",
+      "voice": "gTTS",
+      "label": "SCI-FI TECH",
+      "lang": "English",
+      "time": "2026-10-29T14:33"
     }
   ]
 }

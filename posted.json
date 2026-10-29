@@ -53,10 +53,10 @@
     "https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/",
     "https://techcrunch.com/2026/10/27/the-data-center-boom-has-an-upside-innovation-for-the-us-grid/",
     "https://hackaday.com/2026/10/27/simd-accelerated-machine-vision-on-an-esp32-s3/",
-    "https://interestingengineering.com/innovation/heating-method-recovers-antimony"
+    "https://interestingengineering.com/innovation/heating-method-recovers-antimony",
+    "https://www.theverge.com/gadgets/1021405/akai-open-source-mpc-sample-key"
   ],
   "headlines": [
-    "US Air Force Awards $3.5M to Natilus for KONA Aircraft - Funding supports the KONA blended-wing cargo aircraft design, which consumes 30 percent less fuel.",
     "Battery-free airbag vest - Dainese created an ultra-lightweight motorcycle airbag vest that draws power from your phone.",
     "MIT Left 13 AI Agents on a Virtual Island - The agents invented games, mourned a lost ring, and eventually improved at their jobs.",
     "Real 3D Holograms Are Here - Researchers use laser optical traps to draw glowing 3D images directly in mid-air.",
@@ -95,10 +95,10 @@
     "How One Tiny Diode Protects Microchips From Voltage Spikes - Inductive kickback from switching off motors can fry circuits. Here is how flyback diodes save them.",
     "FAST Algorithm on ESP32-S3 - Developer shraiwi achieved SIMD-accelerated machine vision using assembly code.",
     "Why do microcontrollers have brownout detectors? - The hidden circuit protecting your code from voltage drops.",
-    "Fast-Heating E-Waste Recycling - Rice University researchers extract scarce metals directly from plastic electronic waste."
+    "Fast-Heating E-Waste Recycling - Rice University researchers extract scarce metals directly from plastic electronic waste.",
+    "Akai Announces MPC Sample Key With Open-Source Firmware - The new hardware offers early access for hackers building custom firmware modifications."
   ],
   "themes": [
-    "circuit",
     "manga",
     "cyber_city",
     "hologram",
@@ -117,7 +117,8 @@
     "sunset",
     "circuit",
     "matrix",
-    "aurora"
+    "aurora",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

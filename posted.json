@@ -61,10 +61,10 @@
     "https://hackaday.com/2026/10/28/battery-prototype-uses-superextensive-quantum-effects-to-charge-faster/",
     "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
     "https://spectrum.ieee.org/beta-technologies-electric-aircraft",
-    "https://newatlas.com/military/new-image-sheds-light-on-chinas-secret-spaceplane/"
+    "https://newatlas.com/military/new-image-sheds-light-on-chinas-secret-spaceplane/",
+    "https://techcrunch.com/2026/10/30/5-days-left-your-last-chance-to-connect-scale-and-save-at-techcrunch-founder-summit-2026/"
   ],
   "headlines": [
-    "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
     "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
     "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
     "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing.",
@@ -103,10 +103,10 @@
     "Tesla builds Optimus in California - Profit drops 43% as expenses grow for AI and autonomous driving investments",
     "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems.",
     "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
-    "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024."
+    "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024.",
+    "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?"
   ],
   "themes": [
-    "matrix",
     "synthwave",
     "cyber_city",
     "circuit",
@@ -125,7 +125,8 @@
     "circuit",
     "sunset",
     "matrix",
-    "aurora"
+    "aurora",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

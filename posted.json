@@ -60,10 +60,10 @@
     "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/",
     "https://hackaday.com/2026/10/28/battery-prototype-uses-superextensive-quantum-effects-to-charge-faster/",
     "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
-    "https://spectrum.ieee.org/beta-technologies-electric-aircraft"
+    "https://spectrum.ieee.org/beta-technologies-electric-aircraft",
+    "https://newatlas.com/military/new-image-sheds-light-on-chinas-secret-spaceplane/"
   ],
   "headlines": [
-    "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems.",
     "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
     "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
     "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
@@ -102,10 +102,10 @@
     "Quantum battery prototype demonstrated - Researchers show how superextensive quantum effects can charge a battery cell faster.",
     "Tesla builds Optimus in California - Profit drops 43% as expenses grow for AI and autonomous driving investments",
     "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems.",
-    "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff."
+    "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
+    "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024."
   ],
   "themes": [
-    "manga",
     "matrix",
     "synthwave",
     "cyber_city",
@@ -124,7 +124,8 @@
     "aurora",
     "circuit",
     "sunset",
-    "matrix"
+    "matrix",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -380,6 +381,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-10-30T09:04"
+    },
+    {
+      "id": "18125823649932583",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-10-30T10:31"
     }
   ]
 }

@@ -62,7 +62,6 @@
     "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/"
   ],
   "headlines": [
-    "What if AI could log in for you safely? - Imagine granting login access to automated assistants while your actual master passwords remain completely hidden.",
     "PERCH 2.0 Turns Tanks Into Drone Launchers - General Dynamics unveils an upgrade for M1A2 tanks to launch kamikaze drones over 18 miles away.",
     "OpenAI Cuts Internet Access During Frontier Model Training - Training shifts offline using cached web content to stop models from affecting external systems.",
     "The Next Era of Solar: Tandem Cells - How stacking perovskite over silicon breaks the physical efficiency limits of standard solar panels.",
@@ -101,10 +100,10 @@
     "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control.",
     "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code.",
     "Quantum battery prototype demonstrated - Researchers show how superextensive quantum effects can charge a battery cell faster.",
-    "Tesla builds Optimus in California - Profit drops 43% as expenses grow for AI and autonomous driving investments"
+    "Tesla builds Optimus in California - Profit drops 43% as expenses grow for AI and autonomous driving investments",
+    "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems."
   ],
   "themes": [
-    "circuit",
     "hologram",
     "manga",
     "matrix",
@@ -123,7 +122,8 @@
     "matrix",
     "hologram",
     "aurora",
-    "circuit"
+    "circuit",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -365,6 +365,13 @@
       "label": "ROBOTICS",
       "lang": "English",
       "time": "2026-10-29T16:41"
+    },
+    {
+      "id": "18351687967302089",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-10-30T06:23"
     }
   ]
 }

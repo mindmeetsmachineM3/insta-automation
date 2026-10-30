@@ -62,10 +62,10 @@
     "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
     "https://spectrum.ieee.org/beta-technologies-electric-aircraft",
     "https://newatlas.com/military/new-image-sheds-light-on-chinas-secret-spaceplane/",
-    "https://techcrunch.com/2026/10/30/5-days-left-your-last-chance-to-connect-scale-and-save-at-techcrunch-founder-summit-2026/"
+    "https://techcrunch.com/2026/10/30/5-days-left-your-last-chance-to-connect-scale-and-save-at-techcrunch-founder-summit-2026/",
+    "https://interestingengineering.com/science/light-form-3d-printed-progressive-lenses"
   ],
   "headlines": [
-    "How Sci-Fi Ion Engines Actually Work Today - Real Hall-effect thrusters use magnetic fields to push satellites with extreme efficiency.",
     "Physical Moving Parts Inside Microchips - How MEMS sensors use microscopic silicon springs and capacitance to detect phone motion.",
     "What if AI spoke like an awkward human? - Imagine an AI model trained strictly on authentic human conversation without script polishing.",
     "How Bending Steel Gives Robots Zero-Backlash Precision - Harmonic drive gearing intentionally deforms metal to achieve extreme control in compact joints.",
@@ -104,10 +104,10 @@
     "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems.",
     "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
     "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024.",
-    "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?"
+    "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
+    "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent."
   ],
   "themes": [
-    "synthwave",
     "cyber_city",
     "circuit",
     "aurora",
@@ -126,7 +126,8 @@
     "sunset",
     "matrix",
     "aurora",
-    "manga"
+    "manga",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -389,6 +390,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-10-30T10:31"
+    },
+    {
+      "id": "17929557282185967",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-10-30T14:31"
     }
   ]
 }

@@ -68,10 +68,10 @@
     "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3",
     "https://interestingengineering.com/energy/sodium-metal-battery-polymer-electrolyte-1000-cycles",
     "https://interestingengineering.com/transportation/joby-electric-air-taxi-flights-florida-airports",
-    "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/"
+    "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/",
+    "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/"
   ],
   "headlines": [
-    "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units.",
     "New Underwater Biomimetic Robot Created - NC State University designs a robot that moves like aquatic animals to blend into marine environments.",
     "Bluetooth Range Extended To 12 Kilometers - Standard implementation practices cause Bluetooth's usual range limits, a recent project demonstrates.",
     "What If AI Tools Showed Their Own Hidden Biases? - Imagine an interface comparing multiple AI models side-by-side to spot algorithmic slant in real time.",
@@ -110,10 +110,10 @@
     "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
     "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits.",
     "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock.",
-    "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could."
+    "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could.",
+    "What if hardware makers backed infrastructure loans? - Imagine chip suppliers cosigning financing for large-scale computing facilities."
   ],
   "themes": [
-    "sunset",
     "circuit",
     "matrix",
     "aurora",
@@ -132,7 +132,8 @@
     "aurora",
     "hologram",
     "sunset",
-    "cyber_city"
+    "cyber_city",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

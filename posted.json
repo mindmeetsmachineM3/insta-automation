@@ -65,10 +65,12 @@
     "https://techcrunch.com/2026/10/30/5-days-left-your-last-chance-to-connect-scale-and-save-at-techcrunch-founder-summit-2026/",
     "https://interestingengineering.com/science/light-form-3d-printed-progressive-lenses",
     "https://newatlas.com/aircraft/virgin-galactic-apeiron-delta-class-spaceship/",
-    "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3"
+    "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3",
+    "https://interestingengineering.com/energy/sodium-metal-battery-polymer-electrolyte-1000-cycles",
+    "https://interestingengineering.com/transportation/joby-electric-air-taxi-flights-florida-airports",
+    "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/"
   ],
   "headlines": [
-    "How Bending Steel Gives Robots Zero-Backlash Precision - Harmonic drive gearing intentionally deforms metal to achieve extreme control in compact joints.",
     "How Real Invisibility Cloaks Actually Work - Sci-fi uses magic, but physicists use metamaterials that bend light waves around objects.",
     "Can sensor gloves teach robots wet lab work? - An ex-OpenAI science lead launches a venture to mechanize chemistry facilities.",
     "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units.",
@@ -107,10 +109,10 @@
     "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
     "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent.",
     "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
-    "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th."
+    "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
+    "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits."
   ],
   "themes": [
-    "aurora",
     "matrix",
     "hologram",
     "sunset",
@@ -129,7 +131,8 @@
     "manga",
     "cyber_city",
     "matrix",
-    "aurora"
+    "aurora",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -406,6 +409,13 @@
       "label": "SCI-FI TECH",
       "lang": "English",
       "time": "2026-10-30T16:34"
+    },
+    {
+      "id": "18038972777849171",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-10-31T05:39"
     }
   ]
 }

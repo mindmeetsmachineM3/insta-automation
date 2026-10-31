@@ -71,7 +71,6 @@
     "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/"
   ],
   "headlines": [
-    "How Real Invisibility Cloaks Actually Work - Sci-fi uses magic, but physicists use metamaterials that bend light waves around objects.",
     "Can sensor gloves teach robots wet lab work? - An ex-OpenAI science lead launches a venture to mechanize chemistry facilities.",
     "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units.",
     "New Underwater Biomimetic Robot Created - NC State University designs a robot that moves like aquatic animals to blend into marine environments.",
@@ -110,10 +109,10 @@
     "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent.",
     "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
     "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
-    "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits."
+    "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits.",
+    "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock."
   ],
   "themes": [
-    "matrix",
     "hologram",
     "sunset",
     "circuit",
@@ -132,7 +131,8 @@
     "cyber_city",
     "matrix",
     "aurora",
-    "hologram"
+    "hologram",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -416,6 +416,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-10-31T05:39"
+    },
+    {
+      "id": "18078174017741361",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-10-31T08:51"
     }
   ]
 }

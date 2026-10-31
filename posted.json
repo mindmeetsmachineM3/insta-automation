@@ -71,7 +71,6 @@
     "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/"
   ],
   "headlines": [
-    "Can sensor gloves teach robots wet lab work? - An ex-OpenAI science lead launches a venture to mechanize chemistry facilities.",
     "Voice-controlled Microduck robots - Nvidia CEO plays with the interactive toys that have sold 20,000 units.",
     "New Underwater Biomimetic Robot Created - NC State University designs a robot that moves like aquatic animals to blend into marine environments.",
     "Bluetooth Range Extended To 12 Kilometers - Standard implementation practices cause Bluetooth's usual range limits, a recent project demonstrates.",
@@ -110,10 +109,10 @@
     "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
     "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
     "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits.",
-    "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock."
+    "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock.",
+    "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could."
   ],
   "themes": [
-    "hologram",
     "sunset",
     "circuit",
     "matrix",
@@ -132,7 +131,8 @@
     "matrix",
     "aurora",
     "hologram",
-    "sunset"
+    "sunset",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -423,6 +423,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-10-31T08:51"
+    },
+    {
+      "id": "17915193006473460",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-10-31T12:08"
     }
   ]
 }

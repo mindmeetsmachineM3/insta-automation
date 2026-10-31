@@ -70,10 +70,10 @@
     "https://interestingengineering.com/transportation/joby-electric-air-taxi-flights-florida-airports",
     "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/",
     "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
-    "https://hackaday.com/2026/10/31/3d-printed-einstein-szilard-refrigerator-cools-with-fire/"
+    "https://hackaday.com/2026/10/31/3d-printed-einstein-szilard-refrigerator-cools-with-fire/",
+    "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/"
   ],
   "headlines": [
-    "Bluetooth Range Extended To 12 Kilometers - Standard implementation practices cause Bluetooth's usual range limits, a recent project demonstrates.",
     "What If AI Tools Showed Their Own Hidden Biases? - Imagine an interface comparing multiple AI models side-by-side to spot algorithmic slant in real time.",
     "Phase-Change Memory Is Replacing Flash - How microscopic materials change state to store data faster than traditional silicon.",
     "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
@@ -112,10 +112,10 @@
     "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock.",
     "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could.",
     "What if hardware makers backed infrastructure loans? - Imagine chip suppliers cosigning financing for large-scale computing facilities.",
-    "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design."
+    "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design.",
+    "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes."
   ],
   "themes": [
-    "matrix",
     "aurora",
     "cyber_city",
     "manga",
@@ -134,7 +134,8 @@
     "sunset",
     "cyber_city",
     "synthwave",
-    "matrix"
+    "matrix",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -439,6 +440,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-10-31T14:13"
+    },
+    {
+      "id": "18015409316967102",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-10-31T16:20"
     }
   ]
 }

@@ -75,7 +75,6 @@
     "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers"
   ],
   "headlines": [
-    "Phase-Change Memory Is Replacing Flash - How microscopic materials change state to store data faster than traditional silicon.",
     "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
     "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends.",
     "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
@@ -114,10 +113,10 @@
     "What if hardware makers backed infrastructure loans? - Imagine chip suppliers cosigning financing for large-scale computing facilities.",
     "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design.",
     "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
-    "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers."
+    "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
+    "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold."
   ],
   "themes": [
-    "cyber_city",
     "manga",
     "matrix",
     "hologram",
@@ -136,7 +135,8 @@
     "synthwave",
     "matrix",
     "manga",
-    "circuit"
+    "circuit",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -448,6 +448,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-10-31T16:20"
+    },
+    {
+      "id": "17999127426046125",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-01T05:36"
     }
   ]
 }

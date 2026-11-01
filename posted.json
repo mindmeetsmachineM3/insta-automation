@@ -74,10 +74,10 @@
     "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/",
     "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers",
     "https://interestingengineering.com/science/china-sound-waves-stimulate-damaged-brains",
-    "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/"
+    "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/",
+    "https://newatlas.com/energy/villi-small-intestine-inspired-microbial-fuel-cell/"
   ],
   "headlines": [
-    "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
     "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity.",
     "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
     "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image.",
@@ -116,10 +116,10 @@
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
     "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
     "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
-    "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions."
+    "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions.",
+    "New Biobattery Inspired by Small Intestine - Binghamton University researchers built a microbial fuel cell that creates eight times more power."
   ],
   "themes": [
-    "aurora",
     "circuit",
     "sunset",
     "matrix",
@@ -138,7 +138,8 @@
     "cyber_city",
     "synthwave",
     "aurora",
-    "hologram"
+    "hologram",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -471,6 +472,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-01T08:59"
+    },
+    {
+      "id": "18128956108912792",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-11-01T14:16"
     }
   ]
 }

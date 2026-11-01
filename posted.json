@@ -75,7 +75,6 @@
     "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers"
   ],
   "headlines": [
-    "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
     "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends.",
     "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
     "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
@@ -114,10 +113,10 @@
     "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design.",
     "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
     "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
-    "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold."
+    "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
+    "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity."
   ],
   "themes": [
-    "manga",
     "matrix",
     "hologram",
     "aurora",
@@ -136,7 +135,8 @@
     "matrix",
     "manga",
     "circuit",
-    "cyber_city"
+    "cyber_city",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -455,6 +455,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-01T05:36"
+    },
+    {
+      "id": "17928230148427800",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-01T07:27"
     }
   ]
 }

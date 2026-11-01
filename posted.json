@@ -72,10 +72,10 @@
     "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
     "https://hackaday.com/2026/10/31/3d-printed-einstein-szilard-refrigerator-cools-with-fire/",
     "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/",
-    "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers"
+    "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers",
+    "https://interestingengineering.com/science/china-sound-waves-stimulate-damaged-brains"
   ],
   "headlines": [
-    "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends.",
     "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
     "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
     "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity.",
@@ -114,10 +114,10 @@
     "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
     "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
-    "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity."
+    "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
+    "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness."
   ],
   "themes": [
-    "matrix",
     "hologram",
     "aurora",
     "circuit",
@@ -136,7 +136,8 @@
     "manga",
     "circuit",
     "cyber_city",
-    "synthwave"
+    "synthwave",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -462,6 +463,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-01T07:27"
+    },
+    {
+      "id": "17978638658932441",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-01T08:59"
     }
   ]
 }

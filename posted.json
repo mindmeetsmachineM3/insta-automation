@@ -71,10 +71,10 @@
     "https://hackaday.com/2026/10/30/how-britain-narrowly-escaped-a-grid-blackout-in-june-2026/",
     "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
     "https://hackaday.com/2026/10/31/3d-printed-einstein-szilard-refrigerator-cools-with-fire/",
-    "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/"
+    "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/",
+    "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers"
   ],
   "headlines": [
-    "What If AI Tools Showed Their Own Hidden Biases? - Imagine an interface comparing multiple AI models side-by-side to spot algorithmic slant in real time.",
     "Phase-Change Memory Is Replacing Flash - How microscopic materials change state to store data faster than traditional silicon.",
     "How a Servo Motor Actually Knows Its Exact Position - Inside the closed-loop feedback loop that unites mechanics, electronics, and software.",
     "Blue Planet III keeps imperfect footage - Producers choose authenticity over polished AI video trends.",
@@ -113,10 +113,10 @@
     "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could.",
     "What if hardware makers backed infrastructure loans? - Imagine chip suppliers cosigning financing for large-scale computing facilities.",
     "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design.",
-    "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes."
+    "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
+    "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers."
   ],
   "themes": [
-    "aurora",
     "cyber_city",
     "manga",
     "matrix",
@@ -135,7 +135,8 @@
     "cyber_city",
     "synthwave",
     "matrix",
-    "manga"
+    "manga",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

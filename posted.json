@@ -73,10 +73,10 @@
     "https://hackaday.com/2026/10/31/3d-printed-einstein-szilard-refrigerator-cools-with-fire/",
     "https://newatlas.com/architecture/sany-irootech-headquarters-best-tall-building/",
     "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers",
-    "https://interestingengineering.com/science/china-sound-waves-stimulate-damaged-brains"
+    "https://interestingengineering.com/science/china-sound-waves-stimulate-damaged-brains",
+    "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/"
   ],
   "headlines": [
-    "ANYmal Robot Solves Giant Rubik's Cube - The autonomous quadruped completed the 30-step puzzle using only its feet.",
     "GaN Semiconductors - How Gallium Nitride could replace silicon to power faster chargers in 10 years.",
     "HKUST Develops New Silver Battery Additive - Reaching 467 Wh/kg energy density, the battery retains 90 percent of its capacity.",
     "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
@@ -115,10 +115,10 @@
     "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
     "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
-    "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness."
+    "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
+    "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions."
   ],
   "themes": [
-    "hologram",
     "aurora",
     "circuit",
     "sunset",
@@ -137,7 +137,8 @@
     "circuit",
     "cyber_city",
     "synthwave",
-    "aurora"
+    "aurora",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

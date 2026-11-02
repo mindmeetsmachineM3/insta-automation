@@ -80,10 +80,10 @@
     "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission",
     "https://interestingengineering.com/innovation/scientists-develop-kerosene-gel-for-rocket",
     "https://interestingengineering.com/ai-robotics/meta-develops-humanoid-robot",
-    "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/"
+    "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
+    "https://interestingengineering.com/science/cryogenic-chip-chiller-uses-60000-rpm-turbine"
   ],
   "headlines": [
-    "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure.",
     "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
     "What If Browsers Ran AI Models Completely Offline? - Imagine running web apps with local AI models on your device without sending data to servers.",
     "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure.",
@@ -122,10 +122,10 @@
     "Google Tests AI Model in Space - A satellite equipped with Tensor Processing Units ran Gemma 4 and transmitted a haiku to Earth.",
     "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
     "Meta's 105-Pound Humanoid - A new humanoid robot prototype explores potential future home uses.",
-    "What If AI Worked for Employees, Not Just Managers? - Imagine an intelligent proxy that automates routine updates and guards work hours against burnout."
+    "What If AI Worked for Employees, Not Just Managers? - Imagine an intelligent proxy that automates routine updates and guards work hours against burnout.",
+    "New cryogenic semiconductor chiller - South Korean researchers build a system that cools to minus 184\u00b0F in 30 minutes."
   ],
   "themes": [
-    "matrix",
     "aurora",
     "hologram",
     "sunset",
@@ -144,7 +144,8 @@
     "circuit",
     "cyber_city",
     "aurora",
-    "manga"
+    "manga",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -512,6 +513,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-02T09:10"
+    },
+    {
+      "id": "18099645599388521",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-02T14:37"
     }
   ]
 }

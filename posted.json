@@ -79,7 +79,6 @@
     "https://interestingengineering.com/culture/china-plan-ai-deep-sea-robots-archaeology"
   ],
   "headlines": [
-    "Measure AI Financial Payoff - A concept tool to track real corporate returns on AI spending.",
     "AI Predicts Cancer Survival From One Photo - Mass General Brigham experts built an AI tool to determine biological age from a facial image.",
     "Meet Echo: Realbotix's New Humanoid AI Companion - Features lifelike silicone skin and 39 degrees of freedom for realistic movement.",
     "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas.",
@@ -118,10 +117,10 @@
     "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
     "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions.",
     "New Biobattery Inspired by Small Intestine - Binghamton University researchers built a microbial fuel cell that creates eight times more power.",
-    "China Plans AI and Robots for Underwater Archaeology - Robotic systems will explore ocean depths to automate historical artifact recovery."
+    "China Plans AI and Robots for Underwater Archaeology - Robotic systems will explore ocean depths to automate historical artifact recovery.",
+    "Processing Data Inside Memory Itself - How memristors bypass the von Neumann bottleneck to build brain-like analog chips."
   ],
   "themes": [
-    "sunset",
     "matrix",
     "aurora",
     "manga",
@@ -140,7 +139,8 @@
     "aurora",
     "hologram",
     "cyber_city",
-    "matrix"
+    "matrix",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -487,6 +487,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-01T16:22"
+    },
+    {
+      "id": "17874961401649678",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-02T03:45"
     }
   ]
 }

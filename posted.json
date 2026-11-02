@@ -78,10 +78,10 @@
     "https://newatlas.com/energy/villi-small-intestine-inspired-microbial-fuel-cell/",
     "https://interestingengineering.com/culture/china-plan-ai-deep-sea-robots-archaeology",
     "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission",
-    "https://interestingengineering.com/innovation/scientists-develop-kerosene-gel-for-rocket"
+    "https://interestingengineering.com/innovation/scientists-develop-kerosene-gel-for-rocket",
+    "https://interestingengineering.com/ai-robotics/meta-develops-humanoid-robot"
   ],
   "headlines": [
-    "Anthropic Files For IPO - New S-1 filing reveals data center power challenges and reliance on natural gas.",
     "How Acoustic Tractor Beams Move Matter With Sound - Sci-fi moved starships, but real physics uses ultrasonic sound waves to steer matter mid-air.",
     "Touch-activated glowing electronic skin - NUS researchers developed flexible eLuminator skin that instantly lights up under pressure.",
     "Hybrid-Electric Plane Takes Off in Manhattan - Electra demonstrates fixed-wing travel in urban spaces with a 150-foot takeoff.",
@@ -120,10 +120,10 @@
     "China Plans AI and Robots for Underwater Archaeology - Robotic systems will explore ocean depths to automate historical artifact recovery.",
     "Processing Data Inside Memory Itself - How memristors bypass the von Neumann bottleneck to build brain-like analog chips.",
     "Google Tests AI Model in Space - A satellite equipped with Tensor Processing Units ran Gemma 4 and transmitted a haiku to Earth.",
-    "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion."
+    "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
+    "Meta's 105-Pound Humanoid - A new humanoid robot prototype explores potential future home uses."
   ],
   "themes": [
-    "manga",
     "cyber_city",
     "matrix",
     "aurora",
@@ -142,7 +142,8 @@
     "matrix",
     "sunset",
     "circuit",
-    "cyber_city"
+    "cyber_city",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -503,6 +504,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-02T07:48"
+    },
+    {
+      "id": "18112771811613822",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-02T09:10"
     }
   ]
 }

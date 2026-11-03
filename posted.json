@@ -82,10 +82,10 @@
     "https://interestingengineering.com/ai-robotics/meta-develops-humanoid-robot",
     "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
     "https://interestingengineering.com/science/cryogenic-chip-chiller-uses-60000-rpm-turbine",
-    "https://interestingengineering.com/energy/70000wh-energy-storage-built-old-ev-batteries"
+    "https://interestingengineering.com/energy/70000wh-energy-storage-built-old-ev-batteries",
+    "https://www.theverge.com/ai-artificial-intelligence/1024604/openai-data-center-grid-protection-program"
   ],
   "headlines": [
-    "How Capacitive Touchscreens Read Your Finger - Invisible electrostatic grids track every tap without applying physical pressure.",
     "AI Boom Strains Existing Power Grid - Grid modernization opportunities emerge as industry insiders report positive tech growth.",
     "How One Tiny Diode Protects Microchips From Voltage Spikes - Inductive kickback from switching off motors can fry circuits. Here is how flyback diodes save them.",
     "FAST Algorithm on ESP32-S3 - Developer shraiwi achieved SIMD-accelerated machine vision using assembly code.",
@@ -124,10 +124,10 @@
     "What If AI Worked for Employees, Not Just Managers? - Imagine an intelligent proxy that automates routine updates and guards work hours against burnout.",
     "New cryogenic semiconductor chiller - South Korean researchers build a system that cools to minus 184\u00b0F in 30 minutes.",
     "Old e-scooter batteries repurposed - German startup turns retired mobility batteries into a 70,000 watt-hour energy storage system.",
-    "Why Lithium-Ion Batteries Need Solid Electrolytes - Replacing liquid with solid materials stops dangerous dendrites from forming."
+    "Why Lithium-Ion Batteries Need Solid Electrolytes - Replacing liquid with solid materials stops dangerous dendrites from forming.",
+    "OpenAI Launches Grid Protectors Program - A new pilot aims to free up 1,000 megawatts of power for emergencies."
   ],
   "themes": [
-    "sunset",
     "cyber_city",
     "synthwave",
     "matrix",
@@ -146,7 +146,8 @@
     "manga",
     "hologram",
     "matrix",
-    "synthwave"
+    "synthwave",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

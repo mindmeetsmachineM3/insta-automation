@@ -85,10 +85,10 @@
     "https://interestingengineering.com/energy/70000wh-energy-storage-built-old-ev-batteries",
     "https://www.theverge.com/ai-artificial-intelligence/1024604/openai-data-center-grid-protection-program",
     "https://www.sciencedaily.com/releases/2026/10/261022081302.htm",
-    "https://interestingengineering.com/ai-robotics/openai-pando-git-backend-code-commit-surge"
+    "https://interestingengineering.com/ai-robotics/openai-pando-git-backend-code-commit-surge",
+    "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/"
   ],
   "headlines": [
-    "FAST Algorithm on ESP32-S3 - Developer shraiwi achieved SIMD-accelerated machine vision using assembly code.",
     "Why do microcontrollers have brownout detectors? - The hidden circuit protecting your code from voltage drops.",
     "Fast-Heating E-Waste Recycling - Rice University researchers extract scarce metals directly from plastic electronic waste.",
     "Akai Announces MPC Sample Key With Open-Source Firmware - The new hardware offers early access for hackers building custom firmware modifications.",
@@ -127,10 +127,10 @@
     "Why Lithium-Ion Batteries Need Solid Electrolytes - Replacing liquid with solid materials stops dangerous dendrites from forming.",
     "OpenAI Launches Grid Protectors Program - A new pilot aims to free up 1,000 megawatts of power for emergencies.",
     "New method studies crystal defects - Researchers analyzed light behavior in diamond and silicon carbide to improve quantum tech designs.",
-    "OpenAI Built Pando to Handle Massive Code Commits - A custom Git backend developed in 10 weeks to manage a 2,442% commit surge."
+    "OpenAI Built Pando to Handle Massive Code Commits - A custom Git backend developed in 10 weeks to manage a 2,442% commit surge.",
+    "Train AI models without writing code - What if non-technical experts could easily build and train custom models?"
   ],
   "themes": [
-    "matrix",
     "manga",
     "circuit",
     "cyber_city",
@@ -149,7 +149,8 @@
     "synthwave",
     "circuit",
     "hologram",
-    "sunset"
+    "sunset",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

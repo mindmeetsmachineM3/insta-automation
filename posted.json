@@ -88,10 +88,10 @@
     "https://interestingengineering.com/ai-robotics/openai-pando-git-backend-code-commit-surge",
     "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/",
     "https://interestingengineering.com/energy/new-ev-battery-delivers-faster-charging",
-    "https://interestingengineering.com/military/us-army-flies-first-heavy-fuel-engine"
+    "https://interestingengineering.com/military/us-army-flies-first-heavy-fuel-engine",
+    "https://interestingengineering.com/energy/iter-330-tonne-toroidal-field-coil-34ka-test"
   ],
   "headlines": [
-    "Akai Announces MPC Sample Key With Open-Source Firmware - The new hardware offers early access for hackers building custom firmware modifications.",
     "Shape-shifting space tiles launch - New modular spacecraft will test autonomous assembly and physical changes in orbit.",
     "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control.",
     "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code.",
@@ -130,10 +130,10 @@
     "OpenAI Built Pando to Handle Massive Code Commits - A custom Git backend developed in 10 weeks to manage a 2,442% commit surge.",
     "Train AI models without writing code - What if non-technical experts could easily build and train custom models?",
     "EV Battery Hits 90% Charge in 14.7 Minutes - Engineers redesigned the electrolyte to speed up charging times for electric vehicles.",
-    "Extending Tactical Drone Range - New tech helps drones fly longer and climb higher without liquid cooling."
+    "Extending Tactical Drone Range - New tech helps drones fly longer and climb higher without liquid cooling.",
+    "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil."
   ],
   "themes": [
-    "cyber_city",
     "synthwave",
     "aurora",
     "hologram",
@@ -152,7 +152,8 @@
     "sunset",
     "manga",
     "cyber_city",
-    "aurora"
+    "aurora",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -569,6 +570,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-11-03T16:37"
+    },
+    {
+      "id": "18133864795772437",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-04T03:40"
     }
   ]
 }

@@ -91,10 +91,10 @@
     "https://interestingengineering.com/military/us-army-flies-first-heavy-fuel-engine",
     "https://interestingengineering.com/energy/iter-330-tonne-toroidal-field-coil-34ka-test",
     "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
-    "https://interestingengineering.com/military/x-bat-combat-drone-full-scale-prototype"
+    "https://interestingengineering.com/military/x-bat-combat-drone-full-scale-prototype",
+    "https://techcrunch.com/2026/11/04/techcrunch-founder-summit-2026-todays-the-day/"
   ],
   "headlines": [
-    "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems.",
     "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
     "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024.",
     "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
@@ -133,10 +133,10 @@
     "How Flexible Gears Give Robots Extreme Precision - Harmonic drives intentionally flex solid metal gears to eliminate mechanical backlash.",
     "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
     "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software.",
-    "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles."
+    "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
+    "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?"
   ],
   "themes": [
-    "sunset",
     "circuit",
     "cyber_city",
     "aurora",
@@ -155,7 +155,8 @@
     "cyber_city",
     "synthwave",
     "aurora",
-    "manga"
+    "manga",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

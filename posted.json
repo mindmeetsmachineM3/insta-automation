@@ -89,10 +89,10 @@
     "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/",
     "https://interestingengineering.com/energy/new-ev-battery-delivers-faster-charging",
     "https://interestingengineering.com/military/us-army-flies-first-heavy-fuel-engine",
-    "https://interestingengineering.com/energy/iter-330-tonne-toroidal-field-coil-34ka-test"
+    "https://interestingengineering.com/energy/iter-330-tonne-toroidal-field-coil-34ka-test",
+    "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/"
   ],
   "headlines": [
-    "Shape-shifting space tiles launch - New modular spacecraft will test autonomous assembly and physical changes in orbit.",
     "Tiny magnets track muscle movement - MIT researchers implant magnets in muscle tissue to improve robotic prosthetics control.",
     "What If Web Security Proxies Hot-Patched Code Flaws? - A smart gateway concept could detect dynamic web exploits and sanitize requests before reaching legacy code.",
     "Quantum battery prototype demonstrated - Researchers show how superextensive quantum effects can charge a battery cell faster.",
@@ -131,10 +131,10 @@
     "Train AI models without writing code - What if non-technical experts could easily build and train custom models?",
     "EV Battery Hits 90% Charge in 14.7 Minutes - Engineers redesigned the electrolyte to speed up charging times for electric vehicles.",
     "Extending Tactical Drone Range - New tech helps drones fly longer and climb higher without liquid cooling.",
-    "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil."
+    "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil.",
+    "Jet engines power data centers - Builders use discarded turbines amid grid delays."
   ],
   "themes": [
-    "synthwave",
     "aurora",
     "hologram",
     "cyber_city",
@@ -153,7 +153,8 @@
     "manga",
     "cyber_city",
     "aurora",
-    "sunset"
+    "sunset",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

@@ -93,7 +93,6 @@
     "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/"
   ],
   "headlines": [
-    "Quantum battery prototype demonstrated - Researchers show how superextensive quantum effects can charge a battery cell faster.",
     "Tesla builds Optimus in California - Profit drops 43% as expenses grow for AI and autonomous driving investments",
     "How Liquids Turn Solid in Milliseconds - Inside magnetorheological fluids changing modern suspension systems.",
     "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
@@ -132,10 +131,10 @@
     "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil.",
     "Jet engines power data centers - Builders use discarded turbines amid grid delays.",
     "How Flexible Gears Give Robots Extreme Precision - Harmonic drives intentionally flex solid metal gears to eliminate mechanical backlash.",
-    "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades."
+    "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
+    "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software."
   ],
   "themes": [
-    "cyber_city",
     "matrix",
     "sunset",
     "circuit",
@@ -154,7 +153,8 @@
     "sunset",
     "circuit",
     "cyber_city",
-    "synthwave"
+    "synthwave",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -592,6 +592,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-04T07:39"
+    },
+    {
+      "id": "17914950783519681",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-04T09:02"
     }
   ]
 }

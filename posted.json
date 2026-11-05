@@ -97,7 +97,6 @@
     "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/"
   ],
   "headlines": [
-    "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
     "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent.",
     "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
     "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
@@ -136,10 +135,10 @@
     "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
     "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
     "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas.",
-    "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents."
+    "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
+    "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data."
   ],
   "themes": [
-    "aurora",
     "manga",
     "hologram",
     "matrix",
@@ -158,7 +157,8 @@
     "manga",
     "sunset",
     "matrix",
-    "synthwave"
+    "synthwave",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -617,6 +617,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-05T03:45"
+    },
+    {
+      "id": "18139319998650142",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-05T05:53"
     }
   ]
 }

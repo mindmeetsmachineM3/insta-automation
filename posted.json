@@ -98,7 +98,6 @@
     "https://hackaday.com/2026/11/04/making-a-wax-motor-for-micrometer-level-control/"
   ],
   "headlines": [
-    "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
     "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
     "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits.",
     "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock.",
@@ -137,10 +136,10 @@
     "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas.",
     "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
     "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data.",
-    "How Wax Motors Work - Achieving micrometer-level control using thermal responses in wax materials."
+    "How Wax Motors Work - Achieving micrometer-level control using thermal responses in wax materials.",
+    "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely."
   ],
   "themes": [
-    "hologram",
     "matrix",
     "synthwave",
     "circuit",
@@ -159,7 +158,8 @@
     "matrix",
     "synthwave",
     "cyber_city",
-    "sunset"
+    "sunset",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -632,6 +632,13 @@
       "label": "ROBOTICS",
       "lang": "English",
       "time": "2026-11-05T10:40"
+    },
+    {
+      "id": "18641832313032354",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-05T12:35"
     }
   ]
 }

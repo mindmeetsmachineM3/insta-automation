@@ -92,10 +92,11 @@
     "https://interestingengineering.com/energy/iter-330-tonne-toroidal-field-coil-34ka-test",
     "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
     "https://interestingengineering.com/military/x-bat-combat-drone-full-scale-prototype",
-    "https://techcrunch.com/2026/11/04/techcrunch-founder-summit-2026-todays-the-day/"
+    "https://techcrunch.com/2026/11/04/techcrunch-founder-summit-2026-todays-the-day/",
+    "https://www.theverge.com/ai-artificial-intelligence/1026867/qualcomm-earnings-data-centers",
+    "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/"
   ],
   "headlines": [
-    "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024.",
     "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
     "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent.",
     "Virgin Galactic Reveals Apeiron - The new rocket plane aims to complete more than 500 missions with a target of flying twice a week.",
@@ -134,10 +135,10 @@
     "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software.",
     "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
     "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
-    "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas."
+    "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas.",
+    "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents."
   ],
   "themes": [
-    "cyber_city",
     "aurora",
     "manga",
     "hologram",
@@ -156,7 +157,8 @@
     "aurora",
     "manga",
     "sunset",
-    "matrix"
+    "matrix",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

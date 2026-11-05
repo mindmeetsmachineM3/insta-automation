@@ -95,7 +95,6 @@
     "https://techcrunch.com/2026/11/04/techcrunch-founder-summit-2026-todays-the-day/"
   ],
   "headlines": [
-    "Beta Technologies Tests Alia CX300 - Pilot Chris Caputo tested the electric aircraft, hitting 85 knots shortly after takeoff.",
     "Photo Released of China's Secret Spaceplane - A commercial satellite captured the image from under 56 miles away on May 28, 2024.",
     "Mass-Producing AI Data Centers - What if computing infrastructure could be manufactured on an assembly line?",
     "Eco-friendly 3D-printed progressive lenses - New technology cuts manufacturing energy usage by 90 percent and material waste by 76 percent.",
@@ -134,10 +133,10 @@
     "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
     "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software.",
     "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
-    "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?"
+    "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
+    "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas."
   ],
   "themes": [
-    "circuit",
     "cyber_city",
     "aurora",
     "manga",
@@ -156,7 +155,8 @@
     "synthwave",
     "aurora",
     "manga",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -608,6 +608,13 @@
       "label": "ROBOTICS",
       "lang": "English",
       "time": "2026-11-04T12:21"
+    },
+    {
+      "id": "18132343342833199",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-05T03:45"
     }
   ]
 }

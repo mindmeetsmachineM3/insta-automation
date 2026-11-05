@@ -95,10 +95,10 @@
     "https://techcrunch.com/2026/11/04/techcrunch-founder-summit-2026-todays-the-day/",
     "https://www.theverge.com/ai-artificial-intelligence/1026867/qualcomm-earnings-data-centers",
     "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/",
-    "https://hackaday.com/2026/11/04/making-a-wax-motor-for-micrometer-level-control/"
+    "https://hackaday.com/2026/11/04/making-a-wax-motor-for-micrometer-level-control/",
+    "https://techcrunch.com/2026/11/05/a-yc-startup-is-putting-1m-behind-five-unsolved-materials-science-problems-for-ai/"
   ],
   "headlines": [
-    "Apple Intelligence Launching in China - Features will arrive with iOS 27.3, following beta testing on November 4th.",
     "Britain's Grid Faced a Quiet Crisis - Severe summer heat caused power system frequency to fall below normal limits.",
     "Why Quartz Crystals Keep Time - The piezoelectric magic inside every digital clock.",
     "Stacking Solar Cells to Break Physics Limits - How pairing perovskite with silicon captures more sunlight than standard solar panels ever could.",
@@ -137,10 +137,10 @@
     "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
     "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data.",
     "How Wax Motors Work - Achieving micrometer-level control using thermal responses in wax materials.",
-    "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely."
+    "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely.",
+    "AI-Driven Materials Discovery - Imagine screening millions of semiconductor compounds in software before building them in a lab."
   ],
   "themes": [
-    "matrix",
     "synthwave",
     "circuit",
     "hologram",
@@ -159,7 +159,8 @@
     "synthwave",
     "cyber_city",
     "sunset",
-    "circuit"
+    "circuit",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

@@ -101,10 +101,10 @@
     "https://hackaday.com/2026/11/05/finger-joint-cutter-uses-a-jigsaw-blade-but-not-as-we-know-it/",
     "https://www.theverge.com/ai-artificial-intelligence/1028454/openai-data-center-nda",
     "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
-    "https://interestingengineering.com/innovation/blue-origin-northstar-rocket-engine"
+    "https://interestingengineering.com/innovation/blue-origin-northstar-rocket-engine",
+    "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/"
   ],
   "headlines": [
-    "3D-Printed Refrigerator Powered By Fire - Recreating the classic Einstein-Szilard absorption fridge design.",
     "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
     "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
@@ -143,10 +143,10 @@
     "New Finger Joint Jig - A maker modified a stationary jigsaw with 3D-printed parts to cut box joints.",
     "How Optocouplers Block High-Voltage Spikes - Isolating delicate microcontrollers from dangerous voltage surges using light beams inside a chip.",
     "Airbnb building an AI travel agent - Tool scheduled to debut by mid-2027 to assist with itineraries and reservations",
-    "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models."
+    "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
+    "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?"
   ],
   "themes": [
-    "manga",
     "cyber_city",
     "aurora",
     "sunset",
@@ -165,7 +165,8 @@
     "hologram",
     "sunset",
     "circuit",
-    "aurora"
+    "aurora",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

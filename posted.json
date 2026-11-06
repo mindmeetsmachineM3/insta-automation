@@ -103,10 +103,10 @@
     "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
     "https://interestingengineering.com/innovation/blue-origin-northstar-rocket-engine",
     "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
-    "https://interestingengineering.com/energy/tungsten-plasma-blasts-in-us-fusion-reactor"
+    "https://interestingengineering.com/energy/tungsten-plasma-blasts-in-us-fusion-reactor",
+    "https://newatlas.com/bicycles/onyx-rcr-80v-review/"
   ],
   "headlines": [
-    "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
     "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
     "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
@@ -145,10 +145,10 @@
     "Airbnb building an AI travel agent - Tool scheduled to debut by mid-2027 to assist with itineraries and reservations",
     "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
     "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
-    "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor."
+    "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
+    "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph."
   ],
   "themes": [
-    "aurora",
     "sunset",
     "circuit",
     "cyber_city",
@@ -167,7 +167,8 @@
     "circuit",
     "aurora",
     "manga",
-    "cyber_city"
+    "cyber_city",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -675,6 +676,13 @@
       "label": "FUTURE TECH",
       "lang": "English",
       "time": "2026-11-06T14:37"
+    },
+    {
+      "id": "18127701716486901",
+      "voice": "gTTS",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-06T16:36"
     }
   ]
 }

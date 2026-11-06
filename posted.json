@@ -102,10 +102,10 @@
     "https://www.theverge.com/ai-artificial-intelligence/1028454/openai-data-center-nda",
     "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
     "https://interestingengineering.com/innovation/blue-origin-northstar-rocket-engine",
-    "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/"
+    "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
+    "https://interestingengineering.com/energy/tungsten-plasma-blasts-in-us-fusion-reactor"
   ],
   "headlines": [
-    "China's Skyscrapers Named Best Tall Building Worldwide - Built with extraordinary exoskeleton exteriors that handle high winds and adapt during earthquakes.",
     "Sam Altman Claims Local PC RAM Is Terrible - OpenAI's CEO says RAM belongs in data centers instead of desktop computers.",
     "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
     "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
@@ -144,10 +144,10 @@
     "How Optocouplers Block High-Voltage Spikes - Isolating delicate microcontrollers from dangerous voltage surges using light beams inside a chip.",
     "Airbnb building an AI travel agent - Tool scheduled to debut by mid-2027 to assist with itineraries and reservations",
     "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
-    "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?"
+    "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
+    "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor."
   ],
   "themes": [
-    "cyber_city",
     "aurora",
     "sunset",
     "circuit",
@@ -166,7 +166,8 @@
     "sunset",
     "circuit",
     "aurora",
-    "manga"
+    "manga",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -667,6 +668,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-06T12:29"
+    },
+    {
+      "id": "18128418599479633",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-06T14:37"
     }
   ]
 }

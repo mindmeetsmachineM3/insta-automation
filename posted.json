@@ -104,10 +104,10 @@
     "https://interestingengineering.com/innovation/blue-origin-northstar-rocket-engine",
     "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
     "https://interestingengineering.com/energy/tungsten-plasma-blasts-in-us-fusion-reactor",
-    "https://newatlas.com/bicycles/onyx-rcr-80v-review/"
+    "https://newatlas.com/bicycles/onyx-rcr-80v-review/",
+    "https://www.theverge.com/tech/1029338/nvidia-ceo-jensen-huang-china-spy"
   ],
   "headlines": [
-    "Liquid Cooling Directly Inside the Silicon Chip - Etching microfluidic channels beneath transistors could make 3D-stacked processors run ice-cold.",
     "Cooling Buildings by Beaming Heat into Space - How passive radiative cooling paints lower room temperatures without using any electricity.",
     "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
     "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions.",
@@ -146,10 +146,10 @@
     "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
     "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
     "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
-    "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph."
+    "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph.",
+    "Beijing's Nvidia Push - Targeting advanced American AI chips for the Chinese market."
   ],
   "themes": [
-    "sunset",
     "circuit",
     "cyber_city",
     "synthwave",
@@ -168,7 +168,8 @@
     "aurora",
     "manga",
     "cyber_city",
-    "matrix"
+    "matrix",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

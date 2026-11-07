@@ -106,10 +106,10 @@
     "https://interestingengineering.com/energy/tungsten-plasma-blasts-in-us-fusion-reactor",
     "https://newatlas.com/bicycles/onyx-rcr-80v-review/",
     "https://www.theverge.com/tech/1029338/nvidia-ceo-jensen-huang-china-spy",
-    "https://interestingengineering.com/energy/polymer-membrane-room-temperature-fluoride-ion-batteries"
+    "https://interestingengineering.com/energy/polymer-membrane-room-temperature-fluoride-ion-batteries",
+    "https://newatlas.com/aircraft/uavos-apusneo-haps-solar-aircraft-100-hour-flight-fuerteventura/"
   ],
   "headlines": [
-    "Sound Waves Tested on Patients With Brain Damage - Chinese researchers use focused ultrasound to see if it can help restore consciousness.",
     "What If You Built Your Own AI Desktop Companion? - Using low-cost microcontrollers to create interactive physical pets without recurring cloud subscriptions.",
     "New Biobattery Inspired by Small Intestine - Binghamton University researchers built a microbial fuel cell that creates eight times more power.",
     "China Plans AI and Robots for Underwater Archaeology - Robotic systems will explore ocean depths to automate historical artifact recovery.",
@@ -148,10 +148,10 @@
     "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
     "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph.",
     "Beijing's Nvidia Push - Targeting advanced American AI chips for the Chinese market.",
-    "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles."
+    "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles.",
+    "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring."
   ],
   "themes": [
-    "cyber_city",
     "synthwave",
     "aurora",
     "manga",
@@ -170,7 +170,8 @@
     "cyber_city",
     "matrix",
     "sunset",
-    "aurora"
+    "aurora",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -692,6 +693,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-07T08:04"
+    },
+    {
+      "id": "18034458926855486",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "SCI-FI TECH",
+      "lang": "English",
+      "time": "2026-11-07T11:19"
     }
   ]
 }

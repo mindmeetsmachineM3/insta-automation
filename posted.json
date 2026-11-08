@@ -109,10 +109,10 @@
     "https://interestingengineering.com/energy/polymer-membrane-room-temperature-fluoride-ion-batteries",
     "https://newatlas.com/aircraft/uavos-apusneo-haps-solar-aircraft-100-hour-flight-fuerteventura/",
     "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
-    "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/"
+    "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+    "https://event.on24.com/wcc/r/5546816/67D0147A8B8D057FCE11A17D61A8BB0D?utm_source=IEEE"
   ],
   "headlines": [
-    "Google Tests AI Model in Space - A satellite equipped with Tensor Processing Units ran Gemma 4 and transmitted a haiku to Earth.",
     "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
     "Meta's 105-Pound Humanoid - A new humanoid robot prototype explores potential future home uses.",
     "What If AI Worked for Employees, Not Just Managers? - Imagine an intelligent proxy that automates routine updates and guards work hours against burnout.",
@@ -151,10 +151,10 @@
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
     "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
     "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon.",
-    "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed."
+    "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed.",
+    "Reconstructing 3D Metal Plate Temperatures - COMSOL Multiphysics demonstrates eddy-current thermometry across multiple time and length scales."
   ],
   "themes": [
-    "matrix",
     "synthwave",
     "cyber_city",
     "sunset",
@@ -173,7 +173,8 @@
     "cyber_city",
     "sunset",
     "aurora",
-    "manga"
+    "manga",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -716,6 +717,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-11-08T08:59"
+    },
+    {
+      "id": "18225771130341339",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-08T10:27"
     }
   ]
 }

@@ -113,7 +113,6 @@
     "https://event.on24.com/wcc/r/5546816/67D0147A8B8D057FCE11A17D61A8BB0D?utm_source=IEEE"
   ],
   "headlines": [
-    "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
     "Meta's 105-Pound Humanoid - A new humanoid robot prototype explores potential future home uses.",
     "What If AI Worked for Employees, Not Just Managers? - Imagine an intelligent proxy that automates routine updates and guards work hours against burnout.",
     "New cryogenic semiconductor chiller - South Korean researchers build a system that cools to minus 184\u00b0F in 30 minutes.",
@@ -152,10 +151,10 @@
     "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
     "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon.",
     "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed.",
-    "Reconstructing 3D Metal Plate Temperatures - COMSOL Multiphysics demonstrates eddy-current thermometry across multiple time and length scales."
+    "Reconstructing 3D Metal Plate Temperatures - COMSOL Multiphysics demonstrates eddy-current thermometry across multiple time and length scales.",
+    "Metal That Pulls Like Muscle - Shape Memory Alloys contract when electricity heats them, replacing heavy motors with silent metal wire."
   ],
   "themes": [
-    "synthwave",
     "cyber_city",
     "sunset",
     "circuit",
@@ -174,7 +173,8 @@
     "sunset",
     "aurora",
     "manga",
-    "synthwave"
+    "synthwave",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -724,6 +724,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-11-08T10:27"
+    },
+    {
+      "id": "17953953000344270",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-08T12:15"
     }
   ]
 }

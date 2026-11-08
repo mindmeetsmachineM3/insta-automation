@@ -112,7 +112,6 @@
     "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/"
   ],
   "headlines": [
-    "Processing Data Inside Memory Itself - How memristors bypass the von Neumann bottleneck to build brain-like analog chips.",
     "Google Tests AI Model in Space - A satellite equipped with Tensor Processing Units ran Gemma 4 and transmitted a haiku to Earth.",
     "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
     "Meta's 105-Pound Humanoid - A new humanoid robot prototype explores potential future home uses.",
@@ -151,10 +150,10 @@
     "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
     "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
-    "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon."
+    "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon.",
+    "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed."
   ],
   "themes": [
-    "sunset",
     "matrix",
     "synthwave",
     "cyber_city",
@@ -173,7 +172,8 @@
     "circuit",
     "cyber_city",
     "sunset",
-    "aurora"
+    "aurora",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -709,6 +709,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-07T14:19"
+    },
+    {
+      "id": "18121293257082554",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-08T08:59"
     }
   ]
 }

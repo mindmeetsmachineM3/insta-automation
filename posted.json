@@ -108,10 +108,10 @@
     "https://www.theverge.com/tech/1029338/nvidia-ceo-jensen-huang-china-spy",
     "https://interestingengineering.com/energy/polymer-membrane-room-temperature-fluoride-ion-batteries",
     "https://newatlas.com/aircraft/uavos-apusneo-haps-solar-aircraft-100-hour-flight-fuerteventura/",
-    "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/"
+    "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+    "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/"
   ],
   "headlines": [
-    "China Plans AI and Robots for Underwater Archaeology - Robotic systems will explore ocean depths to automate historical artifact recovery.",
     "Processing Data Inside Memory Itself - How memristors bypass the von Neumann bottleneck to build brain-like analog chips.",
     "Google Tests AI Model in Space - A satellite equipped with Tensor Processing Units ran Gemma 4 and transmitted a haiku to Earth.",
     "Kerosene-Based Gel Created for Space Propulsion - Concordia University researchers developed a gel to solve challenges in rocket and satellite propulsion.",
@@ -150,10 +150,10 @@
     "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles.",
     "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
-    "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously."
+    "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
+    "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon."
   ],
   "themes": [
-    "manga",
     "sunset",
     "matrix",
     "synthwave",
@@ -172,7 +172,8 @@
     "aurora",
     "circuit",
     "cyber_city",
-    "sunset"
+    "sunset",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

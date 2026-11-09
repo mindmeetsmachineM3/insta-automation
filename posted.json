@@ -112,10 +112,10 @@
     "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
     "https://event.on24.com/wcc/r/5546816/67D0147A8B8D057FCE11A17D61A8BB0D?utm_source=IEEE",
     "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
-    "https://interestingengineering.com/military/operation-ardent-vanguard-amp-hel"
+    "https://interestingengineering.com/military/operation-ardent-vanguard-amp-hel",
+    "https://www.theverge.com/ai-artificial-intelligence/1029562/nvidia-investigating-jensen-huang-relationship-chinese-spy"
   ],
   "headlines": [
-    "Old e-scooter batteries repurposed - German startup turns retired mobility batteries into a 70,000 watt-hour energy storage system.",
     "Why Lithium-Ion Batteries Need Solid Electrolytes - Replacing liquid with solid materials stops dangerous dendrites from forming.",
     "OpenAI Launches Grid Protectors Program - A new pilot aims to free up 1,000 megawatts of power for emergencies.",
     "New method studies crystal defects - Researchers analyzed light behavior in diamond and silicon carbide to improve quantum tech designs.",
@@ -154,10 +154,10 @@
     "Metal That Pulls Like Muscle - Shape Memory Alloys contract when electricity heats them, replacing heavy motors with silent metal wire.",
     "What If AI Could Balance Recipe Science on the Fly? - Imagine an intelligent kitchen tool that recalculates baking ratios when you swap missing ingredients.",
     "US Army Uses Mobile Lasers - Twenty-kilowatt directed-energy weapons intercept cartel drones at the southern border.",
-    "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency."
+    "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency.",
+    "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports."
   ],
   "themes": [
-    "aurora",
     "hologram",
     "sunset",
     "circuit",
@@ -176,7 +176,8 @@
     "sunset",
     "cyber_city",
     "aurora",
-    "hologram"
+    "hologram",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

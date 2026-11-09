@@ -118,7 +118,6 @@
     "https://interestingengineering.com/military/ultra-large-autonomous-underwater-vehicles"
   ],
   "headlines": [
-    "OpenAI Launches Grid Protectors Program - A new pilot aims to free up 1,000 megawatts of power for emergencies.",
     "New method studies crystal defects - Researchers analyzed light behavior in diamond and silicon carbide to improve quantum tech designs.",
     "OpenAI Built Pando to Handle Massive Code Commits - A custom Git backend developed in 10 weeks to manage a 2,442% commit surge.",
     "Train AI models without writing code - What if non-technical experts could easily build and train custom models?",
@@ -157,10 +156,10 @@
     "US Army Uses Mobile Lasers - Twenty-kilowatt directed-energy weapons intercept cartel drones at the southern border.",
     "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency.",
     "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports.",
-    "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics."
+    "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
+    "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage."
   ],
   "themes": [
-    "sunset",
     "circuit",
     "aurora",
     "manga",
@@ -179,7 +178,8 @@
     "aurora",
     "hologram",
     "matrix",
-    "cyber_city"
+    "cyber_city",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -201,12 +201,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17961690708212869",
-      "voice": "en-IN-PrabhatNeural",
-      "label": "FUTURE TECH",
-      "time": "2026-10-23T03:29"
-    },
     {
       "id": "18074776304581940",
       "voice": "en-GB-RyanNeural",
@@ -757,6 +751,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-09T05:55"
+    },
+    {
+      "id": "18183168313436528",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "FUTURE TECH",
+      "lang": "English",
+      "time": "2026-11-09T07:54"
     }
   ]
 }

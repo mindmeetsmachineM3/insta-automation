@@ -118,10 +118,10 @@
     "https://interestingengineering.com/military/ultra-large-autonomous-underwater-vehicles",
     "https://newatlas.com/imaging-diagnostics/canon-ultrasound-coral-eggs-spawning/",
     "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
-    "https://interestingengineering.com/ai-robotics/mit-ai-physics-simulator-worldparticle"
+    "https://interestingengineering.com/ai-robotics/mit-ai-physics-simulator-worldparticle",
+    "https://interestingengineering.com/ai-robotics/caltech-darpa-astra-robot"
   ],
   "headlines": [
-    "EV Battery Hits 90% Charge in 14.7 Minutes - Engineers redesigned the electrolyte to speed up charging times for electric vehicles.",
     "Extending Tactical Drone Range - New tech helps drones fly longer and climb higher without liquid cooling.",
     "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil.",
     "Jet engines power data centers - Builders use discarded turbines amid grid delays.",
@@ -160,10 +160,10 @@
     "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
     "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
     "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
-    "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior."
+    "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
+    "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans."
   ],
   "themes": [
-    "cyber_city",
     "matrix",
     "sunset",
     "aurora",
@@ -182,7 +182,8 @@
     "sunset",
     "aurora",
     "manga",
-    "circuit"
+    "circuit",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -204,13 +205,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18635782024014550",
-      "voice": "en-GB-RyanNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-23T12:08"
-    },
     {
       "id": "17928916032185508",
       "voice": "en-IN-PrabhatNeural",
@@ -763,6 +757,13 @@
       "label": "NEW INNOVATION",
       "lang": "English",
       "time": "2026-11-09T14:35"
+    },
+    {
+      "id": "18121244189005582",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ROBOTICS",
+      "lang": "English",
+      "time": "2026-11-09T16:54"
     }
   ]
 }

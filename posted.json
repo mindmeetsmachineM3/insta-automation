@@ -117,10 +117,10 @@
     "https://interestingengineering.com/energy/china-bubble-lubrication-system-energy-use",
     "https://interestingengineering.com/military/ultra-large-autonomous-underwater-vehicles",
     "https://newatlas.com/imaging-diagnostics/canon-ultrasound-coral-eggs-spawning/",
-    "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/"
+    "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
+    "https://interestingengineering.com/ai-robotics/mit-ai-physics-simulator-worldparticle"
   ],
   "headlines": [
-    "Train AI models without writing code - What if non-technical experts could easily build and train custom models?",
     "EV Battery Hits 90% Charge in 14.7 Minutes - Engineers redesigned the electrolyte to speed up charging times for electric vehicles.",
     "Extending Tactical Drone Range - New tech helps drones fly longer and climb higher without liquid cooling.",
     "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil.",
@@ -159,10 +159,10 @@
     "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
     "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
     "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
-    "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers."
+    "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
+    "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior."
   ],
   "themes": [
-    "manga",
     "cyber_city",
     "matrix",
     "sunset",
@@ -181,7 +181,8 @@
     "cyber_city",
     "sunset",
     "aurora",
-    "manga"
+    "manga",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -203,12 +204,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18138549583638052",
-      "voice": "en-US-AndrewMultilingualNeural",
-      "label": "MECHATRONICS",
-      "time": "2026-10-23T08:44"
-    },
     {
       "id": "18635782024014550",
       "voice": "en-GB-RyanNeural",
@@ -761,6 +756,13 @@
       "label": "MECHATRONICS",
       "lang": "English",
       "time": "2026-11-09T12:34"
+    },
+    {
+      "id": "18012390219005484",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "NEW INNOVATION",
+      "lang": "English",
+      "time": "2026-11-09T14:35"
     }
   ]
 }

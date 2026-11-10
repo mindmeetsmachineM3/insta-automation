@@ -122,10 +122,10 @@
     "https://interestingengineering.com/ai-robotics/caltech-darpa-astra-robot",
     "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/",
     "https://newatlas.com/motorcycles/harley-davidson-sprint-440/",
-    "https://interestingengineering.com/energy/worlds-first-solar-powered-pavilion"
+    "https://interestingengineering.com/energy/worlds-first-solar-powered-pavilion",
+    "https://www.theverge.com/ai-artificial-intelligence/1030328/what-could-china-get-from-jensen-huang"
   ],
   "headlines": [
-    "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
     "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software.",
     "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
     "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
@@ -164,10 +164,10 @@
     "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
     "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India.",
     "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
-    "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage."
+    "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
+    "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs."
   ],
   "themes": [
-    "cyber_city",
     "sunset",
     "aurora",
     "manga",
@@ -186,7 +186,8 @@
     "synthwave",
     "manga",
     "matrix",
-    "cyber_city"
+    "cyber_city",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

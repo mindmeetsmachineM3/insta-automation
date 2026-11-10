@@ -28,7 +28,7 @@ import requests
 from dotenv import load_dotenv
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-VERSION = "2026-10-24-v36 (open-loop Reels: payoff last, question + comment CTA, Hindi Reels share, voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
+VERSION = "2026-11-10-v37 (Hinglish Indian-accent Gemini voice, hook covers, auto first-comment + auto-reply, niche focus, low-competition hashtags; open-loop Reels: payoff last, question + comment CTA, Hindi Reels share, voice A/B test + insights report, hook-first Reels, hook rules, save CTA, tiered hashtags, CTA + topic hashtags, Andrew natural voice, AI art backgrounds, cinematic motion Reels, Groq free backup, idea posts framed as concepts, paragraph formatting, auto-discovered fallback model, longer retries, optional Reels, extra random topic posts at random times, no-repeat captions, quota-aware Gemini retry + fallback model, two-step news writer, 8 themes)"
 BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 
@@ -74,15 +74,26 @@ TOPICS = {
 # UTC times of the extra-post triggers in the workflow (must match the cron lines)
 EXTRA_TRIGGERS_UTC = [(2, 53), (4, 47), (5, 41), (6, 23), (7, 9), (8, 11), (9, 37), (10, 37), (11, 29), (13, 29), (14, 17), (15, 41)]
 
+# NICHE_FOCUS=on: the page is "machines explained in Hinglish" (robots, chips, sensors, motors, batteries). Posts are picked from that lane.
+NICHE_FOCUS = (os.getenv("NICHE_FOCUS") or "on").lower() == "on"
+NICHE_KW = ["robot", "humanoid", "drone", "chip", "semiconductor", "sensor", "battery", "batteries", "motor", "actuator", "autonomous",
+            "3d print", "3d-print", "cnc", "arduino", "raspberry", "fpga", "embedded", "electric vehicle", " ev ", "hardware", "machine",
+            "device", "wearable", "exoskeleton", "lidar", "gpu", "circuit", "transistor", "solid-state", "gripper", "servo", "engine", "vehicle"]
+EXTRA_WEIGHTS = {"ROBOTICS": 3, "ELECTRONICS": 3, "MECHATRONICS": 2, "NEW INNOVATION": 1, "SCI-FI TECH": 1, "FUTURE TECH": 1}
+
 # LLM_PROVIDER: "gemini" (free tier, default) or "claude" (paid API)
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
-LANGUAGE = os.getenv("POST_LANGUAGE", "English")  # English / Marathi / Hinglish / Hindi
+LANGUAGE = os.getenv("POST_LANGUAGE", "Hinglish")  # English / Marathi / Hinglish / Hindi
 HINDI_SHARE = float(os.getenv("HINDI_SHARE") or 0)  # share of Reels made in Hindi (0 = none, 0.15 = about 1 in 7)
 
 
 def lang_line():
+    if LANGUAGE.lower() == "hinglish":
+        return ("Hinglish: natural spoken Hindi written in ROMAN (English) letters, mixed with English tech words, exactly how a young Indian "
+                "tech creator talks to friends (for example 'Yaar, ye chhoti si chip poora robot chala deti hai'). NOT Devanagari, and not "
+                "formal textbook Hindi. Short sentences, easy words.")
     if LANGUAGE.lower() == "hindi":
         return ("Hindi: natural, spoken, conversational Hindi in Devanagari script, as a friendly Indian tech creator would say it. "
                 "Keep technical words such as AI, robot, chip, battery in English. Short sentences ending with '।' or '?'")
@@ -90,7 +101,7 @@ def lang_line():
 GRAPH = "https://graph.instagram.com/v21.0"
 
 # Growth: call-to-action line + fixed topic hashtags (added to every caption)
-CTA = os.getenv("CTA") or "Save this + Follow @mindmeetsmachine6 for daily tech 🚀"
+CTA = os.getenv("CTA") or "Save karo 🔖 + Follow @mindmeetsmachine6 — roz ek machine ki kahani, Hinglish mein 🚀"
 TOPIC_TAGS = {
     "AI NEWS": ["#AI", "#ArtificialIntelligence", "#TechNews"],
     "TECH IDEA OF THE DAY": ["#TechIdeas", "#Innovation", "#FutureTech"],
@@ -102,6 +113,14 @@ TOPIC_TAGS = {
     "FUTURE TECH": ["#FutureTech", "#Innovation", "#Technology"],
 }
 
+
+# COVER hook: the big text on the image / first frame. Curiosity + numbers + questions (not news headlines).
+HEADLINE_RULE = (
+    '"headline": the COVER TEXT, max 7 words and 46 characters, same language as the post. It must stop a scroller and make them NEED the answer. '
+    'Use ONE pattern: a real number from the facts ("58 raaton ka sach"), a short question ("1 lakh ya sirf 400?"), a contrast '
+    '("Chip chhoti, taakat badi"), or a "kaise?" curiosity line. It must stay TRUE to the facts (no invented numbers, no false claims). '
+    'NEVER a plain news headline like "Company X Eyes IPO Plans". No ALL CAPS sentences, no emojis'
+)
 
 # Hook rule added to every writer prompt (curiosity first line, but never more than the facts allow)
 HOOK_RULE = (
@@ -127,6 +146,11 @@ NICHE_TAGS = {
     "FUTURE TECH": ["#FutureTechnology", "#TechExplained", "#FusionEnergy", "#NextGenTech"],
 }
 BRAND_TAG = "#MindMeetsMachine"
+# Hinglish / Indian-audience tags: small communities, so a new page can still rank there
+INDIA_TAGS = ["#TechInHindi", "#HinglishTech", "#IndianEngineers", "#EngineeringStudentsIndia", "#RoboticsIndia", "#MakerIndia",
+              "#ElectronicsIndia", "#DesiTech", "#TechReelsIndia", "#IndianTechCreators", "#MechatronicsIndia", "#STEMIndia"]
+BIG_TAGS = {"#tech", "#technology", "#ai", "#viral", "#reels", "#trending", "#innovation", "#science", "#engineering", "#instagood",
+            "#explore", "#fyp", "#artificialintelligence", "#robotics", "#futuretech", "#technews", "#electronics", "#machinelearning"}
 
 
 def build_hashtags(post, label, limit=14):
@@ -134,10 +158,11 @@ def build_hashtags(post, label, limit=14):
     De-duplicated, brand tag always last, at most `limit` tags (Instagram allows 30)."""
     base = TOPIC_TAGS.get(label, ["#Tech", "#Innovation"])
     niche = NICHE_TAGS.get(label, ["#TechExplained"])
-    mix = (random.sample(BROAD_TAGS, 2) + random.sample(MID_TAGS, 2)
-           + random.sample(niche, min(3, len(niche))))
+    mix = (random.sample(niche, min(3, len(niche))) + random.sample(INDIA_TAGS, 3))      # low-competition only (no broad/mid tags)
     seen, out = set(), []
-    for h in list(post.get("hashtags", []))[:6] + base + mix:
+    ai_tags = [h for h in list(post.get("hashtags", []))[:7] if "#" + re.sub(r"[^\w]", "", str(h).lstrip("#")).lower() not in BIG_TAGS]
+    base = [b for b in base if b.lower() not in BIG_TAGS][:1]
+    for h in ai_tags + base + mix:
         h = "#" + re.sub(r"[^\w]", "", str(h).lstrip("#"))
         if len(h) > 1 and h.lower() not in seen and h.lower() != BRAND_TAG.lower():
             seen.add(h.lower())
@@ -251,10 +276,10 @@ Rules:
 - Every hashtag must relate directly to this post's topic. No generic or location hashtags unless the story is about that place.
 {recent_block}
 Return ONLY valid JSON with these keys:
-- "headline": max 60 characters, big text for the image
+- {HEADLINE_RULE}
 - "subheadline": max 110 characters, supporting line for the image
 - "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT points, then one closing takeaway line. 1-2 emojis. Never repeat a sentence or idea.
-- "hashtags": list of 6-9 relevant hashtags (each starting with #)
+- "hashtags": 6-8 LOW-COMPETITION hashtags (a few thousand to a few lakh posts, never crores), each starting with #: 4-5 very specific to THIS topic (for example #solidstatebattery, #humanoidrobotdemo) + 2-3 for Hinglish/Indian tech audiences. NEVER #tech #technology #ai #viral #reels #trending #innovation #science
 - "source_name": name of the source (news slot) or "" (idea slot)
 - "source_link": the exact URL from the list (news slot) or "" (idea slot)
 
@@ -314,10 +339,10 @@ Rules:
 - Never say the same fact or idea twice in the caption. Do not repeat a sentence, and do not end by restating the opening. Every line must add something new; the closing line is a short takeaway, not a summary.
 
 Return ONLY valid JSON with these keys:
-- "headline": max 60 characters, big text for the image
+- {HEADLINE_RULE}
 - "subheadline": max 110 characters, supporting line for the image
 - "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT facts, then one closing takeaway line. 1-2 emojis
-- "hashtags": list of 6-9 relevant hashtags (each starting with #)
+- "hashtags": 6-8 LOW-COMPETITION hashtags (a few thousand to a few lakh posts, never crores), each starting with #: 4-5 very specific to THIS topic (for example #solidstatebattery, #humanoidrobotdemo) + 2-3 for Hinglish/Indian tech audiences. NEVER #tech #technology #ai #viral #reels #trending #innovation #science
 
 Notes:
 {fact_lines}
@@ -346,10 +371,10 @@ Rules:
 - Every hashtag must relate directly to this post's topic.
 {recent_block}
 Return ONLY valid JSON with these keys:
-- "headline": max 60 characters, big text for the image
+- {HEADLINE_RULE}
 - "subheadline": max 110 characters, supporting line for the image
 - "caption": 50-90 words: a hook line, then 2-3 short lines with DIFFERENT points, then one closing takeaway line. 1-2 emojis
-- "hashtags": list of 6-9 relevant hashtags (each starting with #)
+- "hashtags": 6-8 LOW-COMPETITION hashtags (a few thousand to a few lakh posts, never crores), each starting with #: 4-5 very specific to THIS topic (for example #solidstatebattery, #humanoidrobotdemo) + 2-3 for Hinglish/Indian tech audiences. NEVER #tech #technology #ai #viral #reels #trending #innovation #science
 """
 
 
@@ -683,7 +708,17 @@ COMMENT_PHRASES_HI = [
 ]
 
 
+COMMENT_PHRASES_HG = [
+    "Aapka kya take hai? Neeche comment karo.",
+    "Aap kya sochte ho? Comment mein batao.",
+    "Sahi ya galat? Comment karke batao.",
+    "Aapko kya lagta hai? Neeche likho.",
+]
+
+
 def follow_phrase():
+    if LANGUAGE.lower() == "hinglish":
+        return "Aise aur videos ke liye follow karo."
     return "ऐसे और वीडियो के लिए फॉलो करें।" if LANGUAGE.lower() == "hindi" else "Follow for more."
 
 
@@ -692,7 +727,7 @@ def comment_phrase(post=None):
     the caption always say the same thing."""
     if post is not None and post.get("cta_comment"):
         return post["cta_comment"]
-    pool = COMMENT_PHRASES_HI if LANGUAGE.lower() == "hindi" else COMMENT_PHRASES
+    pool = COMMENT_PHRASES_HI if LANGUAGE.lower() == "hindi" else (COMMENT_PHRASES_HG if LANGUAGE.lower() == "hinglish" else COMMENT_PHRASES)
     phrase = random.choice(pool)
     if post is not None:
         post["cta_comment"] = phrase
@@ -724,7 +759,8 @@ def split_ask(caption):
         q = re.sub(r"^[^\w\u0900-\u097F]+", "", last)          # emojis that belong to the previous line
         lead = last[:len(last) - len(q)].strip()
         return (" ".join(sents[:-1]) + (" " + lead if lead else "")).strip(), q
-    generic = "आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else "What do you think?"
+    generic = ("आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else
+               ("Aap kya sochte ho?" if LANGUAGE.lower() == "hinglish" else "What do you think?"))
     return caption.strip(), generic
 
 
@@ -1395,8 +1431,8 @@ def make_image(slot, post, path, theme=None):
 
 # ---------------------------------------------------------------- reel with voice
 VOICES = {  # (edge-tts voices, gTTS lang, gTTS tld). Override with the VOICE variable.
-    "english": (["en-US-AndrewMultilingualNeural"], "en", "co.in"),
-    "hinglish": (["hi-IN-SwaraNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
+    "english": (["en-IN-PrabhatNeural", "en-US-AndrewMultilingualNeural"], "en", "co.in"),
+    "hinglish": (["en-IN-PrabhatNeural", "en-IN-NeerjaNeural", "hi-IN-MadhurNeural"], "hi", "co.in"),
     "hindi": (["hi-IN-MadhurNeural", "hi-IN-SwaraNeural"], "hi", "co.in"),
     "marathi": (["mr-IN-AarohiNeural", "mr-IN-ManoharNeural"], "mr", "co.in"),
 }
@@ -1411,6 +1447,105 @@ def _speech_text(post):
 
 
 LAST_VOICE = {}
+
+# ---- Gemini TTS (free tier): natural Indian-accent Hinglish. Tried first; edge-tts / gTTS stay as backups.
+TTS_PROVIDER = (os.getenv("TTS") or "gemini").lower()                       # gemini | edge
+GTTS_VOICE = os.getenv("GEMINI_TTS_VOICE") or "Orus"                         # Orus, Charon, Algenib, Alnilam, Puck, Fenrir, Kore, Leda ...
+GTTS_VOICES = [v.strip() for v in (os.getenv("GEMINI_TTS_VOICES") or "").split(",") if v.strip()]   # optional pool: a random one per Reel
+GTTS_STYLE = os.getenv("GEMINI_TTS_STYLE") or ("an energetic young Indian tech creator speaking Hinglish (Hindi mixed with English tech words) "
+              "with a natural Indian accent, confident, clear and slightly fast, like a popular Instagram Reels narrator; never an American or "
+              "British accent; say English technical words the way Indians say them")
+GTTS_MODELS = [m for m in dict.fromkeys([os.getenv("GEMINI_TTS_MODEL") or "", "gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"]) if m]
+GTTS_LEGACY = ["gemini-2.5-flash-preview-tts"]
+VOICE_SPEED = float(os.getenv("VOICE_SPEED") or 1.08)                        # 1.0 = as spoken; 1.08 = a bit quicker
+G_API = "https://generativelanguage.googleapis.com/v1beta"
+
+
+def _find_audio(o):
+    if isinstance(o, dict):
+        if o.get("type") == "audio" and isinstance(o.get("data"), str):
+            return o["data"]
+        for k in ("inlineData", "inline_data"):
+            if isinstance(o.get(k), dict) and isinstance(o[k].get("data"), str):
+                return o[k]["data"]
+        for v in o.values():
+            r = _find_audio(v)
+            if r:
+                return r
+    elif isinstance(o, list):
+        for v in reversed(o):
+            r = _find_audio(v)
+            if r:
+                return r
+    return None
+
+
+def gemini_tts(text, out_mp3, voice=None):
+    """Gemini text-to-speech -> mp3 (a bit sped up). Raises if every model fails."""
+    import base64
+    import wave
+    voice = voice or GTTS_VOICE
+    hdr = {"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"}
+    errs, deadline = [], time.time() + 240
+    wav = Path(str(out_mp3) + ".tts.wav")
+    for model in GTTS_MODELS + GTTS_LEGACY:
+        legacy = "2.5" in model
+        for attempt in range(3):
+            if time.time() > deadline:
+                raise RuntimeError("Gemini TTS: out of time | " + " | ".join(errs[-3:]))
+            try:
+                if legacy:
+                    r = requests.post(f"{G_API}/models/{model}:generateContent", headers=hdr, timeout=180, json={
+                        "contents": [{"parts": [{"text": f"Say in this style ({GTTS_STYLE}): {text}"}]}],
+                        "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}})
+                else:
+                    r = requests.post(f"{G_API}/interactions", headers=hdr, timeout=120, json={
+                        "model": model,
+                        "input": [{"type": "user_input", "content": [{"type": "text", "text": text,
+                                   "annotations": [{"type": "speech_metadata", "style": GTTS_STYLE}]}]}],
+                        "response_format": {"type": "audio"},
+                        "generation_config": {"speech_config": [{"voice": voice}]}})
+            except requests.RequestException as ex:
+                errs.append(f"{model}: network {str(ex)[:60]}")
+                time.sleep(4)
+                continue
+            if r.ok:
+                try:
+                    b64 = _find_audio(r.json())
+                except Exception:
+                    b64 = None
+                if not b64:
+                    errs.append(f"{model}: no audio in reply")
+                    break
+                raw = base64.b64decode(b64)
+                if raw[:4] == b"RIFF":
+                    wav.write_bytes(raw)
+                else:                                   # raw 24 kHz 16-bit mono PCM
+                    with wave.open(str(wav), "wb") as w:
+                        w.setnchannels(1)
+                        w.setsampwidth(2)
+                        w.setframerate(24000)
+                        w.writeframes(raw)
+                af = "highpass=f=70,acompressor=threshold=-18dB:ratio=3:attack=8:release=120,loudnorm=I=-16:TP=-1.5"
+                if abs(VOICE_SPEED - 1.0) > 0.01:
+                    af = f"atempo={VOICE_SPEED}," + af
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-af", af, "-ar", "44100", "-ac", "1",
+                                "-b:a", "160k", str(out_mp3)], check=True)
+                wav.unlink(missing_ok=True)
+                return f"gemini-tts:{voice}"
+            errs.append(f"{model}: {r.status_code} {r.text[:90]}")
+            print(f"Gemini TTS {model}: {r.status_code}", file=sys.stderr)
+            if r.status_code == 429:
+                if re.search(r"PerDay|per day|daily|limit: 0", r.text, re.I):
+                    break
+                time.sleep(min(45, 15 * (attempt + 1)))
+                continue
+            if r.status_code in (500, 502, 503, 504):
+                time.sleep(6)
+                continue
+            break
+    wav.unlink(missing_ok=True)
+    raise RuntimeError("Gemini TTS failed: " + " | ".join(errs[-4:]))
 # VOICE_MIX=on: every Reel uses a random voice from this pool; the voice is saved with the Reel so the
 # "insights" action can compare average watch time per voice (an A/B test of accents).
 VOICE_POOL = ["en-US-AndrewMultilingualNeural", "en-IN-PrabhatNeural", "en-GB-RyanNeural", "en-US-AvaMultilingualNeural"]
@@ -1426,13 +1561,23 @@ def make_voice(text, out_path):
         order = [random.choice(VOICE_POOL)] + order
     elif not forced and mix and LANGUAGE.lower() == "hindi":
         random.shuffle(order)   # Madhur (male) or Swara (female)
+    if TTS_PROVIDER == "gemini" and os.getenv("GEMINI_API_KEY") and not forced:
+        try:
+            gv = random.choice(GTTS_VOICES) if GTTS_VOICES else GTTS_VOICE
+            name = gemini_tts(text, out_path, gv)
+            if Path(out_path).stat().st_size > 2000:
+                print(f"(voice: {name})", file=sys.stderr)
+                LAST_VOICE["name"] = name
+                return True
+        except Exception as ex:
+            print(f"Gemini TTS unavailable ({str(ex)[:160]}); using edge-tts", file=sys.stderr)
     try:
         import asyncio
         import edge_tts
         for voice in order:
             try:
                 asyncio.run(asyncio.wait_for(
-                    edge_tts.Communicate(text, voice, rate="+0%").save(str(out_path)), 90))
+                    edge_tts.Communicate(text, voice, rate=os.getenv("EDGE_RATE") or "+8%").save(str(out_path)), 90))
                 if Path(out_path).stat().st_size > 2000:
                     print(f"(voice: {voice})", file=sys.stderr)
                     LAST_VOICE["name"] = voice
@@ -2165,7 +2310,7 @@ def make_reel_cinematic(post, out_path, theme, state=None, label=None, art_path=
         _headline_png(teaser, accent, thead)
     outro_png = tmp(".outro.png")
     if script and outro == "screen" and have_voice:
-        _outro_png(post.get("ask") or ("आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else "What do you think?"),
+        _outro_png(post.get("ask") or ("आप क्या सोचते हैं?" if LANGUAGE.lower() == "hindi" else ("Aap kya sochte ho?" if LANGUAGE.lower() == "hinglish" else "What do you think?")),
                    comment_phrase(post), follow_phrase(), accent, outro_png)
     _badge_png(label, (os.getenv("IG_HANDLE", "") + "  •  Follow for more").strip(" •") if os.getenv("IG_HANDLE") else "", accent, badge)
 
@@ -2370,6 +2515,119 @@ def publish(media_url, caption, reel=False):
     return r.json()["id"]
 
 
+# ---------------------------------------------------------------- auto comments (own posts only)
+REPLIED_FILE = BASE / "replied.json"
+FIRST_COMMENTS_HG = [
+    "{ask} 👇 Jawab niche likho, main sabko reply karunga!",
+    "{ask} Apna answer comment mein likho 👇 Best answer ko pin karunga!",
+    "{ask} Neeche batao, dekhte hain kitne log same sochte hain 👇",
+]
+FIRST_COMMENTS_EN = [
+    "{ask} 👇 Drop your answer below, I reply to everyone!",
+    "{ask} Tell me in the comments 👇 I will pin the best answer!",
+]
+SPAM_RX = re.compile(r"https?://|www\.|\.com\b|\bdm\s*me\b|follow\s*back|f4f|l4l|promo|collab|giveaway|earn\s*\$|whatsapp|telegram|crypto|invest|\bloan\b|sub4sub", re.I)
+
+
+def ig_comment(media_id, text):
+    """Comment on one of OUR OWN posts (needs the instagram_business_manage_comments permission on the token)."""
+    r = requests.post(f"{GRAPH}/{media_id}/comments", data={"message": text, "access_token": get_token()}, timeout=40)
+    if not r.ok:
+        raise RuntimeError(f"comment failed: {r.text[:300]}")
+    return r.json().get("id")
+
+
+def first_comment(media_id, post):
+    """The first comment under our own post: a question that invites answers (more comments = more reach)."""
+    if (os.getenv("FIRST_COMMENT") or "on").lower() != "on":
+        return
+    ask = (post.get("ask") or "").strip() or ("Aap kya sochte ho?" if LANGUAGE.lower() != "english" else "What do you think?")
+    pool = FIRST_COMMENTS_EN if LANGUAGE.lower() == "english" else FIRST_COMMENTS_HG
+    try:
+        time.sleep(6)
+        cid = ig_comment(media_id, random.choice(pool).format(ask=ask)[:900])
+        print(f"first comment posted: {cid}", file=sys.stderr)
+    except Exception as ex:
+        print(f"WARNING: first comment not posted ({str(ex)[:220]}). If it says permission/scope: generate the token again "
+              f"with the 'instagram_business_manage_comments' permission.", file=sys.stderr)
+
+
+def _reply_prompt(post_caption, comment):
+    return f"""You run the Instagram page 'Mind Meets Machine' (robots, chips, sensors, batteries explained in Hinglish for Indian students and makers).
+Write a short, warm reply to this comment on our post.
+
+Our post caption (context): {post_caption[:500]}
+Comment: {comment}
+
+Rules:
+- Same language/style as the comment (Hinglish in Roman letters, or English). Max 22 words. At most one emoji. No hashtags, no links, no @mentions.
+- Sound human and specific to what they said. When it fits, end with a tiny follow-up question to keep the chat going.
+- Do not promise anything (no giveaways, no collabs, no DMs, no "I will make a video"). Do not argue, do not give medical/legal/financial advice.
+- If the comment is abusive, spam, an ad, political/religious fighting, or asks for personal information: set skip=true.
+Return ONLY JSON: {{"skip": false, "reply": "..."}}"""
+
+
+def reply_comments():
+    """Reply to new comments on our last posts (max REPLY_MAX per run, spaced out so it looks natural)."""
+    limit = int(os.getenv("REPLY_MAX") or 8)
+    token, ig = get_token(), os.environ["IG_USER_ID"]
+    me = requests.get(f"{GRAPH}/{ig}", params={"fields": "username", "access_token": token}, timeout=30).json().get("username", "")
+    media = requests.get(f"{GRAPH}/{ig}/media", params={"fields": "id,caption,timestamp", "limit": 8, "access_token": token}, timeout=30)
+    if not media.ok:
+        raise RuntimeError(f"cannot read media: {media.text[:300]}")
+    done = load_json(REPLIED_FILE, {"ids": []})
+    seen = set(done["ids"])
+    sent = 0
+    for m in media.json().get("data", []):
+        r = requests.get(f"{GRAPH}/{m['id']}/comments", params={"fields": "id,text,username,timestamp,replies{id,username}", "limit": 40,
+                         "access_token": token}, timeout=30)
+        if not r.ok:
+            print(f"comments not readable ({r.text[:200]}): the token needs 'instagram_business_manage_comments'", file=sys.stderr)
+            break
+        for c in r.json().get("data", []):
+            if sent >= limit:
+                break
+            text = (c.get("text") or "").strip()
+            if c["id"] in seen or not text or c.get("username") == me:
+                continue
+            if any(x.get("username") == me for x in (c.get("replies") or {}).get("data", [])):
+                seen.add(c["id"])
+                continue
+            if SPAM_RX.search(text):
+                seen.add(c["id"])
+                continue
+            if not re.search(r"[A-Za-z\u0900-\u097F0-9]", text):                  # emoji-only comment: a short thanks
+                reply = random.choice(["🙌🔥", "Thanks yaar! 🙌", "🔥🔥 Shukriya!"])
+            else:
+                try:
+                    d = _ask(_reply_prompt(m.get("caption") or "", text))
+                except Exception as ex:
+                    print(f"reply writer failed ({str(ex)[:100]})", file=sys.stderr)
+                    continue
+                if d.get("skip") or not str(d.get("reply", "")).strip():
+                    seen.add(c["id"])
+                    continue
+                reply = re.sub(r"https?://\S+|#\w+|@\w+", "", str(d["reply"])).strip()[:220]
+                if not reply:
+                    continue
+            try:
+                rr = requests.post(f"{GRAPH}/{c['id']}/replies", data={"message": reply, "access_token": token}, timeout=40)
+                if not rr.ok:
+                    print(f"reply failed: {rr.text[:200]}", file=sys.stderr)
+                    if "permission" in rr.text.lower() or "(#10)" in rr.text or "scope" in rr.text.lower():
+                        break
+                    continue
+                print(f"replied to @{c.get('username')}: {reply}")
+                seen.add(c["id"])
+                sent += 1
+                time.sleep(random.uniform(25, 60))
+            except requests.RequestException as ex:
+                print(f"reply network error: {ex}", file=sys.stderr)
+    done["ids"] = list(seen)[-1500:]
+    save_json(REPLIED_FILE, done)
+    print(f"replies sent: {sent}")
+
+
 # ---------------------------------------------------------------- duplicate guard
 _STOP = set("this that with from have been will your they their about which would could there what when where while into "
             "than then them more most also just like only over each such very much many some other these those because "
@@ -2465,6 +2723,7 @@ def main():
     ap.add_argument("--refresh-token", action="store_true")
     ap.add_argument("--diagnose", action="store_true", help="check the Instagram token and publish quota")
     ap.add_argument("--insights", action="store_true", help="print performance of the tracked Reels")
+    ap.add_argument("--reply-comments", action="store_true", help="reply to new comments on our last posts (run this every few hours)")
     ap.add_argument("--gate-check", action="store_true", help="print go=true/false for an extra slot (used by the workflow)")
     args = ap.parse_args()
     print(f"main.py version {VERSION}", file=sys.stderr)
@@ -2474,6 +2733,9 @@ def main():
         return
     if args.insights:
         insights()
+        return
+    if args.reply_comments:
+        reply_comments()
         return
     if args.diagnose:
         diagnose()
@@ -2499,7 +2761,7 @@ def main():
         recent = state["headlines"][-25:] + [t.split("\n")[0][:140] for t in ig_texts[:10]]
         items, label, pool_all = [], None, []
         if slot == "extra":
-            label = random.choice(list(TOPICS))
+            label = (random.choices(list(TOPICS), [EXTRA_WEIGHTS.get(k, 1) for k in TOPICS])[0] if NICHE_FOCUS else random.choice(list(TOPICS)))
             topic_text, kws = TOPICS[label]
             print("EXTRA topic:", label, file=sys.stderr)
             if random.random() < 0.6:  # 60% real recent news, 40% explainer
@@ -2507,6 +2769,11 @@ def main():
                 pool_all = [i for i in pool_all if any(k in (i["title"] + " " + i["summary"]).lower() for k in kws)][:8]
         else:
             pool_all = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
+            if NICHE_FOCUS:   # keep the lane: only machine/hardware stories when there are enough of them
+                lane = [i for i in pick_items(fetch_items(), state["links"], 40)
+                        if any(k in (" " + i["title"] + " " + i["summary"]).lower() for k in NICHE_KW)]
+                if len(lane) >= 3:
+                    pool_all = lane[:8]
             if not pool_all:
                 raise RuntimeError("no fresh items found in feeds")
 
@@ -2605,6 +2872,7 @@ def main():
         else:
             media_id = publish(upload_image(img_path), caption)
 
+        first_comment(media_id, post)
         if post.get("source_link"):
             state["links"].append(post["source_link"])
         elif items:

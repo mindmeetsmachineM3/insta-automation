@@ -124,10 +124,10 @@
     "https://newatlas.com/motorcycles/harley-davidson-sprint-440/",
     "https://interestingengineering.com/energy/worlds-first-solar-powered-pavilion",
     "https://www.theverge.com/ai-artificial-intelligence/1030328/what-could-china-get-from-jensen-huang",
-    "https://hackaday.com/2026/11/09/from-phone-to-sdr-no-extra-hardware/"
+    "https://hackaday.com/2026/11/09/from-phone-to-sdr-no-extra-hardware/",
+    "https://interestingengineering.com/innovation/sensor-monitors-heat-pressure-wear"
   ],
   "headlines": [
-    "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
     "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
     "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas.",
     "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
@@ -166,10 +166,10 @@
     "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
     "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
     "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
-    "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components."
+    "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
+    "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai."
   ],
   "themes": [
-    "aurora",
     "manga",
     "synthwave",
     "sunset",
@@ -188,7 +188,8 @@
     "matrix",
     "cyber_city",
     "sunset",
-    "synthwave"
+    "synthwave",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -210,13 +211,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18137449948629340",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-10-24T14:04"
-    },
     {
       "id": "18130480958313184",
       "voice": "en-US-AvaMultilingualNeural",
@@ -769,6 +763,13 @@
       "label": "ELECTRONICS",
       "lang": "English",
       "time": "2026-11-10T14:33"
+    },
+    {
+      "id": "17882453478651852",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "ELECTRONICS",
+      "lang": "English",
+      "time": "2026-11-10T16:35"
     }
   ]
 }

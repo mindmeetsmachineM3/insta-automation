@@ -120,10 +120,10 @@
     "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
     "https://interestingengineering.com/ai-robotics/mit-ai-physics-simulator-worldparticle",
     "https://interestingengineering.com/ai-robotics/caltech-darpa-astra-robot",
-    "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/"
+    "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/",
+    "https://newatlas.com/motorcycles/harley-davidson-sprint-440/"
   ],
   "headlines": [
-    "Massive Fusion Magnet Tested - ITER completes testing on a 330-tonne superconducting toroidal field coil.",
     "Jet engines power data centers - Builders use discarded turbines amid grid delays.",
     "How Flexible Gears Give Robots Extreme Precision - Harmonic drives intentionally flex solid metal gears to eliminate mechanical backlash.",
     "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
@@ -162,10 +162,10 @@
     "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
     "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
     "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans.",
-    "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week."
+    "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
+    "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India."
   ],
   "themes": [
-    "sunset",
     "aurora",
     "circuit",
     "cyber_city",
@@ -184,7 +184,8 @@
     "manga",
     "circuit",
     "sunset",
-    "synthwave"
+    "synthwave",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -206,13 +207,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17928916032185508",
-      "voice": "en-IN-PrabhatNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-10-23T16:25"
-    },
     {
       "id": "18133649824742700",
       "voice": "en-GB-RyanNeural",
@@ -765,6 +759,13 @@
       "label": "ROBOTICS",
       "lang": "English",
       "time": "2026-11-09T16:54"
+    },
+    {
+      "id": "18106046618145531",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "MECHATRONICS",
+      "lang": "English",
+      "time": "2026-11-10T07:35"
     }
   ]
 }

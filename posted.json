@@ -121,10 +121,10 @@
     "https://interestingengineering.com/ai-robotics/mit-ai-physics-simulator-worldparticle",
     "https://interestingengineering.com/ai-robotics/caltech-darpa-astra-robot",
     "https://techcrunch.com/2026/11/09/anthropic-reportedly-plans-to-move-forward-with-ipo-plans/",
-    "https://newatlas.com/motorcycles/harley-davidson-sprint-440/"
+    "https://newatlas.com/motorcycles/harley-davidson-sprint-440/",
+    "https://interestingengineering.com/energy/worlds-first-solar-powered-pavilion"
   ],
   "headlines": [
-    "How Flexible Gears Give Robots Extreme Precision - Harmonic drives intentionally flex solid metal gears to eliminate mechanical backlash.",
     "Printing Human Tissue - How bio-inks could change regenerative medicine in the coming decades.",
     "How Motors Sense Motion Without Sensors - How Back-EMF feedback uses coil voltage to track spinning motor rotors with software.",
     "Shield AI builds new combat drone - The autonomous aircraft achieves vertical flight and covers thousands of miles.",
@@ -163,10 +163,10 @@
     "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans.",
     "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
     "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India.",
-    "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications."
+    "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
+    "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage."
   ],
   "themes": [
-    "circuit",
     "cyber_city",
     "sunset",
     "aurora",
@@ -185,7 +185,8 @@
     "sunset",
     "synthwave",
     "manga",
-    "matrix"
+    "matrix",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -207,13 +208,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18230374519332431",
-      "voice": "en-IN-PrabhatNeural",
-      "label": "SCI-FI TECH",
-      "lang": "English",
-      "time": "2026-10-24T10:12"
-    },
     {
       "id": "18117947681105054",
       "voice": "en-US-AvaMultilingualNeural",
@@ -766,6 +760,13 @@
       "label": "SCI-FI TECH",
       "lang": "English",
       "time": "2026-11-10T10:32"
+    },
+    {
+      "id": "17944874223370037",
+      "voice": "en-US-AvaMultilingualNeural",
+      "label": "SCI-FI TECH",
+      "lang": "English",
+      "time": "2026-11-10T12:25"
     }
   ]
 }

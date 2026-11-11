@@ -131,7 +131,6 @@
     "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/"
   ],
   "headlines": [
-    "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely.",
     "AI-Driven Materials Discovery - Imagine screening millions of semiconductor compounds in software before building them in a lab.",
     "New Finger Joint Jig - A maker modified a stationary jigsaw with 3D-printed parts to cut box joints.",
     "How Optocouplers Block High-Voltage Spikes - Isolating delicate microcontrollers from dangerous voltage surges using light beams inside a chip.",
@@ -170,10 +169,10 @@
     "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
     "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain.",
     "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai.",
-    "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal"
+    "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal",
+    "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai"
   ],
   "themes": [
-    "hologram",
     "matrix",
     "cyber_city",
     "sunset",
@@ -192,7 +191,8 @@
     "sunset",
     "manga",
     "aurora",
-    "cyber_city"
+    "cyber_city",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -214,13 +214,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18113568683146869",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-10-25T11:09"
-    },
     {
       "id": "18118465139067620",
       "voice": "en-US-AvaMultilingualNeural",
@@ -773,6 +766,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-11T12:33"
+    },
+    {
+      "id": "17967841661983395",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-11T20:21"
     }
   ]
 }

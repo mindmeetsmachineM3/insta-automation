@@ -86,6 +86,8 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 LANGUAGE = os.getenv("POST_LANGUAGE", "Hinglish")  # English / Marathi / Hinglish / Hindi
+if LANGUAGE.lower() == "english" and (os.getenv("KEEP_ENGLISH") or "off").lower() != "on":
+    LANGUAGE = "Hinglish"   # an old POST_LANGUAGE=English setting must not keep the Reels in English (set KEEP_ENGLISH=on to really want English)
 HINDI_SHARE = float(os.getenv("HINDI_SHARE") or 0)  # share of Reels made in Hindi (0 = none, 0.15 = about 1 in 7)
 
 
@@ -1561,7 +1563,7 @@ def make_voice(text, out_path):
         order = [random.choice(VOICE_POOL)] + order
     elif not forced and mix and LANGUAGE.lower() == "hindi":
         random.shuffle(order)   # Madhur (male) or Swara (female)
-    if TTS_PROVIDER == "gemini" and os.getenv("GEMINI_API_KEY") and not forced:
+    if TTS_PROVIDER == "gemini" and os.getenv("GEMINI_API_KEY"):      # an old VOICE=... setting only affects the edge-tts backup
         try:
             gv = random.choice(GTTS_VOICES) if GTTS_VOICES else GTTS_VOICE
             name = gemini_tts(text, out_path, gv)
@@ -2726,7 +2728,7 @@ def main():
     ap.add_argument("--reply-comments", action="store_true", help="reply to new comments on our last posts (run this every few hours)")
     ap.add_argument("--gate-check", action="store_true", help="print go=true/false for an extra slot (used by the workflow)")
     args = ap.parse_args()
-    print(f"main.py version {VERSION}", file=sys.stderr)
+    print(f"main.py version {VERSION} | language={LANGUAGE} | tts={TTS_PROVIDER} voice={GTTS_VOICE}", file=sys.stderr)
 
     if args.gate_check:   # the workflow asks first, so skipped runs do not install ffmpeg etc.
         print(f"go={'true' if extra_gate() else 'false'}")

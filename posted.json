@@ -129,7 +129,6 @@
     "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/"
   ],
   "headlines": [
-    "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
     "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data.",
     "How Wax Motors Work - Achieving micrometer-level control using thermal responses in wax materials.",
     "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely.",
@@ -168,10 +167,10 @@
     "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
     "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
     "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai.",
-    "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai."
+    "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
+    "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain."
   ],
   "themes": [
-    "sunset",
     "cyber_city",
     "aurora",
     "hologram",
@@ -190,7 +189,8 @@
     "synthwave",
     "hologram",
     "cyber_city",
-    "sunset"
+    "sunset",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -212,13 +212,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18439680850180704",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-25T03:24"
-    },
     {
       "id": "18432665803145322",
       "voice": "en-US-AvaMultilingualNeural",
@@ -771,6 +764,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-11T07:39"
+    },
+    {
+      "id": "18138730006708147",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-11T09:05"
     }
   ]
 }

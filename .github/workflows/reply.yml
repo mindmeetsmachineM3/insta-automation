@@ -1,0 +1,47 @@
+name: Mind Meets Machine replies
+
+# Replies to new comments on our last posts (max 8 per run, spaced out). Runs every ~4 hours.
+# (Only needed if your posts run from GitHub Actions. With UiPath, schedule: python main.py --reply-comments)
+on:
+  schedule:
+    - cron: "20 1,5,9,13,17 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: mmm-replies
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      REPLY_MAX: ${{ vars.REPLY_MAX }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests python-dotenv feedparser pillow
+      - name: Reply to new comments
+        run: python main.py --reply-comments
+      - name: Remember who was answered
+        run: |
+          if [ -f replied.json ]; then
+            git config user.name "mmm-bot"
+            git config user.email "mmm-bot@users.noreply.github.com"
+            git add replied.json
+            if git diff --cached --quiet; then echo "no change"; else
+              git commit -m "state: replied comments"
+              git pull --rebase origin "${{ github.ref_name }}" || true
+              git push
+            fi
+          fi

@@ -126,10 +126,10 @@
     "https://www.theverge.com/ai-artificial-intelligence/1030328/what-could-china-get-from-jensen-huang",
     "https://hackaday.com/2026/11/09/from-phone-to-sdr-no-extra-hardware/",
     "https://interestingengineering.com/innovation/sensor-monitors-heat-pressure-wear",
-    "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/"
+    "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
+    "https://interestingengineering.com/military/dream-chaser-spaceplane-faa-clearance-landings"
   ],
   "headlines": [
-    "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data.",
     "How Wax Motors Work - Achieving micrometer-level control using thermal responses in wax materials.",
     "How H-Bridges Flip Motor Direction - Four switches work together so microcontrollers can control heavy motor rotation and speed safely.",
     "AI-Driven Materials Discovery - Imagine screening millions of semiconductor compounds in software before building them in a lab.",
@@ -168,10 +168,10 @@
     "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
     "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai.",
     "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
-    "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain."
+    "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain.",
+    "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai."
   ],
   "themes": [
-    "cyber_city",
     "aurora",
     "hologram",
     "matrix",
@@ -190,7 +190,8 @@
     "hologram",
     "cyber_city",
     "sunset",
-    "manga"
+    "manga",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -212,13 +213,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18432665803145322",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-10-25T08:42"
-    },
     {
       "id": "18113568683146869",
       "voice": "en-US-AvaMultilingualNeural",
@@ -771,6 +765,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-11T09:05"
+    },
+    {
+      "id": "18107584355369105",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-11T12:33"
     }
   ]
 }

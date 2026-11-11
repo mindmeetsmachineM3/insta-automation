@@ -125,10 +125,10 @@
     "https://interestingengineering.com/energy/worlds-first-solar-powered-pavilion",
     "https://www.theverge.com/ai-artificial-intelligence/1030328/what-could-china-get-from-jensen-huang",
     "https://hackaday.com/2026/11/09/from-phone-to-sdr-no-extra-hardware/",
-    "https://interestingengineering.com/innovation/sensor-monitors-heat-pressure-wear"
+    "https://interestingengineering.com/innovation/sensor-monitors-heat-pressure-wear",
+    "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/"
   ],
   "headlines": [
-    "Verify AI Identity Instantly - What if you could cryptographically prove which exact model generated your response?",
     "Can Silicon See Without Light? - How neuromorphic vision sensors mimic biological retinas.",
     "Uber's AI Booking Agents See Barely Any Users - Data from last quarter's peak period shows extremely low adoption of AI agents.",
     "How Motors Know Which Way They Turn - Two light sensors offset by 90 degrees turn physical rotation into precise digital position data.",
@@ -167,10 +167,10 @@
     "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
     "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
     "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
-    "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai."
+    "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
+    "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai."
   ],
   "themes": [
-    "manga",
     "synthwave",
     "sunset",
     "cyber_city",
@@ -189,7 +189,8 @@
     "cyber_city",
     "sunset",
     "synthwave",
-    "hologram"
+    "hologram",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

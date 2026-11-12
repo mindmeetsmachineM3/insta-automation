@@ -129,10 +129,10 @@
     "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
     "https://interestingengineering.com/military/dream-chaser-spaceplane-faa-clearance-landings",
     "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/",
-    "https://newatlas.com/aircraft/skyways-skyreach-autonomous-hybrid-vtol-cargo-drone/"
+    "https://newatlas.com/aircraft/skyways-skyreach-autonomous-hybrid-vtol-cargo-drone/",
+    "https://analyticsindiamag.com/ai-news/ltm-integrates-ai-tool-to-fix-quantum-computing-errors-on-ibm"
   ],
   "headlines": [
-    "New Finger Joint Jig - A maker modified a stationary jigsaw with 3D-printed parts to cut box joints.",
     "How Optocouplers Block High-Voltage Spikes - Isolating delicate microcontrollers from dangerous voltage surges using light beams inside a chip.",
     "Airbnb building an AI travel agent - Tool scheduled to debut by mid-2027 to assist with itineraries and reservations",
     "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
@@ -171,10 +171,10 @@
     "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai.",
     "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal",
     "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai",
-    "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone."
+    "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
+    "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai."
   ],
   "themes": [
-    "cyber_city",
     "sunset",
     "aurora",
     "manga",
@@ -193,7 +193,8 @@
     "aurora",
     "cyber_city",
     "hologram",
-    "synthwave"
+    "synthwave",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

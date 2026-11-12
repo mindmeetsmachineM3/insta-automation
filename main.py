@@ -56,6 +56,21 @@ EXTRA_FEEDS = [
     "https://techcrunch.com/category/robotics/feed/",
     "https://www.sciencedaily.com/rss/matter_energy/robotics.xml",
 ]
+# INDIA FIRST: Indian tech/AI/engineering sources are checked first. Worldwide sources are used only when India has too little fresh news.
+# (Feeds that are down are skipped automatically.)
+INDIA_FEEDS = [
+    "https://inc42.com/feed/",
+    "https://yourstory.com/feed",
+    "https://analyticsindiamag.com/feed/",
+    "https://www.thehindu.com/sci-tech/technology/feeder/default.rss",
+    "https://indianexpress.com/section/technology/feed/",
+    "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
+    "https://www.gadgets360.com/rss/news",
+    "https://www.livemint.com/rss/technology",
+    "https://timesofindia.indiatimes.com/rssfeeds/66949542.cms",
+]
+INDIA_FIRST = (os.getenv("INDIA_FIRST") or "on").lower() == "on"
+INDIA_MIN = int(os.getenv("INDIA_MIN") or 1)          # fewer fresh Indian stories than this -> worldwide pool only
 # label -> (what the post is about, keywords used to find matching news)
 TOPICS = {
     "ROBOTICS": ("robotics: robots, actuators, humanoids, drones, robot learning",
@@ -217,6 +232,45 @@ def fetch_items(feeds=None, limit_per_feed=6):
     return items
 
 
+_INDIA_TECH_RX = re.compile(r"\b(ai|isro|iit|iisc|drdo|5g|6g|ev|evs|gpu|llm|iot|api)\b|artificial intelligence|machine learning|robot|drone|semiconductor|chip|"
+                            r"sensor|battery|batteries|satellite|rocket|space|quantum|software|startup|deeptech|electronic|hardware|automation|"
+                            r"cyber|data cent|supercomput|solar|electric vehicle|tech|digital|innovation|engineer|research|laborator", re.I)
+
+
+def india_items(kws=None):
+    """Fresh-looking items from the Indian feeds that are about technology (and, when given, match the topic keywords)."""
+    out = []
+    for i in fetch_items(INDIA_FEEDS, 8):
+        text = (i["title"] + " " + i["summary"]).lower()
+        if (any(k in text for k in kws) if kws else _INDIA_TECH_RX.search(text)):
+            i["region"] = "IN"
+            out.append(i)
+    return out
+
+
+def build_pool(world_items, state, n, kws=None):
+    """India first. Indian stories (that were not posted yet) lead the pool; worldwide stories only fill the rest,
+    or make the whole pool when India has nothing usable."""
+    if not INDIA_FIRST:
+        return world_items[:n]
+    try:
+        indian = pick_items(india_items(kws), state["links"], 40)
+    except Exception as ex:
+        print(f"Indian feeds failed ({ex}); using worldwide news", file=sys.stderr)
+        indian = []
+    if NICHE_FOCUS:   # inside India, prefer the machine/hardware lane when there are enough such stories
+        lane = [i for i in indian if any(k in (" " + i["title"] + " " + i["summary"]).lower() for k in NICHE_KW)]
+        if len(lane) >= 2:
+            indian = lane
+    print(f"India-first: {len(indian)} fresh Indian stories, {len(world_items)} worldwide", file=sys.stderr)
+    if len(indian) < INDIA_MIN:
+        return world_items[:n]
+    pool = indian[:n]
+    if len(pool) < 3:                                   # too few to choose from: add worldwide ones after them
+        pool += [w for w in world_items if w["link"] not in {p["link"] for p in pool}][:n - len(pool)]
+    return pool
+
+
 def load_state():
     """posted.json holds {"links": [...], "headlines": [...]} (older list format is converted)."""
     data = load_json(POSTED_FILE, {})
@@ -237,9 +291,18 @@ def pick_items(items, posted, n, max_age_days=21):
 
 
 # ---------------------------------------------------------------- Claude
+INDIA_RULE = ("Items tagged [INDIA] come from Indian sources and come first. PREFER an [INDIA] item (an Indian company, startup, lab, IIT, ISRO, "
+              "government project or an Indian angle) whenever one is a genuinely interesting technology story. Pick a non-Indian item only when no "
+              "[INDIA] item is good enough.")
+
+
+def _tag(i):
+    return "INDIA | " + i["source"] if i.get("region") == "IN" else i["source"]
+
+
 def build_prompt(slot, items, recent=None):
     news_block = "\n".join(
-        f"{idx+1}. [{i['source']}] {i['title']} - {i['summary']} ({i['link']})"
+        f"{idx+1}. [{_tag(i)}] {i['title']} - {i['summary']} ({i['link']})"
         for idx, i in enumerate(items)
     )
     if slot == "news":
@@ -271,6 +334,7 @@ Language of the post: {lang_line()}.
 Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype or clickbait.
 
 Rules:
+{INDIA_RULE}
 {HOOK_RULE}
 - Write everything in your own words. Never copy sentences or headlines from the list. Use at most one short quote (under 12 words).
 - The headline and subheadline must not claim more than the source says. Keep the exact scope (who, what, how much). Never turn a narrow fact into a general one.
@@ -293,7 +357,7 @@ Items:
 def build_pick_prompt(items, recent=None):
     """Step 1 (news): choose a story and turn it into short neutral notes."""
     news_block = "\n".join(
-        f"{idx+1}. [{i['source']}] {i['title']} - {i['summary']} ({i['link']})"
+        f"{idx+1}. [{_tag(i)}] {i['title']} - {i['summary']} ({i['link']})"
         for idx, i in enumerate(items)
     )
     recent_block = ""
@@ -305,6 +369,7 @@ def build_pick_prompt(items, recent=None):
             + "\n"
         )
     return f"""You are a news editor. From the items below, pick the SINGLE most interesting technology or engineering story.
+{INDIA_RULE}
 {recent_block}
 Return ONLY valid JSON with these keys:
 - "source_name": the publication name (e.g. "The Verge")
@@ -334,6 +399,7 @@ Audience: Indian tech-curious Instagram users. Tone: clear, energetic, no hype o
 Rules:
 {HOOK_RULE}
 - Start the caption with why this matters to the reader (a consequence or a question). Do not open with "X said ...".
+- INDIA ANGLE: if the notes involve India or an Indian organisation, make that the hook ("Bharat ka ...") and keep it accurate. If not, you may add ONE short line on why it matters to Indian students/makers, but never invent Indian facts, numbers or plans.
 - Then explain the facts in your own sentences. Use at most one short quote (under 12 words).
 - The headline and subheadline must not claim more than the notes say. Keep the exact scope (who, what, how much).
 - Do not add conclusions, predictions or opinions. Do not attribute a view to a group when the notes name one person.
@@ -361,6 +427,7 @@ def build_concept_prompt(topic_text, recent=None):
     return f"""Write an Instagram post that teaches ONE fascinating, specific thing about: {topic_text}.
 Pick a real, well-established technology, component, principle or milestone. Explain how it works or why it matters.
 Be concrete (one specific thing, not a broad overview).
+INDIA FIRST: if you are CERTAIN of the facts, prefer an Indian example (ISRO, IIT/IISc research, Indian startups, Indian-made technology). Otherwise use a global example. Never invent an Indian claim.
 
 Language of the post: {lang_line()}.
 Audience: Indian tech-curious Instagram users, many are students and makers. Tone: clear, energetic, no hype or clickbait.
@@ -2460,6 +2527,19 @@ def diagnose():
         r = requests.get(f"{GRAPH}/{path}", params={"fields": fields, "limit": 5, "access_token": token}, timeout=30)
         print(f"--- {label}: HTTP {r.status_code}")
         print(r.text[:700])
+    # can we read/write comments? (needs the 'instagram_business_manage_comments' permission on the token)
+    try:
+        m = requests.get(f"{GRAPH}/{ig_id}/media", params={"fields": "id", "limit": 1, "access_token": token}, timeout=30).json().get("data", [])
+        if m:
+            r = requests.get(f"{GRAPH}/{m[0]['id']}/comments", params={"fields": "id,text", "limit": 1, "access_token": token}, timeout=30)
+            if r.ok:
+                print("--- comments permission: OK (token can read/write comments)")
+            else:
+                print(f"--- comments permission: MISSING -> {r.text[:300]}")
+                print("    Fix: Meta dashboard -> your app -> Instagram -> API setup with Instagram login -> add the permission "
+                      "'instagram_business_manage_comments', then Generate token again and replace the IG_ACCESS_TOKEN secret.")
+    except Exception as ex:
+        print(f"--- comments check failed: {ex}")
 
 
 def refresh_token():
@@ -2769,6 +2849,7 @@ def main():
             if random.random() < 0.6:  # 60% real recent news, 40% explainer
                 pool_all = pick_items(fetch_items(EXTRA_FEEDS, 8), state["links"], 60)
                 pool_all = [i for i in pool_all if any(k in (i["title"] + " " + i["summary"]).lower() for k in kws)][:8]
+                pool_all = build_pool(pool_all, state, 8, kws)      # India first, then the world
         else:
             pool_all = pick_items(fetch_items(), state["links"], 8 if slot == "news" else 6)
             if NICHE_FOCUS:   # keep the lane: only machine/hardware stories when there are enough of them
@@ -2776,6 +2857,7 @@ def main():
                         if any(k in (" " + i["title"] + " " + i["summary"]).lower() for k in NICHE_KW)]
                 if len(lane) >= 3:
                     pool_all = lane[:8]
+            pool_all = build_pool(pool_all, state, 8 if slot == "news" else 6)      # India first, then the world
             if not pool_all:
                 raise RuntimeError("no fresh items found in feeds")
 

@@ -1459,7 +1459,7 @@ GTTS_STYLE = os.getenv("GEMINI_TTS_STYLE") or ("an energetic young Indian tech c
               "British accent; say English technical words the way Indians say them")
 GTTS_MODELS = [m for m in dict.fromkeys([os.getenv("GEMINI_TTS_MODEL") or "", "gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"]) if m]
 GTTS_LEGACY = ["gemini-2.5-flash-preview-tts"]
-VOICE_SPEED = float(os.getenv("VOICE_SPEED") or 1.08)                        # 1.0 = as spoken; 1.08 = a bit quicker
+VOICE_SPEED = float(os.getenv("VOICE_SPEED") or 1.04)                        # 1.0 = as spoken; 1.08 = a bit quicker
 G_API = "https://generativelanguage.googleapis.com/v1beta"
 
 

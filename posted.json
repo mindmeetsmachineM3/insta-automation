@@ -131,10 +131,10 @@
     "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/",
     "https://newatlas.com/aircraft/skyways-skyreach-autonomous-hybrid-vtol-cargo-drone/",
     "https://analyticsindiamag.com/ai-news/ltm-integrates-ai-tool-to-fix-quantum-computing-errors-on-ibm",
-    "https://analyticsindiamag.com/ai-news/space-tech-startup-astrome-bags-64-cr-rdi-fund-for-ai-satellite-network"
+    "https://analyticsindiamag.com/ai-news/space-tech-startup-astrome-bags-64-cr-rdi-fund-for-ai-satellite-network",
+    "https://www.livemint.com/technology/gadgets/vivo-x500-series-india-launch-on-november-26-200mp-camera-tipped-expected-price-and-key-specifications-11794477511897.html"
   ],
   "headlines": [
-    "Airbnb building an AI travel agent - Tool scheduled to debut by mid-2027 to assist with itineraries and reservations",
     "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
     "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
     "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
@@ -173,10 +173,10 @@
     "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai",
     "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
     "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai.",
-    "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye"
+    "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
+    "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai."
   ],
   "themes": [
-    "aurora",
     "manga",
     "circuit",
     "sunset",
@@ -195,7 +195,8 @@
     "hologram",
     "synthwave",
     "circuit",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -217,13 +218,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18127909606823137",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-10-26T05:27"
-    },
     {
       "id": "18078385067566268",
       "voice": "en-US-AvaMultilingualNeural",
@@ -776,6 +770,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-12T13:27"
+    },
+    {
+      "id": "17934060762164840",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-12T15:28"
     }
   ]
 }

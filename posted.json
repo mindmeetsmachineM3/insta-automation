@@ -132,10 +132,10 @@
     "https://newatlas.com/aircraft/skyways-skyreach-autonomous-hybrid-vtol-cargo-drone/",
     "https://analyticsindiamag.com/ai-news/ltm-integrates-ai-tool-to-fix-quantum-computing-errors-on-ibm",
     "https://analyticsindiamag.com/ai-news/space-tech-startup-astrome-bags-64-cr-rdi-fund-for-ai-satellite-network",
-    "https://www.livemint.com/technology/gadgets/vivo-x500-series-india-launch-on-november-26-200mp-camera-tipped-expected-price-and-key-specifications-11794477511897.html"
+    "https://www.livemint.com/technology/gadgets/vivo-x500-series-india-launch-on-november-26-200mp-camera-tipped-expected-price-and-key-specifications-11794477511897.html",
+    "https://newatlas.com/motorcycles/emotiv-two-speed-transmission/"
   ],
   "headlines": [
-    "Blue Origin Unveils 3D-Printed Rocket Engine - The Northstar engine produces 715,000 lbs of thrust and is 30% lighter than standard models.",
     "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
     "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
     "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph.",
@@ -174,10 +174,10 @@
     "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
     "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai.",
     "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
-    "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai."
+    "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai.",
+    "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai."
   ],
   "themes": [
-    "manga",
     "circuit",
     "sunset",
     "synthwave",
@@ -196,7 +196,8 @@
     "synthwave",
     "circuit",
     "sunset",
-    "matrix"
+    "matrix",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -218,13 +219,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18078385067566268",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-10-26T11:21"
-    },
     {
       "id": "18114936530595465",
       "voice": "en-US-AvaMultilingualNeural",
@@ -777,6 +771,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-12T15:28"
+    },
+    {
+      "id": "18083258834345231",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-12T16:55"
     }
   ]
 }

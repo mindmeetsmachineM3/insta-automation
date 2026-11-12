@@ -137,7 +137,6 @@
     "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/"
   ],
   "headlines": [
-    "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph.",
     "Beijing's Nvidia Push - Targeting advanced American AI chips for the Chinese market.",
     "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles.",
     "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
@@ -176,10 +175,10 @@
     "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai.",
     "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha.",
-    "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa."
+    "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
+    "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai."
   ],
   "themes": [
-    "synthwave",
     "manga",
     "matrix",
     "cyber_city",
@@ -198,7 +197,8 @@
     "matrix",
     "manga",
     "synthwave",
-    "circuit"
+    "circuit",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -220,13 +220,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18145850386502755",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-26T16:20"
-    },
     {
       "id": "18078398741552735",
       "voice": "en-US-AvaMultilingualNeural",
@@ -779,6 +772,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-12T18:38"
+    },
+    {
+      "id": "18011134979782130",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-12T21:34"
     }
   ]
 }

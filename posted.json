@@ -136,7 +136,6 @@
     "https://newatlas.com/motorcycles/emotiv-two-speed-transmission/"
   ],
   "headlines": [
-    "Virtual Training for Real-World Robots - What if 3D models from online stores could teach home robots to safely handle physical items?",
     "3D-Printed Tungsten Survives Fusion Heat - Material processed at 2,552\u00b0F endured 74 high-energy plasma blasts inside a reactor.",
     "Onyx RCR 80V: Ebike-Motorcycle Hybrid - Ships with pedals and an ebike motor, but a simple wire modification unlocks 21,000 watts and 75 mph.",
     "Beijing's Nvidia Push - Targeting advanced American AI chips for the Chinese market.",
@@ -175,10 +174,10 @@
     "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai.",
     "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
     "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai.",
-    "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai."
+    "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai.",
+    "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha."
   ],
   "themes": [
-    "circuit",
     "sunset",
     "synthwave",
     "manga",
@@ -197,7 +196,8 @@
     "circuit",
     "sunset",
     "matrix",
-    "manga"
+    "manga",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -219,13 +219,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18114936530595465",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-26T14:04"
-    },
     {
       "id": "18145850386502755",
       "voice": "en-US-AvaMultilingualNeural",
@@ -778,6 +771,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-12T16:55"
+    },
+    {
+      "id": "18113884838618020",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-12T18:38"
     }
   ]
 }

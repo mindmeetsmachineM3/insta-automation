@@ -137,10 +137,11 @@
     "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/",
     "https://analyticsindiamag.com/ai-news/shield-ai-opens-bengaluru-engineering-office-to-build-defence-autonomy-software",
     "https://newatlas.com/automotive/byd-solar-robot-flash-charging-station-abu-dhabi/",
-    "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/"
+    "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
+    "https://yourstory.com/2026/11/stelcores-leaders-indian-brands-global",
+    "https://economictimes.indiatimes.com/tech/technology/warby-parker-bets-on-google-ai-glasses-for-growth-but-privacy-fears-still-loom/articleshow/135787453.cms"
   ],
   "headlines": [
-    "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon.",
     "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed.",
     "Reconstructing 3D Metal Plate Temperatures - COMSOL Multiphysics demonstrates eddy-current thermometry across multiple time and length scales.",
     "Metal That Pulls Like Muscle - Shape Memory Alloys contract when electricity heats them, replacing heavy motors with silent metal wire.",
@@ -179,10 +180,10 @@
     "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
     "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
     "Sonar se mapping kaise hoti hai? - Samudra ke andar high-frequency sound waves se banta hai 3D map",
-    "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles."
+    "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles.",
+    "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai."
   ],
   "themes": [
-    "hologram",
     "cyber_city",
     "sunset",
     "manga",
@@ -201,7 +202,8 @@
     "matrix",
     "hologram",
     "manga",
-    "aurora"
+    "aurora",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

@@ -136,10 +136,10 @@
     "https://newatlas.com/motorcycles/emotiv-two-speed-transmission/",
     "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/",
     "https://analyticsindiamag.com/ai-news/shield-ai-opens-bengaluru-engineering-office-to-build-defence-autonomy-software",
-    "https://newatlas.com/automotive/byd-solar-robot-flash-charging-station-abu-dhabi/"
+    "https://newatlas.com/automotive/byd-solar-robot-flash-charging-station-abu-dhabi/",
+    "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/"
   ],
   "headlines": [
-    "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
     "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
     "OpenAI Secures $11B Fresh Funding Round - The new investment pushes the AI company's valuation to $1.25 trillion, closing soon.",
@@ -178,10 +178,10 @@
     "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
     "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
     "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing.",
-    "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya"
+    "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
+    "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading."
   ],
   "themes": [
-    "cyber_city",
     "sunset",
     "synthwave",
     "hologram",
@@ -200,7 +200,8 @@
     "circuit",
     "aurora",
     "sunset",
-    "matrix"
+    "matrix",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -222,13 +223,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18451076332123998",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "SCI-FI TECH",
-      "lang": "English",
-      "time": "2026-10-27T07:55"
-    },
     {
       "id": "18095754752679063",
       "voice": "en-US-AvaMultilingualNeural",
@@ -781,6 +775,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-13T12:46"
+    },
+    {
+      "id": "18130793209882652",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-13T14:46"
     }
   ]
 }

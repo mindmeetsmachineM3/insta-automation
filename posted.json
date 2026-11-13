@@ -135,10 +135,10 @@
     "https://www.livemint.com/technology/gadgets/vivo-x500-series-india-launch-on-november-26-200mp-camera-tipped-expected-price-and-key-specifications-11794477511897.html",
     "https://newatlas.com/motorcycles/emotiv-two-speed-transmission/",
     "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/",
-    "https://analyticsindiamag.com/ai-news/shield-ai-opens-bengaluru-engineering-office-to-build-defence-autonomy-software"
+    "https://analyticsindiamag.com/ai-news/shield-ai-opens-bengaluru-engineering-office-to-build-defence-autonomy-software",
+    "https://newatlas.com/automotive/byd-solar-robot-flash-charging-station-abu-dhabi/"
   ],
   "headlines": [
-    "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles.",
     "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
     "How Tandem Cells Beat Silicon Limits - Stacking perovskite over silicon lets panels harvest two distinct slices of sunlight simultaneously.",
@@ -177,10 +177,10 @@
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha.",
     "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
     "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
-    "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing."
+    "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing.",
+    "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya"
   ],
   "themes": [
-    "matrix",
     "cyber_city",
     "sunset",
     "synthwave",
@@ -199,7 +199,8 @@
     "synthwave",
     "circuit",
     "aurora",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -221,13 +222,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18078398741552735",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-10-27T03:29"
-    },
     {
       "id": "18451076332123998",
       "voice": "en-US-AvaMultilingualNeural",
@@ -780,6 +774,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-12T21:34"
+    },
+    {
+      "id": "18112696169246230",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-13T12:46"
     }
   ]
 }

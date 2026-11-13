@@ -134,10 +134,10 @@
     "https://analyticsindiamag.com/ai-news/space-tech-startup-astrome-bags-64-cr-rdi-fund-for-ai-satellite-network",
     "https://www.livemint.com/technology/gadgets/vivo-x500-series-india-launch-on-november-26-200mp-camera-tipped-expected-price-and-key-specifications-11794477511897.html",
     "https://newatlas.com/motorcycles/emotiv-two-speed-transmission/",
-    "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/"
+    "https://inc42.com/buzz/jensen-huang-resigns-as-ceo-of-chipmaker-nvidia/",
+    "https://analyticsindiamag.com/ai-news/shield-ai-opens-bengaluru-engineering-office-to-build-defence-autonomy-software"
   ],
   "headlines": [
-    "Beijing's Nvidia Push - Targeting advanced American AI chips for the Chinese market.",
     "New Membrane Built for Fluoride-Ion Cells - Italian researchers create a non-flammable polymer membrane operating at room temp, passing 50+ cycles.",
     "Solar Drone Completes 29-Hour Flight - The UAVOS ApusNeo reached 47,600 feet to prepare for wildfire monitoring.",
     "What If AI Tools Auto-Shielded Their Own Servers? - Imagine developer tools that detect public exposure and instantly block unauthorized access.",
@@ -176,10 +176,10 @@
     "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha.",
     "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
-    "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai."
+    "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
+    "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing."
   ],
   "themes": [
-    "manga",
     "matrix",
     "cyber_city",
     "sunset",
@@ -198,7 +198,8 @@
     "manga",
     "synthwave",
     "circuit",
-    "aurora"
+    "aurora",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

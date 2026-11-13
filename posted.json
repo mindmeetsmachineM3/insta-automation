@@ -142,7 +142,6 @@
     "https://economictimes.indiatimes.com/tech/technology/warby-parker-bets-on-google-ai-glasses-for-growth-but-privacy-fears-still-loom/articleshow/135787453.cms"
   ],
   "headlines": [
-    "How 3D Printers Cancel Their Own Shaking - Firmware algorithms use destructive interference to eliminate vibration ripples at high speed.",
     "Reconstructing 3D Metal Plate Temperatures - COMSOL Multiphysics demonstrates eddy-current thermometry across multiple time and length scales.",
     "Metal That Pulls Like Muscle - Shape Memory Alloys contract when electricity heats them, replacing heavy motors with silent metal wire.",
     "What If AI Could Balance Recipe Science on the Fly? - Imagine an intelligent kitchen tool that recalculates baking ratios when you swap missing ingredients.",
@@ -181,10 +180,10 @@
     "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
     "Sonar se mapping kaise hoti hai? - Samudra ke andar high-frequency sound waves se banta hai 3D map",
     "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles.",
-    "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai."
+    "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai.",
+    "Legs ke bina space humanoid? - ISRO ne Gaganyaan mission ke liye legs-free half-humanoid kyu design kiya?"
   ],
   "themes": [
-    "cyber_city",
     "sunset",
     "manga",
     "aurora",
@@ -203,7 +202,8 @@
     "hologram",
     "manga",
     "aurora",
-    "matrix"
+    "matrix",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -225,13 +225,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17977039650149395",
-      "voice": "gTTS",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-27T15:04"
-    },
     {
       "id": "18634863124001471",
       "voice": "en-US-AvaMultilingualNeural",
@@ -784,6 +777,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-13T18:47"
+    },
+    {
+      "id": "17979574377176528",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-13T20:42"
     }
   ]
 }

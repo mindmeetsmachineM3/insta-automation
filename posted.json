@@ -143,10 +143,10 @@
     "https://inc42.com/buzz/zelio-e-mobilitys-net-profit-zooms-2-6x-yoy-to-%e2%82%b931-cr-in-h1/",
     "https://techcrunch.com/2026/11/10/ring-known-for-its-doorbell-cameras-launches-a-home-security-drone-and-an-enterprise-security-robot/",
     "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening",
-    "https://www.thehindu.com/sci-tech/technology/military-linked-chinese-university-bought-nvidia-h200-chips-despite-us-blacklist-records-show/article71692215.ece"
+    "https://www.thehindu.com/sci-tech/technology/military-linked-chinese-university-bought-nvidia-h200-chips-despite-us-blacklist-records-show/article71692215.ece",
+    "https://www.sciencedaily.com/releases/2026/11/261111005853.htm"
   ],
   "headlines": [
-    "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports.",
     "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
     "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
     "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
@@ -185,10 +185,10 @@
     "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot.",
     "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain.",
     "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
-    "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept."
+    "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
+    "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "sunset",
     "matrix",
@@ -207,7 +207,8 @@
     "circuit",
     "sunset",
     "matrix",
-    "synthwave"
+    "synthwave",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -229,13 +230,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18112305590182250",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-28T14:26"
-    },
     {
       "id": "18632488090063437",
       "voice": "en-US-AvaMultilingualNeural",
@@ -788,6 +782,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-14T16:48"
+    },
+    {
+      "id": "18160419211523498",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-14T18:54"
     }
   ]
 }

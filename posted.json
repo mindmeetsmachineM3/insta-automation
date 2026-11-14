@@ -142,10 +142,10 @@
     "https://economictimes.indiatimes.com/tech/technology/warby-parker-bets-on-google-ai-glasses-for-growth-but-privacy-fears-still-loom/articleshow/135787453.cms",
     "https://inc42.com/buzz/zelio-e-mobilitys-net-profit-zooms-2-6x-yoy-to-%e2%82%b931-cr-in-h1/",
     "https://techcrunch.com/2026/11/10/ring-known-for-its-doorbell-cameras-launches-a-home-security-drone-and-an-enterprise-security-robot/",
-    "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening"
+    "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening",
+    "https://www.thehindu.com/sci-tech/technology/military-linked-chinese-university-bought-nvidia-h200-chips-despite-us-blacklist-records-show/article71692215.ece"
   ],
   "headlines": [
-    "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency.",
     "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports.",
     "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
     "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
@@ -184,10 +184,10 @@
     "164% profit jump kaise hua? - Zelio E-Mobility ka H1 net profit \u20b931.4 Cr pahuncha, BSE SME par dikhi strong growth.",
     "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot.",
     "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain.",
-    "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable."
+    "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
+    "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept."
   ],
   "themes": [
-    "hologram",
     "synthwave",
     "circuit",
     "sunset",
@@ -206,7 +206,8 @@
     "synthwave",
     "circuit",
     "sunset",
-    "matrix"
+    "matrix",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

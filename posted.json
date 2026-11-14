@@ -145,7 +145,6 @@
     "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening"
   ],
   "headlines": [
-    "US Army Uses Mobile Lasers - Twenty-kilowatt directed-energy weapons intercept cartel drones at the southern border.",
     "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency.",
     "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports.",
     "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
@@ -184,10 +183,10 @@
     "Legs ke bina space humanoid? - ISRO ne Gaganyaan mission ke liye legs-free half-humanoid kyu design kiya?",
     "164% profit jump kaise hua? - Zelio E-Mobility ka H1 net profit \u20b931.4 Cr pahuncha, BSE SME par dikhi strong growth.",
     "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot.",
-    "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain."
+    "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain.",
+    "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable."
   ],
   "themes": [
-    "cyber_city",
     "hologram",
     "synthwave",
     "circuit",
@@ -206,7 +205,8 @@
     "hologram",
     "synthwave",
     "circuit",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -228,13 +228,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17910681264484067",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-28T11:27"
-    },
     {
       "id": "18112305590182250",
       "voice": "en-US-AvaMultilingualNeural",
@@ -787,6 +780,13 @@
       "label": "FUTURE TECH",
       "lang": "Hinglish",
       "time": "2026-11-14T15:05"
+    },
+    {
+      "id": "18111775201918278",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-14T16:48"
     }
   ]
 }

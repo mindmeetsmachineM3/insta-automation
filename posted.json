@@ -144,10 +144,10 @@
     "https://techcrunch.com/2026/11/10/ring-known-for-its-doorbell-cameras-launches-a-home-security-drone-and-an-enterprise-security-robot/",
     "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening",
     "https://www.thehindu.com/sci-tech/technology/military-linked-chinese-university-bought-nvidia-h200-chips-despite-us-blacklist-records-show/article71692215.ece",
-    "https://www.sciencedaily.com/releases/2026/11/261111005853.htm"
+    "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
+    "https://newatlas.com/electronics/voice-coil-motor-tv/"
   ],
   "headlines": [
-    "$38M Raised for Autonomous Underwater Vehicles - A defense tech startup is developing ultra-large autonomous submersibles to transform undersea logistics.",
     "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
     "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
     "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
@@ -186,10 +186,10 @@
     "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain.",
     "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
     "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
-    "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya."
+    "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
+    "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai."
   ],
   "themes": [
-    "circuit",
     "sunset",
     "matrix",
     "manga",
@@ -208,7 +208,8 @@
     "sunset",
     "matrix",
     "synthwave",
-    "aurora"
+    "aurora",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -230,13 +231,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18632488090063437",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-10-29T05:35"
-    },
     {
       "id": "17971477515191326",
       "voice": "en-US-AvaMultilingualNeural",
@@ -789,6 +783,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-14T18:54"
+    },
+    {
+      "id": "18033422504683324",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-14T20:13"
     }
   ]
 }

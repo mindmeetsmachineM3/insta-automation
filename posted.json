@@ -141,10 +141,10 @@
     "https://yourstory.com/2026/11/stelcores-leaders-indian-brands-global",
     "https://economictimes.indiatimes.com/tech/technology/warby-parker-bets-on-google-ai-glasses-for-growth-but-privacy-fears-still-loom/articleshow/135787453.cms",
     "https://inc42.com/buzz/zelio-e-mobilitys-net-profit-zooms-2-6x-yoy-to-%e2%82%b931-cr-in-h1/",
-    "https://techcrunch.com/2026/11/10/ring-known-for-its-doorbell-cameras-launches-a-home-security-drone-and-an-enterprise-security-robot/"
+    "https://techcrunch.com/2026/11/10/ring-known-for-its-doorbell-cameras-launches-a-home-security-drone-and-an-enterprise-security-robot/",
+    "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening"
   ],
   "headlines": [
-    "What If AI Could Balance Recipe Science on the Fly? - Imagine an intelligent kitchen tool that recalculates baking ratios when you swap missing ingredients.",
     "US Army Uses Mobile Lasers - Twenty-kilowatt directed-energy weapons intercept cartel drones at the southern border.",
     "10x Smaller Turbines for Power Generation - How supercritical carbon dioxide is shrinking energy machinery while boosting output efficiency.",
     "Nvidia probes CEO Jensen Huang - Board announces independent investigation following security recruitment reports.",
@@ -183,10 +183,10 @@
     "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai.",
     "Legs ke bina space humanoid? - ISRO ne Gaganyaan mission ke liye legs-free half-humanoid kyu design kiya?",
     "164% profit jump kaise hua? - Zelio E-Mobility ka H1 net profit \u20b931.4 Cr pahuncha, BSE SME par dikhi strong growth.",
-    "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot."
+    "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot.",
+    "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain."
   ],
   "themes": [
-    "aurora",
     "cyber_city",
     "hologram",
     "synthwave",
@@ -205,7 +205,8 @@
     "matrix",
     "hologram",
     "synthwave",
-    "circuit"
+    "circuit",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -227,13 +228,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18169996915479668",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-10-28T08:08"
-    },
     {
       "id": "17910681264484067",
       "voice": "en-US-AvaMultilingualNeural",
@@ -786,6 +780,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-14T13:41"
+    },
+    {
+      "id": "18102936068422583",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-14T15:05"
     }
   ]
 }

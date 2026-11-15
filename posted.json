@@ -145,10 +145,11 @@
     "https://analyticsindiamag.com/global-tech/jensen-huangs-exit-just-gave-amd-and-google-their-biggest-ai-opening",
     "https://www.thehindu.com/sci-tech/technology/military-linked-chinese-university-bought-nvidia-h200-chips-despite-us-blacklist-records-show/article71692215.ece",
     "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
-    "https://newatlas.com/electronics/voice-coil-motor-tv/"
+    "https://newatlas.com/electronics/voice-coil-motor-tv/",
+    "https://inc42.com/buzz/droneacharya-profits-tank-65-yoy-to-%e2%82%b967-lakh-in-h1/",
+    "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece"
   ],
   "headlines": [
-    "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
     "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
     "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
     "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans.",
@@ -187,10 +188,10 @@
     "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
     "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
     "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
-    "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai"
+    "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
+    "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge."
   ],
   "themes": [
-    "matrix",
     "manga",
     "synthwave",
     "circuit",
@@ -209,7 +210,8 @@
     "synthwave",
     "aurora",
     "hologram",
-    "circuit"
+    "circuit",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

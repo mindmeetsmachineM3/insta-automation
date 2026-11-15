@@ -150,7 +150,6 @@
     "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece"
   ],
   "headlines": [
-    "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
     "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
     "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans.",
     "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
@@ -189,10 +188,10 @@
     "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
     "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
     "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
-    "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge."
+    "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
+    "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi."
   ],
   "themes": [
-    "manga",
     "synthwave",
     "circuit",
     "aurora",
@@ -211,7 +210,8 @@
     "aurora",
     "hologram",
     "circuit",
-    "cyber_city"
+    "cyber_city",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -233,13 +233,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17921960634452162",
-      "voice": "gTTS",
-      "label": "SCI-FI TECH",
-      "lang": "English",
-      "time": "2026-10-29T14:33"
-    },
     {
       "id": "18119703548083134",
       "voice": "en-US-AvaMultilingualNeural",
@@ -792,6 +785,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-15T10:06"
+    },
+    {
+      "id": "18133830538797030",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-15T14:07"
     }
   ]
 }

@@ -152,7 +152,6 @@
     "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece"
   ],
   "headlines": [
-    "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
     "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India.",
     "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
     "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
@@ -191,10 +190,10 @@
     "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
     "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
     "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
-    "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de."
+    "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
+    "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic."
   ],
   "themes": [
-    "aurora",
     "sunset",
     "matrix",
     "hologram",
@@ -213,7 +212,8 @@
     "cyber_city",
     "matrix",
     "aurora",
-    "circuit"
+    "circuit",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -235,13 +235,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18351687967302089",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-30T06:23"
-    },
     {
       "id": "18126094627931483",
       "voice": "en-US-AvaMultilingualNeural",
@@ -794,6 +787,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-15T15:42"
+    },
+    {
+      "id": "18125818705904733",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-15T19:55"
     }
   ]
 }

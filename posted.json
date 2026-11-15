@@ -148,7 +148,6 @@
     "https://newatlas.com/electronics/voice-coil-motor-tv/"
   ],
   "headlines": [
-    "Storing the Internet in a Microtube of DNA - How synthetic biology could replace massive data centers with molecular storage.",
     "Canon Tests Medical Ultrasound on Coral Reefs - Medical scanner tech is adapted for marine conservation to address coral reef reproduction issues.",
     "What If AI Agents Managed Apps Locally? - Imagine an on-device visual model executing multi-step phone tasks without relying on cloud servers.",
     "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
@@ -187,10 +186,10 @@
     "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
     "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
     "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
-    "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai."
+    "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
+    "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai"
   ],
   "themes": [
-    "sunset",
     "matrix",
     "manga",
     "synthwave",
@@ -209,7 +208,8 @@
     "matrix",
     "synthwave",
     "aurora",
-    "hologram"
+    "hologram",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -231,13 +231,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17971477515191326",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-29T10:30"
-    },
     {
       "id": "17921960634452162",
       "voice": "gTTS",
@@ -790,6 +783,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-14T20:13"
+    },
+    {
+      "id": "18160152703515449",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-15T10:06"
     }
   ]
 }

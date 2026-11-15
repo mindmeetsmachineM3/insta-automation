@@ -147,10 +147,10 @@
     "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
     "https://newatlas.com/electronics/voice-coil-motor-tv/",
     "https://inc42.com/buzz/droneacharya-profits-tank-65-yoy-to-%e2%82%b967-lakh-in-h1/",
-    "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece"
+    "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece",
+    "https://analyticsindiamag.com/ai-news/renew-pledges-80000-cr-for-green-data-centre-to-fuel-indias-ai-push"
   ],
   "headlines": [
-    "New Physics Simulator Built - MIT and UBC researchers create a transformer-based model for complex particle behavior.",
     "Autonomous space construction - Caltech researchers build a robot that builds structures in space without humans.",
     "Anthropic Eyes IPO Plans - Valuation target range expected to be established this week.",
     "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India.",
@@ -189,10 +189,10 @@
     "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
     "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
     "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
-    "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi."
+    "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
+    "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "aurora",
     "sunset",
@@ -211,7 +211,8 @@
     "hologram",
     "circuit",
     "cyber_city",
-    "matrix"
+    "matrix",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -233,13 +234,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18119703548083134",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-10-29T16:41"
-    },
     {
       "id": "18351687967302089",
       "voice": "en-US-AvaMultilingualNeural",
@@ -792,6 +786,13 @@
       "label": "FUTURE TECH",
       "lang": "Hinglish",
       "time": "2026-11-15T14:07"
+    },
+    {
+      "id": "17943684945394202",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-15T15:42"
     }
   ]
 }

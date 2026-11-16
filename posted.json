@@ -150,10 +150,10 @@
     "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece",
     "https://analyticsindiamag.com/ai-news/renew-pledges-80000-cr-for-green-data-centre-to-fuel-indias-ai-push",
     "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece",
-    "https://www.livemint.com/technology/china-flies-19-seater-battery-powered-aircraft-for-first-time-how-far-can-it-travel-11794824476909.html"
+    "https://www.livemint.com/technology/china-flies-19-seater-battery-powered-aircraft-for-first-time-how-far-can-it-travel-11794824476909.html",
+    "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors"
   ],
   "headlines": [
-    "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
     "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
     "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
     "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
@@ -192,10 +192,10 @@
     "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
     "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
     "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic.",
-    "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft"
+    "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
+    "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027."
   ],
   "themes": [
-    "matrix",
     "hologram",
     "manga",
     "aurora",
@@ -214,7 +214,8 @@
     "aurora",
     "circuit",
     "hologram",
-    "matrix"
+    "matrix",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -236,13 +237,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18126094627931483",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-10-30T09:04"
-    },
     {
       "id": "18125823649932583",
       "voice": "en-US-AvaMultilingualNeural",
@@ -795,6 +789,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-15T19:55"
+    },
+    {
+      "id": "18430862302154173",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-16T13:16"
     }
   ]
 }

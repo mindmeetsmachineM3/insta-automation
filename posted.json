@@ -149,10 +149,10 @@
     "https://inc42.com/buzz/droneacharya-profits-tank-65-yoy-to-%e2%82%b967-lakh-in-h1/",
     "https://www.thehindu.com/business/Industry/anthropics-valuation-cant-secure-its-moat/article71702866.ece",
     "https://analyticsindiamag.com/ai-news/renew-pledges-80000-cr-for-green-data-centre-to-fuel-indias-ai-push",
-    "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece"
+    "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece",
+    "https://www.livemint.com/technology/china-flies-19-seater-battery-powered-aircraft-for-first-time-how-far-can-it-travel-11794824476909.html"
   ],
   "headlines": [
-    "Harley-Davidson Sprint 440 - A new narrow single-cylinder motorcycle manufactured in India.",
     "Star Trek's Communicator Is Real - From 1960s sci-fi prop to the pocket radio that changed modern telecommunications.",
     "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
     "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
@@ -191,10 +191,10 @@
     "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
     "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
     "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
-    "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic."
+    "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic.",
+    "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft"
   ],
   "themes": [
-    "sunset",
     "matrix",
     "hologram",
     "manga",
@@ -213,7 +213,8 @@
     "matrix",
     "aurora",
     "circuit",
-    "hologram"
+    "hologram",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

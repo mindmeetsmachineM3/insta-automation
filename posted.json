@@ -154,7 +154,6 @@
     "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors"
   ],
   "headlines": [
-    "World's First Solar Pavilion - California startup builds a structure that doubles as a home energy system with 62.64 kWh storage.",
     "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
     "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
     "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
@@ -193,10 +192,10 @@
     "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
     "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic.",
     "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
-    "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027."
+    "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027.",
+    "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai"
   ],
   "themes": [
-    "hologram",
     "manga",
     "aurora",
     "matrix",
@@ -215,7 +214,8 @@
     "circuit",
     "hologram",
     "matrix",
-    "synthwave"
+    "synthwave",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -237,13 +237,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18125823649932583",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-30T10:31"
-    },
     {
       "id": "17929557282185967",
       "voice": "en-US-AvaMultilingualNeural",
@@ -796,6 +789,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-16T13:16"
+    },
+    {
+      "id": "17940858399125588",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-16T17:11"
     }
   ]
 }

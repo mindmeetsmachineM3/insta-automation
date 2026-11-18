@@ -154,7 +154,6 @@
     "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors"
   ],
   "headlines": [
-    "70 saal ke purane blueprint - Engineering archives searched in minutes using AI APIs.",
     "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
     "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
     "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai.",
@@ -193,10 +192,10 @@
     "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic.",
     "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
     "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027.",
-    "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai"
+    "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai",
+    "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium."
   ],
   "themes": [
-    "manga",
     "aurora",
     "matrix",
     "hologram",
@@ -215,7 +214,8 @@
     "hologram",
     "matrix",
     "synthwave",
-    "aurora"
+    "aurora",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -237,13 +237,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17929557282185967",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-10-30T14:31"
-    },
     {
       "id": "18024849068925758",
       "voice": "en-US-AvaMultilingualNeural",
@@ -796,6 +789,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-16T17:11"
+    },
+    {
+      "id": "18025905293941209",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-18T13:32"
     }
   ]
 }

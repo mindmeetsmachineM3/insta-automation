@@ -152,10 +152,10 @@
     "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece",
     "https://www.livemint.com/technology/china-flies-19-seater-battery-powered-aircraft-for-first-time-how-far-can-it-travel-11794824476909.html",
     "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors",
-    "https://analyticsindiamag.com/ai-news/neysa-deploys-amd-gpu-cluster-in-mumbai-for-ai-training-and-inference"
+    "https://analyticsindiamag.com/ai-news/neysa-deploys-amd-gpu-cluster-in-mumbai-for-ai-training-and-inference",
+    "https://inc42.com/buzz/botsync-raises-11-mn-to-connect-robots-and-machines-on-factory-floors/"
   ],
   "headlines": [
-    "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
     "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai.",
     "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
     "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain.",
@@ -194,10 +194,10 @@
     "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027.",
     "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai",
     "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium.",
-    "Mumbai me aaya naya AMD GPU cluster - Neysa ne deploy kiya AMD Instinct MI350X aur EPYC processors ka naya setup."
+    "Mumbai me aaya naya AMD GPU cluster - Neysa ne deploy kiya AMD Instinct MI350X aur EPYC processors ka naya setup.",
+    "Robot aur machines ek saath kaise judenge? - Imagine factory ke saare alag-alag robots aur machines aapas me connect ho kar ek team ki tarah kaam karein."
   ],
   "themes": [
-    "matrix",
     "hologram",
     "synthwave",
     "circuit",
@@ -216,7 +216,8 @@
     "synthwave",
     "aurora",
     "manga",
-    "cyber_city"
+    "cyber_city",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

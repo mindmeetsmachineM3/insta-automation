@@ -151,10 +151,10 @@
     "https://analyticsindiamag.com/ai-news/renew-pledges-80000-cr-for-green-data-centre-to-fuel-indias-ai-push",
     "https://www.thehindu.com/sci-tech/technology/jensen-huang-ai-rainmaker-meets-his-waterloo/article71702817.ece",
     "https://www.livemint.com/technology/china-flies-19-seater-battery-powered-aircraft-for-first-time-how-far-can-it-travel-11794824476909.html",
-    "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors"
+    "https://analyticsindiamag.com/ai-news/delhis-bharat-semi-raises-24-mn-to-develop-ai-image-sensors",
+    "https://analyticsindiamag.com/ai-news/neysa-deploys-amd-gpu-cluster-in-mumbai-for-ai-training-and-inference"
   ],
   "headlines": [
-    "No extra hardware needed? - Existing wireless chips can now run software-defined radio using built-in components.",
     "Baal se patla naya sensor? - Ye ultra-thin sensor ek sath heat, pressure aur wear track karta hai.",
     "Linux systems me direct SSH kaise? - New flaw dubbed *sshole internet par actively exploit ho raha hai aur threat bada hai.",
     "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
@@ -193,10 +193,10 @@
     "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
     "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027.",
     "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai",
-    "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium."
+    "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium.",
+    "Mumbai me aaya naya AMD GPU cluster - Neysa ne deploy kiya AMD Instinct MI350X aur EPYC processors ka naya setup."
   ],
   "themes": [
-    "aurora",
     "matrix",
     "hologram",
     "synthwave",
@@ -215,7 +215,8 @@
     "matrix",
     "synthwave",
     "aurora",
-    "manga"
+    "manga",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -237,13 +238,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18024849068925758",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "SCI-FI TECH",
-      "lang": "English",
-      "time": "2026-10-30T16:34"
-    },
     {
       "id": "18038972777849171",
       "voice": "en-US-AvaMultilingualNeural",
@@ -796,6 +790,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-18T13:32"
+    },
+    {
+      "id": "17878144923650551",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-18T18:27"
     }
   ]
 }

@@ -161,10 +161,10 @@
     "https://economictimes.indiatimes.com/tech/technology/adhiraj-chauhan-wins-young-ai-entrepreneur-at-the-et-ai-awards-2026-for-breakthroughs-spanning-mental-healthcare-to-marine-robotics/articleshow/135987369.cms",
     "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/",
     "https://interestingengineering.com/innovation/drone-helicopter-launches-uav-mid-flight",
-    "https://newatlas.com/military/bae-systems-ghost-passive-radar/"
+    "https://newatlas.com/military/bae-systems-ghost-passive-radar/",
+    "https://yourstory.com/2026/11/ai-can-write-code-but-knowing-what-to-build-still-matters"
   ],
   "headlines": [
-    "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai",
     "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
     "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai.",
     "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
@@ -203,10 +203,10 @@
     "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai.",
     "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
     "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan.",
-    "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai."
+    "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
+    "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake."
   ],
   "themes": [
-    "synthwave",
     "aurora",
     "hologram",
     "circuit",
@@ -225,7 +225,8 @@
     "aurora",
     "matrix",
     "manga",
-    "cyber_city"
+    "cyber_city",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

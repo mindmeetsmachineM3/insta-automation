@@ -159,7 +159,6 @@
     "https://www.livemint.com/technology/tech-news/cyient-semiconductors-globalfoundries-10-million-investment-510-million-valuation-11795063480891.html"
   ],
   "headlines": [
-    "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain.",
     "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai.",
     "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal",
     "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai",
@@ -198,10 +197,10 @@
     "Mumbai me aaya naya AMD GPU cluster - Neysa ne deploy kiya AMD Instinct MI350X aur EPYC processors ka naya setup.",
     "Robot aur machines ek saath kaise judenge? - Imagine factory ke saare alag-alag robots aur machines aapas me connect ho kar ek team ki tarah kaam karein.",
     "Secondary display ke sath naye Xiaomi flagship - Xiaomi 18 Pro aur 18 Pro Max mein kya naya hai",
-    "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai."
+    "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai.",
+    "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai"
   ],
   "themes": [
-    "circuit",
     "sunset",
     "matrix",
     "synthwave",
@@ -220,7 +219,8 @@
     "cyber_city",
     "circuit",
     "hologram",
-    "aurora"
+    "aurora",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -242,13 +242,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18078174017741361",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-10-31T08:51"
-    },
     {
       "id": "17915193006473460",
       "voice": "en-US-AvaMultilingualNeural",
@@ -801,6 +794,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-18T22:06"
+    },
+    {
+      "id": "18111281405204903",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-19T16:00"
     }
   ]
 }

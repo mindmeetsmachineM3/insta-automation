@@ -156,10 +156,11 @@
     "https://inc42.com/buzz/botsync-raises-11-mn-to-connect-robots-and-machines-on-factory-floors/",
     "https://www.livemint.com/technology/apple-iphone-18-launch-tipped-for-2027-same-screen-size-and-battery-as-iphone-18e-what-we-know-so-far-11795011754333.html",
     "https://www.thehindu.com/sci-tech/technology/gadgets/xiaomi-18-pro-and-xiaomi-18-pro-max-launched-with-a-back-display/article71715318.ece",
-    "https://www.livemint.com/technology/tech-news/cyient-semiconductors-globalfoundries-10-million-investment-510-million-valuation-11795063480891.html"
+    "https://www.livemint.com/technology/tech-news/cyient-semiconductors-globalfoundries-10-million-investment-510-million-valuation-11795063480891.html",
+    "https://analyticsindiamag.com/ai-news/zurich-to-expand-hyderabad-centre-with-1000-employees-by-2028",
+    "https://economictimes.indiatimes.com/tech/technology/adhiraj-chauhan-wins-young-ai-entrepreneur-at-the-et-ai-awards-2026-for-breakthroughs-spanning-mental-healthcare-to-marine-robotics/articleshow/135987369.cms"
   ],
   "headlines": [
-    "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai.",
     "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal",
     "Li-ion battery me aag kyu lagti hai? - Ek chhota sa dendrite pura battery cell kharab kar deta hai",
     "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
@@ -198,10 +199,10 @@
     "Robot aur machines ek saath kaise judenge? - Imagine factory ke saare alag-alag robots aur machines aapas me connect ho kar ek team ki tarah kaam karein.",
     "Secondary display ke sath naye Xiaomi flagship - Xiaomi 18 Pro aur 18 Pro Max mein kya naya hai",
     "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai.",
-    "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai"
+    "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
+    "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan."
   ],
   "themes": [
-    "sunset",
     "matrix",
     "synthwave",
     "aurora",
@@ -220,7 +221,8 @@
     "circuit",
     "hologram",
     "aurora",
-    "matrix"
+    "matrix",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -242,13 +244,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17915193006473460",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-31T12:08"
-    },
     {
       "id": "17873074596645414",
       "voice": "en-US-AvaMultilingualNeural",
@@ -801,6 +796,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-19T16:00"
+    },
+    {
+      "id": "18149503972582801",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-19T17:30"
     }
   ]
 }

@@ -165,7 +165,6 @@
     "https://yourstory.com/2026/11/ai-can-write-code-but-knowing-what-to-build-still-matters"
   ],
   "headlines": [
-    "Helicopter se 10 guna kam kharch? - Texas startup Skyways ki autonomous Skyreach cargo drone.",
     "Quantum errors kaise fix honge? - LTM ne quantum errors ke liye AI-QEM technology integrate ki hai.",
     "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
     "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai.",
@@ -204,10 +203,10 @@
     "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
     "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan.",
     "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
-    "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake."
+    "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake.",
+    "Zero backlash gear ka secret - Kaise ek metal flexspline robot joints ko extreme precision deta hai"
   ],
   "themes": [
-    "aurora",
     "hologram",
     "circuit",
     "cyber_city",
@@ -226,7 +225,8 @@
     "matrix",
     "manga",
     "cyber_city",
-    "synthwave"
+    "synthwave",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -248,13 +248,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18015409316967102",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-10-31T16:20"
-    },
     {
       "id": "17999127426046125",
       "voice": "en-US-AvaMultilingualNeural",
@@ -807,6 +800,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-19T18:47"
+    },
+    {
+      "id": "17917401132511386",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-19T21:50"
     }
   ]
 }

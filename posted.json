@@ -155,10 +155,10 @@
     "https://analyticsindiamag.com/ai-news/neysa-deploys-amd-gpu-cluster-in-mumbai-for-ai-training-and-inference",
     "https://inc42.com/buzz/botsync-raises-11-mn-to-connect-robots-and-machines-on-factory-floors/",
     "https://www.livemint.com/technology/apple-iphone-18-launch-tipped-for-2027-same-screen-size-and-battery-as-iphone-18e-what-we-know-so-far-11795011754333.html",
-    "https://www.thehindu.com/sci-tech/technology/gadgets/xiaomi-18-pro-and-xiaomi-18-pro-max-launched-with-a-back-display/article71715318.ece"
+    "https://www.thehindu.com/sci-tech/technology/gadgets/xiaomi-18-pro-and-xiaomi-18-pro-max-launched-with-a-back-display/article71715318.ece",
+    "https://www.livemint.com/technology/tech-news/cyient-semiconductors-globalfoundries-10-million-investment-510-million-valuation-11795063480891.html"
   ],
   "headlines": [
-    "Invisibility cloak ab real hai? - Sci-fi movies ka magic ab physics ke through sach ho raha hai.",
     "Robot arm me zero gap kaise? - Harmonic drives flexibility ka use karke robot joints ko zero backlash aur extreme accuracy dete hain.",
     "Dream Chaser ko mili FAA clearance - Sierra Space ke spaceplane ko runway landings ke liye approval mil gaya hai.",
     "Sawal quantum physics ka - AI ne solve kiya 2 saal purana quantum sawal",
@@ -197,10 +197,10 @@
     "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium.",
     "Mumbai me aaya naya AMD GPU cluster - Neysa ne deploy kiya AMD Instinct MI350X aur EPYC processors ka naya setup.",
     "Robot aur machines ek saath kaise judenge? - Imagine factory ke saare alag-alag robots aur machines aapas me connect ho kar ek team ki tarah kaam karein.",
-    "Secondary display ke sath naye Xiaomi flagship - Xiaomi 18 Pro aur 18 Pro Max mein kya naya hai"
+    "Secondary display ke sath naye Xiaomi flagship - Xiaomi 18 Pro aur 18 Pro Max mein kya naya hai",
+    "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "sunset",
     "matrix",
@@ -219,7 +219,8 @@
     "manga",
     "cyber_city",
     "circuit",
-    "hologram"
+    "hologram",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

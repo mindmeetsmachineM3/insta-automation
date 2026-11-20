@@ -170,7 +170,6 @@
     "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece"
   ],
   "headlines": [
-    "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
     "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing.",
     "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
     "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
@@ -209,10 +208,10 @@
     "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi",
     "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
     "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
-    "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?"
+    "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
+    "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai"
   ],
   "themes": [
-    "hologram",
     "matrix",
     "synthwave",
     "aurora",
@@ -231,7 +230,8 @@
     "sunset",
     "matrix",
     "manga",
-    "cyber_city"
+    "cyber_city",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -253,13 +253,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18112982747167881",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-01T16:22"
-    },
     {
       "id": "17874961401649678",
       "voice": "en-US-AvaMultilingualNeural",
@@ -812,6 +805,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-20T19:21"
+    },
+    {
+      "id": "17909988870412900",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-20T21:30"
     }
   ]
 }

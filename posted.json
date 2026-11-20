@@ -166,7 +166,6 @@
     "https://www.livemint.com/technology/israel-innovation-authority-chairman-calls-for-strategic-mega-projects-in-ai-semiconductors-and-quantum-for-tech-sovereignty-11795148393893.html"
   ],
   "headlines": [
-    "64 crore se space security? - Bengaluru startup Astrome LEO microsatellites bana raha hai national security ke liye",
     "8,000mAh battery aur 200MP camera? - Vivo X500 series India me 26 November ko launch ho rahi hai.",
     "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha.",
@@ -205,10 +204,10 @@
     "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
     "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake.",
     "Zero backlash gear ka secret - Kaise ek metal flexspline robot joints ko extreme precision deta hai",
-    "AI aur chips mein naye mega-projects? - Israel Innovation Authority ne India ke saath AI, semiconductors aur quantum projects ka plan banaya hai."
+    "AI aur chips mein naye mega-projects? - Israel Innovation Authority ne India ke saath AI, semiconductors aur quantum projects ka plan banaya hai.",
+    "ISRO rocket me 180nm chip kyu? - Space radiation se bachne ke liye ISRO 3nm nahi balki rad-hard 180nm processors use karta hai."
   ],
   "themes": [
-    "circuit",
     "cyber_city",
     "matrix",
     "aurora",
@@ -227,7 +226,8 @@
     "cyber_city",
     "synthwave",
     "matrix",
-    "circuit"
+    "circuit",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -249,13 +249,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17999127426046125",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-01T05:36"
-    },
     {
       "id": "17928230148427800",
       "voice": "en-US-AvaMultilingualNeural",
@@ -808,6 +801,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-19T21:50"
+    },
+    {
+      "id": "18134615563774725",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-20T13:45"
     }
   ]
 }

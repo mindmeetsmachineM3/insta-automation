@@ -166,10 +166,10 @@
     "https://www.livemint.com/technology/israel-innovation-authority-chairman-calls-for-strategic-mega-projects-in-ai-semiconductors-and-quantum-for-tech-sovereignty-11795148393893.html",
     "https://analyticsindiamag.com/ai-news/zerodha-migrates-kites-user-preference-storage-from-ssdb-to-open-source-sqlite-system",
     "https://www.thehindu.com/sci-tech/technology/gadgets/lava-launches-smart-4-pro-4g-phone-for-offline-buyers-in-india/article71723467.ece",
-    "https://analyticsindiamag.com/ai-news/samsung-electronics-names-new-heads-for-memory-system-lsi-and-mobile-businesses"
+    "https://analyticsindiamag.com/ai-news/samsung-electronics-names-new-heads-for-memory-system-lsi-and-mobile-businesses",
+    "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece"
   ],
   "headlines": [
-    "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
     "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
     "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing.",
     "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
@@ -208,10 +208,10 @@
     "ISRO rocket me 180nm chip kyu? - Space radiation se bachne ke liye ISRO 3nm nahi balki rad-hard 180nm processors use karta hai.",
     "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi",
     "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
-    "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power."
+    "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
+    "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?"
   ],
   "themes": [
-    "circuit",
     "hologram",
     "matrix",
     "synthwave",
@@ -230,7 +230,8 @@
     "aurora",
     "sunset",
     "matrix",
-    "manga"
+    "manga",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

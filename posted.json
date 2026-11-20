@@ -163,10 +163,10 @@
     "https://interestingengineering.com/innovation/drone-helicopter-launches-uav-mid-flight",
     "https://newatlas.com/military/bae-systems-ghost-passive-radar/",
     "https://yourstory.com/2026/11/ai-can-write-code-but-knowing-what-to-build-still-matters",
-    "https://www.livemint.com/technology/israel-innovation-authority-chairman-calls-for-strategic-mega-projects-in-ai-semiconductors-and-quantum-for-tech-sovereignty-11795148393893.html"
+    "https://www.livemint.com/technology/israel-innovation-authority-chairman-calls-for-strategic-mega-projects-in-ai-semiconductors-and-quantum-for-tech-sovereignty-11795148393893.html",
+    "https://analyticsindiamag.com/ai-news/zerodha-migrates-kites-user-preference-storage-from-ssdb-to-open-source-sqlite-system"
   ],
   "headlines": [
-    "Single speed ya naya gearbox? - Electric motorcycles me gearbox introduce karke efficiency aur power delivery optimize ki ja rahi hai.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover me heavy shock absorbers ki jagah Rocker-Bogie mechanism use hua tha.",
     "Global by default kaise bane? - Cross-border expansion aur compliance spine build karne ka naya tareeqa.",
     "Heavy load light kaise hua? - DRDO ke powered exoskeleton se military high altitude me heavy weight bina thake utha sakti hai.",
@@ -205,10 +205,10 @@
     "Zero backlash gear ka secret - Kaise ek metal flexspline robot joints ko extreme precision deta hai",
     "AI aur chips mein naye mega-projects? - Israel Innovation Authority ne India ke saath AI, semiconductors aur quantum projects ka plan banaya hai.",
     "ISRO rocket me 180nm chip kyu? - Space radiation se bachne ke liye ISRO 3nm nahi balki rad-hard 180nm processors use karta hai.",
-    "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi"
+    "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi",
+    "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system."
   ],
   "themes": [
-    "matrix",
     "aurora",
     "circuit",
     "hologram",
@@ -227,7 +227,8 @@
     "matrix",
     "circuit",
     "aurora",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -249,13 +250,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17978638658932441",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-01T08:59"
-    },
     {
       "id": "18128956108912792",
       "voice": "en-US-AvaMultilingualNeural",
@@ -808,6 +802,13 @@
       "label": "FUTURE TECH",
       "lang": "Hinglish",
       "time": "2026-11-20T15:39"
+    },
+    {
+      "id": "17917918047519994",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-20T17:00"
     }
   ]
 }

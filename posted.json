@@ -167,10 +167,10 @@
     "https://analyticsindiamag.com/ai-news/zerodha-migrates-kites-user-preference-storage-from-ssdb-to-open-source-sqlite-system",
     "https://www.thehindu.com/sci-tech/technology/gadgets/lava-launches-smart-4-pro-4g-phone-for-offline-buyers-in-india/article71723467.ece",
     "https://analyticsindiamag.com/ai-news/samsung-electronics-names-new-heads-for-memory-system-lsi-and-mobile-businesses",
-    "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece"
+    "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece",
+    "https://inc42.com/buzz/google-commits-5-mn-to-sundar-pichais-alma-mater-iit-kharagpur/"
   ],
   "headlines": [
-    "Delhi ke baad ab Bengaluru? - Shield AI opens a new Bengaluru office to hire Indian engineers for Hivemind software testing.",
     "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
     "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
     "Sonar se mapping kaise hoti hai? - Samudra ke andar high-frequency sound waves se banta hai 3D map",
@@ -209,10 +209,10 @@
     "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
     "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
-    "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai"
+    "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
+    "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment."
   ],
   "themes": [
-    "matrix",
     "synthwave",
     "aurora",
     "manga",
@@ -231,7 +231,8 @@
     "matrix",
     "manga",
     "cyber_city",
-    "synthwave"
+    "synthwave",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

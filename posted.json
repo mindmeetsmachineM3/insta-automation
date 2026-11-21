@@ -169,10 +169,11 @@
     "https://analyticsindiamag.com/ai-news/samsung-electronics-names-new-heads-for-memory-system-lsi-and-mobile-businesses",
     "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece",
     "https://inc42.com/buzz/google-commits-5-mn-to-sundar-pichais-alma-mater-iit-kharagpur/",
-    "https://spectrum.ieee.org/telesurgery-stroke"
+    "https://spectrum.ieee.org/telesurgery-stroke",
+    "https://interestingengineering.com/innovation/chinas-laser-mosquito-killer-locks-3-ms",
+    "https://www.livemint.com/technology/tech-news/huawei-reveals-ultra-thin-watch-air-ahead-of-november-24-launch-check-design-features-colours-and-what-to-expect-11795251197886.html"
   ],
   "headlines": [
-    "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
     "Sonar se mapping kaise hoti hai? - Samudra ke andar high-frequency sound waves se banta hai 3D map",
     "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles.",
     "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai.",
@@ -211,10 +212,10 @@
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
     "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
     "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment.",
-    "Remote brain surgery kaise possible hai? - Surgeons foot pedals aur hand controllers se robotic catheter steer kar rahe hain."
+    "Remote brain surgery kaise possible hai? - Surgeons foot pedals aur hand controllers se robotic catheter steer kar rahe hain.",
+    "Watch Air kitna patla hai? - Huawei ne announce kiya hai ek naya ultra-thin smartwatch."
   ],
   "themes": [
-    "aurora",
     "manga",
     "cyber_city",
     "circuit",
@@ -233,7 +234,8 @@
     "cyber_city",
     "synthwave",
     "sunset",
-    "aurora"
+    "aurora",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -255,13 +257,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18030409664698202",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-02T07:48"
-    },
     {
       "id": "18112771811613822",
       "voice": "en-US-AvaMultilingualNeural",
@@ -814,6 +809,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-21T13:10"
+    },
+    {
+      "id": "18032123921879334",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-21T14:53"
     }
   ]
 }

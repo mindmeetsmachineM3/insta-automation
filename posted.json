@@ -174,7 +174,6 @@
     "https://www.livemint.com/technology/tech-news/huawei-reveals-ultra-thin-watch-air-ahead-of-november-24-launch-check-design-features-colours-and-what-to-expect-11795251197886.html"
   ],
   "headlines": [
-    "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles.",
     "Google AI glasses se badlega style? - Warby Parker, Google aur Samsung ke sath smart glasses market me entry kar raha hai.",
     "Legs ke bina space humanoid? - ISRO ne Gaganyaan mission ke liye legs-free half-humanoid kyu design kiya?",
     "164% profit jump kaise hua? - Zelio E-Mobility ka H1 net profit \u20b931.4 Cr pahuncha, BSE SME par dikhi strong growth.",
@@ -213,10 +212,10 @@
     "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment.",
     "Remote brain surgery kaise possible hai? - Surgeons foot pedals aur hand controllers se robotic catheter steer kar rahe hain.",
     "Watch Air kitna patla hai? - Huawei ne announce kiya hai ek naya ultra-thin smartwatch.",
-    "Dimag me bina chhed ke wire - Sci-fi ne dikhaya tha skull drilling, science ne di blood vessel wali trick."
+    "Dimag me bina chhed ke wire - Sci-fi ne dikhaya tha skull drilling, science ne di blood vessel wali trick.",
+    "Satellite ka 50% vajan kaise kam hua? - ISRO ki electric propulsion tech se future space missions super light aur efficient banenge."
   ],
   "themes": [
-    "cyber_city",
     "circuit",
     "hologram",
     "aurora",
@@ -235,7 +234,8 @@
     "sunset",
     "aurora",
     "matrix",
-    "manga"
+    "manga",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -257,13 +257,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18099645599388521",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-02T14:37"
-    },
     {
       "id": "17915842482539388",
       "voice": "en-US-AvaMultilingualNeural",
@@ -816,6 +809,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-21T16:13"
+    },
+    {
+      "id": "17936246784410326",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-21T20:18"
     }
   ]
 }

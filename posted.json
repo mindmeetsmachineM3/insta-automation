@@ -168,10 +168,10 @@
     "https://www.thehindu.com/sci-tech/technology/gadgets/lava-launches-smart-4-pro-4g-phone-for-offline-buyers-in-india/article71723467.ece",
     "https://analyticsindiamag.com/ai-news/samsung-electronics-names-new-heads-for-memory-system-lsi-and-mobile-businesses",
     "https://www.thehindu.com/sci-tech/technology/if-ai-lifts-productivity-will-demand-sustain-growth/article71720146.ece",
-    "https://inc42.com/buzz/google-commits-5-mn-to-sundar-pichais-alma-mater-iit-kharagpur/"
+    "https://inc42.com/buzz/google-commits-5-mn-to-sundar-pichais-alma-mater-iit-kharagpur/",
+    "https://spectrum.ieee.org/telesurgery-stroke"
   ],
   "headlines": [
-    "Sirf 5 minute me EV charge? - BYD ne robotic arm aur megawatt flash charging wala automated station dikhaya",
     "Humanoid robotics firm Nasdaq par list - Agility ne Nasdaq par shuru ki apni trading.",
     "Sonar se mapping kaise hoti hai? - Samudra ke andar high-frequency sound waves se banta hai 3D map",
     "200 steps ko 50,000 kaise banaya? - How microstepping uses software PWM current to position stepper motors between physical magnetic poles.",
@@ -210,10 +210,10 @@
     "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
     "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
-    "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment."
+    "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment.",
+    "Remote brain surgery kaise possible hai? - Surgeons foot pedals aur hand controllers se robotic catheter steer kar rahe hain."
   ],
   "themes": [
-    "synthwave",
     "aurora",
     "manga",
     "cyber_city",
@@ -232,7 +232,8 @@
     "manga",
     "cyber_city",
     "synthwave",
-    "sunset"
+    "sunset",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -254,13 +255,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17874961401649678",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-02T03:45"
-    },
     {
       "id": "18030409664698202",
       "voice": "en-US-AvaMultilingualNeural",
@@ -813,6 +807,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-20T21:30"
+    },
+    {
+      "id": "18109611851360397",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-21T13:10"
     }
   ]
 }

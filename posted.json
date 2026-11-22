@@ -178,7 +178,6 @@
     "https://inc42.com/buzz/vinfast-to-build-dedicated-e-scooter-assembly-line-at-tn-plant/"
   ],
   "headlines": [
-    "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
     "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
     "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
     "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
@@ -217,10 +216,10 @@
     "Phone camera ki shaking kaise rukti hai? - Chhote magnets aur MEMS sensors milkar blurred photos ko kaise bachate hain.",
     "India ka pehla open-source chip? - IIT Madras ke RISE lab ne SHAKTI processor banakar chip design me bada step liya.",
     "250x fast laser simulation kaise? - Stanford, UCLA aur SLAC ka naya AI system laser pulse behavior milliseconds me predict karta hai.",
-    "Custom EV banegi 30 min me? - Imagine small Indian workshops ke liye ek smart modular assembly system jo EV production easy kar de."
+    "Custom EV banegi 30 min me? - Imagine small Indian workshops ke liye ek smart modular assembly system jo EV production easy kar de.",
+    "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover ne bina kisi spring ke moon ki uneven surface par perfect balance kaise banaya."
   ],
   "themes": [
-    "synthwave",
     "matrix",
     "circuit",
     "aurora",
@@ -239,7 +238,8 @@
     "manga",
     "circuit",
     "synthwave",
-    "cyber_city"
+    "cyber_city",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -261,13 +261,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18226512274337757",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-03T14:35"
-    },
     {
       "id": "18095848214483651",
       "voice": "gTTS",
@@ -820,6 +813,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-22T18:44"
+    },
+    {
+      "id": "18015872903767941",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-22T20:32"
     }
   ]
 }

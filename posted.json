@@ -175,7 +175,6 @@
     "https://www.thehindu.com/sci-tech/technology/how-us-controls-flow-of-advanced-tech-chip-and-compute-to-china-explained/article71721133.ece"
   ],
   "headlines": [
-    "164% profit jump kaise hua? - Zelio E-Mobility ka H1 net profit \u20b931.4 Cr pahuncha, BSE SME par dikhi strong growth.",
     "Ghar par drone, office mein robot? - Amazon ki company Ring ne launch kiye naye flying drone aur rolling security robot.",
     "33 saal baad Jensen Huang ka exit? - Jensen Huang ke exit se AMD aur Google ke liye naye market opportunities khul gaye hain.",
     "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
@@ -214,10 +213,10 @@
     "Dimag me bina chhed ke wire - Sci-fi ne dikhaya tha skull drilling, science ne di blood vessel wali trick.",
     "Satellite ka 50% vajan kaise kam hua? - ISRO ki electric propulsion tech se future space missions super light aur efficient banenge.",
     "US AI chips par 24 deshon ka ban? - Foreign data centers US AI chips use karke 24 deshon ko cloud services nahi de sakte.",
-    "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai."
+    "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai.",
+    "Phone camera ki shaking kaise rukti hai? - Chhote magnets aur MEMS sensors milkar blurred photos ko kaise bachate hain."
   ],
   "themes": [
-    "aurora",
     "matrix",
     "manga",
     "cyber_city",
@@ -236,7 +235,8 @@
     "manga",
     "hologram",
     "cyber_city",
-    "aurora"
+    "aurora",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -258,13 +258,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17998985483831008",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-11-03T05:39"
-    },
     {
       "id": "18114998498587317",
       "voice": "en-US-AvaMultilingualNeural",
@@ -817,6 +810,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-22T12:58"
+    },
+    {
+      "id": "18191350795417530",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-22T15:42"
     }
   ]
 }

@@ -174,10 +174,10 @@
     "https://www.livemint.com/technology/tech-news/huawei-reveals-ultra-thin-watch-air-ahead-of-november-24-launch-check-design-features-colours-and-what-to-expect-11795251197886.html",
     "https://www.thehindu.com/sci-tech/technology/how-us-controls-flow-of-advanced-tech-chip-and-compute-to-china-explained/article71721133.ece",
     "https://www.thehindu.com/sci-tech/technology/pune-startup-develops-atomic-clock-prototype-amid-growing-export-curbs-on-critical-technologies/article71727456.ece",
-    "https://www.sciencedaily.com/releases/2026/11/261111005913.htm"
+    "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
+    "https://inc42.com/buzz/vinfast-to-build-dedicated-e-scooter-assembly-line-at-tn-plant/"
   ],
   "headlines": [
-    "Titanium alloy se banta strong heart valve - Kaise medical engineering heart valves ko banati hai zyadatar durable.",
     "Chip tracking se smuggling kaise ruke? - Silicon-level location tracking feature se high-end processors ki secure monitoring ka concept.",
     "AI chips kam bijli kaise khayengi? - Brown University ne thin films ki dead layer problem solve karke naya material banaya.",
     "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
@@ -216,10 +216,10 @@
     "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai.",
     "Phone camera ki shaking kaise rukti hai? - Chhote magnets aur MEMS sensors milkar blurred photos ko kaise bachate hain.",
     "India ka pehla open-source chip? - IIT Madras ke RISE lab ne SHAKTI processor banakar chip design me bada step liya.",
-    "250x fast laser simulation kaise? - Stanford, UCLA aur SLAC ka naya AI system laser pulse behavior milliseconds me predict karta hai."
+    "250x fast laser simulation kaise? - Stanford, UCLA aur SLAC ka naya AI system laser pulse behavior milliseconds me predict karta hai.",
+    "Custom EV banegi 30 min me? - Imagine small Indian workshops ke liye ek smart modular assembly system jo EV production easy kar de."
   ],
   "themes": [
-    "cyber_city",
     "synthwave",
     "matrix",
     "circuit",
@@ -238,7 +238,8 @@
     "aurora",
     "manga",
     "circuit",
-    "synthwave"
+    "synthwave",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

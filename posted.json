@@ -180,7 +180,6 @@
     "https://analyticsindiamag.com/ai-features/from-sarvam-to-all-that-happened-at-the-bengaluru-tech-summit-2026"
   ],
   "headlines": [
-    "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
     "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
     "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
     "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
@@ -219,10 +218,10 @@
     "Custom EV banegi 30 min me? - Imagine small Indian workshops ke liye ek smart modular assembly system jo EV production easy kar de.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover ne bina kisi spring ke moon ki uneven surface par perfect balance kaise banaya.",
     "Software-defined vehicles ke liye naya toolchain - LTTS ne 12 engineering domains ko cover karne wala AI toolchain launch kiya hai",
-    "6 naye research plans se kya hoga? - Bengaluru Tech Summit 2026 mein Karnataka ne 6 naye research initiatives announce kiye."
+    "6 naye research plans se kya hoga? - Bengaluru Tech Summit 2026 mein Karnataka ne 6 naye research initiatives announce kiye.",
+    "Star Trek wala communicator ab sach - Sci-fi movies ka flip communicator kaise real-life foldable phones ban gaya?"
   ],
   "themes": [
-    "aurora",
     "sunset",
     "matrix",
     "manga",
@@ -241,7 +240,8 @@
     "cyber_city",
     "manga",
     "sunset",
-    "matrix"
+    "matrix",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -263,13 +263,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18133864795772437",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-04T03:40"
-    },
     {
       "id": "17914976802518136",
       "voice": "en-US-AvaMultilingualNeural",
@@ -822,6 +815,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-23T15:31"
+    },
+    {
+      "id": "18085937354401515",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-23T18:25"
     }
   ]
 }

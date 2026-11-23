@@ -177,10 +177,11 @@
     "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
     "https://inc42.com/buzz/vinfast-to-build-dedicated-e-scooter-assembly-line-at-tn-plant/",
     "https://analyticsindiamag.com/ai-news/lt-technology-services-launches-ai-toolchain-for-software-defined-vehicles",
-    "https://analyticsindiamag.com/ai-features/from-sarvam-to-all-that-happened-at-the-bengaluru-tech-summit-2026"
+    "https://analyticsindiamag.com/ai-features/from-sarvam-to-all-that-happened-at-the-bengaluru-tech-summit-2026",
+    "https://analyticsindiamag.com/ai-news/sarvam-defends-hosting-chinese-ai-models-releases-upgraded-105b-model",
+    "https://analyticsindiamag.com/ai-news/mattersai-raises-12-million-pre-series-a-to-boost-data-security-platform-and-us-expansion"
   ],
   "headlines": [
-    "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
     "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
     "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
     "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
@@ -219,10 +220,10 @@
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover ne bina kisi spring ke moon ki uneven surface par perfect balance kaise banaya.",
     "Software-defined vehicles ke liye naya toolchain - LTTS ne 12 engineering domains ko cover karne wala AI toolchain launch kiya hai",
     "6 naye research plans se kya hoga? - Bengaluru Tech Summit 2026 mein Karnataka ne 6 naye research initiatives announce kiye.",
-    "Star Trek wala communicator ab sach - Sci-fi movies ka flip communicator kaise real-life foldable phones ban gaya?"
+    "Star Trek wala communicator ab sach - Sci-fi movies ka flip communicator kaise real-life foldable phones ban gaya?",
+    "12 million ka data security boost - Bengaluru ki startup Matters.AI ne $12\u202fmillion raise karke AI\u2011driven data security ko aur majboot banaane ka plan banaya"
   ],
   "themes": [
-    "sunset",
     "matrix",
     "manga",
     "cyber_city",
@@ -241,7 +242,8 @@
     "manga",
     "sunset",
     "matrix",
-    "cyber_city"
+    "cyber_city",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -263,13 +265,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17914976802518136",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-11-04T05:46"
-    },
     {
       "id": "18104041760431198",
       "voice": "en-US-AvaMultilingualNeural",
@@ -822,6 +817,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-23T18:25"
+    },
+    {
+      "id": "18151246528553192",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-23T20:13"
     }
   ]
 }

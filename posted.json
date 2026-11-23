@@ -176,10 +176,10 @@
     "https://www.thehindu.com/sci-tech/technology/pune-startup-develops-atomic-clock-prototype-amid-growing-export-curbs-on-critical-technologies/article71727456.ece",
     "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
     "https://inc42.com/buzz/vinfast-to-build-dedicated-e-scooter-assembly-line-at-tn-plant/",
-    "https://analyticsindiamag.com/ai-news/lt-technology-services-launches-ai-toolchain-for-software-defined-vehicles"
+    "https://analyticsindiamag.com/ai-news/lt-technology-services-launches-ai-toolchain-for-software-defined-vehicles",
+    "https://analyticsindiamag.com/ai-features/from-sarvam-to-all-that-happened-at-the-bengaluru-tech-summit-2026"
   ],
   "headlines": [
-    "Screen vibrate karke sound kaise banaye? - KIMM engineers ne banayi vibrating screen jo sound aur action ko match karti hai.",
     "High voltage se chip kaise bachti hai? - Optocoupler light ka use karke 220V AC aur 5V DC ko physically alag rakhta hai",
     "Valuation badi, par profit nahi? - Anthropic ko market mein tikne ke liye continuously better AI models banane honge.",
     "GPU nahi, ab dimaag jaisi chips? - IISc researchers brain-inspired neuromorphic chips par kaam kar rahe hain jo ultra-low power AI banayengi.",
@@ -218,10 +218,10 @@
     "250x fast laser simulation kaise? - Stanford, UCLA aur SLAC ka naya AI system laser pulse behavior milliseconds me predict karta hai.",
     "Custom EV banegi 30 min me? - Imagine small Indian workshops ke liye ek smart modular assembly system jo EV production easy kar de.",
     "Bina spring ke rover kaise chala? - ISRO ke Pragyan rover ne bina kisi spring ke moon ki uneven surface par perfect balance kaise banaya.",
-    "Software-defined vehicles ke liye naya toolchain - LTTS ne 12 engineering domains ko cover karne wala AI toolchain launch kiya hai"
+    "Software-defined vehicles ke liye naya toolchain - LTTS ne 12 engineering domains ko cover karne wala AI toolchain launch kiya hai",
+    "6 naye research plans se kya hoga? - Bengaluru Tech Summit 2026 mein Karnataka ne 6 naye research initiatives announce kiye."
   ],
   "themes": [
-    "circuit",
     "aurora",
     "sunset",
     "matrix",
@@ -240,7 +240,8 @@
     "synthwave",
     "cyber_city",
     "manga",
-    "sunset"
+    "sunset",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -262,13 +263,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18095848214483651",
-      "voice": "gTTS",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-11-03T16:37"
-    },
     {
       "id": "18133864795772437",
       "voice": "en-US-AvaMultilingualNeural",
@@ -821,6 +815,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-22T20:32"
+    },
+    {
+      "id": "17994411255119029",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-23T15:31"
     }
   ]
 }

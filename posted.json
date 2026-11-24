@@ -182,10 +182,10 @@
     "https://analyticsindiamag.com/ai-news/mattersai-raises-12-million-pre-series-a-to-boost-data-security-platform-and-us-expansion",
     "https://analyticsindiamag.com/ai-news/lt-wins-large-order-to-deploy-additional-nvidia-b300-gpus-in-chennai",
     "https://inc42.com/buzz/sarvam-ai-defends-token-factory-says-homegrown-models-remain-core-focus/",
-    "https://yourstory.com/2026/11/lightsprintai-software-factory-pms-designers-engineers"
+    "https://yourstory.com/2026/11/lightsprintai-software-factory-pms-designers-engineers",
+    "https://www.thehindu.com/sci-tech/technology/us-seeks-answers-on-nvidias-sale-of-chips-to-china-treasury-secretary-says/article71733268.ece"
   ],
   "headlines": [
-    "80,000 crore ka green AI plan? - ReNew AP me 1 GW green data centre aur silicon plant setup karega.",
     "Cloud crash par kaam kaise chale? - Imagine ek local offline mesh system jo global server down hote hi auto-sync switch kar de.",
     "Motor bina code lose kiye kaise rukti hai? - PID controller aur encoder feedback ka magic.",
     "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
@@ -224,10 +224,10 @@
     "6 naye research plans se kya hoga? - Bengaluru Tech Summit 2026 mein Karnataka ne 6 naye research initiatives announce kiye.",
     "Star Trek wala communicator ab sach - Sci-fi movies ka flip communicator kaise real-life foldable phones ban gaya?",
     "12 million ka data security boost - Bengaluru ki startup Matters.AI ne $12\u202fmillion raise karke AI\u2011driven data security ko aur majboot banaane ka plan banaya",
-    "Designers seedhe software update karenge? - LightSprint.ai joined NetApp Excellerator Cohort 15 with its multiplayer software factory."
+    "Designers seedhe software update karenge? - LightSprint.ai joined NetApp Excellerator Cohort 15 with its multiplayer software factory.",
+    "Kachre ki battery se home backup? - What if discarded lithium cells ko reuse karke affordable home power backup packs banaye jayein?"
   ],
   "themes": [
-    "manga",
     "cyber_city",
     "synthwave",
     "sunset",
@@ -246,7 +246,8 @@
     "matrix",
     "cyber_city",
     "aurora",
-    "synthwave"
+    "synthwave",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

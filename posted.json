@@ -185,10 +185,10 @@
     "https://yourstory.com/2026/11/lightsprintai-software-factory-pms-designers-engineers",
     "https://www.thehindu.com/sci-tech/technology/us-seeks-answers-on-nvidias-sale-of-chips-to-china-treasury-secretary-says/article71733268.ece",
     "https://inc42.com/buzz/cosine-robots-bags-%e2%82%b922-4-cr-to-scale-robotics-hardware-production/",
-    "https://www.livemint.com/technology/gadgets/motorola-edge-70-neo-gets-rs-6-000-launch-offers-in-india-check-price-specifications-and-sale-date-11795509230489.html"
+    "https://www.livemint.com/technology/gadgets/motorola-edge-70-neo-gets-rs-6-000-launch-offers-in-india-check-price-specifications-and-sale-date-11795509230489.html",
+    "https://interestingengineering.com/space/lockheed-martin-nasa-iss-moon-orbit"
   ],
   "headlines": [
-    "10-tonne plane chalega battery par? - COMAC aur CATL ne milkar banaya 19-seater electric passenger aircraft",
     "Bharat Semi ka $24M ka plan? - Delhi-based Bharat Semi raises $24M to develop AI image sensors for US and global markets by 2027.",
     "Spot ka secret: 12 hydraulic muscles - Boston Dynamics ka Spot robot har leg me 12 hydraulic actuators se chalaya jata hai",
     "Kachre se lithium kaise banta hai? - IIT Madras ki nayi technique se e-waste se niklega lithium.",
@@ -227,10 +227,10 @@
     "Designers seedhe software update karenge? - LightSprint.ai joined NetApp Excellerator Cohort 15 with its multiplayer software factory.",
     "Kachre ki battery se home backup? - What if discarded lithium cells ko reuse karke affordable home power backup packs banaye jayein?",
     "5 metre ka error 1 cm kaise hua? - Swarm drones me normal GPS nahi, RTK positioning technology ka use hota hai.",
-    "7,000\u202fmAh battery, 144Hz display \u2013 kaise? - Snapdragon 7s Gen\u202f3 chip, Android\u202f16, 50\u202fMP Sony LYTIA camera, \u20b96,000 launch discount."
+    "7,000\u202fmAh battery, 144Hz display \u2013 kaise? - Snapdragon 7s Gen\u202f3 chip, Android\u202f16, 50\u202fMP Sony LYTIA camera, \u20b96,000 launch discount.",
+    "Space mein hogi robotic welding? - Lockheed Martin ISS par karega robotic welding ka demonstration."
   ],
   "themes": [
-    "sunset",
     "aurora",
     "matrix",
     "manga",
@@ -249,7 +249,8 @@
     "synthwave",
     "circuit",
     "manga",
-    "hologram"
+    "hologram",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -271,13 +272,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18107393744205966",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ROBOTICS",
-      "lang": "English",
-      "time": "2026-11-04T12:21"
-    },
     {
       "id": "18132343342833199",
       "voice": "en-US-AvaMultilingualNeural",
@@ -830,6 +824,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-24T13:02"
+    },
+    {
+      "id": "18122592782052274",
+      "voice": "gemini-tts:Orus",
+      "label": "ROBOTICS",
+      "lang": "Hinglish",
+      "time": "2026-11-24T16:26"
     }
   ]
 }

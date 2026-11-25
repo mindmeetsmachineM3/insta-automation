@@ -195,10 +195,10 @@
     "https://www.thehindu.com/news/national/india-warns-against-using-tech-for-strategic-one-upmanship-calls-for-inclusive-ai-governance/article71741155.ece",
     "https://yourstory.com/2026/11/karnataka-names-47-startup-winners-under-elevate-2026",
     "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-spending-slowdown-could-hit-memory-companies-as-goldman-sachs-flags-2028-risks/articleshow/136149044.cms",
-    "https://newatlas.com/technology/tiny-chip-untangles-mixed-light/"
+    "https://newatlas.com/technology/tiny-chip-untangles-mixed-light/",
+    "https://www.livemint.com/technology/tech-news/honor-magic-9-pro-max-debuts-in-malaysia-with-dual-200mp-cameras-and-cinematic-arri-video-technology-11795616757320.html"
   ],
   "headlines": [
-    "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan.",
     "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
     "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake.",
     "Zero backlash gear ka secret - Kaise ek metal flexspline robot joints ko extreme precision deta hai",
@@ -237,10 +237,10 @@
     "4 saal tak free design software? - Dassault Syst\u00e8mes hardware startups ko 4 saal ka free software access de raha hai.",
     "Killer weapons par human control? - India ne UN me lethal autonomous weapons aur military AI ke responsible use ki maang ki.",
     "2028 me AI spending kam hogi? - Goldman Sachs ne 2028 AI infrastructure risks aur memory chip makers par padne wale impact par alert diya.",
-    "Chhoti chip, hidden light ka sach - Stanford researchers ne banayi aisi tiny photonic chip jo mixed light ko alag karti hai."
+    "Chhoti chip, hidden light ka sach - Stanford researchers ne banayi aisi tiny photonic chip jo mixed light ko alag karti hai.",
+    "Dual 200MP aur ARRI video - Flagship phone me cinematic ARRI video aur dual 200MP cameras"
   ],
   "themes": [
-    "synthwave",
     "cyber_city",
     "manga",
     "sunset",
@@ -259,7 +259,8 @@
     "cyber_city",
     "circuit",
     "aurora",
-    "synthwave"
+    "synthwave",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

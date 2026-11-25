@@ -194,10 +194,10 @@
     "https://analyticsindiamag.com/ai-features/dassault-bets-free-software-and-ai-can-turn-hardware-startups-into-customers",
     "https://www.thehindu.com/news/national/india-warns-against-using-tech-for-strategic-one-upmanship-calls-for-inclusive-ai-governance/article71741155.ece",
     "https://yourstory.com/2026/11/karnataka-names-47-startup-winners-under-elevate-2026",
-    "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-spending-slowdown-could-hit-memory-companies-as-goldman-sachs-flags-2028-risks/articleshow/136149044.cms"
+    "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-spending-slowdown-could-hit-memory-companies-as-goldman-sachs-flags-2028-risks/articleshow/136149044.cms",
+    "https://newatlas.com/technology/tiny-chip-untangles-mixed-light/"
   ],
   "headlines": [
-    "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
     "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan.",
     "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
     "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake.",
@@ -236,10 +236,10 @@
     "30 satellites ke liye desi propulsion? - GalaxEye ne Bellatrix ko 30 satellites ke propulsion systems ka multi-year contract diya hai.",
     "4 saal tak free design software? - Dassault Syst\u00e8mes hardware startups ko 4 saal ka free software access de raha hai.",
     "Killer weapons par human control? - India ne UN me lethal autonomous weapons aur military AI ke responsible use ki maang ki.",
-    "2028 me AI spending kam hogi? - Goldman Sachs ne 2028 AI infrastructure risks aur memory chip makers par padne wale impact par alert diya."
+    "2028 me AI spending kam hogi? - Goldman Sachs ne 2028 AI infrastructure risks aur memory chip makers par padne wale impact par alert diya.",
+    "Chhoti chip, hidden light ka sach - Stanford researchers ne banayi aisi tiny photonic chip jo mixed light ko alag karti hai."
   ],
   "themes": [
-    "circuit",
     "synthwave",
     "cyber_city",
     "manga",
@@ -258,7 +258,8 @@
     "sunset",
     "cyber_city",
     "circuit",
-    "aurora"
+    "aurora",
+    "synthwave"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -280,13 +281,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17888455602623749",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-06T12:29"
-    },
     {
       "id": "18128418599479633",
       "voice": "en-US-AvaMultilingualNeural",
@@ -839,6 +833,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-25T18:50"
+    },
+    {
+      "id": "18114790721231961",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-25T20:40"
     }
   ]
 }

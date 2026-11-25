@@ -196,10 +196,10 @@
     "https://yourstory.com/2026/11/karnataka-names-47-startup-winners-under-elevate-2026",
     "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-spending-slowdown-could-hit-memory-companies-as-goldman-sachs-flags-2028-risks/articleshow/136149044.cms",
     "https://newatlas.com/technology/tiny-chip-untangles-mixed-light/",
-    "https://www.livemint.com/technology/tech-news/honor-magic-9-pro-max-debuts-in-malaysia-with-dual-200mp-cameras-and-cinematic-arri-video-technology-11795616757320.html"
+    "https://www.livemint.com/technology/tech-news/honor-magic-9-pro-max-debuts-in-malaysia-with-dual-200mp-cameras-and-cinematic-arri-video-technology-11795616757320.html",
+    "https://economictimes.indiatimes.com/tech/artificial-intelligence/alice-huang-linked-firms-listed-270-million-in-ai-servers-in-china-records-show/articleshow/136150503.cms"
   ],
   "headlines": [
-    "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
     "EV battery overheating kaise ruke? - Smart predictive battery cooling concept jo acceleration se pehle hi cells cool kar sake.",
     "Zero backlash gear ka secret - Kaise ek metal flexspline robot joints ko extreme precision deta hai",
     "AI aur chips mein naye mega-projects? - Israel Innovation Authority ne India ke saath AI, semiconductors aur quantum projects ka plan banaya hai.",
@@ -238,10 +238,10 @@
     "Killer weapons par human control? - India ne UN me lethal autonomous weapons aur military AI ke responsible use ki maang ki.",
     "2028 me AI spending kam hogi? - Goldman Sachs ne 2028 AI infrastructure risks aur memory chip makers par padne wale impact par alert diya.",
     "Chhoti chip, hidden light ka sach - Stanford researchers ne banayi aisi tiny photonic chip jo mixed light ko alag karti hai.",
-    "Dual 200MP aur ARRI video - Flagship phone me cinematic ARRI video aur dual 200MP cameras"
+    "Dual 200MP aur ARRI video - Flagship phone me cinematic ARRI video aur dual 200MP cameras",
+    "Shanghai data centre mein $270M AI servers - Central-bank records se samne aaya 764 AI servers ka data"
   ],
   "themes": [
-    "cyber_city",
     "manga",
     "sunset",
     "matrix",
@@ -260,7 +260,8 @@
     "circuit",
     "aurora",
     "synthwave",
-    "cyber_city"
+    "cyber_city",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -282,13 +283,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18128418599479633",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-06T14:37"
-    },
     {
       "id": "18127701716486901",
       "voice": "gTTS",
@@ -841,6 +835,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-25T20:40"
+    },
+    {
+      "id": "17915614917488918",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-25T22:47"
     }
   ]
 }

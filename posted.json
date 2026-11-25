@@ -190,10 +190,10 @@
     "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/",
     "https://techcrunch.com/2026/11/05/serve-robotics-launches-new-business-to-become-the-aws-for-robots/",
     "https://newatlas.com/ai-humanoids/north-korea-chatbot-fountain-wisdom/",
-    "https://analyticsindiamag.com/ai-news/galaxeye-awards-bellatrix-deal-to-power-its-next-30-satellites"
+    "https://analyticsindiamag.com/ai-news/galaxeye-awards-bellatrix-deal-to-power-its-next-30-satellites",
+    "https://analyticsindiamag.com/ai-features/dassault-bets-free-software-and-ai-can-turn-hardware-startups-into-customers"
   ],
   "headlines": [
-    "Robot aur machines ek saath kaise judenge? - Imagine factory ke saare alag-alag robots aur machines aapas me connect ho kar ek team ki tarah kaam karein.",
     "Secondary display ke sath naye Xiaomi flagship - Xiaomi 18 Pro aur 18 Pro Max mein kya naya hai",
     "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai.",
     "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
@@ -232,10 +232,10 @@
     "Jump ke baad gear kyu nahi tut-te? - Quasi-Direct Drive actuators se quadruped robots bina spring impact absorb kar lete hain.",
     "GPS ke bina location tracking kaise? - IIT Bombay ki Dhruva chip India ke NaVIC satellite signals ko process karti hai.",
     "North Korea ka pehla official AI? - State-run model Fountain of Wisdom purely science aur tech queries ke liye launch hua hai.",
-    "30 satellites ke liye desi propulsion? - GalaxEye ne Bellatrix ko 30 satellites ke propulsion systems ka multi-year contract diya hai."
+    "30 satellites ke liye desi propulsion? - GalaxEye ne Bellatrix ko 30 satellites ke propulsion systems ka multi-year contract diya hai.",
+    "4 saal tak free design software? - Dassault Syst\u00e8mes hardware startups ko 4 saal ka free software access de raha hai."
   ],
   "themes": [
-    "cyber_city",
     "aurora",
     "manga",
     "circuit",
@@ -254,7 +254,8 @@
     "circuit",
     "aurora",
     "hologram",
-    "sunset"
+    "sunset",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

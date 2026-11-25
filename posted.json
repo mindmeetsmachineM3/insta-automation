@@ -192,10 +192,11 @@
     "https://newatlas.com/ai-humanoids/north-korea-chatbot-fountain-wisdom/",
     "https://analyticsindiamag.com/ai-news/galaxeye-awards-bellatrix-deal-to-power-its-next-30-satellites",
     "https://analyticsindiamag.com/ai-features/dassault-bets-free-software-and-ai-can-turn-hardware-startups-into-customers",
-    "https://www.thehindu.com/news/national/india-warns-against-using-tech-for-strategic-one-upmanship-calls-for-inclusive-ai-governance/article71741155.ece"
+    "https://www.thehindu.com/news/national/india-warns-against-using-tech-for-strategic-one-upmanship-calls-for-inclusive-ai-governance/article71741155.ece",
+    "https://yourstory.com/2026/11/karnataka-names-47-startup-winners-under-elevate-2026",
+    "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-spending-slowdown-could-hit-memory-companies-as-goldman-sachs-flags-2028-risks/articleshow/136149044.cms"
   ],
   "headlines": [
-    "Cyient ko $10 million mile - GlobalFoundries se funding milne ke baad valuation $510 million ho gayi hai.",
     "Paani saaf karega ye naya nanomaterial - IIT Delhi ki research jo industrial wastewater ko bina bijli filter karti hai",
     "Kaun jeeta Young AI Entrepreneur award? - ET AI Awards 2026 mein Adhiraj Chauhan ko mila ye sammaan.",
     "Ghost radar kaise kaam karta? - Portable stealth radar jo bina signal ke hawa ke threats ko track karta hai.",
@@ -234,10 +235,10 @@
     "North Korea ka pehla official AI? - State-run model Fountain of Wisdom purely science aur tech queries ke liye launch hua hai.",
     "30 satellites ke liye desi propulsion? - GalaxEye ne Bellatrix ko 30 satellites ke propulsion systems ka multi-year contract diya hai.",
     "4 saal tak free design software? - Dassault Syst\u00e8mes hardware startups ko 4 saal ka free software access de raha hai.",
-    "Killer weapons par human control? - India ne UN me lethal autonomous weapons aur military AI ke responsible use ki maang ki."
+    "Killer weapons par human control? - India ne UN me lethal autonomous weapons aur military AI ke responsible use ki maang ki.",
+    "2028 me AI spending kam hogi? - Goldman Sachs ne 2028 AI infrastructure risks aur memory chip makers par padne wale impact par alert diya."
   ],
   "themes": [
-    "manga",
     "circuit",
     "synthwave",
     "cyber_city",
@@ -256,7 +257,8 @@
     "hologram",
     "sunset",
     "cyber_city",
-    "circuit"
+    "circuit",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -278,13 +280,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18119804747024224",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "ELECTRONICS",
-      "lang": "English",
-      "time": "2026-11-06T03:43"
-    },
     {
       "id": "17888455602623749",
       "voice": "en-US-AvaMultilingualNeural",
@@ -837,6 +832,13 @@
       "label": "ROBOTICS",
       "lang": "Hinglish",
       "time": "2026-11-25T15:05"
+    },
+    {
+      "id": "18446736439177241",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-25T18:50"
     }
   ]
 }

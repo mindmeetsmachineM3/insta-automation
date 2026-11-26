@@ -204,10 +204,10 @@
     "https://analyticsindiamag.com/ai-news/nvidia-halts-ai-server-shipments-to-4-southeast-asian-countries-report",
     "https://www.thehindu.com/sci-tech/technology/gadgets/vivo-launches-x500-pro-max-x500-and-x500-along-with-watch-gt2/article71745760.ece",
     "https://www.livemint.com/technology/exclusiveus-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-sources-say-11795677671352.html",
-    "https://yourstory.com/2026/11/from-selling-drones-to-intelligence-where-will-next-wave-of-value-come-from"
+    "https://yourstory.com/2026/11/from-selling-drones-to-intelligence-where-will-next-wave-of-value-come-from",
+    "https://www.thehindu.com/sci-tech/technology/spacex-allowed-to-deploy-1-million-satellites-for-data-centres-in-space-as-scientists-express-doubt/article71745113.ece"
   ],
   "headlines": [
-    "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
     "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
     "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment.",
@@ -246,10 +246,10 @@
     "Fussy mess se plug-and-play - Dekho kaise 3D printing abhi tak evolve ho gayi hai",
     "Nvidia ke AI servers kyun ruke? - Southeast Asia ke 4 deshon mein shipments par rok",
     "US chip curbs par China ka AI? - New restrictions and distillation crackdowns are slowing down artificial intelligence projects in China.",
-    "Drone hardware ya AI intelligence? - Imagine shifting from selling specs to delivering smart value."
+    "Drone hardware ya AI intelligence? - Imagine shifting from selling specs to delivering smart value.",
+    "SpaceX ko 1 million satellites ki manzoori? - Trump administration ne SpaceX ke ambitious space data center plan ko green light di hai"
   ],
   "themes": [
-    "circuit",
     "manga",
     "hologram",
     "cyber_city",
@@ -268,7 +268,8 @@
     "circuit",
     "manga",
     "hologram",
-    "aurora"
+    "aurora",
+    "cyber_city"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -290,13 +291,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18121293257082554",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-11-08T08:59"
-    },
     {
       "id": "18225771130341339",
       "voice": "en-US-AvaMultilingualNeural",
@@ -849,6 +843,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-26T20:35"
+    },
+    {
+      "id": "17932227156179820",
+      "voice": "gemini-tts:Orus",
+      "label": "SCI-FI TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-26T22:38"
     }
   ]
 }

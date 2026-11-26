@@ -201,10 +201,11 @@
     "https://www.livemint.com/technology/motorola-edge-70-neo-vs-vivo-s2-vs-nothing-phone-4a-which-offers-more-for-rs-40000-11795617836922.html",
     "https://www.livemint.com/technology/gadgets/vivo-x500-series-launched-in-india-with-200mp-zeiss-camera-7-800mah-battery-check-price-and-specifications-11795685233675.html",
     "https://hackaday.com/2026/11/25/camera-upgrades-for-3d-printers/",
-    "https://analyticsindiamag.com/ai-news/nvidia-halts-ai-server-shipments-to-4-southeast-asian-countries-report"
+    "https://analyticsindiamag.com/ai-news/nvidia-halts-ai-server-shipments-to-4-southeast-asian-countries-report",
+    "https://www.thehindu.com/sci-tech/technology/gadgets/vivo-launches-x500-pro-max-x500-and-x500-along-with-watch-gt2/article71745760.ece",
+    "https://www.livemint.com/technology/exclusiveus-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-sources-say-11795677671352.html"
   ],
   "headlines": [
-    "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi",
     "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
     "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
@@ -243,10 +244,10 @@
     "Moto Edge 70 Neo vs rivals - Price, processors, display, battery aur camera comparison dekho",
     "200MP camera aur 7,800mAh battery? - Vivo ne naye phones ke saath Vivo Watch GT 2 smartwatch bhi debut ki hai.",
     "Fussy mess se plug-and-play - Dekho kaise 3D printing abhi tak evolve ho gayi hai",
-    "Nvidia ke AI servers kyun ruke? - Southeast Asia ke 4 deshon mein shipments par rok"
+    "Nvidia ke AI servers kyun ruke? - Southeast Asia ke 4 deshon mein shipments par rok",
+    "US chip curbs par China ka AI? - New restrictions and distillation crackdowns are slowing down artificial intelligence projects in China."
   ],
   "themes": [
-    "aurora",
     "synthwave",
     "circuit",
     "manga",
@@ -265,7 +266,8 @@
     "hologram",
     "synthwave",
     "circuit",
-    "manga"
+    "manga",
+    "hologram"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -287,13 +289,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18138313513655492",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-07T14:19"
-    },
     {
       "id": "18121293257082554",
       "voice": "en-US-AvaMultilingualNeural",
@@ -846,6 +841,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-26T19:24"
+    },
+    {
+      "id": "18662100718027597",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-26T20:35"
     }
   ]
 }

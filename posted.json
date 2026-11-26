@@ -203,10 +203,10 @@
     "https://hackaday.com/2026/11/25/camera-upgrades-for-3d-printers/",
     "https://analyticsindiamag.com/ai-news/nvidia-halts-ai-server-shipments-to-4-southeast-asian-countries-report",
     "https://www.thehindu.com/sci-tech/technology/gadgets/vivo-launches-x500-pro-max-x500-and-x500-along-with-watch-gt2/article71745760.ece",
-    "https://www.livemint.com/technology/exclusiveus-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-sources-say-11795677671352.html"
+    "https://www.livemint.com/technology/exclusiveus-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-sources-say-11795677671352.html",
+    "https://yourstory.com/2026/11/from-selling-drones-to-intelligence-where-will-next-wave-of-value-come-from"
   ],
   "headlines": [
-    "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
     "Samsung ne kyu badle leaders? - Samsung appointed new memory and mobile heads to boost AI semiconductor power.",
     "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
     "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
@@ -245,10 +245,10 @@
     "200MP camera aur 7,800mAh battery? - Vivo ne naye phones ke saath Vivo Watch GT 2 smartwatch bhi debut ki hai.",
     "Fussy mess se plug-and-play - Dekho kaise 3D printing abhi tak evolve ho gayi hai",
     "Nvidia ke AI servers kyun ruke? - Southeast Asia ke 4 deshon mein shipments par rok",
-    "US chip curbs par China ka AI? - New restrictions and distillation crackdowns are slowing down artificial intelligence projects in China."
+    "US chip curbs par China ka AI? - New restrictions and distillation crackdowns are slowing down artificial intelligence projects in China.",
+    "Drone hardware ya AI intelligence? - Imagine shifting from selling specs to delivering smart value."
   ],
   "themes": [
-    "synthwave",
     "circuit",
     "manga",
     "hologram",
@@ -267,7 +267,8 @@
     "synthwave",
     "circuit",
     "manga",
-    "hologram"
+    "hologram",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

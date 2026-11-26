@@ -199,10 +199,10 @@
     "https://www.livemint.com/technology/tech-news/honor-magic-9-pro-max-debuts-in-malaysia-with-dual-200mp-cameras-and-cinematic-arri-video-technology-11795616757320.html",
     "https://economictimes.indiatimes.com/tech/artificial-intelligence/alice-huang-linked-firms-listed-270-million-in-ai-servers-in-china-records-show/articleshow/136150503.cms",
     "https://www.livemint.com/technology/motorola-edge-70-neo-vs-vivo-s2-vs-nothing-phone-4a-which-offers-more-for-rs-40000-11795617836922.html",
-    "https://www.livemint.com/technology/gadgets/vivo-x500-series-launched-in-india-with-200mp-zeiss-camera-7-800mah-battery-check-price-and-specifications-11795685233675.html"
+    "https://www.livemint.com/technology/gadgets/vivo-x500-series-launched-in-india-with-200mp-zeiss-camera-7-800mah-battery-check-price-and-specifications-11795685233675.html",
+    "https://hackaday.com/2026/11/25/camera-upgrades-for-3d-printers/"
   ],
   "headlines": [
-    "AI aur chips mein naye mega-projects? - Israel Innovation Authority ne India ke saath AI, semiconductors aur quantum projects ka plan banaya hai.",
     "ISRO rocket me 180nm chip kyu? - Space radiation se bachne ke liye ISRO 3nm nahi balki rad-hard 180nm processors use karta hai.",
     "Invisible ink se secure data - IIT Bombay ki nayi research jo counterfeit products aur data chori ko rokegi",
     "Kite ne SSDB kyu hataya? - Zerodha migrated Kite user preferences from single-machine SSDB to an open-source SQLite system.",
@@ -241,10 +241,10 @@
     "Dual 200MP aur ARRI video - Flagship phone me cinematic ARRI video aur dual 200MP cameras",
     "Shanghai data centre mein $270M AI servers - Central-bank records se samne aaya 764 AI servers ka data",
     "Moto Edge 70 Neo vs rivals - Price, processors, display, battery aur camera comparison dekho",
-    "200MP camera aur 7,800mAh battery? - Vivo ne naye phones ke saath Vivo Watch GT 2 smartwatch bhi debut ki hai."
+    "200MP camera aur 7,800mAh battery? - Vivo ne naye phones ke saath Vivo Watch GT 2 smartwatch bhi debut ki hai.",
+    "Fussy mess se plug-and-play - Dekho kaise 3D printing abhi tak evolve ho gayi hai"
   ],
   "themes": [
-    "matrix",
     "cyber_city",
     "aurora",
     "synthwave",
@@ -263,7 +263,8 @@
     "cyber_city",
     "manga",
     "hologram",
-    "synthwave"
+    "synthwave",
+    "circuit"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -285,13 +286,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17950340538067553",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-07T08:04"
-    },
     {
       "id": "18034458926855486",
       "voice": "en-US-AvaMultilingualNeural",
@@ -844,6 +838,13 @@
       "label": "MECHATRONICS",
       "lang": "Hinglish",
       "time": "2026-11-25T23:57"
+    },
+    {
+      "id": "18000099882020801",
+      "voice": "gemini-tts:Orus",
+      "label": "MECHATRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-26T14:38"
     }
   ]
 }

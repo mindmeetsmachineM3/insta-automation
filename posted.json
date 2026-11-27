@@ -208,10 +208,10 @@
     "https://www.thehindu.com/sci-tech/technology/spacex-allowed-to-deploy-1-million-satellites-for-data-centres-in-space-as-scientists-express-doubt/article71745113.ece",
     "https://analyticsindiamag.com/ai-news/coforge-expands-nuuron-with-ai-led-vulnerability-remediation",
     "https://www.livemint.com/technology/apps/paying-high-roaming-charges-abroad-whatsapps-upcoming-esim-feature-could-offer-an-alternative-11795772406422.html",
-    "https://yourstory.com/2026/11/hala-mobility-ev-rentals-jobs-finance-gig-riders"
+    "https://yourstory.com/2026/11/hala-mobility-ev-rentals-jobs-finance-gig-riders",
+    "https://economictimes.indiatimes.com/tech/artificial-intelligence/japans-jera-enters-talks-with-anthropic-meta-to-build-data-centres/articleshow/136210887.cms"
   ],
   "headlines": [
-    "Watch Air kitna patla hai? - Huawei ne announce kiya hai ek naya ultra-thin smartwatch.",
     "Dimag me bina chhed ke wire - Sci-fi ne dikhaya tha skull drilling, science ne di blood vessel wali trick.",
     "Satellite ka 50% vajan kaise kam hua? - ISRO ki electric propulsion tech se future space missions super light aur efficient banenge.",
     "US AI chips par 24 deshon ka ban? - Foreign data centers US AI chips use karke 24 deshon ko cloud services nahi de sakte.",
@@ -250,10 +250,10 @@
     "Dimaag jaisi chip, zero energy waste? - IISc Bengaluru ka brain-inspired neuromorphic chip design AI ka future badal sakta hai.",
     "Coforge ke Nuuron me AI patching - Enterprise platform Nuuron mein aayi automated AI cybersecurity patching.",
     "Number badle bina data plan kaise? - Jio aur Verizon jaise operators ke sath international data plans bina number badle khareedien.",
-    "EV rental ke saath instant job? - Imagine ek single platform jo gig riders ko EV scooter, orders aur financial tools ek saath connect kar de."
+    "EV rental ke saath instant job? - Imagine ek single platform jo gig riders ko EV scooter, orders aur financial tools ek saath connect kar de.",
+    "15 billion dollar ka data center? - JERA Japan me $15 billion ka hyperscale data center plan kar raha hai near Tokyo."
   ],
   "themes": [
-    "aurora",
     "hologram",
     "sunset",
     "cyber_city",
@@ -272,7 +272,8 @@
     "sunset",
     "synthwave",
     "aurora",
-    "cyber_city"
+    "cyber_city",
+    "matrix"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -294,13 +295,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "17964199011232047",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "FUTURE TECH",
-      "lang": "English",
-      "time": "2026-11-08T14:22"
-    },
     {
       "id": "18116857145030575",
       "voice": "en-US-AvaMultilingualNeural",
@@ -853,6 +847,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-27T19:16"
+    },
+    {
+      "id": "17867446869696950",
+      "voice": "gemini-tts:Orus",
+      "label": "NEW INNOVATION",
+      "lang": "Hinglish",
+      "time": "2026-11-27T22:20"
     }
   ]
 }

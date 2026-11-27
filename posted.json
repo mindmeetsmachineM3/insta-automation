@@ -208,7 +208,6 @@
     "https://www.thehindu.com/sci-tech/technology/spacex-allowed-to-deploy-1-million-satellites-for-data-centres-in-space-as-scientists-express-doubt/article71745113.ece"
   ],
   "headlines": [
-    "AI productivity aur demand ka sach - Kya machines ke badhne se demand bhi hamesha zinda rahegi?",
     "Light bend karke invisibility? - Sci-fi ki invisibility cloak ab metamaterials ki physics se real ban rahi hai",
     "IIT Kharagpur ko Google se kitna fund? - Google ne IIT Kharagpur ko diya $5 million ka funding commitment.",
     "Remote brain surgery kaise possible hai? - Surgeons foot pedals aur hand controllers se robotic catheter steer kar rahe hain.",
@@ -247,10 +246,10 @@
     "Nvidia ke AI servers kyun ruke? - Southeast Asia ke 4 deshon mein shipments par rok",
     "US chip curbs par China ka AI? - New restrictions and distillation crackdowns are slowing down artificial intelligence projects in China.",
     "Drone hardware ya AI intelligence? - Imagine shifting from selling specs to delivering smart value.",
-    "SpaceX ko 1 million satellites ki manzoori? - Trump administration ne SpaceX ke ambitious space data center plan ko green light di hai"
+    "SpaceX ko 1 million satellites ki manzoori? - Trump administration ne SpaceX ke ambitious space data center plan ko green light di hai",
+    "Dimaag jaisi chip, zero energy waste? - IISc Bengaluru ka brain-inspired neuromorphic chip design AI ka future badal sakta hai."
   ],
   "themes": [
-    "manga",
     "hologram",
     "cyber_city",
     "circuit",
@@ -269,7 +268,8 @@
     "manga",
     "hologram",
     "aurora",
-    "cyber_city"
+    "cyber_city",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -291,13 +291,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18225771130341339",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "MECHATRONICS",
-      "lang": "English",
-      "time": "2026-11-08T10:27"
-    },
     {
       "id": "17953953000344270",
       "voice": "en-US-AvaMultilingualNeural",
@@ -850,6 +843,13 @@
       "label": "SCI-FI TECH",
       "lang": "Hinglish",
       "time": "2026-11-26T22:38"
+    },
+    {
+      "id": "18214399882365083",
+      "voice": "gemini-tts:Orus",
+      "label": "FUTURE TECH",
+      "lang": "Hinglish",
+      "time": "2026-11-27T00:04"
     }
   ]
 }

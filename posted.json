@@ -209,10 +209,10 @@
     "https://analyticsindiamag.com/ai-news/coforge-expands-nuuron-with-ai-led-vulnerability-remediation",
     "https://www.livemint.com/technology/apps/paying-high-roaming-charges-abroad-whatsapps-upcoming-esim-feature-could-offer-an-alternative-11795772406422.html",
     "https://yourstory.com/2026/11/hala-mobility-ev-rentals-jobs-finance-gig-riders",
-    "https://economictimes.indiatimes.com/tech/artificial-intelligence/japans-jera-enters-talks-with-anthropic-meta-to-build-data-centres/articleshow/136210887.cms"
+    "https://economictimes.indiatimes.com/tech/artificial-intelligence/japans-jera-enters-talks-with-anthropic-meta-to-build-data-centres/articleshow/136210887.cms",
+    "https://analyticsindiamag.com/ai-news/sap-considers-10000-job-cuts-across-departments-in-ai-restructuring-report"
   ],
   "headlines": [
-    "Dimag me bina chhed ke wire - Sci-fi ne dikhaya tha skull drilling, science ne di blood vessel wali trick.",
     "Satellite ka 50% vajan kaise kam hua? - ISRO ki electric propulsion tech se future space missions super light aur efficient banenge.",
     "US AI chips par 24 deshon ka ban? - Foreign data centers US AI chips use karke 24 deshon ko cloud services nahi de sakte.",
     "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai.",
@@ -251,10 +251,10 @@
     "Coforge ke Nuuron me AI patching - Enterprise platform Nuuron mein aayi automated AI cybersecurity patching.",
     "Number badle bina data plan kaise? - Jio aur Verizon jaise operators ke sath international data plans bina number badle khareedien.",
     "EV rental ke saath instant job? - Imagine ek single platform jo gig riders ko EV scooter, orders aur financial tools ek saath connect kar de.",
-    "15 billion dollar ka data center? - JERA Japan me $15 billion ka hyperscale data center plan kar raha hai near Tokyo."
+    "15 billion dollar ka data center? - JERA Japan me $15 billion ka hyperscale data center plan kar raha hai near Tokyo.",
+    "10,000 jobs par AI ka asar - SAP kar raha hai global level par bada restructuring"
   ],
   "themes": [
-    "hologram",
     "sunset",
     "cyber_city",
     "circuit",
@@ -273,7 +273,8 @@
     "synthwave",
     "aurora",
     "cyber_city",
-    "matrix"
+    "matrix",
+    "sunset"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",

@@ -213,7 +213,6 @@
     "https://analyticsindiamag.com/ai-news/sap-considers-10000-job-cuts-across-departments-in-ai-restructuring-report"
   ],
   "headlines": [
-    "Satellite ka 50% vajan kaise kam hua? - ISRO ki electric propulsion tech se future space missions super light aur efficient banenge.",
     "US AI chips par 24 deshon ka ban? - Foreign data centers US AI chips use karke 24 deshon ko cloud services nahi de sakte.",
     "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai.",
     "Phone camera ki shaking kaise rukti hai? - Chhote magnets aur MEMS sensors milkar blurred photos ko kaise bachate hain.",
@@ -252,10 +251,10 @@
     "Number badle bina data plan kaise? - Jio aur Verizon jaise operators ke sath international data plans bina number badle khareedien.",
     "EV rental ke saath instant job? - Imagine ek single platform jo gig riders ko EV scooter, orders aur financial tools ek saath connect kar de.",
     "15 billion dollar ka data center? - JERA Japan me $15 billion ka hyperscale data center plan kar raha hai near Tokyo.",
-    "10,000 jobs par AI ka asar - SAP kar raha hai global level par bada restructuring"
+    "10,000 jobs par AI ka asar - SAP kar raha hai global level par bada restructuring",
+    "Kachre se banti hai ye battery - IIT Mandi ki agricultural waste se bani supercapacitor tech."
   ],
   "themes": [
-    "sunset",
     "cyber_city",
     "circuit",
     "aurora",
@@ -274,7 +273,8 @@
     "aurora",
     "cyber_city",
     "matrix",
-    "sunset"
+    "sunset",
+    "manga"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -296,13 +296,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18116857145030575",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-08T16:24"
-    },
     {
       "id": "18121456552751221",
       "voice": "en-US-AvaMultilingualNeural",
@@ -855,6 +848,13 @@
       "label": "NEW INNOVATION",
       "lang": "Hinglish",
       "time": "2026-11-27T22:20"
+    },
+    {
+      "id": "18080048204742974",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-28T13:49"
     }
   ]
 }

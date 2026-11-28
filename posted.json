@@ -210,10 +210,10 @@
     "https://www.livemint.com/technology/apps/paying-high-roaming-charges-abroad-whatsapps-upcoming-esim-feature-could-offer-an-alternative-11795772406422.html",
     "https://yourstory.com/2026/11/hala-mobility-ev-rentals-jobs-finance-gig-riders",
     "https://economictimes.indiatimes.com/tech/artificial-intelligence/japans-jera-enters-talks-with-anthropic-meta-to-build-data-centres/articleshow/136210887.cms",
-    "https://analyticsindiamag.com/ai-news/sap-considers-10000-job-cuts-across-departments-in-ai-restructuring-report"
+    "https://analyticsindiamag.com/ai-news/sap-considers-10000-job-cuts-across-departments-in-ai-restructuring-report",
+    "https://www.thehindu.com/sci-tech/technology/smartphone-prices-surged-around-17-in-last-12-months-laptops-and-tablets-rose-135-and-133/article71753854.ece"
   ],
   "headlines": [
-    "US AI chips par 24 deshon ka ban? - Foreign data centers US AI chips use karke 24 deshon ko cloud services nahi de sakte.",
     "1 step me 256 steps kaise? - Kaise microstepping software aur electronics se 3D printers ko ultra-smooth precision deta hai.",
     "Phone camera ki shaking kaise rukti hai? - Chhote magnets aur MEMS sensors milkar blurred photos ko kaise bachate hain.",
     "India ka pehla open-source chip? - IIT Madras ke RISE lab ne SHAKTI processor banakar chip design me bada step liya.",
@@ -252,10 +252,10 @@
     "EV rental ke saath instant job? - Imagine ek single platform jo gig riders ko EV scooter, orders aur financial tools ek saath connect kar de.",
     "15 billion dollar ka data center? - JERA Japan me $15 billion ka hyperscale data center plan kar raha hai near Tokyo.",
     "10,000 jobs par AI ka asar - SAP kar raha hai global level par bada restructuring",
-    "Kachre se banti hai ye battery - IIT Mandi ki agricultural waste se bani supercapacitor tech."
+    "Kachre se banti hai ye battery - IIT Mandi ki agricultural waste se bani supercapacitor tech.",
+    "Smartphone prices mein 17% ka jump - Pichle 12 mahino mein smartphones, laptops aur tablets hue mehange"
   ],
   "themes": [
-    "cyber_city",
     "circuit",
     "aurora",
     "synthwave",
@@ -274,7 +274,8 @@
     "cyber_city",
     "matrix",
     "sunset",
-    "manga"
+    "manga",
+    "aurora"
   ],
   "arts": [
     "A colossal digital scale balances delicately on the event horizon of a glowing neon black hole, surrounded by orbiting data streams and intr",
@@ -296,13 +297,6 @@
     "pb47220"
   ],
   "reels": [
-    {
-      "id": "18121456552751221",
-      "voice": "en-US-AvaMultilingualNeural",
-      "label": "NEW INNOVATION",
-      "lang": "English",
-      "time": "2026-11-09T05:55"
-    },
     {
       "id": "18183168313436528",
       "voice": "en-US-AvaMultilingualNeural",
@@ -855,6 +849,13 @@
       "label": "ELECTRONICS",
       "lang": "Hinglish",
       "time": "2026-11-28T13:49"
+    },
+    {
+      "id": "17960197866296035",
+      "voice": "gemini-tts:Orus",
+      "label": "ELECTRONICS",
+      "lang": "Hinglish",
+      "time": "2026-11-28T15:44"
     }
   ]
 }
